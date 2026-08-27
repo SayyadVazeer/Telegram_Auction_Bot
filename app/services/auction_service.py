@@ -2,7 +2,7 @@ import asyncio
 from dataclasses import dataclass
 
 
-from datetime import datetime, timezone
+from datetime import datetime
 from decimal import Decimal
 
 from sqlalchemy import exists, func, select
@@ -34,9 +34,6 @@ class ActiveAuctionState:
     auction_run_id: int
     chat_id: int
     bid_timer_seconds: int
-
-    # Telegram message containing the LIVE AUCTION
-    live_message_id: int | None = None
 
     # Telegram message containing the latest BID notification
     bid_message_id: int | None = None
@@ -83,7 +80,7 @@ class AuctionService:
             )
 
         auction_run.status = AuctionRunStatus.RUNNING.value
-        auction_run.started_at = datetime.now(timezone.utc)
+        auction_run.started_at = datetime.utcnow()
 
         await self.session.flush()
 
@@ -97,7 +94,7 @@ class AuctionService:
             )
 
         auction_run.status = AuctionRunStatus.PAUSED.value
-        auction_run.paused_at = datetime.now(timezone.utc)
+        auction_run.paused_at = datetime.utcnow()
 
         await self.session.flush()
 
@@ -140,7 +137,7 @@ class AuctionService:
             )
 
         auction_run.status = AuctionRunStatus.STOPPED.value
-        auction_run.stopped_at = datetime.now(timezone.utc)
+        auction_run.stopped_at = datetime.utcnow()
 
         await self.session.flush()
     async def get_next_player(
@@ -212,7 +209,7 @@ class AuctionService:
             )
 
         auction_player.status = AuctionPlayerStatus.ACTIVE.value
-        auction_player.started_at = datetime.now(timezone.utc)
+        auction_player.started_at = datetime.utcnow()
 
         await self.session.flush()
 
@@ -235,7 +232,7 @@ class AuctionService:
         auction_player.status = AuctionPlayerStatus.SOLD.value
         auction_player.current_bid_cr = final_bid_cr
         auction_player.current_team_id = winning_team.id
-        auction_player.completed_at = datetime.now(timezone.utc)
+        auction_player.completed_at = datetime.utcnow()
 
         result = AuctionResult(
             tournament_id=auction_player.auction_run.tournament_id,
@@ -264,7 +261,7 @@ class AuctionService:
         auction_player.status = AuctionPlayerStatus.UNSOLD.value
         auction_player.current_bid_cr = None
         auction_player.current_team_id = None
-        auction_player.completed_at = datetime.now(timezone.utc)
+        auction_player.completed_at = datetime.utcnow()
 
         result = AuctionResult(
             tournament_id=auction_player.auction_run.tournament_id,
@@ -291,7 +288,7 @@ class AuctionService:
             )
 
         auction_run.status = AuctionRunStatus.COMPLETED.value
-        auction_run.completed_at = datetime.now(timezone.utc)
+        auction_run.completed_at = datetime.utcnow()
 
         await self.session.flush()
 

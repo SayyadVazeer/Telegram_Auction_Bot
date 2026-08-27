@@ -34,8 +34,18 @@ class ActiveAuctionState:
     auction_run_id: int
     chat_id: int
     bid_timer_seconds: int
+
+    # Telegram message containing the LIVE AUCTION
+    live_message_id: int | None = None
+
+    # Telegram message containing the latest BID notification
+    bid_message_id: int | None = None
+    live_message_id: int | None = None
+
+    # Timer tasks
     timer_task: asyncio.Task | None = None
     last_call_task: asyncio.Task | None = None
+
 
 active_auctions: dict[int, ActiveAuctionState] = {}
 
@@ -340,6 +350,7 @@ class AuctionService:
         tournament: Tournament,
         bid_cr: Decimal,
         minimum_increment_cr: Decimal,
+        bidder_telegram_id: int,
     ) -> None:
 
         result = await self.session.execute(
@@ -357,12 +368,18 @@ class AuctionService:
                 "Active auction player not found."
             )
 
+        if team.owner_telegram_id != bidder_telegram_id:
+            raise BidValidationError(
+                "You are not the owner of this team."
+            )
+
         await self.validate_bid(
             auction_player=locked_player,
             team=team,
             bid_cr=bid_cr,
             minimum_increment_cr=minimum_increment_cr,
         )
+
         player = await self.session.get(
             Player,
             locked_player.player_id,
@@ -380,18 +397,14 @@ class AuctionService:
             bid_cr=bid_cr,
         )
 
-
         locked_player.current_bid_cr = bid_cr
         locked_player.current_team_id = team.id
 
         await self.session.flush()
 
-        auction_player.current_bid_cr = (
-            locked_player.current_bid_cr
-        )
-        auction_player.current_team_id = (
-            locked_player.current_team_id
-        )
+        auction_player.current_bid_cr = locked_player.current_bid_cr
+        auction_player.current_team_id = locked_player.current_team_id
+
 
     async def get_team_by_owner(
     self,
@@ -412,8 +425,13 @@ class AuctionService:
         self,
         tournament_id: int,
     ) -> AuctionPlayer | None:
+
         result = await self.session.execute(
             select(AuctionPlayer)
+            .options(
+                selectinload(AuctionPlayer.player),
+                selectinload(AuctionPlayer.current_team),
+            )
             .join(
                 AuctionRun,
                 AuctionRun.id == AuctionPlayer.auction_run_id,
@@ -429,93 +447,7 @@ class AuctionService:
 
         return result.scalar_one_or_none()
 
-    async def get_by_telegram_group(
-        self,
-        telegram_group_id: int,
-    ) -> Tournament | None:
-        result = await self.session.execute(
-            select(Tournament).where(
-                Tournament.telegram_group_id
-                == telegram_group_id,
-            )
-        )
 
-        return result.scalar_one_or_none()
-
-    async def validate_team_for_bid(
-        self,
-        tournament: Tournament,
-        team: Team,
-        player: Player,
-        bid_cr: Decimal,
-    ) -> None:
-        if team.tournament_id != tournament.id:
-            raise BidValidationError(
-                "This team does not belong to this tournament."
-            )
-
-        result = await self.session.execute(
-            select(
-                func.coalesce(func.sum(AuctionResult.final_bid_cr), 0),
-                func.count(AuctionResult.id),
-            )
-            .where(
-                AuctionResult.tournament_id == tournament.id,
-                AuctionResult.winning_team_id == team.id,
-                AuctionResult.result_status
-                == AuctionResultStatus.SOLD.value,
-            )
-        )
-
-        total_spent, player_count = result.one()
-
-        total_spent = Decimal(str(total_spent or 0))
-        player_count = int(player_count or 0)
-
-        if player_count >= tournament.max_players_per_team:
-            raise BidValidationError(
-                "Your team has already reached the maximum "
-                "number of players."
-            )
-
-        remaining_purse = (
-            tournament.purse_cr - total_spent
-        )
-
-        if bid_cr > remaining_purse:
-            raise BidValidationError(
-                f"Your team has only "
-                f"₹{remaining_purse:.2f} Cr remaining."
-            )
-
-        if player.is_overseas:
-            overseas_result = await self.session.execute(
-                select(func.count(AuctionResult.id))
-                .where(
-                    AuctionResult.tournament_id
-                    == tournament.id,
-                    AuctionResult.winning_team_id
-                    == team.id,
-                    AuctionResult.result_status
-                    == AuctionResultStatus.SOLD.value,
-                    AuctionResult.player.has(
-                        Player.is_overseas.is_(True)
-                    ),
-                )
-            )
-
-            overseas_count = int(
-                overseas_result.scalar() or 0
-            )
-
-            if (
-                overseas_count
-                >= tournament.max_overseas_players
-            ):
-                raise BidValidationError(
-                    "Your team has reached the maximum "
-                    "number of overseas players."
-                )
 
     async def validate_team_for_bid(
         self,
@@ -595,7 +527,51 @@ class AuctionService:
                     "number of overseas players."
                 )
 
+    async def get_active_auction_player_with_details(
+        self,
+        tournament_id: int,
+    ) -> AuctionPlayer | None:
 
+        result = await self.session.execute(
+            select(AuctionPlayer)
+            .join(
+                AuctionRun,
+                AuctionRun.id == AuctionPlayer.auction_run_id,
+            )
+            .options(
+                selectinload(AuctionPlayer.player),
+                selectinload(AuctionPlayer.current_team),
+            )
+            .where(
+                AuctionRun.tournament_id == tournament_id,
+                AuctionRun.status
+                == AuctionRunStatus.RUNNING.value,
+                AuctionPlayer.status
+                == AuctionPlayerStatus.ACTIVE.value,
+            )
+            .order_by(AuctionPlayer.started_at.desc())
+            .limit(1)
+        )
+
+        return result.scalar_one_or_none()
+
+    async def get_running_auction(
+    self,
+    tournament_id: int,
+    ) -> AuctionRun | None:
+
+        result = await self.session.execute(
+            select(AuctionRun)
+            .where(
+                AuctionRun.tournament_id == tournament_id,
+                AuctionRun.status
+                == AuctionRunStatus.RUNNING.value,
+            )
+            .order_by(AuctionRun.id.desc())
+            .limit(1)
+        )
+
+        return result.scalar_one_or_none()
 
 
 

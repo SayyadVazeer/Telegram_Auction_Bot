@@ -4,27 +4,21 @@ from aiogram import Router
 from aiogram.filters import Command
 from aiogram.types import Message
 
-from app.services.auction_runtime import AuctionRuntime
-
-
 from app.database.session import AsyncSessionLocal
 from app.services.auction_service import (
     AuctionService,
     BidValidationError,
 )
-
 from app.services.tournament_service import TournamentService
-from app.database.models.player import Player
 
 
 router = Router()
 
 
 @router.message(Command("bid", "b"))
-
 async def place_bid_command(message: Message) -> None:
 
-    if not message.from_user:
+    if message.from_user is None:
         return
 
     parts = message.text.split(maxsplit=1) if message.text else []
@@ -32,7 +26,7 @@ async def place_bid_command(message: Message) -> None:
     if len(parts) != 2:
         await message.answer(
             "❌ Please enter a bid amount.\n\n"
-            "Example:\n"
+            "Examples:\n"
             "/bid 4.7\n"
             "/b 4.7"
         )
@@ -51,7 +45,7 @@ async def place_bid_command(message: Message) -> None:
         )
         return
 
-    if bid_cr <= 0:
+    if bid_cr <= Decimal("0"):
         await message.answer(
             "❌ Bid must be greater than ₹0 Cr."
         )
@@ -59,8 +53,6 @@ async def place_bid_command(message: Message) -> None:
 
     async with AsyncSessionLocal() as session:
         service = AuctionService(session)
-
-        
         tournament_service = TournamentService(session)
 
         tournament = (
@@ -80,12 +72,12 @@ async def place_bid_command(message: Message) -> None:
             tournament_id=tournament.id,
         )
 
-        
         if team is None:
             await message.answer(
-                        "❌ You are not registered as a team owner."
+                "❌ You are not registered as a team owner."
             )
             return
+
         auction_player = (
             await service.get_active_auction_player(
                 tournament.id
@@ -97,30 +89,18 @@ async def place_bid_command(message: Message) -> None:
                 "❌ There is currently no player accepting bids."
             )
             return
-        
-        player = await session.get(
-            Player,
-            auction_player.player_id,
-        )
-
-        if player is None:
-            await message.answer(
-                "❌ Player data could not be found."
-            )
-            return
-
 
         try:
             await service.place_bid(
-            auction_player=auction_player,
-            team=team,
-            tournament=tournament,
-            bid_cr=bid_cr,
-            minimum_increment_cr=Decimal(
-                str(tournament.minimum_bid_increment_cr)
-            ),
-        )
-
+                auction_player=auction_player,
+                team=team,
+                tournament=tournament,
+                bid_cr=bid_cr,
+                minimum_increment_cr=Decimal(
+                    str(tournament.minimum_bid_increment_cr)
+                ),
+                bidder_telegram_id=message.from_user.id,
+            )
 
             await session.commit()
 
@@ -140,10 +120,7 @@ async def place_bid_command(message: Message) -> None:
 
         await message.answer(
             "🔨 BID\n\n"
-            f"{team.short_code} → ₹{bid_cr:.2f} Cr\n"
-            f"Owner : {owner_username}\n"
-            f"Current highest bid: ₹{bid_cr:.2f} Cr"
+            f"🏏 Team: {team.name} ({team.short_code})\n"
+            f"💰 Bid: ₹{bid_cr:.2f} Cr\n"
+            f"🤴 Owner: {owner_username}"
         )
-
-
-

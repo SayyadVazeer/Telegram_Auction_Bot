@@ -12,9 +12,9 @@ from app.database.models.auction import (
 
 __all__ = [
     "Player",
-    "Tournament"
-    "Team"
-    "AuctionPlayer"
+    "Tournament",
+    "Team",
+    "AuctionPlayer",
     "AuctionResult"
-    "AuctionRun"
+    "AuctionRun",
 ]

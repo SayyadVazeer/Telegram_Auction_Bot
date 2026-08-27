@@ -7,7 +7,8 @@ from sqlalchemy.ext.asyncio import async_engine_from_config
 
 from app.config.settings import settings
 from app.database.base import Base
-from app.database.models import Player
+from app.database import models
+
 
 
 config = context.config

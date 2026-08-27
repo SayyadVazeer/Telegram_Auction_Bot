@@ -7,7 +7,9 @@ from sqlalchemy import (
     Integer,
     Numeric,
     String,
+    UniqueConstraint,
 )
+
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database.base import Base
@@ -76,6 +78,15 @@ class AuctionRun(Base):
 class AuctionPlayer(Base):
     __tablename__ = "auction_players"
 
+    
+    __table_args__ = (
+        UniqueConstraint(
+            "auction_run_id",
+            "player_id",
+            name="uq_auction_run_player",
+        ),
+    )
+    
     id: Mapped[int] = mapped_column(
         primary_key=True,
     )

@@ -1,18 +1,7 @@
 from aiogram.types import TelegramObject
 from aiogram.filters import BaseFilter
 
-from app.config.settings import settings
-
-
-def get_admin_ids() -> set[int]:
-    if not settings.admin_ids.strip():
-        return set()
-
-    return {
-        int(admin_id.strip())
-        for admin_id in settings.admin_ids.split(",")
-        if admin_id.strip()
-    }
+from app.services.admin_service import get_admin_ids
 
 
 class AdminFilter(BaseFilter):

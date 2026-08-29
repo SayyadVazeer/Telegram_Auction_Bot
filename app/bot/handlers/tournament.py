@@ -1,3 +1,4 @@
+import secrets
 from decimal import Decimal, InvalidOperation
 
 from aiogram import F, Router
@@ -5,11 +6,13 @@ from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.types import CallbackQuery, Message
 
+from app.bot.filters.admin import AdminFilter
+
 from app.bot.keyboards.tournament import (
     tournament_confirmation_keyboard,
     tournament_edit_keyboard,
 )
-from app.bot.states.tournament_states import TournamentCreationStates
+from app.bot.states.tournament_states import TournamentCompletionStates, TournamentCreationStates
 
 from app.database.session import AsyncSessionLocal
 from app.repositories.tournament_repository import (
@@ -19,6 +22,44 @@ from app.repositories.tournament_repository import (
 
 
 router = Router()
+
+
+@router.message(Command("complete_tournament"), AdminFilter())
+async def complete_tournament_start(message: Message, state: FSMContext) -> None:
+    tournament = None
+    async with AsyncSessionLocal() as session:
+        tournament = await get_tournament_by_chat_id(session, message.chat.id)
+    if tournament is None:
+        await message.answer("❌ No tournament exists in this group.")
+        return
+    code = f"{secrets.randbelow(10_000):04d}"
+    await state.clear()
+    await state.update_data(completion_code=code, completion_admin_id=message.from_user.id)
+    await state.set_state(TournamentCompletionStates.waiting_for_code)
+    await message.answer(
+        "⚠️ Tournament completion deletes tournament, team, and auction data. Player records are preserved.\n\n"
+        f"Confirmation code: {code}\n\nSend this code to confirm, or /cancel to cancel."
+    )
+
+
+@router.message(TournamentCompletionStates.waiting_for_code)
+async def complete_tournament_confirm(message: Message, state: FSMContext) -> None:
+    data = await state.get_data()
+    if message.from_user is None or message.from_user.id != data.get("completion_admin_id"):
+        await message.answer("❌ Only the admin who started this confirmation can complete it.")
+        return
+    if (message.text or "").strip() != data.get("completion_code"):
+        await message.answer("❌ Incorrect code. Try again or use /cancel.")
+        return
+    async with AsyncSessionLocal() as session:
+        tournament = await get_tournament_by_chat_id(session, message.chat.id)
+        if tournament is None:
+            await message.answer("ℹ️ This tournament has already been removed.")
+        else:
+            await session.delete(tournament)
+            await session.commit()
+            await message.answer("✅ Tournament data has been deleted. Player records were preserved.")
+    await state.clear()
 
 
 def is_positive_decimal(value: str) -> bool:
@@ -328,7 +369,7 @@ async def tournament_create_confirmed(
 
         if existing_tournament is not None:
             await callback.answer(
-                "A tournament already exists in this group.",
+                "⚠️ Tournament already exists.",
                 show_alert=True,
             )
             return

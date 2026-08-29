@@ -92,6 +92,11 @@ async def import_players():
                 skipped += 1
                 continue
 
+            photo_path = f"data/photos/{data["player_id"]}.jpg"
+            import os
+            if not os.path.exists(photo_path):
+                photo_path = None
+
             player = Player(
                 player_id=data["player_id"],
                 name=data["name"],
@@ -100,6 +105,7 @@ async def import_players():
                 is_overseas=data["is_overseas"],
                 set_number=data["set_number"],
                 base_price_cr=data["base_price_cr"],
+                telegram_photo_path=photo_path,
             )
 
             session.add(player)

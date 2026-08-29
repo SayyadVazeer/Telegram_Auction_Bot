@@ -1,4 +1,5 @@
 import re
+from decimal import Decimal
 
 from aiogram import F, Router
 from aiogram.filters import Command
@@ -40,6 +41,9 @@ from app.repositories.tournament_repository import (
 )
 
 from app.database.models.team import Team
+from app.database.models.auction import AuctionResult
+from app.database.models.player import Player
+from app.utils.enums import AuctionResultStatus
 
 router = Router()
 
@@ -271,7 +275,7 @@ async def team_create_confirmed(
 
         if tournament is None:
             await callback.answer(
-                "No tournament exists in this group.",
+                "❌ No tournament in this group.",
                 show_alert=True,
             )
             return
@@ -284,7 +288,7 @@ async def team_create_confirmed(
 
         if existing_name is not None:
             await callback.answer(
-                "A team with this name already exists.",
+                "⚠️ Team name already exists.",
                 show_alert=True,
             )
             return
@@ -297,7 +301,7 @@ async def team_create_confirmed(
 
         if existing_code is not None:
             await callback.answer(
-                "This short code is already in use.",
+                "⚠️ Short code already in use.",
                 show_alert=True,
             )
             return
@@ -408,10 +412,21 @@ async def view_team(
 
     async with AsyncSessionLocal() as session:
         team = await session.get(Team, team_id)
+        if team is not None:
+            tournament = await get_tournament_by_chat_id(session, callback.message.chat.id)
+            results = list((await session.execute(
+                select(AuctionResult, Player)
+                .join(Player, Player.id == AuctionResult.player_id)
+                .where(
+                    AuctionResult.winning_team_id == team.id,
+                    AuctionResult.result_status == AuctionResultStatus.SOLD.value,
+                )
+                .order_by(AuctionResult.final_bid_cr.desc())
+            )).all())
 
     if team is None:
         await callback.answer(
-            "Team not found.",
+            "❌ Team not found.",
             show_alert=True,
         )
         return
@@ -425,8 +440,22 @@ async def view_team(
     text = (
         f"🏏 {team.name}\n\n"
         f"🔤 Short Code: {team.short_code}\n"
-        f"👤 Owner: {owner}"
+        f"👤 Owner: {owner}\n"
     )
+
+    spent = sum((Decimal(str(result.final_bid_cr)) for result, _ in results), Decimal("0"))
+    overseas = sum(1 for _, player in results if player.is_overseas)
+    roster = "\n".join(
+        f"• {player.name} {'✈️' if player.is_overseas else ''} — ₹{result.final_bid_cr:.2f} Cr"
+        for result, player in results
+    ) or "No players purchased yet."
+    if tournament:
+        text += (
+            f"💰 Remaining purse: ₹{Decimal(str(tournament.purse_cr)) - spent:.2f} Cr\n"
+            f"👥 Players: {len(results)}/{tournament.max_players_per_team}\n"
+            f"✈️ Overseas: {overseas}/{tournament.max_overseas_players}\n\n"
+        )
+    text += "Purchased players (highest price first):\n" + roster
 
     if team.logo_file_id:
         await callback.message.answer_photo(

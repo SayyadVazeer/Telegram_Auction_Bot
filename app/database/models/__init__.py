@@ -15,6 +15,6 @@ __all__ = [
     "Tournament",
     "Team",
     "AuctionPlayer",
-    "AuctionResult"
+    "AuctionResult",
     "AuctionRun",
 ]

@@ -1,7 +1,3 @@
-import asyncio
-from dataclasses import dataclass
-
-
 from datetime import datetime
 from decimal import Decimal
 
@@ -29,22 +25,7 @@ from app.database.models.tournament import Tournament
 class BidValidationError(ValueError):
     pass
 
-@dataclass
-class ActiveAuctionState:
-    auction_run_id: int
-    chat_id: int
-    bid_timer_seconds: int
-
-    # Telegram message containing the latest BID notification
-    bid_message_id: int | None = None
-    live_message_id: int | None = None
-
-    # Timer tasks
-    timer_task: asyncio.Task | None = None
-    last_call_task: asyncio.Task | None = None
-
-
-active_auctions: dict[int, ActiveAuctionState] = {}
+from app.services.auction_runtime import ActiveAuctionState
 
 
 class AuctionService:
@@ -282,9 +263,12 @@ class AuctionService:
         self,
         auction_run: AuctionRun,
     ) -> None:
-        if auction_run.status != AuctionRunStatus.RUNNING.value:
+        if auction_run.status not in (
+            AuctionRunStatus.RUNNING.value,
+            AuctionRunStatus.STOPPED.value,
+        ):
             raise ValueError(
-                "Only a running auction can be completed."
+                "Only a running or stopped auction can be completed."
             )
 
         auction_run.status = AuctionRunStatus.COMPLETED.value

@@ -8,3 +8,7 @@ class TournamentCreationStates(StatesGroup):
     waiting_for_max_players = State()
     waiting_for_min_bid_increment = State()
     confirming = State()
+
+
+class TournamentCompletionStates(StatesGroup):
+    waiting_for_code = State()

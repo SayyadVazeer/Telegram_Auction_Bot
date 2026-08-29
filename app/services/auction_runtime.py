@@ -1,10 +1,30 @@
 import asyncio
 from collections.abc import Awaitable, Callable
+from dataclasses import dataclass, field
 
-from app.services.auction_service import (
-    ActiveAuctionState,
-    active_auctions,
-)
+
+@dataclass
+class ActiveAuctionState:
+    auction_run_id: int
+    chat_id: int
+    bid_timer_seconds: int
+
+    # Telegram message containing the latest BID notification
+    bid_message_id: int | None = None
+    live_message_id: int | None = None
+    current_auction_player_id: int | None = None
+    on_timer_expired: Callable[[], Awaitable[None]] | None = None
+
+    # Timer tasks
+    timer_task: asyncio.Task | None = None
+    last_call_task: asyncio.Task | None = None
+
+    # State flags
+    paused: bool = False
+    stopped: bool = False
+
+
+active_auctions: dict[int, ActiveAuctionState] = {}
 
 
 class AuctionRuntime:
@@ -58,6 +78,7 @@ class AuctionRuntime:
     ) -> None:
         AuctionRuntime.cancel_timer(state)
 
+        state.on_timer_expired = on_expired
         state.timer_task = asyncio.create_task(
             AuctionRuntime._timer_worker(
                 state,
@@ -66,12 +87,26 @@ class AuctionRuntime:
         )
 
     @staticmethod
+    async def restart_timer(state: ActiveAuctionState) -> None:
+        if state.paused or state.stopped:
+            return
+        AuctionRuntime.cancel_last_call(state)
+        if state.on_timer_expired is not None:
+            await AuctionRuntime.start_timer(state, state.on_timer_expired)
+
+    @staticmethod
     def cancel_timer(
         state: ActiveAuctionState,
     ) -> None:
         if state.timer_task is not None:
             state.timer_task.cancel()
             state.timer_task = None
+
+    @staticmethod
+    def cancel_last_call(state: ActiveAuctionState) -> None:
+        if state.last_call_task is not None:
+            state.last_call_task.cancel()
+            state.last_call_task = None
 
     @staticmethod
     async def _timer_worker(
@@ -85,8 +120,9 @@ class AuctionRuntime:
             await asyncio.sleep(
                 state.bid_timer_seconds
             )
-
-            await on_expired()
+            state.timer_task = None
+            if not state.paused and not state.stopped:
+                await on_expired()
 
         except asyncio.CancelledError:
             return

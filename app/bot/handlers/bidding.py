@@ -10,6 +10,7 @@ from app.services.auction_service import (
     BidValidationError,
 )
 from app.services.tournament_service import TournamentService
+from app.services.auction_runtime import AuctionRuntime
 
 
 router = Router()
@@ -103,6 +104,40 @@ async def place_bid_command(message: Message) -> None:
             )
 
             await session.commit()
+
+            # Edit live message
+            runtime = AuctionRuntime.get(auction_player.auction_run_id)
+            if runtime and runtime.live_message_id:
+                try:
+                    from app.bot.handlers.auction import _live_text
+                    from app.bot.keyboards.auction import auction_keyboard as ak
+                    text = _live_text(
+                        auction_player.player, team, bid_cr, runtime.bid_timer_seconds,
+                        bidder_username=team.owner_username,
+                    )
+                    markup = ak(
+                        Decimal(str(tournament.minimum_bid_increment_cr)),
+                        is_admin=True,
+                    )
+                    try:
+                        await message.bot.edit_message_caption(
+                            chat_id=message.chat.id,
+                            message_id=runtime.live_message_id,
+                            caption=text,
+                            reply_markup=markup,
+                        )
+                    except Exception:
+                        await message.bot.edit_message_text(
+                            text=text,
+                            chat_id=message.chat.id,
+                            message_id=runtime.live_message_id,
+                            reply_markup=markup,
+                        )
+                except Exception:
+                    pass
+
+            if runtime is not None:
+                await AuctionRuntime.restart_timer(runtime)
 
         except BidValidationError as exc:
             await session.rollback()

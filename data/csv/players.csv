@@ -1,445 +1,445 @@
 name,country,role,is_overseas,set_number,base_price_cr,player_id
 Travis Head,Australia,Left-Hand Opening Batter,TRUE,1,4,PLY0001
-David Warner,Australia,Left-Hand Opening Batter,TRUE,1,3.89,PLY0002
-Kane Williamson,New Zealand,Right-Hand Batter,TRUE,1,3.78,PLY0003
-Jason Roy,England,Batter,FALSE,1,3.67,PLY0004
-Quinton de Kock,South Africa,Left-Hand Batter/Wicketkeeper,TRUE,1,3.56,PLY0005
-Andre Russell,West Indies,Right-Hand Batter/Right-Arm Fast All-Rounder,TRUE,1,3.44,PLY0006
-Sam Curran,England,Bowling All-Rounder (Pace),FALSE,1,3.33,PLY0007
-Shakib Al Hasan,Bangladesh,Left-Hand Batter/Left-Arm Orthodox Spin All-Rounder,TRUE,1,3.22,PLY0008
-Trent Boult,New Zealand,Left-Arm Fast Bowler,TRUE,1,3.11,PLY0009
+David Warner,Australia,Left-Hand Opening Batter,TRUE,1,4,PLY0002
+Kane Williamson,New Zealand,Right-Hand Batter,TRUE,1,3.75,PLY0003
+Jason Roy,England,Batter,FALSE,1,3.75,PLY0004
+Quinton de Kock,South Africa,Left-Hand Batter/Wicketkeeper,TRUE,1,3.5,PLY0005
+Andre Russell,West Indies,Right-Hand Batter/Right-Arm Fast All-Rounder,TRUE,1,3.5,PLY0006
+Sam Curran,England,Bowling All-Rounder (Pace),FALSE,1,3.25,PLY0007
+Shakib Al Hasan,Bangladesh,Left-Hand Batter/Left-Arm Orthodox Spin All-Rounder,TRUE,1,3.25,PLY0008
+Trent Boult,New Zealand,Left-Arm Fast Bowler,TRUE,1,3,PLY0009
 Kagiso Rabada,South Africa,Right-Arm Fast Bowler,TRUE,1,3,PLY0010
 Jake Fraser-McGurk,Australia,Right-Hand Opening Batter,TRUE,2,3,PLY0011
-Steve Smith,Australia,Right-Hand Batter,TRUE,2,2.97,PLY0012
-Matthew Short,Australia,Right-Hand Batter,TRUE,2,2.93,PLY0013
-Faf du Plessis,South Africa,Right-Hand Batter,TRUE,2,2.9,PLY0014
-Alex Hales,England,Batter,FALSE,2,2.86,PLY0015
-James Vince,England,Batter,FALSE,2,2.83,PLY0016
-Tristan Stubbs,South Africa,Right-Hand Batter/Wicketkeeper,TRUE,2,2.79,PLY0017
-Shai Hope,West Indies,Right-Hand Batter/Wicketkeeper,TRUE,2,2.76,PLY0018
-Devon Conway,New Zealand,Left-Hand Batter/Wicketkeeper,TRUE,2,2.72,PLY0019
-Mohammad Rizwan,Pakistan,Right-Hand Batter/Wicketkeeper,TRUE,2,2.69,PLY0020
-Tom Kohler-Cadmore,England,Wicketkeeper Batter,FALSE,2,2.66,PLY0021
-Ben Foakes,England,Wicketkeeper Batter,FALSE,2,2.62,PLY0022
-Marcus Stoinis,Australia,Right-Hand Batter/Right-Arm Medium All-Rounder,TRUE,2,2.59,PLY0023
-Cameron Green,Australia,Right-Hand Batter/Right-Arm Fast All-Rounder,TRUE,2,2.55,PLY0024
-Jason Holder,West Indies,Right-Arm Fast All-Rounder,TRUE,2,2.52,PLY0025
-Tom Curran,England,Bowling All-Rounder (Pace),FALSE,2,2.48,PLY0026
-Chris Woakes,England,Bowling All-Rounder (Pace),FALSE,2,2.45,PLY0027
-Imad Wasim,Pakistan,Left-Hand Batter/Left-Arm Orthodox Spin All-Rounder,TRUE,2,2.41,PLY0028
-Spencer Johnson,Australia,Left-Arm Fast Bowler,TRUE,2,2.38,PLY0029
-Lockie Ferguson,New Zealand,Right-Arm Fast Bowler,TRUE,2,2.34,PLY0030
-Anrich Nortje,South Africa,Right-Arm Fast Bowler,TRUE,2,2.31,PLY0031
-Shaheen Shah Afridi,Pakistan,Left-Arm Fast Bowler,TRUE,2,2.28,PLY0032
-Stuart Broad,England,Fast Bowler,FALSE,2,2.24,PLY0033
-Gus Atkinson,England,Fast Bowler,FALSE,2,2.21,PLY0034
-Adam Zampa,Australia,Right-Arm Leg-Spin Bowler,TRUE,2,2.17,PLY0035
-Tabraiz Shamsi,South Africa,Left-Arm Wrist-Spin Bowler,TRUE,2,2.14,PLY0036
-Maheesh Theekshana,Sri Lanka,Right-Arm Off-Spin Bowler,TRUE,2,2.1,PLY0037
-Noor Ahmad,Afghanistan,Left-Arm Wrist-Spin Bowler,TRUE,2,2.07,PLY0038
-Jack Leach,England,Spin Bowler,FALSE,2,2.03,PLY0039
+Steve Smith,Australia,Right-Hand Batter,TRUE,2,3,PLY0012
+Matthew Short,Australia,Right-Hand Batter,TRUE,2,3,PLY0013
+Faf du Plessis,South Africa,Right-Hand Batter,TRUE,2,3,PLY0014
+Alex Hales,England,Batter,FALSE,2,2.75,PLY0015
+James Vince,England,Batter,FALSE,2,2.75,PLY0016
+Tristan Stubbs,South Africa,Right-Hand Batter/Wicketkeeper,TRUE,2,2.75,PLY0017
+Shai Hope,West Indies,Right-Hand Batter/Wicketkeeper,TRUE,2,2.75,PLY0018
+Devon Conway,New Zealand,Left-Hand Batter/Wicketkeeper,TRUE,2,2.75,PLY0019
+Mohammad Rizwan,Pakistan,Right-Hand Batter/Wicketkeeper,TRUE,2,2.75,PLY0020
+Tom Kohler-Cadmore,England,Wicketkeeper Batter,FALSE,2,2.75,PLY0021
+Ben Foakes,England,Wicketkeeper Batter,FALSE,2,2.5,PLY0022
+Marcus Stoinis,Australia,Right-Hand Batter/Right-Arm Medium All-Rounder,TRUE,2,2.5,PLY0023
+Cameron Green,Australia,Right-Hand Batter/Right-Arm Fast All-Rounder,TRUE,2,2.5,PLY0024
+Jason Holder,West Indies,Right-Arm Fast All-Rounder,TRUE,2,2.5,PLY0025
+Tom Curran,England,Bowling All-Rounder (Pace),FALSE,2,2.5,PLY0026
+Chris Woakes,England,Bowling All-Rounder (Pace),FALSE,2,2.5,PLY0027
+Imad Wasim,Pakistan,Left-Hand Batter/Left-Arm Orthodox Spin All-Rounder,TRUE,2,2.5,PLY0028
+Spencer Johnson,Australia,Left-Arm Fast Bowler,TRUE,2,2.5,PLY0029
+Lockie Ferguson,New Zealand,Right-Arm Fast Bowler,TRUE,2,2.25,PLY0030
+Anrich Nortje,South Africa,Right-Arm Fast Bowler,TRUE,2,2.25,PLY0031
+Shaheen Shah Afridi,Pakistan,Left-Arm Fast Bowler,TRUE,2,2.25,PLY0032
+Stuart Broad,England,Fast Bowler,FALSE,2,2.25,PLY0033
+Gus Atkinson,England,Fast Bowler,FALSE,2,2.25,PLY0034
+Adam Zampa,Australia,Right-Arm Leg-Spin Bowler,TRUE,2,2.25,PLY0035
+Tabraiz Shamsi,South Africa,Left-Arm Wrist-Spin Bowler,TRUE,2,2.25,PLY0036
+Maheesh Theekshana,Sri Lanka,Right-Arm Off-Spin Bowler,TRUE,2,2,PLY0037
+Noor Ahmad,Afghanistan,Left-Arm Wrist-Spin Bowler,TRUE,2,2,PLY0038
+Jack Leach,England,Spin Bowler,FALSE,2,2,PLY0039
 Shoaib Bashir,England,Spin Bowler,FALSE,2,2,PLY0040
 Matthew Breetzke,South Africa,Right-Hand Batter,TRUE,3,2.5,PLY0041
-Evin Lewis,West Indies,Left-Hand Opening Batter,TRUE,3,2.47,PLY0042
-Shimron Hetmyer,West Indies,Left-Hand Batter,TRUE,3,2.43,PLY0043
-Glenn Phillips,New Zealand,Right-Hand Batter,TRUE,3,2.4,PLY0044
-Will Smeed,England,Batter,FALSE,3,2.36,PLY0045
-Zak Crawley,England,Batter,FALSE,3,2.33,PLY0046
-Ryan Rickelton,South Africa,Left-Hand Batter/Wicketkeeper,TRUE,3,2.29,PLY0047
-Johnson Charles,West Indies,Right-Hand Batter/Wicketkeeper,TRUE,3,2.26,PLY0048
-Rahmanullah Gurbaz,Afghanistan,Right-Hand Batter/Wicketkeeper,TRUE,3,2.22,PLY0049
-Josh Inglis,Australia,Right-Hand Batter/Wicketkeeper,TRUE,3,2.19,PLY0050
-Jamie Smith,England,Wicketkeeper Batter,FALSE,3,2.16,PLY0051
-Ben Duckett,England,Wicketkeeper Batter,FALSE,3,2.12,PLY0052
-Wanindu Hasaranga,Sri Lanka,Right-Arm Leg-Spin All-Rounder,TRUE,3,2.09,PLY0053
-Aiden Markram,South Africa,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,TRUE,3,2.05,PLY0054
-Liam Dawson,England,Bowling All-Rounder (Spin),FALSE,3,2.02,PLY0055
-Marco Jansen,South Africa,Left-Hand Batter/Left-Arm Fast All-Rounder,TRUE,3,1.98,PLY0056
-Romario Shepherd,West Indies,Right-Arm Fast All-Rounder,TRUE,3,1.95,PLY0057
-David Willey,England,Bowling All-Rounder (Pace),FALSE,3,1.91,PLY0058
-Gerald Coetzee,South Africa,Right-Arm Fast Bowler,TRUE,3,1.88,PLY0059
-Naveen-ul-Haq,Afghanistan,Right-Arm Fast Bowler,TRUE,3,1.84,PLY0060
-Haris Rauf,Pakistan,Right-Arm Fast Bowler,TRUE,3,1.81,PLY0061
-Mustafizur Rahman,Bangladesh,Left-Arm Fast Bowler,TRUE,3,1.78,PLY0062
-Reece Topley,England,Fast Bowler,FALSE,3,1.74,PLY0063
-Matthew Potts,England,Fast Bowler,FALSE,3,1.71,PLY0064
-Keshav Maharaj,South Africa,Left-Arm Orthodox Spin Bowler,TRUE,3,1.67,PLY0065
-Gudakesh Motie,West Indies,Left-Arm Orthodox Spin Bowler,TRUE,3,1.64,PLY0066
-Waqar Salamkheil,Afghanistan,Left-Arm Wrist-Spin Bowler,TRUE,3,1.6,PLY0067
-Ish Sodhi,New Zealand,Right-Arm Leg-Spin Bowler,TRUE,3,1.57,PLY0068
-Tom Hartley,England,Spin Bowler,FALSE,3,1.53,PLY0069
+Evin Lewis,West Indies,Left-Hand Opening Batter,TRUE,3,2.5,PLY0042
+Shimron Hetmyer,West Indies,Left-Hand Batter,TRUE,3,2.5,PLY0043
+Glenn Phillips,New Zealand,Right-Hand Batter,TRUE,3,2.5,PLY0044
+Will Smeed,England,Batter,FALSE,3,2.25,PLY0045
+Zak Crawley,England,Batter,FALSE,3,2.25,PLY0046
+Ryan Rickelton,South Africa,Left-Hand Batter/Wicketkeeper,TRUE,3,2.25,PLY0047
+Johnson Charles,West Indies,Right-Hand Batter/Wicketkeeper,TRUE,3,2.25,PLY0048
+Rahmanullah Gurbaz,Afghanistan,Right-Hand Batter/Wicketkeeper,TRUE,3,2.25,PLY0049
+Josh Inglis,Australia,Right-Hand Batter/Wicketkeeper,TRUE,3,2.25,PLY0050
+Jamie Smith,England,Wicketkeeper Batter,FALSE,3,2.25,PLY0051
+Ben Duckett,England,Wicketkeeper Batter,FALSE,3,2,PLY0052
+Wanindu Hasaranga,Sri Lanka,Right-Arm Leg-Spin All-Rounder,TRUE,3,2,PLY0053
+Aiden Markram,South Africa,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,TRUE,3,2,PLY0054
+Liam Dawson,England,Bowling All-Rounder (Spin),FALSE,3,2,PLY0055
+Marco Jansen,South Africa,Left-Hand Batter/Left-Arm Fast All-Rounder,TRUE,3,2,PLY0056
+Romario Shepherd,West Indies,Right-Arm Fast All-Rounder,TRUE,3,2,PLY0057
+David Willey,England,Bowling All-Rounder (Pace),FALSE,3,2,PLY0058
+Gerald Coetzee,South Africa,Right-Arm Fast Bowler,TRUE,3,2,PLY0059
+Naveen-ul-Haq,Afghanistan,Right-Arm Fast Bowler,TRUE,3,1.75,PLY0060
+Haris Rauf,Pakistan,Right-Arm Fast Bowler,TRUE,3,1.75,PLY0061
+Mustafizur Rahman,Bangladesh,Left-Arm Fast Bowler,TRUE,3,1.75,PLY0062
+Reece Topley,England,Fast Bowler,FALSE,3,1.75,PLY0063
+Matthew Potts,England,Fast Bowler,FALSE,3,1.75,PLY0064
+Keshav Maharaj,South Africa,Left-Arm Orthodox Spin Bowler,TRUE,3,1.75,PLY0065
+Gudakesh Motie,West Indies,Left-Arm Orthodox Spin Bowler,TRUE,3,1.75,PLY0066
+Waqar Salamkheil,Afghanistan,Left-Arm Wrist-Spin Bowler,TRUE,3,1.5,PLY0067
+Ish Sodhi,New Zealand,Right-Arm Leg-Spin Bowler,TRUE,3,1.5,PLY0068
+Tom Hartley,England,Spin Bowler,FALSE,3,1.5,PLY0069
 Matt Parkinson,England,Spin Bowler,FALSE,3,1.5,PLY0070
 Dewald Brevis,South Africa,Right-Hand Batter,TRUE,4,2,PLY0071
-Rilee Rossouw,South Africa,Left-Hand Batter,TRUE,4,1.97,PLY0072
-Rassie van der Dussen,South Africa,Right-Hand Batter,TRUE,4,1.94,PLY0073
-Rovman Powell,West Indies,Right-Hand Batter,TRUE,4,1.92,PLY0074
-Dan Lawrence,England,Batter,FALSE,4,1.89,PLY0075
-Max Holden,England,Batter,FALSE,4,1.86,PLY0076
-Matthew Wade,Australia,Left-Hand Batter/Wicketkeeper,TRUE,4,1.83,PLY0077
-Kusal Mendis,Sri Lanka,Right-Hand Batter/Wicketkeeper,TRUE,4,1.81,PLY0078
-Litton Das,Bangladesh,Right-Hand Batter/Wicketkeeper,TRUE,4,1.78,PLY0079
+Rilee Rossouw,South Africa,Left-Hand Batter,TRUE,4,2,PLY0072
+Rassie van der Dussen,South Africa,Right-Hand Batter,TRUE,4,2,PLY0073
+Rovman Powell,West Indies,Right-Hand Batter,TRUE,4,2,PLY0074
+Dan Lawrence,England,Batter,FALSE,4,2,PLY0075
+Max Holden,England,Batter,FALSE,4,1.75,PLY0076
+Matthew Wade,Australia,Left-Hand Batter/Wicketkeeper,TRUE,4,1.75,PLY0077
+Kusal Mendis,Sri Lanka,Right-Hand Batter/Wicketkeeper,TRUE,4,1.75,PLY0078
+Litton Das,Bangladesh,Right-Hand Batter/Wicketkeeper,TRUE,4,1.75,PLY0079
 Azam Khan,Pakistan,Right-Hand Batter/Wicketkeeper,TRUE,4,1.75,PLY0080
-Alex Davies,England,Wicketkeeper Batter,FALSE,4,1.72,PLY0081
-Joe Clarke,England,Wicketkeeper Batter,FALSE,4,1.7,PLY0082
-Mitchell Marsh,Australia,Right-Hand Batter/Right-Arm Fast All-Rounder,TRUE,4,1.67,PLY0083
-Aaron Hardie,Australia,Right-Hand Batter/Right-Arm Medium All-Rounder,TRUE,4,1.64,PLY0084
-Benny Howell,England,Bowling All-Rounder (Pace),FALSE,4,1.61,PLY0085
-Rachin Ravindra,New Zealand,Left-Hand Batter/Left-Arm Orthodox All-Rounder,TRUE,4,1.59,PLY0086
-Sikandar Raza,Zimbabwe,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,TRUE,4,1.56,PLY0087
-Rehan Ahmed,England,Bowling All-Rounder (Spin),FALSE,4,1.53,PLY0088
+Alex Davies,England,Wicketkeeper Batter,FALSE,4,1.75,PLY0081
+Joe Clarke,England,Wicketkeeper Batter,FALSE,4,1.75,PLY0082
+Mitchell Marsh,Australia,Right-Hand Batter/Right-Arm Fast All-Rounder,TRUE,4,1.75,PLY0083
+Aaron Hardie,Australia,Right-Hand Batter/Right-Arm Medium All-Rounder,TRUE,4,1.75,PLY0084
+Benny Howell,England,Bowling All-Rounder (Pace),FALSE,4,1.5,PLY0085
+Rachin Ravindra,New Zealand,Left-Hand Batter/Left-Arm Orthodox All-Rounder,TRUE,4,1.5,PLY0086
+Sikandar Raza,Zimbabwe,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,TRUE,4,1.5,PLY0087
+Rehan Ahmed,England,Bowling All-Rounder (Spin),FALSE,4,1.5,PLY0088
 Fazalhaq Farooqi,Afghanistan,Left-Arm Fast Bowler,TRUE,4,1.5,PLY0089
-Alzarri Joseph,West Indies,Right-Arm Fast Bowler,TRUE,4,1.48,PLY0090
-Nuwan Thushara,Sri Lanka,Left-Arm Fast Bowler,TRUE,4,1.45,PLY0091
-Adam Milne,New Zealand,Right-Arm Fast Bowler,TRUE,4,1.42,PLY0092
-Olly Stone,England,Fast Bowler,FALSE,4,1.39,PLY0093
-Luke Wood,England,Fast Bowler,FALSE,4,1.37,PLY0094
-Mujeeb Ur Rahman,Afghanistan,Right-Arm Off-Spin Bowler,TRUE,4,1.34,PLY0095
-Abrar Ahmed,Pakistan,Right-Arm Leg-Spin Bowler,TRUE,4,1.31,PLY0096
-Qais Ahmad,Afghanistan,Right-Arm Leg-Spin Bowler,TRUE,4,1.28,PLY0097
-Ajaz Patel,New Zealand,Left-Arm Orthodox Spin Bowler,TRUE,4,1.26,PLY0098
-Danny Moriarty,England,Spin Bowler,FALSE,4,1.23,PLY0099
-Dominic Bess,England,Spin Bowler,FALSE,4,1.2,PLY0100
+Alzarri Joseph,West Indies,Right-Arm Fast Bowler,TRUE,4,1.5,PLY0090
+Nuwan Thushara,Sri Lanka,Left-Arm Fast Bowler,TRUE,4,1.5,PLY0091
+Adam Milne,New Zealand,Right-Arm Fast Bowler,TRUE,4,1.5,PLY0092
+Olly Stone,England,Fast Bowler,FALSE,4,1.5,PLY0093
+Luke Wood,England,Fast Bowler,FALSE,4,1.25,PLY0094
+Mujeeb Ur Rahman,Afghanistan,Right-Arm Off-Spin Bowler,TRUE,4,1.25,PLY0095
+Abrar Ahmed,Pakistan,Right-Arm Leg-Spin Bowler,TRUE,4,1.25,PLY0096
+Qais Ahmad,Afghanistan,Right-Arm Leg-Spin Bowler,TRUE,4,1.25,PLY0097
+Ajaz Patel,New Zealand,Left-Arm Orthodox Spin Bowler,TRUE,4,1.25,PLY0098
+Danny Moriarty,England,Spin Bowler,FALSE,4,1.25,PLY0099
+Dominic Bess,England,Spin Bowler,FALSE,4,1.25,PLY0100
 Sherfane Rutherford,West Indies,Left-Hand Batter,TRUE,5,1.75,PLY0101
-Finn Allen,New Zealand,Right-Hand Opening Batter,TRUE,5,1.72,PLY0102
-Pathum Nissanka,Sri Lanka,Right-Hand Batter,TRUE,5,1.7,PLY0103
-Babar Azam,Pakistan,Right-Hand Batter,TRUE,5,1.67,PLY0104
-Sam Hain,England,Batter,FALSE,5,1.65,PLY0105
-Laurie Evans,England,Batter,FALSE,5,1.62,PLY0106
-Tim Seifert,New Zealand,Right-Hand Batter/Wicketkeeper,TRUE,5,1.59,PLY0107
-Donovan Ferreira,South Africa,Right-Hand Batter/Wicketkeeper,TRUE,5,1.57,PLY0108
-Josh Philippe,Australia,Right-Hand Batter/Wicketkeeper,TRUE,5,1.54,PLY0109
-Sam Billings,England,Wicketkeeper Batter,FALSE,5,1.52,PLY0110
-Michael Pepper,England,Wicketkeeper Batter,FALSE,5,1.49,PLY0111
-Adam Rossington,England,Wicketkeeper Batter,FALSE,5,1.47,PLY0112
-Akeal Hosein,West Indies,Left-Hand Batter/Left-Arm Orthodox Spin All-Rounder,TRUE,5,1.44,PLY0113
-Shadab Khan,Pakistan,Right-Hand Batter/Right-Arm Leg-Spin All-Rounder,TRUE,5,1.41,PLY0114
-Daniel Sams,Australia,Left-Hand Batter/Left-Arm Fast All-Rounder,TRUE,5,1.39,PLY0115
-Azmatullah Omarzai,Afghanistan,Right-Hand Batter/Right-Arm Fast All-Rounder,TRUE,5,1.36,PLY0116
-Chris Jordan,England,Bowling All-Rounder (Pace),FALSE,5,1.34,PLY0117
-Brydon Carse,England,Bowling All-Rounder (Pace),FALSE,5,1.31,PLY0118
-Nathan Ellis,Australia,Right-Arm Fast Bowler,TRUE,5,1.28,PLY0119
-Nandre Burger,South Africa,Left-Arm Fast Bowler,TRUE,5,1.26,PLY0120
-Naseem Shah,Pakistan,Right-Arm Fast Bowler,TRUE,5,1.23,PLY0121
-Matt Henry,New Zealand,Right-Arm Fast Bowler,TRUE,5,1.21,PLY0122
-Saqib Mahmood,England,Fast Bowler,FALSE,5,1.18,PLY0123
-Tymal Mills,England,Fast Bowler,FALSE,5,1.16,PLY0124
-Allah Ghazanfar,Afghanistan,Right-Arm Off-Spin Bowler,TRUE,5,1.13,PLY0125
-Usama Mir,Pakistan,Right-Arm Leg-Spin Bowler,TRUE,5,1.1,PLY0126
-Ashton Agar,Australia,Left-Arm Orthodox Spin Bowler,TRUE,5,1.08,PLY0127
-Callum Parkinson,England,Spin Bowler,FALSE,5,1.05,PLY0128
-Mason Crane,England,Spin Bowler,FALSE,5,1.03,PLY0129
+Finn Allen,New Zealand,Right-Hand Opening Batter,TRUE,5,1.75,PLY0102
+Pathum Nissanka,Sri Lanka,Right-Hand Batter,TRUE,5,1.75,PLY0103
+Babar Azam,Pakistan,Right-Hand Batter,TRUE,5,1.75,PLY0104
+Sam Hain,England,Batter,FALSE,5,1.75,PLY0105
+Laurie Evans,England,Batter,FALSE,5,1.5,PLY0106
+Tim Seifert,New Zealand,Right-Hand Batter/Wicketkeeper,TRUE,5,1.5,PLY0107
+Donovan Ferreira,South Africa,Right-Hand Batter/Wicketkeeper,TRUE,5,1.5,PLY0108
+Josh Philippe,Australia,Right-Hand Batter/Wicketkeeper,TRUE,5,1.5,PLY0109
+Sam Billings,England,Wicketkeeper Batter,FALSE,5,1.5,PLY0110
+Michael Pepper,England,Wicketkeeper Batter,FALSE,5,1.5,PLY0111
+Adam Rossington,England,Wicketkeeper Batter,FALSE,5,1.5,PLY0112
+Akeal Hosein,West Indies,Left-Hand Batter/Left-Arm Orthodox Spin All-Rounder,TRUE,5,1.5,PLY0113
+Shadab Khan,Pakistan,Right-Hand Batter/Right-Arm Leg-Spin All-Rounder,TRUE,5,1.5,PLY0114
+Daniel Sams,Australia,Left-Hand Batter/Left-Arm Fast All-Rounder,TRUE,5,1.5,PLY0115
+Azmatullah Omarzai,Afghanistan,Right-Hand Batter/Right-Arm Fast All-Rounder,TRUE,5,1.25,PLY0116
+Chris Jordan,England,Bowling All-Rounder (Pace),FALSE,5,1.25,PLY0117
+Brydon Carse,England,Bowling All-Rounder (Pace),FALSE,5,1.25,PLY0118
+Nathan Ellis,Australia,Right-Arm Fast Bowler,TRUE,5,1.25,PLY0119
+Nandre Burger,South Africa,Left-Arm Fast Bowler,TRUE,5,1.25,PLY0120
+Naseem Shah,Pakistan,Right-Arm Fast Bowler,TRUE,5,1.25,PLY0121
+Matt Henry,New Zealand,Right-Arm Fast Bowler,TRUE,5,1.25,PLY0122
+Saqib Mahmood,England,Fast Bowler,FALSE,5,1.25,PLY0123
+Tymal Mills,England,Fast Bowler,FALSE,5,1.25,PLY0124
+Allah Ghazanfar,Afghanistan,Right-Arm Off-Spin Bowler,TRUE,5,1.25,PLY0125
+Usama Mir,Pakistan,Right-Arm Leg-Spin Bowler,TRUE,5,1,PLY0126
+Ashton Agar,Australia,Left-Arm Orthodox Spin Bowler,TRUE,5,1,PLY0127
+Callum Parkinson,England,Spin Bowler,FALSE,5,1,PLY0128
+Mason Crane,England,Spin Bowler,FALSE,5,1,PLY0129
 Jake Lintott,England,Spin Bowler,FALSE,5,1,PLY0130
 Fakhar Zaman,Pakistan,Left-Hand Opening Batter,TRUE,6,1.5,PLY0131
-Reeza Hendricks,South Africa,Right-Hand Batter,TRUE,6,1.48,PLY0132
-Brandon King,West Indies,Right-Hand Batter,TRUE,6,1.45,PLY0133
-Ibrahim Zadran,Afghanistan,Right-Hand Batter,TRUE,6,1.43,PLY0134
-Stevie Eskinazi,England,Batter,FALSE,6,1.4,PLY0135
-Leus Du Plooy,England,Batter,FALSE,6,1.38,PLY0136
-Alex Carey,Australia,Left-Hand Batter/Wicketkeeper,TRUE,6,1.36,PLY0137
-Kusal Perera,Sri Lanka,Left-Hand Batter/Wicketkeeper,TRUE,6,1.33,PLY0138
-Scott Edwards,Netherlands,Right-Hand Batter/Wicketkeeper,TRUE,6,1.31,PLY0139
-Mohammad Haris,Pakistan,Right-Hand Batter/Wicketkeeper,TRUE,6,1.28,PLY0140
-John Simpson,England,Wicketkeeper Batter,FALSE,6,1.26,PLY0141
-Tom Moores,England,Wicketkeeper Batter,FALSE,6,1.23,PLY0142
-Kieron Pollard,West Indies,Right-Hand Batter/Right-Arm Medium All-Rounder,TRUE,6,1.21,PLY0143
-Jimmy Neesham,New Zealand,Left-Hand Batter/Right-Arm Medium All-Rounder,TRUE,6,1.19,PLY0144
-Gulbadin Naib,Afghanistan,Right-Hand Batter/Right-Arm Medium All-Rounder,TRUE,6,1.16,PLY0145
-Lewis Gregory,England,Bowling All-Rounder (Pace),FALSE,6,1.14,PLY0146
-Mohammad Nabi,Afghanistan,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,TRUE,6,1.11,PLY0147
-Dan Mousley,England,Bowling All-Rounder (Spin),FALSE,6,1.09,PLY0148
-Jason Behrendorff,Australia,Left-Arm Fast Bowler,TRUE,6,1.07,PLY0149
-Lungi Ngidi,South Africa,Right-Arm Fast Bowler,TRUE,6,1.04,PLY0150
-Ottniel Baartman,South Africa,Right-Arm Fast Bowler,TRUE,6,1.02,PLY0151
-Taskin Ahmed,Bangladesh,Right-Arm Fast Bowler,TRUE,6,0.99,PLY0152
-Josh Tongue,England,Fast Bowler,FALSE,6,0.97,PLY0153
-Sam Cook,England,Fast Bowler,FALSE,6,0.94,PLY0154
-Tanveer Sangha,Australia,Right-Arm Leg-Spin Bowler,TRUE,6,0.92,PLY0155
-Imran Tahir,South Africa,Right-Arm Leg-Spin Bowler,TRUE,6,0.9,PLY0156
-Sufiyan Muqeem,Pakistan,Left-Arm Wrist-Spin Bowler,TRUE,6,0.87,PLY0157
-Roelof van der Merwe,Netherlands,Left-Arm Orthodox Spin Bowler,TRUE,6,0.85,PLY0158
-Jafer Chohan,England,Spin Bowler,FALSE,6,0.82,PLY0159
-Calvin Harrison,England,Spin Bowler,FALSE,6,0.8,PLY0160
-Chris Lynn,Australia,Right-Hand Batter,TRUE,7,1.3,PLY0161
-Saim Ayub,Pakistan,Left-Hand Batter,TRUE,7,1.28,PLY0162
-Colin Munro,New Zealand,Left-Hand Batter,TRUE,7,1.26,PLY0163
-Mark Chapman,Hong Kong,Left-Hand Batter,TRUE,7,1.24,PLY0164
-Jacob Bethell,England,Batter,FALSE,7,1.22,PLY0165
-Daniel Bell-Drummond,England,Batter,FALSE,7,1.2,PLY0166
-Lorcan Tucker,Ireland,Right-Hand Batter/Wicketkeeper,TRUE,7,1.18,PLY0167
-Sadeera Samarawickrama,Sri Lanka,Right-Hand Batter/Wicketkeeper,TRUE,7,1.16,PLY0168
-Dinesh Chandimal,Sri Lanka,Right-Hand Batter/Wicketkeeper,TRUE,7,1.13,PLY0169
-Ollie Robinson,England,Wicketkeeper Batter,FALSE,7,1.11,PLY0170
-Tom Alsop,England,Wicketkeeper Batter,FALSE,7,1.09,PLY0171
-Chris Cooke,England,Wicketkeeper Batter,FALSE,7,1.07,PLY0172
-Michael Bracewell,New Zealand,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,TRUE,7,1.05,PLY0173
-Cooper Connolly,Australia,Left-Hand Batter/Left-Arm Orthodox All-Rounder,TRUE,7,1.03,PLY0174
-Samit Patel,England,Bowling All-Rounder (Spin),FALSE,7,1.01,PLY0175
-Beau Webster,Australia,Right-Hand Batter/Right-Arm Medium All-Rounder,TRUE,7,0.99,PLY0176
-Paul Walter,England,Bowling All-Rounder (Pace),FALSE,7,0.97,PLY0177
-Ryan Higgins,England,Bowling All-Rounder (Pace),FALSE,7,0.95,PLY0178
-Xavier Bartlett,Australia,Right-Arm Fast Bowler,TRUE,7,0.93,PLY0179
-Shamar Joseph,West Indies,Right-Arm Fast Bowler,TRUE,7,0.91,PLY0180
-Obed McCoy,West Indies,Left-Arm Fast Bowler,TRUE,7,0.89,PLY0181
-Riley Meredith,Australia,Right-Arm Fast Bowler,TRUE,7,0.87,PLY0182
-John Turner,England,Fast Bowler,FALSE,7,0.84,PLY0183
-Pat Brown,England,Fast Bowler,FALSE,7,0.82,PLY0184
-Matthew Kuhnemann,Australia,Left-Arm Orthodox Spin Bowler,TRUE,7,0.8,PLY0185
-Bjorn Fortuin,South Africa,Left-Arm Orthodox Spin Bowler,TRUE,7,0.78,PLY0186
-Nathan Lyon,Australia,Right-Arm Off-Spin Bowler,TRUE,7,0.76,PLY0187
-Nathan Sowter,England,Spin Bowler,FALSE,7,0.74,PLY0188
-Farhan Ahmed,England,Spin Bowler,FALSE,7,0.72,PLY0189
-Archie Lenham,England,Spin Bowler,FALSE,7,0.7,PLY0190
-Daryl Mitchell,New Zealand,Right-Hand Batter,TRUE,8,1.1,PLY0191
-D'Arcy Short,Australia,Left-Hand Opening Batter,TRUE,8,1.08,PLY0192
-Ashton Turner,Australia,Right-Hand Batter,TRUE,8,1.07,PLY0193
-Charith Asalanka,Sri Lanka,Left-Hand Batter,TRUE,8,1.05,PLY0194
-Adam Hose,England,Batter,FALSE,8,1.03,PLY0195
-Wayne Madsen,England,Batter,FALSE,8,1.01,PLY0196
+Reeza Hendricks,South Africa,Right-Hand Batter,TRUE,6,1.5,PLY0132
+Brandon King,West Indies,Right-Hand Batter,TRUE,6,1.5,PLY0133
+Ibrahim Zadran,Afghanistan,Right-Hand Batter,TRUE,6,1.5,PLY0134
+Stevie Eskinazi,England,Batter,FALSE,6,1.5,PLY0135
+Leus Du Plooy,England,Batter,FALSE,6,1.5,PLY0136
+Alex Carey,Australia,Left-Hand Batter/Wicketkeeper,TRUE,6,1.25,PLY0137
+Kusal Perera,Sri Lanka,Left-Hand Batter/Wicketkeeper,TRUE,6,1.25,PLY0138
+Scott Edwards,Netherlands,Right-Hand Batter/Wicketkeeper,TRUE,6,1.25,PLY0139
+Mohammad Haris,Pakistan,Right-Hand Batter/Wicketkeeper,TRUE,6,1.25,PLY0140
+John Simpson,England,Wicketkeeper Batter,FALSE,6,1.25,PLY0141
+Tom Moores,England,Wicketkeeper Batter,FALSE,6,1.25,PLY0142
+Kieron Pollard,West Indies,Right-Hand Batter/Right-Arm Medium All-Rounder,TRUE,6,1.25,PLY0143
+Jimmy Neesham,New Zealand,Left-Hand Batter/Right-Arm Medium All-Rounder,TRUE,6,1.25,PLY0144
+Gulbadin Naib,Afghanistan,Right-Hand Batter/Right-Arm Medium All-Rounder,TRUE,6,1.25,PLY0145
+Lewis Gregory,England,Bowling All-Rounder (Pace),FALSE,6,1.25,PLY0146
+Mohammad Nabi,Afghanistan,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,TRUE,6,1,PLY0147
+Dan Mousley,England,Bowling All-Rounder (Spin),FALSE,6,1,PLY0148
+Jason Behrendorff,Australia,Left-Arm Fast Bowler,TRUE,6,1,PLY0149
+Lungi Ngidi,South Africa,Right-Arm Fast Bowler,TRUE,6,1,PLY0150
+Ottniel Baartman,South Africa,Right-Arm Fast Bowler,TRUE,6,1,PLY0151
+Taskin Ahmed,Bangladesh,Right-Arm Fast Bowler,TRUE,6,1,PLY0152
+Josh Tongue,England,Fast Bowler,FALSE,6,1,PLY0153
+Sam Cook,England,Fast Bowler,FALSE,6,1,PLY0154
+Tanveer Sangha,Australia,Right-Arm Leg-Spin Bowler,TRUE,6,1,PLY0155
+Imran Tahir,South Africa,Right-Arm Leg-Spin Bowler,TRUE,6,1,PLY0156
+Sufiyan Muqeem,Pakistan,Left-Arm Wrist-Spin Bowler,TRUE,6,0.75,PLY0157
+Roelof van der Merwe,Netherlands,Left-Arm Orthodox Spin Bowler,TRUE,6,0.75,PLY0158
+Jafer Chohan,England,Spin Bowler,FALSE,6,0.75,PLY0159
+Calvin Harrison,England,Spin Bowler,FALSE,6,0.75,PLY0160
+Chris Lynn,Australia,Right-Hand Batter,TRUE,7,1.25,PLY0161
+Saim Ayub,Pakistan,Left-Hand Batter,TRUE,7,1.25,PLY0162
+Colin Munro,New Zealand,Left-Hand Batter,TRUE,7,1.25,PLY0163
+Mark Chapman,Hong Kong,Left-Hand Batter,TRUE,7,1.25,PLY0164
+Jacob Bethell,England,Batter,FALSE,7,1.25,PLY0165
+Daniel Bell-Drummond,England,Batter,FALSE,7,1.25,PLY0166
+Lorcan Tucker,Ireland,Right-Hand Batter/Wicketkeeper,TRUE,7,1.25,PLY0167
+Sadeera Samarawickrama,Sri Lanka,Right-Hand Batter/Wicketkeeper,TRUE,7,1.25,PLY0168
+Dinesh Chandimal,Sri Lanka,Right-Hand Batter/Wicketkeeper,TRUE,7,1.25,PLY0169
+Ollie Robinson,England,Wicketkeeper Batter,FALSE,7,1,PLY0170
+Tom Alsop,England,Wicketkeeper Batter,FALSE,7,1,PLY0171
+Chris Cooke,England,Wicketkeeper Batter,FALSE,7,1,PLY0172
+Michael Bracewell,New Zealand,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,TRUE,7,1,PLY0173
+Cooper Connolly,Australia,Left-Hand Batter/Left-Arm Orthodox All-Rounder,TRUE,7,1,PLY0174
+Samit Patel,England,Bowling All-Rounder (Spin),FALSE,7,1,PLY0175
+Beau Webster,Australia,Right-Hand Batter/Right-Arm Medium All-Rounder,TRUE,7,1,PLY0176
+Paul Walter,England,Bowling All-Rounder (Pace),FALSE,7,1,PLY0177
+Ryan Higgins,England,Bowling All-Rounder (Pace),FALSE,7,1,PLY0178
+Xavier Bartlett,Australia,Right-Arm Fast Bowler,TRUE,7,1,PLY0179
+Shamar Joseph,West Indies,Right-Arm Fast Bowler,TRUE,7,1,PLY0180
+Obed McCoy,West Indies,Left-Arm Fast Bowler,TRUE,7,1,PLY0181
+Riley Meredith,Australia,Right-Arm Fast Bowler,TRUE,7,0.75,PLY0182
+John Turner,England,Fast Bowler,FALSE,7,0.75,PLY0183
+Pat Brown,England,Fast Bowler,FALSE,7,0.75,PLY0184
+Matthew Kuhnemann,Australia,Left-Arm Orthodox Spin Bowler,TRUE,7,0.75,PLY0185
+Bjorn Fortuin,South Africa,Left-Arm Orthodox Spin Bowler,TRUE,7,0.75,PLY0186
+Nathan Lyon,Australia,Right-Arm Off-Spin Bowler,TRUE,7,0.75,PLY0187
+Nathan Sowter,England,Spin Bowler,FALSE,7,0.75,PLY0188
+Farhan Ahmed,England,Spin Bowler,FALSE,7,0.75,PLY0189
+Archie Lenham,England,Spin Bowler,FALSE,7,0.75,PLY0190
+Daryl Mitchell,New Zealand,Right-Hand Batter,TRUE,8,1,PLY0191
+D'Arcy Short,Australia,Left-Hand Opening Batter,TRUE,8,1,PLY0192
+Ashton Turner,Australia,Right-Hand Batter,TRUE,8,1,PLY0193
+Charith Asalanka,Sri Lanka,Left-Hand Batter,TRUE,8,1,PLY0194
+Adam Hose,England,Batter,FALSE,8,1,PLY0195
+Wayne Madsen,England,Batter,FALSE,8,1,PLY0196
 Tom Latham,New Zealand,Left-Hand Batter/Wicketkeeper,TRUE,8,1,PLY0197
-Ben McDermott,Australia,Right-Hand Batter/Wicketkeeper,TRUE,8,0.98,PLY0198
-Usman Khan,Pakistan,Right-Hand Batter/Wicketkeeper,TRUE,8,0.96,PLY0199
-Haseebullah Khan,Afghanistan,Right-Hand Batter/Wicketkeeper,TRUE,8,0.94,PLY0200
-James Bracey,England,Wicketkeeper Batter,FALSE,8,0.93,PLY0201
-Michael Burgess,England,Wicketkeeper Batter,FALSE,8,0.91,PLY0202
-Kyle Mayers,West Indies,Left-Hand Batter/Right-Arm Medium All-Rounder,TRUE,8,0.89,PLY0203
-Wiaan Mulder,South Africa,Right-Hand Batter/Right-Arm Fast All-Rounder,TRUE,8,0.88,PLY0204
-Craig Overton,England,Bowling All-Rounder (Pace),FALSE,8,0.86,PLY0205
-George Garton,England,Bowling All-Rounder (Pace),FALSE,8,0.84,PLY0206
-Iftikhar Ahmed,Pakistan,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,TRUE,8,0.82,PLY0207
-Kamindu Mendis,Sri Lanka,Left-Hand Batter/Ambidextrous Spin All-Rounder,TRUE,8,0.81,PLY0208
-Tim Southee,New Zealand,Right-Arm Fast Bowler,TRUE,8,0.79,PLY0209
-Jhye Richardson,Australia,Right-Arm Fast Bowler,TRUE,8,0.77,PLY0210
-Shoriful Islam,Bangladesh,Left-Arm Fast Bowler,TRUE,8,0.76,PLY0211
-Ben Sears,New Zealand,Right-Arm Fast Bowler,TRUE,8,0.74,PLY0212
-David Payne,England,Fast Bowler,FALSE,8,0.72,PLY0213
-Matthew Fisher,England,Fast Bowler,FALSE,8,0.7,PLY0214
-Zahir Khan,Afghanistan,Left-Arm Wrist-Spin Bowler,TRUE,8,0.69,PLY0215
-Usman Tariq,UAE,Right-Arm Spin Bowler,TRUE,8,0.67,PLY0216
-Danny Briggs,England,Spin Bowler,FALSE,8,0.65,PLY0217
-Amar Virdi,England,Spin Bowler,FALSE,8,0.63,PLY0218
-Liam Patterson-White,England,Spin Bowler,FALSE,8,0.62,PLY0219
-Theo Wylie,England,Spin Bowler,FALSE,8,0.6,PLY0220
-Towhid Hridoy,Bangladesh,Right-Hand Batter,TRUE,9,0.9,PLY0221
-Shan Masood,Pakistan,Left-Hand Opening Batter,TRUE,9,0.89,PLY0222
-Temba Bavuma,South Africa,Right-Hand Batter,TRUE,9,0.87,PLY0223
-Marnus Labuschagne,Australia,Right-Hand Batter,TRUE,9,0.86,PLY0224
-Alex Lees,England,Batter,FALSE,9,0.84,PLY0225
-Haseeb Hameed,England,Batter,FALSE,9,0.83,PLY0226
-Ben Brown,England,Wicketkeeper Batter,FALSE,9,0.82,PLY0227
-Ben Cox,England,Wicketkeeper Batter,FALSE,9,0.8,PLY0228
-Gareth Roderick,England,Wicketkeeper Batter,FALSE,9,0.79,PLY0229
-Lewis McManus,England,Wicketkeeper Batter,FALSE,9,0.78,PLY0230
-James Rew,England,Wicketkeeper Batter,FALSE,9,0.76,PLY0231
+Ben McDermott,Australia,Right-Hand Batter/Wicketkeeper,TRUE,8,1,PLY0198
+Usman Khan,Pakistan,Right-Hand Batter/Wicketkeeper,TRUE,8,1,PLY0199
+Haseebullah Khan,Afghanistan,Right-Hand Batter/Wicketkeeper,TRUE,8,1,PLY0200
+James Bracey,England,Wicketkeeper Batter,FALSE,8,1,PLY0201
+Michael Burgess,England,Wicketkeeper Batter,FALSE,8,1,PLY0202
+Kyle Mayers,West Indies,Left-Hand Batter/Right-Arm Medium All-Rounder,TRUE,8,1,PLY0203
+Wiaan Mulder,South Africa,Right-Hand Batter/Right-Arm Fast All-Rounder,TRUE,8,1,PLY0204
+Craig Overton,England,Bowling All-Rounder (Pace),FALSE,8,0.75,PLY0205
+George Garton,England,Bowling All-Rounder (Pace),FALSE,8,0.75,PLY0206
+Iftikhar Ahmed,Pakistan,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,TRUE,8,0.75,PLY0207
+Kamindu Mendis,Sri Lanka,Left-Hand Batter/Ambidextrous Spin All-Rounder,TRUE,8,0.75,PLY0208
+Tim Southee,New Zealand,Right-Arm Fast Bowler,TRUE,8,0.75,PLY0209
+Jhye Richardson,Australia,Right-Arm Fast Bowler,TRUE,8,0.75,PLY0210
+Shoriful Islam,Bangladesh,Left-Arm Fast Bowler,TRUE,8,0.75,PLY0211
+Ben Sears,New Zealand,Right-Arm Fast Bowler,TRUE,8,0.75,PLY0212
+David Payne,England,Fast Bowler,FALSE,8,0.75,PLY0213
+Matthew Fisher,England,Fast Bowler,FALSE,8,0.75,PLY0214
+Zahir Khan,Afghanistan,Left-Arm Wrist-Spin Bowler,TRUE,8,0.75,PLY0215
+Usman Tariq,UAE,Right-Arm Spin Bowler,TRUE,8,0.75,PLY0216
+Danny Briggs,England,Spin Bowler,FALSE,8,0.75,PLY0217
+Amar Virdi,England,Spin Bowler,FALSE,8,0.75,PLY0218
+Liam Patterson-White,England,Spin Bowler,FALSE,8,0.5,PLY0219
+Theo Wylie,England,Spin Bowler,FALSE,8,0.5,PLY0220
+Towhid Hridoy,Bangladesh,Right-Hand Batter,TRUE,9,1,PLY0221
+Shan Masood,Pakistan,Left-Hand Opening Batter,TRUE,9,1,PLY0222
+Temba Bavuma,South Africa,Right-Hand Batter,TRUE,9,0.75,PLY0223
+Marnus Labuschagne,Australia,Right-Hand Batter,TRUE,9,0.75,PLY0224
+Alex Lees,England,Batter,FALSE,9,0.75,PLY0225
+Haseeb Hameed,England,Batter,FALSE,9,0.75,PLY0226
+Ben Brown,England,Wicketkeeper Batter,FALSE,9,0.75,PLY0227
+Ben Cox,England,Wicketkeeper Batter,FALSE,9,0.75,PLY0228
+Gareth Roderick,England,Wicketkeeper Batter,FALSE,9,0.75,PLY0229
+Lewis McManus,England,Wicketkeeper Batter,FALSE,9,0.75,PLY0230
+James Rew,England,Wicketkeeper Batter,FALSE,9,0.75,PLY0231
 Harry Duke,England,Wicketkeeper Batter,FALSE,9,0.75,PLY0232
-Roston Chase,West Indies,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,TRUE,9,0.73,PLY0233
-Rishad Hossain,Bangladesh,Right-Hand Batter/Right-Arm Leg-Spin All-Rounder,TRUE,9,0.72,PLY0234
-Andile Phehlukwayo,South Africa,Right-Hand Batter/Right-Arm Medium All-Rounder,TRUE,9,0.71,PLY0235
-Dasun Shanaka,Sri Lanka,Right-Hand Batter/Right-Arm Medium All-Rounder,TRUE,9,0.69,PLY0236
-Ed Barnard,England,Bowling All-Rounder (Pace),FALSE,9,0.68,PLY0237
-Luke Procter,England,Bowling All-Rounder (Pace),FALSE,9,0.67,PLY0238
-Kwena Maphaka,South Africa,Left-Arm Fast Bowler,TRUE,9,0.65,PLY0239
-Saurabh Netravalkar,USA,Left-Arm Medium-Fast Bowler,TRUE,9,0.64,PLY0240
-Josh Little,Ireland,Left-Arm Fast Bowler,TRUE,9,0.62,PLY0241
-Blessing Muzarabani,Zimbabwe,Right-Arm Fast Bowler,TRUE,9,0.61,PLY0242
-Jake Ball,England,Fast Bowler,FALSE,9,0.6,PLY0243
-Ben Coad,England,Fast Bowler,FALSE,9,0.58,PLY0244
-Josh Baker,England,Spin Bowler,FALSE,9,0.57,PLY0245
-Arthur Rouse,England,Spin Bowler,FALSE,9,0.56,PLY0246
-Tom Hinley,England,Spin Bowler,FALSE,9,0.54,PLY0247
-Max Waller,England,Spin Bowler,FALSE,9,0.53,PLY0248
-Aaron Beard,England,Spin Bowler,FALSE,9,0.51,PLY0249
+Roston Chase,West Indies,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,TRUE,9,0.75,PLY0233
+Rishad Hossain,Bangladesh,Right-Hand Batter/Right-Arm Leg-Spin All-Rounder,TRUE,9,0.75,PLY0234
+Andile Phehlukwayo,South Africa,Right-Hand Batter/Right-Arm Medium All-Rounder,TRUE,9,0.75,PLY0235
+Dasun Shanaka,Sri Lanka,Right-Hand Batter/Right-Arm Medium All-Rounder,TRUE,9,0.75,PLY0236
+Ed Barnard,England,Bowling All-Rounder (Pace),FALSE,9,0.75,PLY0237
+Luke Procter,England,Bowling All-Rounder (Pace),FALSE,9,0.75,PLY0238
+Kwena Maphaka,South Africa,Left-Arm Fast Bowler,TRUE,9,0.75,PLY0239
+Saurabh Netravalkar,USA,Left-Arm Medium-Fast Bowler,TRUE,9,0.75,PLY0240
+Josh Little,Ireland,Left-Arm Fast Bowler,TRUE,9,0.5,PLY0241
+Blessing Muzarabani,Zimbabwe,Right-Arm Fast Bowler,TRUE,9,0.5,PLY0242
+Jake Ball,England,Fast Bowler,FALSE,9,0.5,PLY0243
+Ben Coad,England,Fast Bowler,FALSE,9,0.5,PLY0244
+Josh Baker,England,Spin Bowler,FALSE,9,0.5,PLY0245
+Arthur Rouse,England,Spin Bowler,FALSE,9,0.5,PLY0246
+Tom Hinley,England,Spin Bowler,FALSE,9,0.5,PLY0247
+Max Waller,England,Spin Bowler,FALSE,9,0.5,PLY0248
+Aaron Beard,England,Spin Bowler,FALSE,9,0.5,PLY0249
 Jack Shutt,England,Spin Bowler,FALSE,9,0.5,PLY0250
-Aaron Jones,USA,Right-Hand Batter,TRUE,10,0.8,PLY0251
-Will Young,New Zealand,Right-Hand Batter,TRUE,10,0.79,PLY0252
-Paul Stirling,Ireland,Right-Hand Opening Batter,TRUE,10,0.77,PLY0253
-Bhanuka Rajapaksa,Sri Lanka,Left-Hand Batter,TRUE,10,0.76,PLY0254
-Dom Sibley,England,Batter,FALSE,10,0.74,PLY0255
-Keaton Jennings,England,Batter,FALSE,10,0.73,PLY0256
-Joe Cracknell,England,Wicketkeeper Batter,FALSE,10,0.72,PLY0257
-Chris Benjamin,England,Wicketkeeper Batter,FALSE,10,0.7,PLY0258
-Matthew Waite,England,Wicketkeeper Batter,FALSE,10,0.69,PLY0259
-Harry Swindells,England,Wicketkeeper Batter,FALSE,10,0.68,PLY0260
-Alex Horton,England,Wicketkeeper Batter,FALSE,10,0.66,PLY0261
-Ollie Peake,England,Wicketkeeper Batter,FALSE,10,0.65,PLY0262
-Logan van Beek,Netherlands,Right-Hand Batter/Right-Arm Fast All-Rounder,TRUE,10,0.63,PLY0263
-Mark Adair,Ireland,Right-Hand Batter/Right-Arm Fast All-Rounder,TRUE,10,0.62,PLY0264
-Bas de Leede,Netherlands,Right-Hand Batter/Right-Arm Medium All-Rounder,TRUE,10,0.61,PLY0265
-Aamer Jamal,Pakistan,Right-Hand Batter/Right-Arm Fast All-Rounder,TRUE,10,0.59,PLY0266
-Tom Abell,England,Bowling All-Rounder (Pace),FALSE,10,0.58,PLY0267
-Jordan Thompson,England,Bowling All-Rounder (Pace),FALSE,10,0.57,PLY0268
-Sean Abbott,Australia,Right-Arm Fast Bowler,TRUE,10,0.55,PLY0269
-Ben Dwarshuis,Australia,Left-Arm Fast Bowler,TRUE,10,0.54,PLY0270
-Dilshan Madushanka,Sri Lanka,Left-Arm Fast Bowler,TRUE,10,0.52,PLY0271
-Zaman Khan,Pakistan,Right-Arm Fast Bowler,TRUE,10,0.51,PLY0272
+Aaron Jones,USA,Right-Hand Batter,TRUE,10,0.75,PLY0251
+Will Young,New Zealand,Right-Hand Batter,TRUE,10,0.75,PLY0252
+Paul Stirling,Ireland,Right-Hand Opening Batter,TRUE,10,0.75,PLY0253
+Bhanuka Rajapaksa,Sri Lanka,Left-Hand Batter,TRUE,10,0.75,PLY0254
+Dom Sibley,England,Batter,FALSE,10,0.75,PLY0255
+Keaton Jennings,England,Batter,FALSE,10,0.75,PLY0256
+Joe Cracknell,England,Wicketkeeper Batter,FALSE,10,0.75,PLY0257
+Chris Benjamin,England,Wicketkeeper Batter,FALSE,10,0.75,PLY0258
+Matthew Waite,England,Wicketkeeper Batter,FALSE,10,0.75,PLY0259
+Harry Swindells,England,Wicketkeeper Batter,FALSE,10,0.75,PLY0260
+Alex Horton,England,Wicketkeeper Batter,FALSE,10,0.75,PLY0261
+Ollie Peake,England,Wicketkeeper Batter,FALSE,10,0.75,PLY0262
+Logan van Beek,Netherlands,Right-Hand Batter/Right-Arm Fast All-Rounder,TRUE,10,0.75,PLY0263
+Mark Adair,Ireland,Right-Hand Batter/Right-Arm Fast All-Rounder,TRUE,10,0.5,PLY0264
+Bas de Leede,Netherlands,Right-Hand Batter/Right-Arm Medium All-Rounder,TRUE,10,0.5,PLY0265
+Aamer Jamal,Pakistan,Right-Hand Batter/Right-Arm Fast All-Rounder,TRUE,10,0.5,PLY0266
+Tom Abell,England,Bowling All-Rounder (Pace),FALSE,10,0.5,PLY0267
+Jordan Thompson,England,Bowling All-Rounder (Pace),FALSE,10,0.5,PLY0268
+Sean Abbott,Australia,Right-Arm Fast Bowler,TRUE,10,0.5,PLY0269
+Ben Dwarshuis,Australia,Left-Arm Fast Bowler,TRUE,10,0.5,PLY0270
+Dilshan Madushanka,Sri Lanka,Left-Arm Fast Bowler,TRUE,10,0.5,PLY0271
+Zaman Khan,Pakistan,Right-Arm Fast Bowler,TRUE,10,0.5,PLY0272
 Daniel Worrall,England,Fast Bowler,FALSE,10,0.5,PLY0273
-Josh Hull,England,Fast Bowler,FALSE,10,0.48,PLY0274
-Chris Green,Australia,Right-Arm Off-Spin Bowler,TRUE,10,0.47,PLY0275
-Dunith Wellalage,Sri Lanka,Left-Arm Orthodox Spin Bowler,TRUE,10,0.46,PLY0276
-Mohammad Nawaz,Pakistan,Left-Arm Orthodox Spin Bowler,TRUE,10,0.44,PLY0277
-Fabian Allen,West Indies,Left-Arm Orthodox Spin Bowler,TRUE,10,0.43,PLY0278
-Matt Critchley,England,Spin Bowler,FALSE,10,0.41,PLY0279
-James Coles,England,Spin Bowler,FALSE,10,0.4,PLY0280
-Caleb Jewell,Australia,Right-Hand Batter,TRUE,11,0.6,PLY0281
-Keacy Carty,West Indies,Right-Hand Batter,TRUE,11,0.59,PLY0282
-Harry Tector,Ireland,Right-Hand Batter,TRUE,11,0.58,PLY0283
-Avishka Fernando,Sri Lanka,Right-Hand Batter,TRUE,11,0.57,PLY0284
-Josh Bohannon,England,Batter,FALSE,11,0.56,PLY0285
-Rob Yates,England,Batter,FALSE,11,0.55,PLY0286
-Alex Green,England,Wicketkeeper Batter,FALSE,11,0.54,PLY0287
-Jack Carney,England,Wicketkeeper Batter,FALSE,11,0.53,PLY0288
-Thomas Rew,England,Wicketkeeper Batter,FALSE,11,0.52,PLY0289
-Harry Singh,England,Wicketkeeper Batter,FALSE,11,0.51,PLY0290
+Josh Hull,England,Fast Bowler,FALSE,10,0.5,PLY0274
+Chris Green,Australia,Right-Arm Off-Spin Bowler,TRUE,10,0.5,PLY0275
+Dunith Wellalage,Sri Lanka,Left-Arm Orthodox Spin Bowler,TRUE,10,0.5,PLY0276
+Mohammad Nawaz,Pakistan,Left-Arm Orthodox Spin Bowler,TRUE,10,0.5,PLY0277
+Fabian Allen,West Indies,Left-Arm Orthodox Spin Bowler,TRUE,10,0.5,PLY0278
+Matt Critchley,England,Spin Bowler,FALSE,10,0.5,PLY0279
+James Coles,England,Spin Bowler,FALSE,10,0.5,PLY0280
+Caleb Jewell,Australia,Right-Hand Batter,TRUE,11,0.5,PLY0281
+Keacy Carty,West Indies,Right-Hand Batter,TRUE,11,0.5,PLY0282
+Harry Tector,Ireland,Right-Hand Batter,TRUE,11,0.5,PLY0283
+Avishka Fernando,Sri Lanka,Right-Hand Batter,TRUE,11,0.5,PLY0284
+Josh Bohannon,England,Batter,FALSE,11,0.5,PLY0285
+Rob Yates,England,Batter,FALSE,11,0.5,PLY0286
+Alex Green,England,Wicketkeeper Batter,FALSE,11,0.5,PLY0287
+Jack Carney,England,Wicketkeeper Batter,FALSE,11,0.5,PLY0288
+Thomas Rew,England,Wicketkeeper Batter,FALSE,11,0.5,PLY0289
+Harry Singh,England,Wicketkeeper Batter,FALSE,11,0.5,PLY0290
 Odean Smith,West Indies,Right-Hand Batter/Right-Arm Fast All-Rounder,TRUE,11,0.5,PLY0291
-Corbin Bosch,South Africa,Right-Hand Batter/Right-Arm Fast All-Rounder,TRUE,11,0.49,PLY0292
-Matthew Forde,West Indies,Right-Arm Fast All-Rounder,TRUE,11,0.48,PLY0293
-Corey Anderson,USA,Left-Hand Batter/Left-Arm Medium All-Rounder,TRUE,11,0.47,PLY0294
-Wayne Parnell,South Africa,Left-Hand Batter/Left-Arm Fast All-Rounder,TRUE,11,0.46,PLY0295
-Ravi Bopara,England,Bowling All-Rounder (Pace),FALSE,11,0.44,PLY0296
-Sean Williams,Zimbabwe,Left-Hand Batter/Left-Arm Orthodox All-Rounder,TRUE,11,0.43,PLY0297
-Ryan Burl,Zimbabwe,Left-Hand Batter/Left-Arm Orthodox All-Rounder,TRUE,11,0.42,PLY0298
-Dhananjaya de Silva,Sri Lanka,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,TRUE,11,0.41,PLY0299
-Salman Ali Agha,Pakistan,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,TRUE,11,0.4,PLY0300
-Jacob Duffy,New Zealand,Right-Arm Fast Bowler,TRUE,11,0.39,PLY0301
-Lizaad Williams,South Africa,Right-Arm Fast Bowler,TRUE,11,0.38,PLY0302
-Mohammad Wasim Jr,Pakistan,Right-Arm Fast Bowler,TRUE,11,0.37,PLY0303
-Jayden Seales,West Indies,Right-Arm Fast Bowler,TRUE,11,0.36,PLY0304
-Jamie Porter,England,Fast Bowler,FALSE,11,0.35,PLY0305
-Toby Roland-Jones,England,Fast Bowler,FALSE,11,0.34,PLY0306
-Steven Finn,England,Fast Bowler,FALSE,11,0.33,PLY0307
-Luke Fletcher,England,Fast Bowler,FALSE,11,0.32,PLY0308
-Tom Helm,England,Fast Bowler,FALSE,11,0.31,PLY0309
-Chris Rushworth,England,Fast Bowler,FALSE,11,0.3,PLY0310
+Corbin Bosch,South Africa,Right-Hand Batter/Right-Arm Fast All-Rounder,TRUE,11,0.5,PLY0292
+Matthew Forde,West Indies,Right-Arm Fast All-Rounder,TRUE,11,0.5,PLY0293
+Corey Anderson,USA,Left-Hand Batter/Left-Arm Medium All-Rounder,TRUE,11,0.5,PLY0294
+Wayne Parnell,South Africa,Left-Hand Batter/Left-Arm Fast All-Rounder,TRUE,11,0.5,PLY0295
+Ravi Bopara,England,Bowling All-Rounder (Pace),FALSE,11,0.5,PLY0296
+Sean Williams,Zimbabwe,Left-Hand Batter/Left-Arm Orthodox All-Rounder,TRUE,11,0.5,PLY0297
+Ryan Burl,Zimbabwe,Left-Hand Batter/Left-Arm Orthodox All-Rounder,TRUE,11,0.5,PLY0298
+Dhananjaya de Silva,Sri Lanka,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,TRUE,11,0.5,PLY0299
+Salman Ali Agha,Pakistan,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,TRUE,11,0.5,PLY0300
+Jacob Duffy,New Zealand,Right-Arm Fast Bowler,TRUE,11,0.5,PLY0301
+Lizaad Williams,South Africa,Right-Arm Fast Bowler,TRUE,11,0.5,PLY0302
+Mohammad Wasim Jr,Pakistan,Right-Arm Fast Bowler,TRUE,11,0.25,PLY0303
+Jayden Seales,West Indies,Right-Arm Fast Bowler,TRUE,11,0.25,PLY0304
+Jamie Porter,England,Fast Bowler,FALSE,11,0.25,PLY0305
+Toby Roland-Jones,England,Fast Bowler,FALSE,11,0.25,PLY0306
+Steven Finn,England,Fast Bowler,FALSE,11,0.25,PLY0307
+Luke Fletcher,England,Fast Bowler,FALSE,11,0.25,PLY0308
+Tom Helm,England,Fast Bowler,FALSE,11,0.25,PLY0309
+Chris Rushworth,England,Fast Bowler,FALSE,11,0.25,PLY0310
 Nikhil Choudhary,India,Batter,TRUE,12,0.5,PLY0311
-Ben Compton,England,Batter,FALSE,12,0.49,PLY0312
-Nick Gubbins,England,Batter,FALSE,12,0.48,PLY0313
-Tom Lammonby,England,Batter,FALSE,12,0.47,PLY0314
-Emilio Gay,England,Batter,FALSE,12,0.47,PLY0315
-Jack Haynes,England,Batter,FALSE,12,0.46,PLY0316
-Joe Eckland,England,Wicketkeeper Batter,FALSE,12,0.45,PLY0317
-Angelo Mathews,Sri Lanka,Right-Hand Batter/Right-Arm Medium All-Rounder,TRUE,12,0.44,PLY0318
-Kyle Jamieson,New Zealand,Right-Hand Batter/Right-Arm Fast All-Rounder,TRUE,12,0.43,PLY0319
-George Balderson,England,Bowling All-Rounder (Pace),FALSE,12,0.42,PLY0320
-Ben Green,England,Bowling All-Rounder (Pace),FALSE,12,0.41,PLY0321
-George Hill,England,Bowling All-Rounder (Pace),FALSE,12,0.41,PLY0322
-Fynn Hudson-Prentice,England,Bowling All-Rounder (Pace),FALSE,12,0.4,PLY0323
-Will Rhodes,England,Bowling All-Rounder (Pace),FALSE,12,0.39,PLY0324
-Mehidy Hasan Miraz,Bangladesh,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,TRUE,12,0.38,PLY0325
-Mahmudullah,Bangladesh,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,TRUE,12,0.37,PLY0326
-Dushmantha Chameera,Sri Lanka,Right-Arm Fast Bowler,TRUE,12,0.36,PLY0327
-Tom Bailey,England,Fast Bowler,FALSE,12,0.35,PLY0328
-Jack White,England,Fast Bowler,FALSE,12,0.34,PLY0329
-Sam Conners,England,Fast Bowler,FALSE,12,0.34,PLY0330
-Ben Cliff,England,Fast Bowler,FALSE,12,0.33,PLY0331
-Zaman Akhter,England,Fast Bowler,FALSE,12,0.32,PLY0332
-Henry Brookes,England,Fast Bowler,FALSE,12,0.31,PLY0333
-Mitchell Stanley,England,Fast Bowler,FALSE,12,0.3,PLY0334
-Jack Carson,England,Spin Bowler,FALSE,12,0.29,PLY0335
-Tom Smith,England,Spin Bowler,FALSE,12,0.28,PLY0336
-Brett D'Oliveira,England,Spin Bowler,FALSE,12,0.28,PLY0337
-Lewis Goldsworthy,England,Spin Bowler,FALSE,12,0.27,PLY0338
-Jack Leaning,England,Spin Bowler,FALSE,12,0.26,PLY0339
+Ben Compton,England,Batter,FALSE,12,0.5,PLY0312
+Nick Gubbins,England,Batter,FALSE,12,0.5,PLY0313
+Tom Lammonby,England,Batter,FALSE,12,0.5,PLY0314
+Emilio Gay,England,Batter,FALSE,12,0.5,PLY0315
+Jack Haynes,England,Batter,FALSE,12,0.5,PLY0316
+Joe Eckland,England,Wicketkeeper Batter,FALSE,12,0.5,PLY0317
+Angelo Mathews,Sri Lanka,Right-Hand Batter/Right-Arm Medium All-Rounder,TRUE,12,0.5,PLY0318
+Kyle Jamieson,New Zealand,Right-Hand Batter/Right-Arm Fast All-Rounder,TRUE,12,0.5,PLY0319
+George Balderson,England,Bowling All-Rounder (Pace),FALSE,12,0.5,PLY0320
+Ben Green,England,Bowling All-Rounder (Pace),FALSE,12,0.5,PLY0321
+George Hill,England,Bowling All-Rounder (Pace),FALSE,12,0.5,PLY0322
+Fynn Hudson-Prentice,England,Bowling All-Rounder (Pace),FALSE,12,0.5,PLY0323
+Will Rhodes,England,Bowling All-Rounder (Pace),FALSE,12,0.5,PLY0324
+Mehidy Hasan Miraz,Bangladesh,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,TRUE,12,0.5,PLY0325
+Mahmudullah,Bangladesh,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,TRUE,12,0.25,PLY0326
+Dushmantha Chameera,Sri Lanka,Right-Arm Fast Bowler,TRUE,12,0.25,PLY0327
+Tom Bailey,England,Fast Bowler,FALSE,12,0.25,PLY0328
+Jack White,England,Fast Bowler,FALSE,12,0.25,PLY0329
+Sam Conners,England,Fast Bowler,FALSE,12,0.25,PLY0330
+Ben Cliff,England,Fast Bowler,FALSE,12,0.25,PLY0331
+Zaman Akhter,England,Fast Bowler,FALSE,12,0.25,PLY0332
+Henry Brookes,England,Fast Bowler,FALSE,12,0.25,PLY0333
+Mitchell Stanley,England,Fast Bowler,FALSE,12,0.25,PLY0334
+Jack Carson,England,Spin Bowler,FALSE,12,0.25,PLY0335
+Tom Smith,England,Spin Bowler,FALSE,12,0.25,PLY0336
+Brett D'Oliveira,England,Spin Bowler,FALSE,12,0.25,PLY0337
+Lewis Goldsworthy,England,Spin Bowler,FALSE,12,0.25,PLY0338
+Jack Leaning,England,Spin Bowler,FALSE,12,0.25,PLY0339
 George Drissell,England,Spin Bowler,FALSE,12,0.25,PLY0340
-Ben Slater,England,Batter,FALSE,13,0.4,PLY0341
-Luke Wells,England,Batter,FALSE,13,0.39,PLY0342
-Sam Robson,England,Batter,FALSE,13,0.39,PLY0343
-Joe Denly,England,Batter,FALSE,13,0.38,PLY0344
-Adam Lyth,England,Batter,FALSE,13,0.37,PLY0345
-Chris Dent,England,Batter,FALSE,13,0.37,PLY0346
-Tom Westley,England,Batter,FALSE,13,0.36,PLY0347
-Mark Stoneman,England,Batter,FALSE,13,0.35,PLY0348
-Billy Root,England,Batter,FALSE,13,0.34,PLY0349
-Jake Libby,England,Batter,FALSE,13,0.34,PLY0350
-Martin Andersson,England,Bowling All-Rounder (Pace),FALSE,13,0.33,PLY0351
-Gareth Berg,England,Bowling All-Rounder (Pace),FALSE,13,0.32,PLY0352
-James Fuller,England,Bowling All-Rounder (Pace),FALSE,13,0.32,PLY0353
-Tom Lawes,England,Bowling All-Rounder (Pace),FALSE,13,0.31,PLY0354
-Joey Evison,England,Bowling All-Rounder (Pace),FALSE,13,0.3,PLY0355
-Ben Raine,England,Bowling All-Rounder (Pace),FALSE,13,0.3,PLY0356
-Matthew Revis,England,Bowling All-Rounder (Pace),FALSE,13,0.29,PLY0357
-Kasey Aldridge,England,Bowling All-Rounder (Pace),FALSE,13,0.28,PLY0358
-Ethan Brookes,England,Bowling All-Rounder (Pace),FALSE,13,0.28,PLY0359
-Sam Northeast,England,Bowling All-Rounder (Spin),FALSE,13,0.27,PLY0360
-George Thompson,England,Fast Bowler,FALSE,13,0.26,PLY0361
-Craig Miles,England,Fast Bowler,FALSE,13,0.26,PLY0362
+Ben Slater,England,Batter,FALSE,13,0.5,PLY0341
+Luke Wells,England,Batter,FALSE,13,0.5,PLY0342
+Sam Robson,England,Batter,FALSE,13,0.5,PLY0343
+Joe Denly,England,Batter,FALSE,13,0.5,PLY0344
+Adam Lyth,England,Batter,FALSE,13,0.25,PLY0345
+Chris Dent,England,Batter,FALSE,13,0.25,PLY0346
+Tom Westley,England,Batter,FALSE,13,0.25,PLY0347
+Mark Stoneman,England,Batter,FALSE,13,0.25,PLY0348
+Billy Root,England,Batter,FALSE,13,0.25,PLY0349
+Jake Libby,England,Batter,FALSE,13,0.25,PLY0350
+Martin Andersson,England,Bowling All-Rounder (Pace),FALSE,13,0.25,PLY0351
+Gareth Berg,England,Bowling All-Rounder (Pace),FALSE,13,0.25,PLY0352
+James Fuller,England,Bowling All-Rounder (Pace),FALSE,13,0.25,PLY0353
+Tom Lawes,England,Bowling All-Rounder (Pace),FALSE,13,0.25,PLY0354
+Joey Evison,England,Bowling All-Rounder (Pace),FALSE,13,0.25,PLY0355
+Ben Raine,England,Bowling All-Rounder (Pace),FALSE,13,0.25,PLY0356
+Matthew Revis,England,Bowling All-Rounder (Pace),FALSE,13,0.25,PLY0357
+Kasey Aldridge,England,Bowling All-Rounder (Pace),FALSE,13,0.25,PLY0358
+Ethan Brookes,England,Bowling All-Rounder (Pace),FALSE,13,0.25,PLY0359
+Sam Northeast,England,Bowling All-Rounder (Spin),FALSE,13,0.25,PLY0360
+George Thompson,England,Fast Bowler,FALSE,13,0.25,PLY0361
+Craig Miles,England,Fast Bowler,FALSE,13,0.25,PLY0362
 Ben Sanderson,England,Fast Bowler,FALSE,13,0.25,PLY0363
-Harry Podmore,England,Fast Bowler,FALSE,13,0.24,PLY0364
-Jack Brooks,England,Fast Bowler,FALSE,13,0.23,PLY0365
-Boyd Rankin,England,Fast Bowler,FALSE,13,0.23,PLY0366
-Ethan Bamber,England,Fast Bowler,FALSE,13,0.22,PLY0367
-Conor McKerr,England,Fast Bowler,FALSE,13,0.21,PLY0368
-Ajeet Singh Dale,England,Fast Bowler,FALSE,13,0.21,PLY0369
-Brad Wheal,England,Fast Bowler,FALSE,13,0.2,PLY0370
-Tom Haines,England,Batter,FALSE,14,0.3,PLY0371
-Ali Orr,England,Batter,FALSE,14,0.29,PLY0372
-Ben Charlesworth,England,Batter,FALSE,14,0.29,PLY0373
-Oli Carter,England,Batter,FALSE,14,0.28,PLY0374
-Tom Clark,England,Batter,FALSE,14,0.28,PLY0375
-Aneurin Donald,England,Batter,FALSE,14,0.27,PLY0376
-Fin Bean,England,Batter,FALSE,14,0.27,PLY0377
-Harry Came,England,Batter,FALSE,14,0.26,PLY0378
-Will Fraine,England,Batter,FALSE,14,0.26,PLY0379
+Harry Podmore,England,Fast Bowler,FALSE,13,0.25,PLY0364
+Jack Brooks,England,Fast Bowler,FALSE,13,0.25,PLY0365
+Boyd Rankin,England,Fast Bowler,FALSE,13,0.25,PLY0366
+Ethan Bamber,England,Fast Bowler,FALSE,13,0.25,PLY0367
+Conor McKerr,England,Fast Bowler,FALSE,13,0.25,PLY0368
+Ajeet Singh Dale,England,Fast Bowler,FALSE,13,0.25,PLY0369
+Brad Wheal,England,Fast Bowler,FALSE,13,0.25,PLY0370
+Tom Haines,England,Batter,FALSE,14,0.25,PLY0371
+Ali Orr,England,Batter,FALSE,14,0.25,PLY0372
+Ben Charlesworth,England,Batter,FALSE,14,0.25,PLY0373
+Oli Carter,England,Batter,FALSE,14,0.25,PLY0374
+Tom Clark,England,Batter,FALSE,14,0.25,PLY0375
+Aneurin Donald,England,Batter,FALSE,14,0.25,PLY0376
+Fin Bean,England,Batter,FALSE,14,0.25,PLY0377
+Harry Came,England,Batter,FALSE,14,0.25,PLY0378
+Will Fraine,England,Batter,FALSE,14,0.25,PLY0379
 Tom Lace,England,Batter,FALSE,14,0.25,PLY0380
 Oliver Carter,England,Bowling All-Rounder (Spin),FALSE,14,0.25,PLY0381
-Hamish Rutherford,England,Bowling All-Rounder (Spin),FALSE,14,0.24,PLY0382
-George Bartlett,England,Bowling All-Rounder (Spin),FALSE,14,0.24,PLY0383
-Ben Kellaway,England,Bowling All-Rounder (Spin),FALSE,14,0.23,PLY0384
-Liam Trevaskis,England,Bowling All-Rounder (Spin),FALSE,14,0.23,PLY0385
-Tom Aspinwall,England,Bowling All-Rounder (Pace),FALSE,14,0.22,PLY0386
-Jordan Clark,England,Bowling All-Rounder (Pace),FALSE,14,0.22,PLY0387
-Noah Thain,England,Bowling All-Rounder (Pace),FALSE,14,0.21,PLY0388
-Alex French,England,Bowling All-Rounder (Pace),FALSE,14,0.21,PLY0389
-James Minto,England,Bowling All-Rounder (Pace),FALSE,14,0.2,PLY0390
-Harry Nijjar,England,Fast Bowler,FALSE,14,0.2,PLY0391
-Liam Norwell,England,Fast Bowler,FALSE,14,0.19,PLY0392
-Blake Cullen,England,Fast Bowler,FALSE,14,0.19,PLY0393
-Aron Nijjar,England,Fast Bowler,FALSE,14,0.18,PLY0394
-Nathan Gilchrist,England,Fast Bowler,FALSE,14,0.18,PLY0395
-Scott Currie,England,Fast Bowler,FALSE,14,0.17,PLY0396
-Chris Wood,England,Fast Bowler,FALSE,14,0.17,PLY0397
-Sonny Baker,England,Fast Bowler,FALSE,14,0.16,PLY0398
-George Scrimshaw,England,Fast Bowler,FALSE,14,0.16,PLY0399
-Sussex,England,Fast Bowler,FALSE,14,0.15,PLY0400
+Hamish Rutherford,England,Bowling All-Rounder (Spin),FALSE,14,0.25,PLY0382
+George Bartlett,England,Bowling All-Rounder (Spin),FALSE,14,0.25,PLY0383
+Ben Kellaway,England,Bowling All-Rounder (Spin),FALSE,14,0.25,PLY0384
+Liam Trevaskis,England,Bowling All-Rounder (Spin),FALSE,14,0.25,PLY0385
+Tom Aspinwall,England,Bowling All-Rounder (Pace),FALSE,14,0.25,PLY0386
+Jordan Clark,England,Bowling All-Rounder (Pace),FALSE,14,0.25,PLY0387
+Noah Thain,England,Bowling All-Rounder (Pace),FALSE,14,0.25,PLY0388
+Alex French,England,Bowling All-Rounder (Pace),FALSE,14,0.25,PLY0389
+James Minto,England,Bowling All-Rounder (Pace),FALSE,14,0.25,PLY0390
+Harry Nijjar,England,Fast Bowler,FALSE,14,0.25,PLY0391
+Liam Norwell,England,Fast Bowler,FALSE,14,0.25,PLY0392
+Blake Cullen,England,Fast Bowler,FALSE,14,0.25,PLY0393
+Aron Nijjar,England,Fast Bowler,FALSE,14,0.25,PLY0394
+Nathan Gilchrist,England,Fast Bowler,FALSE,14,0.25,PLY0395
+Scott Currie,England,Fast Bowler,FALSE,14,0.25,PLY0396
+Chris Wood,England,Fast Bowler,FALSE,14,0.25,PLY0397
+Sonny Baker,England,Fast Bowler,FALSE,14,0.25,PLY0398
+George Scrimshaw,England,Fast Bowler,FALSE,14,0.25,PLY0399
+Sussex,England,Fast Bowler,FALSE,14,0.25,PLY0400
 Joe Weatherley,England,Batter,FALSE,15,0.25,PLY0401
-Ben Geddes,England,Batter,FALSE,15,0.24,PLY0402
-Sol Budinger,England,Batter,FALSE,15,0.24,PLY0403
-Teddy Bishop,England,Batter,FALSE,15,0.23,PLY0404
-Luc Benkenstein,England,Batter,FALSE,15,0.23,PLY0405
-Sam Dalling,England,Batter,FALSE,15,0.22,PLY0406
-Ben Curran,England,Batter,FALSE,15,0.22,PLY0407
-Jake Carder,England,Batter,FALSE,15,0.21,PLY0408
-Will Davis,England,Batter,FALSE,15,0.21,PLY0409
-Sam Young,England,Batter,FALSE,15,0.2,PLY0410
-Ben Wright,England,Batter,FALSE,15,0.2,PLY0411
-Kiran Carlson,England,Batter,FALSE,15,0.19,PLY0412
-Billy Godleman,England,Batter,FALSE,15,0.19,PLY0413
-George Thomas,England,Batter,FALSE,15,0.18,PLY0414
-Will Luxton,England,Batter,FALSE,15,0.18,PLY0415
-Hassan Azad,England,Batter,FALSE,15,0.17,PLY0416
-Nick Browne,England,Batter,FALSE,15,0.17,PLY0417
-Paul Horton,England,Batter,FALSE,15,0.16,PLY0418
-Tom Bevan,England,Batter,FALSE,15,0.16,PLY0419
-Harry Finch,England,Batter,FALSE,15,0.15,PLY0420
-Nick Selman,England,Batter,FALSE,15,0.15,PLY0421
-David Lloyd,England,Batter,FALSE,15,0.14,PLY0422
-Oliver Price,England,Batter,FALSE,15,0.14,PLY0423
-Tom Prest,England,Batter,FALSE,15,0.13,PLY0424
-James Sales,England,Batter,FALSE,15,0.13,PLY0425
-Jack Davies,England,Batter,FALSE,15,0.12,PLY0426
-Chris Wright,England,Batter,FALSE,15,0.12,PLY0427
-Steven Croft,England,Batter,FALSE,15,0.11,PLY0428
-Graham Clark,England,Batter,FALSE,15,0.11,PLY0429
-Tawanda Muyeye,England,Batter,FALSE,15,0.1,PLY0430
-Ollie Sykes,England,Batter,FALSE,16,0.2,PLY0431
-Toby Albert,England,Batter,FALSE,16,0.19,PLY0432
-Louis Kimber,England,Batter,FALSE,16,0.18,PLY0433
-Ben Mayes,England,Batter,FALSE,16,0.18,PLY0434
-Asa Tribe,England,Batter,FALSE,16,0.17,PLY0435
-Ben McKinney,England,Batter,FALSE,16,0.16,PLY0436
-Hamza Shaikh,England,Batter,FALSE,16,0.15,PLY0437
-Jaydn Denly,England,Batter,FALSE,16,0.15,PLY0438
-Rocky Flintoff,England,Batter,FALSE,16,0.14,PLY0439
-Ben Hammond,England,Batter,FALSE,16,0.13,PLY0440
-Tazeem Chaudry,England,Batter,FALSE,16,0.12,PLY0441
-Kian Hilton,England,Batter,FALSE,16,0.12,PLY0442
-Charlie Barnard,England,Batter,FALSE,16,0.11,PLY0443
-Rishi Patel,England,Batter,FALSE,16,0.1,PLY0444
+Ben Geddes,England,Batter,FALSE,15,0.25,PLY0402
+Sol Budinger,England,Batter,FALSE,15,0.25,PLY0403
+Teddy Bishop,England,Batter,FALSE,15,0.25,PLY0404
+Luc Benkenstein,England,Batter,FALSE,15,0.25,PLY0405
+Sam Dalling,England,Batter,FALSE,15,0.25,PLY0406
+Ben Curran,England,Batter,FALSE,15,0.25,PLY0407
+Jake Carder,England,Batter,FALSE,15,0.25,PLY0408
+Will Davis,England,Batter,FALSE,15,0.25,PLY0409
+Sam Young,England,Batter,FALSE,15,0.25,PLY0410
+Ben Wright,England,Batter,FALSE,15,0.25,PLY0411
+Kiran Carlson,England,Batter,FALSE,15,0.25,PLY0412
+Billy Godleman,England,Batter,FALSE,15,0.25,PLY0413
+George Thomas,England,Batter,FALSE,15,0.25,PLY0414
+Will Luxton,England,Batter,FALSE,15,0.25,PLY0415
+Hassan Azad,England,Batter,FALSE,15,0.25,PLY0416
+Nick Browne,England,Batter,FALSE,15,0.25,PLY0417
+Paul Horton,England,Batter,FALSE,15,0.25,PLY0418
+Tom Bevan,England,Batter,FALSE,15,0.25,PLY0419
+Harry Finch,England,Batter,FALSE,15,0.25,PLY0420
+Nick Selman,England,Batter,FALSE,15,0.25,PLY0421
+David Lloyd,England,Batter,FALSE,15,0.25,PLY0422
+Oliver Price,England,Batter,FALSE,15,0.25,PLY0423
+Tom Prest,England,Batter,FALSE,15,0.25,PLY0424
+James Sales,England,Batter,FALSE,15,0.25,PLY0425
+Jack Davies,England,Batter,FALSE,15,0.25,PLY0426
+Chris Wright,England,Batter,FALSE,15,0.25,PLY0427
+Steven Croft,England,Batter,FALSE,15,0.25,PLY0428
+Graham Clark,England,Batter,FALSE,15,0.25,PLY0429
+Tawanda Muyeye,England,Batter,FALSE,15,0.25,PLY0430
+Ollie Sykes,England,Batter,FALSE,16,0.25,PLY0431
+Toby Albert,England,Batter,FALSE,16,0.25,PLY0432
+Louis Kimber,England,Batter,FALSE,16,0.25,PLY0433
+Ben Mayes,England,Batter,FALSE,16,0.25,PLY0434
+Asa Tribe,England,Batter,FALSE,16,0.25,PLY0435
+Ben McKinney,England,Batter,FALSE,16,0.25,PLY0436
+Hamza Shaikh,England,Batter,FALSE,16,0.25,PLY0437
+Jaydn Denly,England,Batter,FALSE,16,0.25,PLY0438
+Rocky Flintoff,England,Batter,FALSE,16,0.25,PLY0439
+Ben Hammond,England,Batter,FALSE,16,0.25,PLY0440
+Tazeem Chaudry,England,Batter,FALSE,16,0.25,PLY0441
+Kian Hilton,England,Batter,FALSE,16,0.25,PLY0442
+Charlie Barnard,England,Batter,FALSE,16,0.25,PLY0443
+Rishi Patel,England,Batter,FALSE,16,0.25,PLY0444

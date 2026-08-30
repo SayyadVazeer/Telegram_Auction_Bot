@@ -37,6 +37,17 @@ class AuctionRun(Base):
         nullable=False,
     )
 
+    minimum_bid_increment_cr: Mapped[Decimal] = mapped_column(
+        Numeric(12, 2),
+        nullable=False,
+        default=Decimal("0.25"),
+    )
+
+    maximum_bid_increment_cr: Mapped[Decimal] = mapped_column(
+        Numeric(12, 2),
+        nullable=True,
+    )
+
     status: Mapped[str] = mapped_column(
         String(20),
         nullable=False,
@@ -160,14 +171,14 @@ class AuctionResult(Base):
         nullable=False,
     )
 
-    auction_run_id: Mapped[int] = mapped_column(
+    auction_run_id: Mapped[int | None] = mapped_column(
         ForeignKey("auction_runs.id", ondelete="CASCADE"),
-        nullable=False,
+        nullable=True,
     )
 
-    auction_player_id: Mapped[int] = mapped_column(
+    auction_player_id: Mapped[int | None] = mapped_column(
         ForeignKey("auction_players.id", ondelete="CASCADE"),
-        nullable=False,
+        nullable=True,
         unique=True,
     )
 

@@ -14,6 +14,7 @@ class AuctionPlayerStatus(str, Enum):
     ACTIVE = "ACTIVE"
     SOLD = "SOLD"
     UNSOLD = "UNSOLD"
+    NOT_PARTICIPATED = "NOT_PARTICIPATED"
 
 
 class AuctionResultStatus(str, Enum):

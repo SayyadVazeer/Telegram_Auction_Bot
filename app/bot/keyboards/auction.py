@@ -8,35 +8,13 @@ def auction_keyboard(
     *,
     is_admin: bool = False,
 ) -> InlineKeyboardMarkup:
-    increment = minimum_increment or Decimal("0.50")
-    rows = [
-        [
-            InlineKeyboardButton(
-                text=f"🔨 BID +{increment:.2f}",
-                callback_data=f"auction:bid_increment:{increment:.2f}",
-            ),
-        ],
-        [
-            InlineKeyboardButton(
-                text="✏️ Custom bid",
-                callback_data="auction:custom_bid",
-            ),
-            InlineKeyboardButton(
-                text="🔄 Refresh",
-                callback_data="auction:refresh",
-            ),
-        ],
-    ]
+    rows = []
     if is_admin:
         rows.append(
             [
                 InlineKeyboardButton(
                     text="⏸️ Pause",
                     callback_data="auction:pause",
-                ),
-                InlineKeyboardButton(
-                    text="▶️ Resume",
-                    callback_data="auction:resume",
                 ),
                 InlineKeyboardButton(
                     text="⏹️ Stop",
@@ -116,6 +94,65 @@ def timer_keyboard(
         InlineKeyboardButton(
             text="⏰ Custom",
             callback_data=f"auction:timer:custom:{set_number}:{category}",
+        )
+    ])
+    rows.append([
+        InlineKeyboardButton(
+            text="❌ Cancel",
+            callback_data="auction:cancel_start",
+        )
+    ])
+    return InlineKeyboardMarkup(inline_keyboard=rows)
+
+def bid_increment_keyboard(
+    set_number: int,
+    category: str,
+    bid_timer: int,
+) -> InlineKeyboardMarkup:
+    """Show common min bid increment options."""
+    rows = []
+    for inc in [0.10, 0.20, 0.25, 0.50, 1.00]:
+        rows.append([
+            InlineKeyboardButton(
+                text=f"{inc:.2f} Cr",
+                callback_data=f"auction:inc:{set_number}:{category}:{bid_timer}:{inc}",
+            )
+        ])
+    rows.append([
+        InlineKeyboardButton(
+            text="Custom",
+            callback_data=f"auction:inc:custom:{set_number}:{category}:{bid_timer}",
+        )
+    ])
+    rows.append([
+        InlineKeyboardButton(
+            text="❌ Cancel",
+            callback_data="auction:cancel_start",
+        )
+    ])
+    return InlineKeyboardMarkup(inline_keyboard=rows)
+
+
+def max_increment_keyboard(
+    set_number: int,
+    category: str,
+    bid_timer: int,
+    min_increment: str,
+) -> InlineKeyboardMarkup:
+    """Show max bid increment options (0 = no limit)."""
+    rows = []
+    for inc in [0, 1.00, 2.00, 5.00, 10.00]:
+        label = "No limit" if inc == 0 else f"{inc:.2f} Cr"
+        rows.append([
+            InlineKeyboardButton(
+                text=label,
+                callback_data=f"auction:maxinc:{set_number}:{category}:{bid_timer}:{min_increment}:{inc}",
+            )
+        ])
+    rows.append([
+        InlineKeyboardButton(
+            text="Custom",
+            callback_data=f"auction:maxinc:custom:{set_number}:{category}:{bid_timer}:{min_increment}",
         )
     ])
     rows.append([

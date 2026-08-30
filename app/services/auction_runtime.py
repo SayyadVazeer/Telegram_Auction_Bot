@@ -19,9 +19,13 @@ class ActiveAuctionState:
     timer_task: asyncio.Task | None = None
     last_call_task: asyncio.Task | None = None
 
+    # Auction category (pending, unsold, not_participated)
+    category: str = "pending"
+
     # State flags
     paused: bool = False
     stopped: bool = False
+    waiting_for_next: bool = False
 
 
 active_auctions: dict[int, ActiveAuctionState] = {}

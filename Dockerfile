@@ -5,6 +5,11 @@ WORKDIR /app
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
+# Install fonts for Pillow text rendering
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    fonts-dejavu-core fonts-liberation && \
+    rm -rf /var/lib/apt/lists/*
+
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 

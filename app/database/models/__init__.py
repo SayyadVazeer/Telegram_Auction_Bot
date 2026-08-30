@@ -6,6 +6,7 @@ from app.database.models.auction import (
     AuctionResult,
     AuctionRun,
 )
+from app.database.models.media import MediaFile
 
 
 
@@ -17,4 +18,5 @@ __all__ = [
     "AuctionPlayer",
     "AuctionResult",
     "AuctionRun",
+    "MediaFile",
 ]

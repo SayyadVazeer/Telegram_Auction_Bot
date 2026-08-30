@@ -264,7 +264,8 @@ async def admin_tournaments_panel(callback: CallbackQuery) -> None:
     if not is_admin(callback.from_user.id):
         await callback.answer("🛡️ Admin access required.", show_alert=True)
         return
-    await callback.message.answer("🏆 Use /create_tournament")
+    from app.bot.keyboards.home import admin_tournament_keyboard
+    await callback.message.answer("🏆 Tournament Management", reply_markup=admin_tournament_keyboard())
     await callback.answer()
 
 
@@ -273,7 +274,8 @@ async def admin_teams_panel(callback: CallbackQuery) -> None:
     if not is_admin(callback.from_user.id):
         await callback.answer("🛡️ Admin access required.", show_alert=True)
         return
-    await callback.message.answer("Use /add_team to add a new team.\nUse /assign_owner to assign an owner.")
+    from app.bot.keyboards.home import admin_teams_keyboard
+    await callback.message.answer("🏏 Team Management", reply_markup=admin_teams_keyboard())
     await callback.answer()
 
 
@@ -282,14 +284,8 @@ async def admin_auction_panel(callback: CallbackQuery) -> None:
     if not is_admin(callback.from_user.id):
         await callback.answer("🛡️ Admin access required.", show_alert=True)
         return
-    await callback.message.answer(
-        "Auction commands:\n\n"
-        "/start_auction - Start auction\n"
-        "/pause_auction - Pause\n"
-        "/resume_auction - Resume\n"
-        "/stop_auction - Stop\n"
-        "/status - View status"
-    )
+    from app.bot.keyboards.home import admin_auction_keyboard
+    await callback.message.answer("💰 Auction Control", reply_markup=admin_auction_keyboard())
     await callback.answer()
 
 
@@ -337,15 +333,24 @@ async def admin_players_add_start(callback: CallbackQuery, state: FSMContext) ->
     if not is_admin(callback.from_user.id):
         await callback.answer("🛡️ Admin access required.", show_alert=True)
         return
-    # Auto-generate next player ID
+    # Auto-generate next player ID — fill gaps first
     async with AsyncSessionLocal() as session:
-        result = await session.execute(select(Player.player_id).order_by(Player.id.desc()).limit(1))
-        last_id = result.scalar()
-        if last_id and last_id.startswith("PLY"):
-            num = int(last_id[3:]) + 1
+        all_ids = list((await session.execute(select(Player.player_id))).scalars())
+        existing = {int(x[3:]) for x in all_ids if x and x.startswith("PLY")}
+        if existing:
+            # Find the first gap (missing ID) in the range 1..max
+            max_id = max(existing)
+            new_num = None
+            for candidate in range(1, max_id + 1):
+                if candidate not in existing:
+                    new_num = candidate
+                    break
+            if new_num is None:
+                # No gaps — append after the last
+                new_num = max_id + 1
         else:
-            num = 1
-        new_id = f"PLY{num:04d}"
+            new_num = 1
+        new_id = f"PLY{new_num:04d}"
     await state.clear()
     await state.update_data(player_id=new_id)
     await state.set_state(AdminPlayerStates.waiting_for_name)
@@ -569,38 +574,167 @@ async def admin_manage_list_button(callback: CallbackQuery) -> None:
     await callback.answer()
 
 
+# ── Admin sub-panel button handlers ──────────────────────────
+# Teams sub-panel
+
+@router.callback_query(F.data == "admin:teams:add")
+async def admin_teams_add_button(callback: CallbackQuery) -> None:
+    if not is_admin(callback.from_user.id):
+        await callback.answer("🛡️ Admin access required.", show_alert=True)
+        return
+    await callback.message.answer("➕ Send /add_team to add a new team.")
+    await callback.answer()
+
+
+@router.callback_query(F.data == "admin:teams:assign")
+async def admin_teams_assign_button(callback: CallbackQuery) -> None:
+    if not is_admin(callback.from_user.id):
+        await callback.answer("🛡️ Admin access required.", show_alert=True)
+        return
+    await callback.message.answer("👤 Send /assign_owner <team_code> <user_id> to assign an owner.")
+    await callback.answer()
+
+
+@router.callback_query(F.data == "admin:teams:edit")
+async def admin_teams_edit_button(callback: CallbackQuery) -> None:
+    if not is_admin(callback.from_user.id):
+        await callback.answer("🛡️ Admin access required.", show_alert=True)
+        return
+    await callback.message.answer("✏️ Send /edit_team to edit a team.")
+    await callback.answer()
+
+
+@router.callback_query(F.data == "admin:teams:delete")
+async def admin_teams_delete_button(callback: CallbackQuery) -> None:
+    if not is_admin(callback.from_user.id):
+        await callback.answer("🛡️ Admin access required.", show_alert=True)
+        return
+    await callback.message.answer("🗑️ Send /delete_team <team_code> to delete a team.")
+    await callback.answer()
+
+
+@router.callback_query(F.data == "admin:teams:change_owner")
+async def admin_teams_change_owner_button(callback: CallbackQuery) -> None:
+    if not is_admin(callback.from_user.id):
+        await callback.answer("🛡️ Admin access required.", show_alert=True)
+        return
+    await callback.message.answer("🔄 Send /change_owner <team_code> <new_owner_id> to change owner.")
+    await callback.answer()
+
+
+# Tournaments sub-panel
+
+@router.callback_query(F.data == "admin:tournaments:create")
+async def admin_tournaments_create_button(callback: CallbackQuery) -> None:
+    if not is_admin(callback.from_user.id):
+        await callback.answer("🛡️ Admin access required.", show_alert=True)
+        return
+    await callback.message.answer("🏆 Send /create_tournament to create a new tournament.")
+    await callback.answer()
+
+
+@router.callback_query(F.data == "admin:tournaments:edit")
+async def admin_tournaments_edit_button(callback: CallbackQuery) -> None:
+    if not is_admin(callback.from_user.id):
+        await callback.answer("🛡️ Admin access required.", show_alert=True)
+        return
+    await callback.message.answer("✏️ Tournament editing via /edit_tournament command.")
+    await callback.answer()
+
+
+@router.callback_query(F.data == "admin:tournaments:complete")
+async def admin_tournaments_complete_button(callback: CallbackQuery) -> None:
+    if not is_admin(callback.from_user.id):
+        await callback.answer("🛡️ Admin access required.", show_alert=True)
+        return
+    await callback.message.answer("❌ Send /complete_tournament to complete/delete tournament.")
+    await callback.answer()
+
+
+# Auction sub-panel
+
+@router.callback_query(F.data == "admin:auction:start")
+async def admin_auction_start_button(callback: CallbackQuery) -> None:
+    if not is_admin(callback.from_user.id):
+        await callback.answer("🛡️ Admin access required.", show_alert=True)
+        return
+    await callback.message.answer("🔴 Send /start_auction to begin the auction.")
+    await callback.answer()
+
+
+@router.callback_query(F.data == "admin:auction:pause")
+async def admin_auction_pause_button(callback: CallbackQuery) -> None:
+    if not is_admin(callback.from_user.id):
+        await callback.answer("🛡️ Admin access required.", show_alert=True)
+        return
+    await callback.message.answer("⏸️ Send /pause_auction to pause the auction.")
+    await callback.answer()
+
+
+@router.callback_query(F.data == "admin:auction:resume")
+async def admin_auction_resume_button(callback: CallbackQuery) -> None:
+    if not is_admin(callback.from_user.id):
+        await callback.answer("🛡️ Admin access required.", show_alert=True)
+        return
+    await callback.message.answer("▶️ Send /resume_auction to resume the auction.")
+    await callback.answer()
+
+
+@router.callback_query(F.data == "admin:auction:stop")
+async def admin_auction_stop_button(callback: CallbackQuery) -> None:
+    if not is_admin(callback.from_user.id):
+        await callback.answer("🛡️ Admin access required.", show_alert=True)
+        return
+    await callback.message.answer("⏹️ Send /stop_auction to stop the auction.")
+    await callback.answer()
+
+
+@router.callback_query(F.data == "admin:auction:status")
+async def admin_auction_status_button(callback: CallbackQuery) -> None:
+    if not is_admin(callback.from_user.id):
+        await callback.answer("🛡️ Admin access required.", show_alert=True)
+        return
+    await callback.message.answer("ℹ️ Send /status to view auction status.")
+    await callback.answer()
+
+
 async def send_help(message: Message, user: User) -> None:
-    guide = "Bot commands\n\n"
+    guide = "Bot Commands\n\n"
     guide += "Everyone:\n"
     guide += "  /start - Main menu\n"
     guide += "  /help - This message\n"
+    guide += "  /help_all - Full admin guide (DM only)\n"
+    guide += "  /cancel - Cancel current operation\n"
     guide += "  /teams - View all teams\n"
-
-    if is_admin(user.id):
-        guide += "\nAdmin:\n"
-        guide += "  /create_tournament - Create tournament\n"
-        guide += "  /add_team - Add a team\n"
-        guide += "  /assign_owner - Assign team owner\n"
-        guide += "  /start_auction - Start auction\n"
-        guide += "  /pause_auction - Pause auction\n"
-        guide += "  /resume_auction - Resume auction\n"
-        guide += "  /stop_auction - Stop auction\n"
-        guide += "  /status - Auction status\n"
-        guide += "  /player_image_change_generator - Upload player photos\n"
-        guide += "  /complete_tournament - Delete tournament\n"
-
-    # Check if user is a team owner
-    async with AsyncSessionLocal() as session:
-        tournament = await TournamentService(session).get_by_telegram_chat_id(message.chat.id)
-        if tournament:
-            team = await get_team_by_owner(session, tournament.id, user.id)
-            if team:
-                guide += f"\nTeam owner ({team.short_code}):\n"
-                guide += "  /bid <amount> - Place bid\n"
-                guide += "  /b <amount> - Place bid (short)\n"
-                guide += "  /team_logo - Upload team logo\n"
-                guide += "  /my_team - View your team\n"
-                guide += "  /swap_player - Swap player with another team\n"
+    guide += "  /my_team - View your team roster\n"
+    guide += "  /purse - Check your team purse\n"
+    guide += "  /team_logo - Upload team logo\n"
+    guide += "  /bid <amount> - Place a bid\n"
+    guide += "  /b <amount> - Place bid (short form)\n"
+    guide += "  /trade_player - Trade player\n"
+    guide += "  /accept_trade - Accept trade proposal\n"
+    guide += "  /reject_trade - Reject trade proposal\n"
+    guide += "  /add_coowner <team> - Add co-owner to team\n"
+    guide += "  /remove_coowner <team> - Remove co-owner\n"
+    guide += "  /player_photo <ID> - View a player photo\n"
+    guide += "\nAdmin:\n"
+    guide += "  /create_tournament - Create tournament\n"
+    guide += "  /complete_tournament - Complete tournament\n"
+    guide += "  /add_team - Add a new team\n"
+    guide += "  /assign_owner - Assign owner to a team\n"
+    guide += "  /edit_team - Edit team name or code\n"
+    guide += "  /delete_team - Delete a team\n"
+    guide += "  /change_owner - Change team owner\n"
+    guide += "  /start_auction - Start auction for a set\n"
+    guide += "  /pause_auction - Pause running auction\n"
+    guide += "  /resume_auction - Resume paused auction\n"
+    guide += "  /stop_auction - Stop running auction\n"
+    guide += "  /next_player - Skip 15s delay\n"
+    guide += "  /status - Auction status\n"
+    guide += "  /manual_sell - Manually sell player\n"
+    guide += "  /manual_unsell - Remove player from team\n"
+    guide += "  /trade_on - Enable trading\n"
+    guide += "  /trade_off - Disable trading\n"
 
     try:
         await message.bot.send_message(user.id, guide)
@@ -625,6 +759,131 @@ async def help_button(callback: CallbackQuery) -> None:
 async def help_command(message: Message) -> None:
     if message.from_user:
         await send_help(message, message.from_user)
+
+
+
+
+@router.message(Command("help_all"))
+async def help_all_command(message: Message) -> None:
+    """Full admin help - DM only, admin only."""
+    if message.chat.type != "private":
+        await message.answer("This command can only be used in a private chat with the bot.")
+        return
+    if not message.from_user:
+        return
+    from app.bot.filters.admin import is_admin as _is_admin
+    if not _is_admin(message.from_user.id):
+        await message.answer("This command is only for admins.")
+        return
+
+    g = []
+    g.append("ADMIN FULL GUIDE")
+    g.append("=" * 24)
+    g.append("")
+    g.append("Everyone Commands")
+    g.append("-" * 20)
+    g.append("  /start - Open main menu")
+    g.append("  /help - Show user commands")
+    g.append("  /help_all - Show full admin guide (DM only)")
+    g.append("  /cancel - Cancel current operation")
+    g.append("  /teams - View all teams")
+    g.append("  /my_team - View your team roster")
+    g.append("  /purse - Check your team purse")
+    g.append("  /team_logo - Upload team logo")
+    g.append("  /bid <amount> - Place a bid")
+    g.append("  /b <amount> - Place bid (short form)")
+    g.append("  /trade_player - Trade player")
+    g.append("  /accept_trade - Accept trade proposal")
+    g.append("  /reject_trade - Reject trade proposal")
+    g.append("  /add_coowner <team> - Add co-owner to team")
+    g.append("  /remove_coowner <team> - Remove co-owner")
+    g.append("  /player_photo <ID> - View a player photo")
+    g.append("")
+    g.append("Auction Commands")
+    g.append("-" * 20)
+    g.append("  /start_auction - Start auction for a set")
+    g.append("  /pause_auction - Pause running auction")
+    g.append("  /resume_auction - Resume paused auction")
+    g.append("  /stop_auction - Stop running auction")
+    g.append("  /next_player - Skip 15s inter-player delay")
+    g.append("  /status - View auction status")
+    g.append("")
+    g.append("Team Management")
+    g.append("-" * 20)
+    g.append("  /create_tournament - Create a new tournament")
+    g.append("  /complete_tournament - Complete/delete tournament")
+    g.append("  /add_team - Add a new team")
+    g.append("  /assign_owner - Assign owner to a team")
+    g.append("  /edit_team - Edit team name or code")
+    g.append("  /delete_team - Delete a team")
+    g.append("  /change_owner - Change team owner")
+    g.append("")
+    g.append("Player Management")
+    g.append("-" * 20)
+    g.append("  /manual_sell - Manually sell player to team")
+    g.append("  /manual_unsell - Remove player from team")
+    g.append("")
+    g.append("Trade Control")
+    g.append("-" * 20)
+    g.append("  /trade_on - Enable player trading")
+    g.append("  /trade_off - Disable player trading")
+    g.append("")
+    g.append("Media Cache")
+    g.append("-" * 20)
+    g.append("  /player_image_change_generator - Cache player photos")
+    g.append("  /image_change_generator - Upload GIF media files")
+    g.append("  /upload_gif <key> - Upload a single GIF")
+    g.append("  /save_all_media - Cache all media file IDs")
+    g.append("")
+    g.append("Admin Panel Buttons (in group)")
+    g.append("-" * 20)
+    g.append("  Players - View, import, search players")
+    g.append("  Teams - Add, edit, delete teams, assign owners")
+    g.append("  Tournaments - Create/manage tournaments")
+    g.append("  Auction - Start, pause, resume, stop")
+    g.append("  Manual Sell - Sell player to team")
+    g.append("  Manual Unsell - Remove player from team")
+    g.append("  Admin Management - Add/remove admins")
+    g.append("  Co-owner Management - Add/remove co-owners")
+
+    await message.answer("\n".join(g))
+
+
+@router.message(Command("upload_gif"))
+async def upload_gif_command(message: Message) -> None:
+    """Upload a single GIF media file."""
+    from app.bot.filters.admin import is_admin as _is_admin
+    if not _is_admin(message.from_user.id):
+        await message.answer("Only admins can use this command.")
+        return
+    if not message.reply_to_message or not (message.reply_to_message.animation or message.reply_to_message.video):
+        await message.answer("Reply to a GIF/video with /upload_gif <key>\n\nValid keys: bid1, bid2, bid3, bid4, once, twice, sold, unsold")
+        return
+    parts = (message.text or "").strip().split()
+    if len(parts) < 2:
+        await message.answer("Usage: /upload_gif <key>\n\nValid keys: bid1, bid2, bid3, bid4, once, twice, sold, unsold")
+        return
+    key = parts[1].lower()
+    valid_keys = {"bid1", "bid2", "bid3", "bid4", "once", "twice", "sold", "unsold"}
+    if key not in valid_keys:
+        await message.answer(f"Invalid key: {key}\nValid keys: {', '.join(sorted(valid_keys))}")
+        return
+    media = message.reply_to_message.animation or message.reply_to_message.video
+    if not media:
+        await message.answer("No media found in the replied message.")
+        return
+    file_id = media.file_id
+    unique_id = media.file_unique_id
+    media_type = "animation" if message.reply_to_message.animation else "video"
+    from app.bot.handlers.auction import _save_media_to_db
+    local_map = {
+        "bid1": "data/bid1.gif", "bid2": "data/bid2.gif",
+        "bid3": "data/bid3.gif", "bid4": "data/bid4.gif",
+        "once": "data/once.jpg", "twice": "data/twice.jpg",
+        "sold": "data/sold.gif", "unsold": "data/unsold.gif",
+    }
+    await _save_media_to_db(key, file_id, unique_id, local_map.get(key), media_type)
+    await message.answer(f"Saved {key}: file_id={file_id[:30]}...")
 
 
 @router.callback_query(F.data == "admin:manage_admins")

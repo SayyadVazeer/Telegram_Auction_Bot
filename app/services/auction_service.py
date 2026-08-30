@@ -37,11 +37,15 @@ class AuctionService:
         tournament_id: int,
         set_number: int,
         bid_timer_seconds: int,
+        minimum_bid_increment_cr: Decimal = Decimal("0.25"),
+        maximum_bid_increment_cr: Decimal = Decimal("0"),
     ) -> AuctionRun:
         auction_run = AuctionRun(
             tournament_id=tournament_id,
             set_number=set_number,
             bid_timer_seconds=bid_timer_seconds,
+            minimum_bid_increment_cr=minimum_bid_increment_cr,
+            maximum_bid_increment_cr=maximum_bid_increment_cr,
             status=AuctionRunStatus.PENDING.value,
         )
 
@@ -124,47 +128,80 @@ class AuctionService:
     async def get_next_player(
         self,
         auction_run: AuctionRun,
+        category: str = "pending",
     ) -> Player | None:
-        sold_exists = exists(
-            select(AuctionResult.id).where(
-                AuctionResult.tournament_id
-                == auction_run.tournament_id,
-                AuctionResult.player_id
-                == Player.id,
-                AuctionResult.result_status
-                == AuctionResultStatus.SOLD.value,
-            )
-        )
-
+        """Get next player based on category.
+        
+        Categories:
+        - pending: Players never auctioned OR not_participated (merged)
+        - unsold: Players that were UNSOLD in a previous run
+        """
+        # Don't process the same player twice in THIS auction run
         processed_in_run = exists(
             select(AuctionPlayer.id).where(
-                AuctionPlayer.auction_run_id
-                == auction_run.id,
-                AuctionPlayer.player_id
-                == Player.id,
+                AuctionPlayer.auction_run_id == auction_run.id,
+                AuctionPlayer.player_id == Player.id,
             )
         )
 
-        query = (
-            select(Player)
-            .where(
-                Player.set_number == auction_run.set_number,
-                ~sold_exists,
-                ~processed_in_run,
+        if category == "pending":
+            # Players that have NEVER been in any auction result at all
+            # (not sold, not unsold, not participated — completely fresh)
+            has_any_result = exists(
+                select(AuctionResult.id).where(
+                    AuctionResult.tournament_id == auction_run.tournament_id,
+                    AuctionResult.player_id == Player.id,
+                )
             )
-            .order_by(func.random())
-            .limit(1)
-        )
+            query = (
+                select(Player)
+                .where(
+                    Player.set_number == auction_run.set_number,
+                    ~has_any_result,
+                    ~processed_in_run,
+                )
+                .order_by(func.random())
+                .limit(1)
+            )
+        elif category == "unsold":
+            # Players that were UNSOLD in a previous run, not currently sold
+            was_unsold = exists(
+                select(AuctionResult.id).where(
+                    AuctionResult.tournament_id == auction_run.tournament_id,
+                    AuctionResult.player_id == Player.id,
+                    AuctionResult.result_status == AuctionResultStatus.UNSOLD.value,
+                )
+            )
+            is_sold = exists(
+                select(AuctionResult.id).where(
+                    AuctionResult.tournament_id == auction_run.tournament_id,
+                    AuctionResult.player_id == Player.id,
+                    AuctionResult.result_status == AuctionResultStatus.SOLD.value,
+                )
+            )
+            query = (
+                select(Player)
+                .where(
+                    Player.set_number == auction_run.set_number,
+                    was_unsold,
+                    ~is_sold,
+                    ~processed_in_run,
+                )
+                .order_by(func.random())
+                .limit(1)
+            )
+        else:
+            return None
 
         result = await self.session.execute(query)
-
         return result.scalar_one_or_none()
 
     async def prepare_next_player(
         self,
         auction_run: AuctionRun,
+        category: str = "pending",
     ) -> AuctionPlayer | None:
-        player = await self.get_next_player(auction_run)
+        player = await self.get_next_player(auction_run, category)
 
         if player is None:
             return None
@@ -259,6 +296,24 @@ class AuctionService:
         await self.session.flush()
 
         return result
+
+    async def complete_player_not_participated(
+        self,
+        auction_player: AuctionPlayer,
+    ) -> None:
+        """Mark player as not participated (stop was used during active bidding)."""
+        if auction_player.status != AuctionPlayerStatus.ACTIVE.value:
+            raise ValueError(
+                "Only an active player can be marked as not participated."
+            )
+
+        auction_player.status = AuctionPlayerStatus.NOT_PARTICIPATED.value
+        auction_player.current_bid_cr = None
+        auction_player.current_team_id = None
+        auction_player.completed_at = datetime.utcnow()
+
+        await self.session.flush()
+
     async def complete_auction_run(
         self,
         auction_run: AuctionRun,
@@ -282,6 +337,7 @@ class AuctionService:
         team: Team,
         bid_cr: Decimal,
         minimum_increment_cr: Decimal,
+        maximum_increment_cr: Decimal = Decimal("0"),
     ) -> None:
         if auction_player.status != AuctionPlayerStatus.ACTIVE.value:
             raise BidValidationError(
@@ -324,6 +380,17 @@ class AuctionService:
                 f"₹{minimum_allowed:.2f} Cr."
             )
 
+        # Check maximum bid increment if set
+        if maximum_increment_cr > 0:
+            reference = current_bid if current_bid > 0 else base_price
+            jump = bid_cr - reference
+            if jump > maximum_increment_cr:
+                raise BidValidationError(
+                    f"Maximum bid increment is "
+                    f"₹{maximum_increment_cr:.2f} Cr. "
+                    f"Your jump of ₹{jump:.2f} Cr exceeds it."
+                )
+
     async def place_bid(
         self,
         auction_player: AuctionPlayer,
@@ -349,16 +416,23 @@ class AuctionService:
                 "Active auction player not found."
             )
 
-        if team.owner_telegram_id != bidder_telegram_id:
+        # Allow owner OR co-owner to bid
+        if team.owner_telegram_id != bidder_telegram_id and team.co_owner_telegram_id != bidder_telegram_id:
             raise BidValidationError(
-                "You are not the owner of this team."
+                "You are not the owner or co-owner of this team."
             )
+
+        # Get auction run's own min/max increments
+        auction_run = await self.session.get(AuctionRun, locked_player.auction_run_id)
+        run_min_inc = Decimal(str(auction_run.minimum_bid_increment_cr)) if auction_run else minimum_increment_cr
+        run_max_inc = Decimal(str(auction_run.maximum_bid_increment_cr or 0)) if auction_run else Decimal("0")
 
         await self.validate_bid(
             auction_player=locked_player,
             team=team,
             bid_cr=bid_cr,
-            minimum_increment_cr=minimum_increment_cr,
+            minimum_increment_cr=run_min_inc,
+            maximum_increment_cr=run_max_inc,
         )
 
         player = await self.session.get(
@@ -392,13 +466,24 @@ class AuctionService:
     telegram_user_id: int,
     tournament_id: int,
     ) -> Team | None:
+        # Check owner first
         result = await self.session.execute(
             select(Team).where(
                 Team.owner_telegram_id == telegram_user_id,
                 Team.tournament_id == tournament_id,
             )
         )
+        team = result.scalar_one_or_none()
+        if team:
+            return team
 
+        # Check co-owner
+        result = await self.session.execute(
+            select(Team).where(
+                Team.co_owner_telegram_id == telegram_user_id,
+                Team.tournament_id == tournament_id,
+            )
+        )
         return result.scalar_one_or_none()
 
     

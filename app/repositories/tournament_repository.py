@@ -27,7 +27,6 @@ async def create_tournament(
     purse_cr: Decimal,
     max_overseas_players: int,
     max_players_per_team: int,
-    minimum_bid_increment_cr: Decimal,
 ) -> Tournament:
     tournament = Tournament(
         telegram_chat_id=telegram_chat_id,
@@ -35,7 +34,6 @@ async def create_tournament(
         purse_cr=purse_cr,
         max_overseas_players=max_overseas_players,
         max_players_per_team=max_players_per_team,
-        minimum_bid_increment_cr=minimum_bid_increment_cr,
     )
 
     session.add(tournament)

@@ -1,9 +1,11 @@
+import os
 from decimal import Decimal, InvalidOperation
 
 from aiogram import Router
 from aiogram.filters import Command
-from aiogram.types import Message
+from aiogram.types import Message, FSInputFile
 
+from sqlalchemy import select
 from app.database.session import AsyncSessionLocal
 from app.services.auction_service import (
     AuctionService,
@@ -26,7 +28,7 @@ async def place_bid_command(message: Message) -> None:
 
     if len(parts) != 2:
         await message.answer(
-            "❌ Please enter a bid amount.\n\n"
+            "Please enter a bid amount.\n\n"
             "Examples:\n"
             "/bid 4.7\n"
             "/b 4.7"
@@ -39,7 +41,7 @@ async def place_bid_command(message: Message) -> None:
         bid_cr = Decimal(bid_text)
     except InvalidOperation:
         await message.answer(
-            "❌ Invalid bid amount.\n\n"
+            "Invalid bid amount.\n\n"
             "Use an amount in Cr, for example:\n"
             "/bid 4\n"
             "/bid 4.7"
@@ -48,7 +50,7 @@ async def place_bid_command(message: Message) -> None:
 
     if bid_cr <= Decimal("0"):
         await message.answer(
-            "❌ Bid must be greater than ₹0 Cr."
+            "Bid must be greater than Rs.0 Cr."
         )
         return
 
@@ -64,8 +66,21 @@ async def place_bid_command(message: Message) -> None:
 
         if tournament is None:
             await message.answer(
-                "❌ No tournament is configured for this group."
+                "No tournament is configured for this group."
             )
+            return
+
+        # Check auction state first
+        run = await service.get_running_auction(tournament.id)
+        if not run:
+            await message.answer("Auction is not running.")
+            return
+        rt = AuctionRuntime.get(run.id)
+        if rt and rt.paused:
+            await message.answer("⏸️ Auction is paused. Bidding is not allowed.")
+            return
+        if rt and rt.stopped:
+            await message.answer("⏹️ Auction is stopped. Bidding is not allowed.")
             return
 
         team = await service.get_team_by_owner(
@@ -75,7 +90,7 @@ async def place_bid_command(message: Message) -> None:
 
         if team is None:
             await message.answer(
-                "❌ You are not registered as a team owner."
+                "You are not registered as a team owner."
             )
             return
 
@@ -87,9 +102,66 @@ async def place_bid_command(message: Message) -> None:
 
         if auction_player is None:
             await message.answer(
-                "❌ There is currently no player accepting bids."
+                "No active player being auctioned."
             )
             return
+
+        if auction_player.current_team_id and auction_player.current_team_id == team.id:
+            await message.answer("You already have the highest bid!")
+            return
+
+        # Check overseas limit
+        from app.database.models.player import Player
+        from app.database.models.auction import AuctionResult
+        player_obj = await session.get(Player, auction_player.player_id)
+        if player_obj and player_obj.is_overseas:
+            from sqlalchemy import func as sa_func
+            ovr_result = await session.execute(
+                select(sa_func.count(AuctionResult.id))
+                .join(Player, Player.id == AuctionResult.player_id)
+                .where(
+                    AuctionResult.tournament_id == tournament.id,
+                    AuctionResult.winning_team_id == team.id,
+                    AuctionResult.result_status == "SOLD",
+                    Player.is_overseas == True,
+                )
+            )
+            overseas_count = int(ovr_result.scalar() or 0)
+            if overseas_count >= tournament.max_overseas_players:
+                await message.answer(f"❌ Overseas limit reached! {team.name} already has {overseas_count}/{tournament.max_overseas_players} overseas players.")
+                return
+
+        # Check max players
+        from sqlalchemy import func as sa_func
+        count_result = await session.execute(
+            select(sa_func.count(AuctionResult.id)).where(
+                AuctionResult.tournament_id == tournament.id,
+                AuctionResult.winning_team_id == team.id,
+                AuctionResult.result_status == "SOLD",
+            )
+        )
+        team_player_count = int(count_result.scalar() or 0)
+        if team_player_count >= tournament.max_players_per_team:
+            await message.answer(f"❌ Team full! {team.name} already has {team_player_count}/{tournament.max_players_per_team} players.")
+            return
+
+        # Check purse
+        spent_result = await session.execute(
+            select(sa_func.coalesce(sa_func.sum(AuctionResult.final_bid_cr), 0)).where(
+                AuctionResult.tournament_id == tournament.id,
+                AuctionResult.winning_team_id == team.id,
+                AuctionResult.result_status == "SOLD",
+            )
+        )
+        spent = Decimal(str(spent_result.scalar() or 0))
+        remaining = Decimal(str(tournament.purse_cr)) - spent
+        if bid_cr > remaining:
+            await message.answer(f"❌ Insufficient purse! {team.name} has Rs.{remaining:.2f} Cr remaining, bid is Rs.{bid_cr:.2f} Cr.")
+            return
+
+        from app.database.models.auction import AuctionRun
+        auction_run = await session.get(AuctionRun, auction_player.auction_run_id)
+        run_min_inc = Decimal(str(auction_run.minimum_bid_increment_cr)) if auction_run else Decimal("0.25")
 
         try:
             await service.place_bid(
@@ -97,15 +169,12 @@ async def place_bid_command(message: Message) -> None:
                 team=team,
                 tournament=tournament,
                 bid_cr=bid_cr,
-                minimum_increment_cr=Decimal(
-                    str(tournament.minimum_bid_increment_cr)
-                ),
+                minimum_increment_cr=run_min_inc,
                 bidder_telegram_id=message.from_user.id,
             )
 
             await session.commit()
 
-            # Edit live message
             runtime = AuctionRuntime.get(auction_player.auction_run_id)
             if runtime and runtime.live_message_id:
                 try:
@@ -116,7 +185,7 @@ async def place_bid_command(message: Message) -> None:
                         bidder_username=team.owner_username,
                     )
                     markup = ak(
-                        Decimal(str(tournament.minimum_bid_increment_cr)),
+                        run_min_inc,
                         is_admin=True,
                     )
                     try:
@@ -141,21 +210,31 @@ async def place_bid_command(message: Message) -> None:
 
         except BidValidationError as exc:
             await session.rollback()
-
-            await message.answer(
-                f"❌ {exc}"
-            )
+            await message.answer(f"{exc}")
             return
 
         owner_username = (
             f"@{message.from_user.username}"
             if message.from_user.username
-            else "Telegram Owner"
+            else "Owner"
         )
 
-        await message.answer(
-            "🔨 BID\n\n"
-            f"🏏 Team: {team.name} ({team.short_code})\n"
-            f"💰 Bid: ₹{bid_cr:.2f} Cr\n"
-            f"🤴 Owner: {owner_username}"
+        bid_msg = (
+            f"🔨 BID\n\n"
+            f"💰 Current Highest Bid: Rs.{bid_cr:.2f} Cr\n"
+            f"🏏 Team Name: {team.name} ({team.short_code})\n"
+            f"🧑 Bid by: {owner_username}\n\n"
+            "Do I hear anyone else?"
+        )
+        # Rotate through bid1, bid2, bid3
+        bid_counter = getattr(place_bid_command, "_counter", 0) + 1
+        place_bid_command._counter = bid_counter
+        bid_num = (bid_counter % 4) + 1
+        
+        # Use file_id from auction module
+        from app.bot.handlers.auction import _send_media
+        await _send_media(
+            message.bot, message.chat.id,
+            f"bid{bid_num}", os.path.join("data", f"bid{bid_num}.gif"),
+            caption=bid_msg
         )

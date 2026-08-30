@@ -3,3 +3,9 @@
 __pycache__/
 *.pyc
 .pytest_cache/
+backups/
+*.sql
+data/photos/*.jpg
+data/photos/*.png
+*.log
+.freebuff/

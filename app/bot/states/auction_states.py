@@ -6,6 +6,10 @@ class AuctionStates(StatesGroup):
     waiting_for_player_category = State()
     waiting_for_bid_timer = State()
     waiting_for_custom_bid = State()
+
+    waiting_for_min_increment = State()
+
+    waiting_for_max_increment = State()
     choosing_set_number = State()
     choosing_category = State()
 
@@ -18,6 +22,8 @@ class AdminPlayerStates(StatesGroup):
     waiting_for_is_overseas = State()
     waiting_for_set_number = State()
     waiting_for_base_price = State()
+    waiting_for_photo = State()
+    editing_photo = State()
     editing_player_id = State()
     editing_field = State()
     editing_value = State()

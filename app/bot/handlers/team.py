@@ -383,10 +383,16 @@ async def send_team_info(
     elif team.owner_telegram_id:
         owner_display = str(team.owner_telegram_id)
 
+    coowner_display = ""
+    if team.co_owner_username:
+        coowner_display = f"\n👤 Co-owner: @{team.co_owner_username}"
+    elif team.co_owner_telegram_id:
+        coowner_display = "\n👤 Co-owner: (username not available)"
+
     text = (
         f"🏏 {team.name}\n"
-        f"🔤 {team.short_code}\n\n"
-        f"👤 Owner: {owner_display}"
+        f"🔠 {team.short_code}\n\n"
+        f"👤 Owner: {owner_display}{coowner_display}"
     )
 
     if team.logo_file_id:
@@ -437,11 +443,19 @@ async def view_team(
         else "Not assigned"
     )
 
+    coowner = (
+        f"@{team.co_owner_username}"
+        if team.co_owner_username
+        else ("Username not set" if team.co_owner_telegram_id else "None")
+    )
+
     text = (
         f"🏏 {team.name}\n\n"
-        f"🔤 Short Code: {team.short_code}\n"
+        f"🔠 Short Code: {team.short_code}\n"
         f"👤 Owner: {owner}\n"
+        f"👤 Co-owner: {coowner}\n"
     )
+
 
     spent = sum((Decimal(str(result.final_bid_cr)) for result, _ in results), Decimal("0"))
     overseas = sum(1 for _, player in results if player.is_overseas)
@@ -555,6 +569,23 @@ async def assign_owner(
             )
             return
 
+        # Check if user is already a co-owner of another team
+        coowner_result = await session.execute(
+            select(Team).where(
+                Team.co_owner_telegram_id == owner_user.id,
+                Team.tournament_id == tournament.id,
+            )
+        )
+        coowner_team = coowner_result.scalar_one_or_none()
+        if coowner_team is not None:
+            await message.answer(
+                "⚠️ This Telegram user is already "
+                "a co-owner of another team.\n\n"
+                f"Team: {coowner_team.name} "
+                f"({coowner_team.short_code})"
+            )
+            return
+
         if team.owner_telegram_id is not None:
             current_owner = (
                 f"@{team.owner_username}"
@@ -590,6 +621,7 @@ async def assign_owner(
         "✅ Team owner assigned!\n\n"
         f"🏏 Team: {team.name}\n"
         f"🔤 Code: {team.short_code}\n"
+
         f"👤 Owner: {owner_display}"
     )
 

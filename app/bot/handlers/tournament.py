@@ -84,9 +84,8 @@ async def show_confirmation(message: Message, state: FSMContext) -> None:
         f"Name: {data['name']}\n\n"
         f"💰 Team purse: ₹{data['purse_cr']:.2f} Cr\n"
         f"🌍 Max overseas: {data['max_overseas_players']}\n"
-        f"👥 Max players/team: {data['max_players_per_team']}\n"
-        f"📈 Minimum bid increment: "
-        f"₹{data['minimum_bid_increment_cr']:.2f} Cr\n\n"
+        f"👥 Max players/team: {data['max_players_per_team']}\n\n"
+        "📈 Bid increments are set per auction session.\n\n"
         "Please confirm:"
     )
 
@@ -151,8 +150,7 @@ async def tournament_name(
     )
 
     await message.answer(
-        "💰 Enter the purse for each team in Crores.\n\n"
-        "Example: 100"
+        "💰 Enter the purse for each team in Crores.\n\nUse /cancel to cancel."
     )
 
 
@@ -188,7 +186,7 @@ async def tournament_purse(
     )
 
     await message.answer(
-        "🌍 Enter the maximum number of overseas players per team."
+        "🌍 Enter the maximum number of overseas players per team.\nUse /cancel to cancel."
     )
 
 
@@ -223,7 +221,7 @@ async def tournament_max_overseas(
     )
 
     await message.answer(
-        "👥 Enter the maximum number of players per team."
+        "👥 Enter the maximum number of players per team.\nUse /cancel to cancel."
     )
 
 
@@ -264,46 +262,10 @@ async def tournament_max_players(
         await show_confirmation(message, state)
         return
 
-    await state.set_state(
-        TournamentCreationStates.waiting_for_min_bid_increment
-    )
-
-    await message.answer(
-        "📈 Enter the minimum bid increment in Crores.\n\n"
-        "Example: 0.25"
-    )
-
-
-@router.message(
-    TournamentCreationStates.waiting_for_min_bid_increment
-)
-async def tournament_min_bid_increment(
-    message: Message,
-    state: FSMContext,
-) -> None:
-    value = (message.text or "").strip()
-
-    if not is_positive_decimal(value):
-        await message.answer(
-            "❌ Enter a valid positive number.\n\n"
-            "Example: 0.25"
-        )
-        return
-
-    increment = Decimal(value)
-
-    await state.update_data(
-        minimum_bid_increment_cr=increment
-    )
-
-    data = await state.get_data()
-    
-    if data.get("editing"):
-        await state.update_data(editing=False)
-        await show_confirmation(message, state)
-        return
-    
     await show_confirmation(message, state)
+
+
+
 
 
 @router.callback_query(
@@ -381,9 +343,7 @@ async def tournament_create_confirmed(
             purse_cr=data["purse_cr"],
             max_overseas_players=data["max_overseas_players"],
             max_players_per_team=data["max_players_per_team"],
-            minimum_bid_increment_cr=data[
-                "minimum_bid_increment_cr"
-            ],
+
         )
 
         await session.commit()
@@ -397,9 +357,8 @@ async def tournament_create_confirmed(
         f"🌍 Max overseas: "
         f"{tournament.max_overseas_players}\n"
         f"👥 Max players/team: "
-        f"{tournament.max_players_per_team}\n"
-        f"📈 Minimum bid increment: "
-        f"₹{tournament.minimum_bid_increment_cr:.2f} Cr"
+        f"{tournament.max_players_per_team}\n\n"
+        "📈 Bid increments are set per auction session."
     )
 
     await callback.answer("Tournament created.")
@@ -505,15 +464,6 @@ async def edit_tournament_max_players(
     )
 
     await callback.answer()
-
-@router.callback_query(
-    TournamentCreationStates.confirming,
-    F.data == "tournament:edit:increment",
-)
-async def edit_tournament_increment(
-    callback: CallbackQuery,
-    state: FSMContext,
-) -> None:
 
     await state.update_data(editing=True)
 

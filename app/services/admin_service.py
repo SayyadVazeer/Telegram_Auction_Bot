@@ -57,3 +57,24 @@ def remove_admin(user_id: int) -> bool:
     admins.discard(user_id)
     _save_dynamic_admins(admins)
     return True
+
+# ── Trade toggle ─────────────────────────────────────────
+
+TRADE_FILE = os.path.join('data', 'trade_enabled.json')
+
+def is_trade_enabled() -> bool:
+    """Check if trade feature is enabled."""
+    try:
+        if os.path.exists(TRADE_FILE):
+            with open(TRADE_FILE, 'r') as f:
+                data = json.load(f)
+                return data.get('enabled', False)
+    except Exception:
+        pass
+    return False
+
+def set_trade_enabled(enabled: bool) -> None:
+    """Enable or disable the trade feature."""
+    os.makedirs(os.path.dirname(TRADE_FILE), exist_ok=True)
+    with open(TRADE_FILE, 'w') as f:
+        json.dump({'enabled': enabled}, f)

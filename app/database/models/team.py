@@ -72,6 +72,16 @@ class Team(Base):
         nullable=True,
     )
 
+    co_owner_telegram_id: Mapped[int | None] = mapped_column(
+        BigInteger,
+        nullable=True,
+    )
+
+    co_owner_username: Mapped[str | None] = mapped_column(
+        String(100),
+        nullable=True,
+    )
+
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         server_default=func.now(),

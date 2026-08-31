@@ -11,8 +11,10 @@ from app.bot.states.auction_states import AdminPlayerStates
 from app.bot.keyboards.home import (
     admin_panel_keyboard,
     alphabet_keyboard,
+    filtered_player_list_keyboard,
     home_keyboard,
     player_list_keyboard,
+    players_filter_keyboard,
 )
 from app.bot.keyboards.team import team_list_keyboard
 from app.database.models.auction import AuctionResult, AuctionRun
@@ -36,7 +38,7 @@ async def show_home(message: Message, user_id: int | None) -> None:
             tournament = await TournamentService(session).get_by_telegram_chat_id(message.chat.id)
             is_owner = bool(tournament and await get_team_by_owner(session, tournament.id, user_id))
     await message.answer(
-        "Telegram Auction Bot\n\nChoose an option below.",
+        "🏏 Telegram Auction Bot\n\nChoose an option below.",
         reply_markup=home_keyboard(is_admin=is_admin(user_id), is_owner=is_owner),
     )
 
@@ -59,56 +61,124 @@ async def home_back(callback: CallbackQuery) -> None:
 async def players_home(callback: CallbackQuery) -> None:
     if callback.message:
         await callback.message.answer(
-            "Players\n\nChoose the first letter of a player's name.",
-            reply_markup=alphabet_keyboard(),
+            "👥 Players\n\nChoose an option below.",
+            reply_markup=players_filter_keyboard(),
         )
+    await callback.answer()
+
+
+@router.callback_query(F.data == "players:home")
+async def players_home_back(callback: CallbackQuery) -> None:
+    if callback.message:
+        await callback.message.edit_text(
+            "👥 Players\n\nChoose an option below.",
+            reply_markup=players_filter_keyboard(),
+        )
+    await callback.answer()
+
+
+@router.callback_query(F.data.startswith("players:filter:"))
+async def players_filter(callback: CallbackQuery) -> None:
+    """Handle sold/unsold/not_participated filter - show alphabet for that filter."""
+    raw = callback.data.split(":")
+    filter_mode = raw[2] if len(raw) >= 3 else "all"
+    if filter_mode == "alphabet":
+        return
+    await callback.message.edit_text(
+        f"👥 Players — {filter_mode.replace('_', ' ').title()}\n\nChoose the first letter.",
+        reply_markup=alphabet_keyboard(filter_mode=filter_mode),
+    )
     await callback.answer()
 
 
 @router.callback_query(F.data.startswith("players:letter:"))
 async def players_by_letter(callback: CallbackQuery) -> None:
-    letter = callback.data.rsplit(":", 1)[-1]
-    await _show_player_page(callback, letter, 0)
+    # Format: players:letter:{filter_mode}:{letter}
+    parts = callback.data.split(":")
+    if len(parts) >= 4:
+        filter_mode = parts[2]
+        letter = parts[3]
+    else:
+        filter_mode = "all"
+        letter = parts[2]
+    await _show_player_page(callback, letter, 0, filter_mode=filter_mode)
 
 
 @router.callback_query(F.data.startswith("players:page:"))
 async def players_page(callback: CallbackQuery) -> None:
-    _, _, letter, page_text = callback.data.split(":")
-    await _show_player_page(callback, letter, int(page_text))
+    # Format: players:page:{filter_mode}:{letter}:{page}
+    parts = callback.data.split(":")
+    filter_mode = parts[2]
+    letter = parts[3]
+    page_text = parts[4]
+    await _show_player_page(callback, letter, int(page_text), filter_mode=filter_mode)
 
 
-async def _show_player_page(callback: CallbackQuery, letter: str, page: int) -> None:
+async def _show_player_page(callback: CallbackQuery, letter: str, page: int, *, filter_mode: str = "all") -> None:
     if not callback.message:
         return
     page_size = 10
     async with AsyncSessionLocal() as session:
-        filter_by_letter = Player.name.ilike(f"{letter}%")
-        total_players = await session.scalar(
-            select(func.count()).select_from(Player).where(filter_by_letter)
-        ) or 0
+        # Build base query
+        query = select(Player)
+        count_query = select(func.count()).select_from(Player)
+        conditions = []
+
+        if letter and letter != "_":
+            conditions.append(Player.name.ilike(f"{letter}%"))
+
+        if filter_mode == "sold":
+            sold_sub = select(AuctionResult.player_id).where(
+                AuctionResult.result_status == AuctionResultStatus.SOLD.value
+            ).distinct().correlate(Player)
+            conditions.append(Player.id.in_(sold_sub))
+        elif filter_mode == "unsold":
+            unsold_sub = select(AuctionResult.player_id).where(
+                AuctionResult.result_status == AuctionResultStatus.UNSOLD.value
+            ).distinct().correlate(Player)
+            conditions.append(Player.id.in_(unsold_sub))
+        elif filter_mode == "not_participated":
+            # Players with no auction results at all
+            any_sub = select(AuctionResult.player_id).where(
+                AuctionResult.player_id.isnot(None)
+            ).correlate(Player)
+            conditions.append(Player.id.not_in(any_sub))
+
+        for cond in conditions:
+            query = query.where(cond)
+            count_query = count_query.where(cond)
+
+        total_players = await session.scalar(count_query) or 0
         players = list(
             (
                 await session.execute(
-                    select(Player)
-                    .where(filter_by_letter)
-                    .order_by(Player.name)
+                    query.order_by(Player.name)
                     .offset(page * page_size)
                     .limit(page_size)
                 )
             ).scalars()
         )
-    text = (
-        f"No players found starting with {letter}."
-        if not players
-        else f"Players -- {letter} (Page {page + 1})\n\n"
-        + "\n".join(
-            f"* {p.name} {'(Overseas)' if p.is_overseas else ''}\n  {p.role} | {p.country} | Set {p.set_number} | Rs.{Decimal(str(p.base_price_cr)):.2f} Cr"
-            for p in players
-        )
-    )
+
+    label = filter_mode.replace("_", " ").title() if filter_mode != "all" else "All"
+    if not players:
+        text = f"No {label.lower()} players found starting with {letter}."
+    else:
+        text = f"👥 {label} Players — {letter} (Page {page + 1}/{(total_players + page_size - 1) // page_size})\n\n"
+        for p in players:
+            status = ""
+            if filter_mode == "sold":
+                status = " ✅ SOLD"
+            elif filter_mode == "unsold":
+                status = " ❌ UNSOLD"
+            overseas = " ✈️" if p.is_overseas else ""
+            text += f"\n* {p.name}{overseas}{status}\n  {p.role} | {p.country} | Set {p.set_number} | Rs.{Decimal(str(p.base_price_cr)):.2f} Cr\n  ID: {p.player_id}"
+
     await callback.message.edit_text(
         text,
-        reply_markup=player_list_keyboard(letter, page, total_players, page_size=page_size),
+        reply_markup=filtered_player_list_keyboard(
+            filter_mode, letter, page, total_players,
+            page_size=page_size,
+        ),
     )
     await callback.answer()
 
@@ -162,13 +232,14 @@ async def tournament_home(callback: CallbackQuery) -> None:
     if not tournament:
         await callback.answer("❌ No tournament configured.", show_alert=True)
         return
+    inc = f"Rs.{run.minimum_bid_increment_cr:.2f} Cr" if run and run.minimum_bid_increment_cr else "N/A"
     await callback.message.answer(
-        f"{tournament.name}\n\n"
-        f"Team purse: Rs.{tournament.purse_cr:.2f} Cr\n"
-        f"Players/team: {tournament.max_players_per_team}\n"
-        f"Overseas limit: {tournament.max_overseas_players}\n"
-        f"Minimum increment: Rs.{tournament.minimum_bid_increment_cr:.2f} Cr\n"
-        f"Auction: {run.status.title() if run else 'Not started'}"
+        f"🏆 {tournament.name}\n\n"
+        f"💰 Team purse: Rs.{tournament.purse_cr:.2f} Cr\n"
+        f"👥 Players/team: {tournament.max_players_per_team}\n"
+        f"✈️ Overseas limit: {tournament.max_overseas_players}\n"
+        f"📊 Minimum increment: {inc}\n"
+        f"🔴 Auction: {run.status.title() if run else 'Not started'}"
     )
     await callback.answer()
 
@@ -214,16 +285,18 @@ async def my_team_home(callback: CallbackQuery) -> None:
     )
 
     text = (
-        f"{team.name} ({team.short_code})\n"
-        f"Owner: @{team.owner_username}\n\n"
+        f"🏏 {team.name} ({team.short_code})\n"
+        f"👤 Owner: @{team.owner_username}\n\n"
     )
+    if team.co_owner_username:
+        text += f"👤 Co-owner: @{team.co_owner_username}\n\n"
     if tournament:
         text += (
-            f"Remaining purse: Rs.{Decimal(str(tournament.purse_cr)) - spent:.2f} Cr\n"
-            f"Players: {len(results)}/{tournament.max_players_per_team}\n"
-            f"Overseas: {overseas}/{tournament.max_overseas_players}\n\n"
+            f"💰 Remaining purse: Rs.{Decimal(str(tournament.purse_cr)) - spent:.2f} Cr\n"
+            f"👥 Players: {len(results)}/{tournament.max_players_per_team}\n"
+            f"✈️ Overseas: {overseas}/{tournament.max_overseas_players}\n\n"
         )
-    text += "Purchased players:\n" + roster
+    text += "📋 Purchased players:\n" + roster
 
     if team.logo_file_id:
         try:
@@ -233,6 +306,239 @@ async def my_team_home(callback: CallbackQuery) -> None:
     else:
         await callback.message.answer(text)
     await callback.answer()
+
+
+async def _show_my_team(message: Message) -> None:
+    """Shared logic for /my_team command and callback."""
+    if message.chat.type not in {"group", "supergroup"}:
+        await message.answer("This command can only be used inside the tournament group.")
+        return
+    async with AsyncSessionLocal() as session:
+        tournament = await TournamentService(session).get_by_telegram_chat_id(message.chat.id)
+        team = await get_team_by_owner(session, tournament.id, message.from_user.id) if tournament else None
+    if not team:
+        await message.answer("❌ You do not own a team.")
+        return
+    async with AsyncSessionLocal() as session:
+        tournament = await TournamentService(session).get_by_telegram_chat_id(message.chat.id)
+        results = list(
+            (
+                await session.execute(
+                    select(AuctionResult, Player)
+                    .join(Player, Player.id == AuctionResult.player_id)
+                    .where(
+                        AuctionResult.winning_team_id == team.id,
+                        AuctionResult.result_status == AuctionResultStatus.SOLD.value,
+                    )
+                    .order_by(AuctionResult.final_bid_cr.desc())
+                )
+            ).all()
+        )
+    spent = sum((Decimal(str(r.final_bid_cr)) for r, _ in results), Decimal("0"))
+    overseas = sum(1 for _, p in results if p.is_overseas)
+    roster = (
+        "\n".join(
+            f"• {p.name} {'✈️' if p.is_overseas else ''} — Rs.{r.final_bid_cr:.2f} Cr"
+            for r, p in results
+        )
+        or "No players purchased yet."
+    )
+    text = (
+        f"🏏 {team.name} ({team.short_code})\n"
+        f"👤 Owner: @{team.owner_username}\n\n"
+    )
+    if team.co_owner_username:
+        text += f"👤 Co-owner: @{team.co_owner_username}\n\n"
+    if tournament:
+        text += (
+            f"💰 Remaining purse: Rs.{Decimal(str(tournament.purse_cr)) - spent:.2f} Cr\n"
+            f"👥 Players: {len(results)}/{tournament.max_players_per_team}\n"
+            f"✈️ Overseas: {overseas}/{tournament.max_overseas_players}\n\n"
+        )
+    text += "📋 Purchased players:\n" + roster
+    if team.logo_file_id:
+        try:
+            await message.answer_photo(photo=team.logo_file_id, caption=text)
+        except Exception:
+            await message.answer(text)
+    else:
+        await message.answer(text)
+
+
+async def _show_purse(message: Message) -> None:
+    """Shared logic for /purse command."""
+    if message.chat.type not in {"group", "supergroup"}:
+        await message.answer("This command can only be used inside the tournament group.")
+        return
+    async with AsyncSessionLocal() as session:
+        tournament = await TournamentService(session).get_by_telegram_chat_id(message.chat.id)
+        team = await get_team_by_owner(session, tournament.id, message.from_user.id) if tournament else None
+    if not team:
+        await message.answer("❌ You do not own a team.")
+        return
+    async with AsyncSessionLocal() as session:
+        spent_result = await session.execute(
+            select(func.coalesce(func.sum(AuctionResult.final_bid_cr), 0)).where(
+                AuctionResult.tournament_id == team.tournament_id,
+                AuctionResult.winning_team_id == team.id,
+                AuctionResult.result_status == AuctionResultStatus.SOLD.value,
+            )
+        )
+        spent = Decimal(str(spent_result.scalar() or 0))
+        # Count players and overseas
+        player_count = await session.scalar(
+            select(func.count()).select_from(AuctionResult).where(
+                AuctionResult.winning_team_id == team.id,
+                AuctionResult.result_status == AuctionResultStatus.SOLD.value,
+            )
+        ) or 0
+        overseas_count = await session.scalar(
+            select(func.count()).select_from(AuctionResult)
+            .join(Player, Player.id == AuctionResult.player_id)
+            .where(
+                AuctionResult.winning_team_id == team.id,
+                AuctionResult.result_status == AuctionResultStatus.SOLD.value,
+                Player.is_overseas == True,
+            )
+        ) or 0
+    remaining = Decimal(str(tournament.purse_cr)) - spent
+    await message.answer(
+        f"💰 {team.name} Purse\n\n"
+        f"Total: Rs.{tournament.purse_cr:.2f} Cr\n"
+        f"Spent: Rs.{spent:.2f} Cr\n"
+        f"Remaining: Rs.{remaining:.2f} Cr\n\n"
+        f"👥 Players: {player_count}/{tournament.max_players_per_team}\n"
+        f"✈️ Overseas: {overseas_count}/{tournament.max_overseas_players}"
+    )
+
+
+@router.message(Command("my_team"))
+async def my_team_command(message: Message) -> None:
+    if message.from_user:
+        await _show_my_team(message)
+
+
+@router.message(Command("purse"))
+async def purse_command(message: Message) -> None:
+    if message.from_user:
+        await _show_purse(message)
+
+
+@router.message(Command("player_photo"))
+async def player_photo_command(message: Message) -> None:
+    """Send a player's photo by player ID, e.g. /player_photo PLY0015"""
+    parts = message.text.split(maxsplit=1) if message.text else []
+    if len(parts) < 2 or not parts[1].strip():
+        await message.answer(
+            "📸 Usage: /player_photo <PLAYER_ID>\n\n"
+            "Example: /player_photo PLY0015"
+        )
+        return
+
+    pid = parts[1].strip().upper()
+    async with AsyncSessionLocal() as session:
+        player = await session.scalar(
+            select(Player).where(Player.player_id == pid)
+        )
+    if not player:
+        await message.answer(
+            f"❌ Player \"{pid}\" not found."
+        )
+        return
+
+    caption = (
+        f"📸 {player.name} ({player.player_id})\n"
+        f"{player.role} | {player.country}"
+    )
+
+    from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+    from app.bot.states.auction_states import AdminPlayerStates
+
+    kb = InlineKeyboardMarkup(inline_keyboard=[
+        [
+            InlineKeyboardButton(text="✏️ Edit Photo", callback_data=f"player_photo:edit:{pid}"),
+            InlineKeyboardButton(text="❌ Cancel", callback_data="player_photo:cancel"),
+        ],
+    ])
+
+    if player.telegram_file_id:
+        await message.answer_photo(
+            photo=player.telegram_file_id,
+            caption=caption,
+            reply_markup=kb,
+        )
+    else:
+        await message.answer(
+            f"📸 No photo available for {player.name} ({pid}).\n\n"
+            "Click Edit Photo to upload one.",
+            reply_markup=kb,
+        )
+
+
+@router.callback_query(F.data.startswith("player_photo:edit:"))
+async def player_photo_edit_start(callback: CallbackQuery, state: FSMContext) -> None:
+    if not is_admin(callback.from_user.id):
+        await callback.answer("🛡️ Admin access required.", show_alert=True)
+        return
+    pid = callback.data.split(":")[-1]
+    async with AsyncSessionLocal() as session:
+        player = await session.scalar(
+            select(Player).where(Player.player_id == pid)
+        )
+    if not player:
+        await callback.answer("❌ Player not found.", show_alert=True)
+        return
+    await state.update_data(player_id=pid, player_name=player.name)
+    from app.bot.states.auction_states import AdminPlayerStates
+    await state.set_state(AdminPlayerStates.editing_photo)
+    await callback.message.answer(
+        f"📸 Send a new photo for {player.name} ({pid}).\n\n"
+        "Send /cancel to abort."
+    )
+    await callback.answer()
+
+
+@router.callback_query(F.data == "player_photo:cancel")
+async def player_photo_cancel(callback: CallbackQuery) -> None:
+    await callback.answer("Cancelled.")
+    await callback.message.edit_reply_markup(reply_markup=None)
+
+
+@router.message(AdminPlayerStates.editing_photo)
+async def player_photo_edit_receive(message: Message, state: FSMContext) -> None:
+    if message.text and message.text.startswith("/cancel"):
+        await state.clear()
+        await message.answer("❌ Cancelled.")
+        return
+    if not message.photo:
+        await message.answer(
+            "❌ Please send an image/photo.\n\n"
+            "Send /cancel to abort."
+        )
+        return
+    data = await state.get_data()
+    pid = data.get("player_id")
+    if not pid:
+        await state.clear()
+        await message.answer("❌ Session expired. Start again with /player_photo.")
+        return
+    # Get the largest photo size
+    photo = message.photo[-1]
+    file_id = photo.file_id
+    async with AsyncSessionLocal() as session:
+        player = await session.scalar(
+            select(Player).where(Player.player_id == pid)
+        )
+        if not player:
+            await state.clear()
+            await message.answer("❌ Player not found.")
+            return
+        player.telegram_file_id = file_id
+        await session.commit()
+    await state.clear()
+    await message.answer(
+        f"✅ Photo updated for {player.name} ({pid})."
+    )
 
 
 # ── admin panel ───────────────────────────────────────────────────
@@ -302,29 +608,56 @@ async def admin_players_view(callback: CallbackQuery) -> None:
         return
     await _show_admin_player_page(callback, 0)
 
-async def _show_admin_player_page(callback: CallbackQuery, page: int) -> None:
+@router.callback_query(F.data.startswith("admin:players:letter:"))
+async def admin_players_letter(callback: CallbackQuery) -> None:
+    if not is_admin(callback.from_user.id):
+        await callback.answer("🛡️ Admin access required.", show_alert=True)
+        return
+    letter = callback.data.split(":")[-1]
+    await _show_admin_player_page(callback, 0, letter=letter)
+
+async def _show_admin_player_page(callback: CallbackQuery, page: int, letter: str | None = None) -> None:
     if not callback.message:
         return
     page_size = 10
     async with AsyncSessionLocal() as session:
-        total = await session.scalar(select(func.count()).select_from(Player)) or 0
+        if letter:
+            # Filter by player name's first letter (upper)
+            upper_letter = letter.upper()
+            base_q = select(Player).where(Player.name.ilike(f"{upper_letter}%"))
+            count_q = select(func.count()).select_from(Player).where(Player.name.ilike(f"{upper_letter}%"))
+        else:
+            base_q = select(Player)
+            count_q = select(func.count()).select_from(Player)
+        total = await session.scalar(count_q) or 0
         players = list((await session.execute(
-            select(Player).order_by(Player.player_id).offset(page * page_size).limit(page_size)
+            base_q.order_by(Player.player_id).offset(page * page_size).limit(page_size)
         )).scalars())
     if not players:
-        await callback.message.edit_text("No players found.")
+        label = f" starting with '{letter}'" if letter else ""
+        await callback.message.edit_text(f"No players found{label}.")
         await callback.answer()
         return
-    text = f"Players (Page {page + 1}/{(total + page_size - 1) // page_size})\n\n"
+    total_pages = max(1, (total + page_size - 1) // page_size)
+    label = f" | Filter: {letter}*" if letter else ""
+    text = f"👥 Players (Page {page + 1}/{total_pages}){label}\n\n"
     text += "\n".join(f"{p.player_id} | {p.name}" for p in players)
     from app.bot.keyboards.home import admin_player_list_keyboard
-    await callback.message.edit_text(text, reply_markup=admin_player_list_keyboard(page, total, page_size))
+    await callback.message.edit_text(text, reply_markup=admin_player_list_keyboard(page, total, page_size, letter=letter))
     await callback.answer()
 
 @router.callback_query(F.data.startswith("admin:players:page:"))
 async def admin_players_page(callback: CallbackQuery) -> None:
-    page = int(callback.data.split(":")[-1])
-    await _show_admin_player_page(callback, page)
+    parts = callback.data.split(":")
+    # Format: admin:players:page:{page} or admin:players:page:{letter}:{page}
+    if len(parts) == 5:
+        # Letter-filtered pagination
+        letter = parts[3]
+        page = int(parts[4])
+        await _show_admin_player_page(callback, page, letter=letter)
+    else:
+        page = int(parts[-1])
+        await _show_admin_player_page(callback, page)
 
 # -- admin player add --
 
@@ -435,12 +768,58 @@ async def add_player_price(message: Message, state: FSMContext) -> None:
         )
         session.add(player)
         await session.commit()
+    await state.update_data(base_price_cr=str(bp))
+    await state.set_state(AdminPlayerStates.waiting_for_photo)
+    await message.answer(
+        f"✅ Player saved: {data['name']} ({data['player_id']})\n\n"
+        "📸 Now send a photo for this player.\n"
+        "Send /skip to skip."
+    )
+
+
+@router.message(AdminPlayerStates.waiting_for_photo)
+async def add_player_photo(message: Message, state: FSMContext) -> None:
+    data = await state.get_data()
+    pid = data.get("player_id")
+    if not pid:
+        await state.clear()
+        await message.answer("❌ Session expired. Start again.")
+        return
+    if message.text and message.text.strip().lower() in ("/skip", "skip"):
+        await state.clear()
+        await message.answer(
+            f"✅ Player added!\n\n"
+            f"ID: {pid}\n"
+            f"Name: {data.get('name', '?')}\n"
+            f"Country: {data.get('country', '?')}\n"
+            f"Role: {data.get('role', '?')}\n"
+            f"Base price: Rs.{data.get('base_price_cr', '?')} Cr\n\n"
+            "No photo set. Use /player_photo to add one later."
+        )
+        return
+    if not message.photo:
+        await message.answer(
+            "❌ Please send an image/photo.\n"
+            "Send /skip to skip."
+        )
+        return
+    photo = message.photo[-1]
+    async with AsyncSessionLocal() as session:
+        player = await session.scalar(
+            select(Player).where(Player.player_id == pid)
+        )
+        if player:
+            player.telegram_file_id = photo.file_id
+            await session.commit()
     await state.clear()
     await message.answer(
-        f"Player added!\n\nID: {data['player_id']}\n"
-        f"Name: {data['name']}\nCountry: {data['country']}\n"
-        f"Role: {data['role']}\nOverseas: {data['is_overseas']}\n"
-        f"Set: {data['set_number']}\nBase Price: Rs.{bp:.2f} Cr"
+        f"✅ Player added!\n\n"
+        f"ID: {pid}\n"
+        f"Name: {data.get('name', '?')}\n"
+        f"Country: {data.get('country', '?')}\n"
+        f"Role: {data.get('role', '?')}\n"
+        f"Base price: Rs.{data.get('base_price_cr', '?')} Cr\n"
+        f"📸 Photo: ✅ Uploaded"
     )
 
 # -- admin player edit --
@@ -699,8 +1078,8 @@ async def admin_auction_status_button(callback: CallbackQuery) -> None:
 
 
 async def send_help(message: Message, user: User) -> None:
-    guide = "Bot Commands\n\n"
-    guide += "Everyone:\n"
+    guide = "📖 Bot Commands\n\n"
+    guide += "👥 Everyone:\n"
     guide += "  /start - Main menu\n"
     guide += "  /help - This message\n"
     guide += "  /help_all - Full admin guide (DM only)\n"
@@ -717,7 +1096,7 @@ async def send_help(message: Message, user: User) -> None:
     guide += "  /add_coowner <team> - Add co-owner to team\n"
     guide += "  /remove_coowner <team> - Remove co-owner\n"
     guide += "  /player_photo <ID> - View a player photo\n"
-    guide += "\nAdmin:\n"
+    guide += "\n🛡️ Admin:\n"
     guide += "  /create_tournament - Create tournament\n"
     guide += "  /complete_tournament - Complete tournament\n"
     guide += "  /add_team - Add a new team\n"

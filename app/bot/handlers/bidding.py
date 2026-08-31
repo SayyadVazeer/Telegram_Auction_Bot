@@ -13,6 +13,7 @@ from app.services.auction_service import (
 )
 from app.services.tournament_service import TournamentService
 from app.services.auction_runtime import AuctionRuntime
+from app.database.models.auction import AuctionRun
 
 
 router = Router()
@@ -26,27 +27,41 @@ async def place_bid_command(message: Message) -> None:
 
     parts = message.text.split(maxsplit=1) if message.text else []
 
-    if len(parts) != 2:
-        await message.answer(
-            "Please enter a bid amount.\n\n"
-            "Examples:\n"
-            "/bid 4.7\n"
-            "/b 4.7"
-        )
-        return
+    # ── Auto-bid: no amount given → bid current + minimum increment ──
+    auto_bid = len(parts) < 2 or not parts[1].strip()
 
-    bid_text = parts[1].strip()
-
-    try:
-        bid_cr = Decimal(bid_text)
-    except InvalidOperation:
-        await message.answer(
-            "Invalid bid amount.\n\n"
-            "Use an amount in Cr, for example:\n"
-            "/bid 4\n"
-            "/bid 4.7"
-        )
-        return
+    if auto_bid:
+        # Calculate auto-bid amount
+        async with AsyncSessionLocal() as session:
+            service = AuctionService(session)
+            tournament_service = TournamentService(session)
+            tournament = await tournament_service.get_by_telegram_chat_id(message.chat.id)
+            if not tournament:
+                await message.answer("No tournament configured.")
+                return
+            auction_player = await service.get_active_auction_player(tournament.id)
+            if not auction_player:
+                await message.answer("No active player being auctioned.")
+                return
+            # Get minimum increment
+            auction_run = await session.get(AuctionRun, auction_player.auction_run_id)
+            min_inc = Decimal(str(auction_run.minimum_bid_increment_cr)) if auction_run else Decimal("0.25")
+            # Get current highest bid (base_price is on Player, not AuctionPlayer)
+            base = Decimal(str(auction_player.player.base_price_cr)) if auction_player.player else Decimal("0.25")
+            current = Decimal(str(auction_player.current_bid_cr)) if auction_player.current_bid_cr else base
+            bid_cr = current + min_inc
+    else:
+        bid_text = parts[1].strip()
+        try:
+            bid_cr = Decimal(bid_text)
+        except InvalidOperation:
+            await message.answer(
+                "Invalid bid amount.\n\n"
+                "Use an amount in Cr, for example:\n"
+                "/bid 4\n"
+                "/bid 4.7"
+            )
+            return
 
     if bid_cr <= Decimal("0"):
         await message.answer(
@@ -159,7 +174,6 @@ async def place_bid_command(message: Message) -> None:
             await message.answer(f"❌ Insufficient purse! {team.name} has Rs.{remaining:.2f} Cr remaining, bid is Rs.{bid_cr:.2f} Cr.")
             return
 
-        from app.database.models.auction import AuctionRun
         auction_run = await session.get(AuctionRun, auction_player.auction_run_id)
         run_min_inc = Decimal(str(auction_run.minimum_bid_increment_cr)) if auction_run else Decimal("0.25")
 
@@ -223,7 +237,7 @@ async def place_bid_command(message: Message) -> None:
             f"🔨 BID\n\n"
             f"💰 Current Highest Bid: Rs.{bid_cr:.2f} Cr\n"
             f"🏏 Team Name: {team.name} ({team.short_code})\n"
-            f"🧑 Bid by: {owner_username}\n\n"
+            f"🧑 Team Owner: {owner_username}\n\n"
             "Do I hear anyone else?"
         )
         # Rotate through bid1, bid2, bid3

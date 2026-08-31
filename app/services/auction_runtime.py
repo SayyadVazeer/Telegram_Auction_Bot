@@ -26,6 +26,9 @@ class ActiveAuctionState:
     paused: bool = False
     stopped: bool = False
     waiting_for_next: bool = False
+    skip_next: bool = False
+    # Event to skip inter-player delay
+    _skip_event: asyncio.Event | None = None
 
 
 active_auctions: dict[int, ActiveAuctionState] = {}

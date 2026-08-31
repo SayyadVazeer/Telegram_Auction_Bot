@@ -118,15 +118,45 @@ def admin_player_letter_keyboard(letter, page, total, page_size):
     return InlineKeyboardMarkup(inline_keyboard=rows)
 
 
-def admin_player_list_keyboard(page, total, page_size):
+def admin_player_list_keyboard(page, total, page_size, letter=None):
+    """Player list with alphabet letters + prev/next + back."""
+    letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     rows = []
+
+    # Alphabet rows (6 per row)
+    for i in range(0, len(letters), 6):
+        chunk = letters[i:i + 6]
+        row = []
+        for lt in chunk:
+            prefix = f"admin:players:letter:{lt}" if not letter else f"admin:players:page:{lt}"
+            if letter:
+                # When filtered by letter, callback carries letter
+                row.append(InlineKeyboardButton(
+                    text=f"{lt}" if lt != letter else f"[{lt}]",
+                    callback_data=f"admin:players:page:{lt}:0",
+                ))
+            else:
+                row.append(InlineKeyboardButton(
+                    text=lt,
+                    callback_data=f"admin:players:letter:{lt}",
+                ))
+        rows.append(row)
+
+    # Prev / Next
     nav = []
     if page > 0:
-        nav.append(InlineKeyboardButton(text="⬅️ Prev", callback_data=f"admin:players:page:{page-1}"))
+        if letter:
+            nav.append(InlineKeyboardButton(text="⬅️ Prev", callback_data=f"admin:players:page:{letter}:{page-1}"))
+        else:
+            nav.append(InlineKeyboardButton(text="⬅️ Prev", callback_data=f"admin:players:page:{page-1}"))
     if (page + 1) * page_size < total:
-        nav.append(InlineKeyboardButton(text="➡️ Next", callback_data=f"admin:players:page:{page+1}"))
+        if letter:
+            nav.append(InlineKeyboardButton(text="➡️ Next", callback_data=f"admin:players:page:{letter}:{page+1}"))
+        else:
+            nav.append(InlineKeyboardButton(text="➡️ Next", callback_data=f"admin:players:page:{page+1}"))
     if nav:
         rows.append(nav)
+
     rows.append([InlineKeyboardButton(text="⬅️ Back", callback_data="admin:players")])
     return InlineKeyboardMarkup(inline_keyboard=rows)
 

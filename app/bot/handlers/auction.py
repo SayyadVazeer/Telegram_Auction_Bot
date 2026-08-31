@@ -83,7 +83,7 @@ async def _save_media_to_db(key: str, file_id: str, unique_id: str | None, local
         _media_file_ids[key] = file_id
 
 # Inter-player delay
-INTER_PLAYER_DELAY = 15  # seconds between players
+INTER_PLAYER_DELAY = 12  # seconds between players
 
 # ── helpers ────────────────────────────────────────────────────────
 
@@ -141,11 +141,11 @@ def _live_text(player, team, bid_cr, bid_timer, bidder_username=None):
     ]
     if bid_cr and team:
         lines.extend([
-            f"Highest bid: Rs.{bid_cr:.2f} Cr",
-            f"By: {team.name} ({team.short_code})",
+            f"💰 Highest Bid: Rs.{bid_cr:.2f} Cr",
+            f"🏏 Team: {team.name} ({team.short_code})",
         ])
         if bidder_username:
-            lines.append(f"Bid by: @{bidder_username}")
+            lines.append(f"👤 Team Owner: @{bidder_username}")
     else:
         lines.append("No bids received")
     lines.extend(["", f"Place your bid with /b <amount> in {bid_timer} seconds."])
@@ -231,9 +231,13 @@ async def _send_active_player(bot, chat_id: int, auction_run_id: int) -> None:
             await service.complete_auction_run(run)
             await session.commit()
             AuctionRuntime.remove(auction_run_id)
+            emoji = "🏁"
             await bot.send_message(
                 chat_id,
-                f"Set {run.set_number} is complete. No eligible players remain.",
+                f"{emoji} Auction Complete\n\n"
+                f"Set {run.set_number} has ended.\n"
+                f"No eligible players remain.\n\n"
+                f"Use /status to view summary.",
             )
             return
         await service.activate_player(player_row)
@@ -343,7 +347,15 @@ async def _finalize_player(bot, chat_id: int, auction_run_id: int) -> None:
                     overseas_count = int(ovr.scalar() or 0)
                     remaining_overseas = f"{tournament.max_overseas_players - overseas_count}/{tournament.max_overseas_players}"
                 owner_display = f"@{team.owner_username}" if team.owner_username else "Owner"
-                result_text = f"✅ SOLD -- {player.name} to {team.name} ({team.short_code})\n👤 Owner: {owner_display}\n💰 Amount: Rs.{row.current_bid_cr:.2f} Cr\n💵 Remaining purse: {remaining_purse}\n👥 Squad: {remaining_players} | ✈️ Overseas: {remaining_overseas}"
+                result_text = (
+                    f"✅ SOLD — {player.name}\n"
+                    f"🏏 {team.name} ({team.short_code})\n"
+                    f"💰 Amount: Rs.{row.current_bid_cr:.2f} Cr\n"
+                    f"👤 Team Owner: {owner_display}\n\n"
+                    f"💵 Remaining Purse: {remaining_purse}\n"
+                    f"👥 Squad: {remaining_players}\n"
+                    f"✈️ Overseas: {remaining_overseas}"
+                )
             await session.commit()
 
         # Send sold/unsold card
@@ -367,13 +379,35 @@ async def _finalize_player(bot, chat_id: int, auction_run_id: int) -> None:
 
         state.current_auction_player_id = None
         state.last_call_task = None
-        
-        # Wait 15 seconds between players (with /next_player skip support)
-        state.waiting_for_next = True
-        await asyncio.sleep(INTER_PLAYER_DELAY)
-        state.waiting_for_next = False
 
-        # Check state again before sending next player
+        # Check if there are remaining pending players (quick query, no side effects)
+        has_more = False
+        try:
+            async with AsyncSessionLocal() as check_sess:
+                pending_count = await check_sess.scalar(
+                    select(func.count(AuctionPlayer.id)).where(
+                        AuctionPlayer.auction_run_id == auction_run_id,
+                        AuctionPlayer.status == AuctionPlayerStatus.PENDING.value,
+                    )
+                )
+                has_more = (pending_count or 0) > 0
+        except Exception:
+            pass
+
+        if has_more:
+            # Wait 15 seconds between players (with /next_player skip support)
+            state.waiting_for_next = True
+            state.skip_next = False
+            skip_event = asyncio.Event()
+            state._skip_event = skip_event
+            try:
+                await asyncio.wait_for(skip_event.wait(), timeout=INTER_PLAYER_DELAY)
+            except asyncio.TimeoutError:
+                pass
+            state.waiting_for_next = False
+            state._skip_event = None
+
+        # Send next player (or set-complete message)
         if AuctionRuntime.get(auction_run_id) is state and not state.paused and not state.stopped:
             await _send_active_player(bot, chat_id, auction_run_id)
 
@@ -911,9 +945,11 @@ async def next_player_command(message: Message) -> None:
         await message.answer("No inter-player delay in progress. Wait for the current player.")
         return
     
-    # Skip the delay by setting waiting_for_next = False
+    # Signal the skip event to wake up _finalize_player immediately
+    if state._skip_event:
+        state._skip_event.set()
     state.waiting_for_next = False
-    await message.answer("Skipping to next player...")
+    await message.answer("⏭️ Skipping to next player...")
 
 
 @router.message(Command("status"), AdminFilter())

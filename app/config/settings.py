@@ -5,6 +5,7 @@ class Settings(BaseSettings):
     database_url: str
     bot_token: str = ""
     admin_ids: str = ""
+    elitesport_api_key: str = ""
 
     model_config = SettingsConfigDict(
         env_file=".env",

@@ -158,6 +158,193 @@ async def _ensure_media_files_table():
     except Exception as e:
         logging.warning("Could not create media_files table: %s", e)
 
+async def _ensure_match_tables():
+    """Create match simulation tables if they don't exist."""
+    from sqlalchemy import text
+    try:
+        async with AsyncSessionLocal() as session:
+            # matches
+            await session.execute(text("""
+                CREATE TABLE IF NOT EXISTS matches (
+                    id SERIAL PRIMARY KEY,
+                    tournament_id INT REFERENCES tournaments(id) ON DELETE CASCADE,
+                    match_number INT DEFAULT 1,
+                    team1_id INT REFERENCES teams(id) ON DELETE CASCADE,
+                    team2_id INT REFERENCES teams(id) ON DELETE CASCADE,
+                    venue_code VARCHAR(10) NOT NULL,
+                    venue_name VARCHAR(150) NOT NULL,
+                    toss_winner_id INT REFERENCES teams(id),
+                    toss_decision VARCHAR(10),
+                    result_type VARCHAR(30),
+                    result_detail VARCHAR(200),
+                    winner_team_id INT REFERENCES teams(id),
+                    potm_player_id INT REFERENCES players(id),
+                    potm_reason VARCHAR(200),
+                    status VARCHAR(20) DEFAULT 'PENDING',
+                    team1_setup TEXT,
+                    team2_setup TEXT,
+                    started_at TIMESTAMP,
+                    completed_at TIMESTAMP
+                )
+            """))
+            # match_innings
+            await session.execute(text("""
+                CREATE TABLE IF NOT EXISTS match_innings (
+                    id SERIAL PRIMARY KEY,
+                    match_id INT REFERENCES matches(id) ON DELETE CASCADE,
+                    innings_number INT NOT NULL,
+                    batting_team_id INT REFERENCES teams(id),
+                    bowling_team_id INT REFERENCES teams(id),
+                    total_runs INT DEFAULT 0,
+                    total_wickets INT DEFAULT 0,
+                    total_balls INT DEFAULT 0,
+                    extras_wides INT DEFAULT 0,
+                    extras_noballs INT DEFAULT 0,
+                    extras_byes INT DEFAULT 0,
+                    extras_legbyes INT DEFAULT 0,
+                    extras_total INT DEFAULT 0,
+                    run_rate NUMERIC(5,2) DEFAULT 0
+                )
+            """))
+            # match_deliveries
+            await session.execute(text("""
+                CREATE TABLE IF NOT EXISTS match_deliveries (
+                    id SERIAL PRIMARY KEY,
+                    match_id INT REFERENCES matches(id) ON DELETE CASCADE,
+                    innings_number INT NOT NULL,
+                    ball_number INT NOT NULL,
+                    over_number INT NOT NULL,
+                    ball_in_over INT NOT NULL,
+                    striker_id INT REFERENCES players(id),
+                    non_striker_id INT REFERENCES players(id),
+                    bowler_id INT REFERENCES players(id),
+                    outcome VARCHAR(20) NOT NULL,
+                    runs_scored INT DEFAULT 0,
+                    extras INT DEFAULT 0,
+                    total_runs INT DEFAULT 0,
+                    is_wicket BOOLEAN DEFAULT FALSE,
+                    dismissal_type VARCHAR(30),
+                    dismissal_detail VARCHAR(200),
+                    dismissed_player_id INT REFERENCES players(id),
+                    fielder_id INT REFERENCES players(id),
+                    commentary TEXT
+                )
+            """))
+            # match_batting_scorecard
+            await session.execute(text("""
+                CREATE TABLE IF NOT EXISTS match_batting_scorecard (
+                    id SERIAL PRIMARY KEY,
+                    match_id INT REFERENCES matches(id) ON DELETE CASCADE,
+                    innings_number INT NOT NULL,
+                    player_id INT REFERENCES players(id),
+                    team_id INT REFERENCES teams(id),
+                    batting_order INT DEFAULT 0,
+                    runs INT DEFAULT 0,
+                    balls INT DEFAULT 0,
+                    fours INT DEFAULT 0,
+                    sixes INT DEFAULT 0,
+                    is_not_out BOOLEAN DEFAULT FALSE,
+                    dismissal_type VARCHAR(30),
+                    dismissed_by_id INT REFERENCES players(id),
+                    strike_rate NUMERIC(6,2) DEFAULT 0
+                )
+            """))
+            # match_bowling_scorecard
+            await session.execute(text("""
+                CREATE TABLE IF NOT EXISTS match_bowling_scorecard (
+                    id SERIAL PRIMARY KEY,
+                    match_id INT REFERENCES matches(id) ON DELETE CASCADE,
+                    innings_number INT NOT NULL,
+                    player_id INT REFERENCES players(id),
+                    team_id INT REFERENCES teams(id),
+                    balls_bowled INT DEFAULT 0,
+                    runs_conceded INT DEFAULT 0,
+                    wickets INT DEFAULT 0,
+                    wides INT DEFAULT 0,
+                    noballs INT DEFAULT 0,
+                    economy NUMERIC(5,2) DEFAULT 0
+                )
+            """))
+            # tournament_standings
+            await session.execute(text("""
+                CREATE TABLE IF NOT EXISTS tournament_standings (
+                    id SERIAL PRIMARY KEY,
+                    tournament_id INT REFERENCES tournaments(id) ON DELETE CASCADE,
+                    team_id INT REFERENCES teams(id) ON DELETE CASCADE,
+                    matches_played INT DEFAULT 0,
+                    wins INT DEFAULT 0,
+                    losses INT DEFAULT 0,
+                    ties INT DEFAULT 0,
+                    no_result INT DEFAULT 0,
+                    runs_for INT DEFAULT 0,
+                    balls_faced INT DEFAULT 0,
+                    runs_against INT DEFAULT 0,
+                    balls_bowled INT DEFAULT 0,
+                    points INT DEFAULT 0,
+                    nrr NUMERIC(6,3) DEFAULT 0.000,
+                    UNIQUE(tournament_id, team_id)
+                )
+            """))
+            await session.commit()
+        logging.info("Ensured match simulation tables exist")
+    except Exception as e:
+        logging.warning("Could not create match tables: %s", e)
+
+
+async def _ensure_player_stats_table():
+    """Create player_stats table for cached scraped stats."""
+    from sqlalchemy import text
+    try:
+        async with AsyncSessionLocal() as session:
+            await session.execute(text("""
+                CREATE TABLE IF NOT EXISTS player_stats (
+                    id SERIAL PRIMARY KEY,
+                    player_id VARCHAR(20) UNIQUE REFERENCES players(player_id),
+                    bat_matches INT DEFAULT 0,
+                    bat_innings INT DEFAULT 0,
+                    bat_runs INT DEFAULT 0,
+                    bat_highest INT DEFAULT 0,
+                    bat_average NUMERIC(5,2) DEFAULT 0,
+                    bat_strike_rate NUMERIC(5,2) DEFAULT 0,
+                    bat_100s INT DEFAULT 0,
+                    bat_50s INT DEFAULT 0,
+                    bat_4s INT DEFAULT 0,
+                    bat_6s INT DEFAULT 0,
+                    bat_powerplay_sr NUMERIC(5,2),
+                    bat_middle_sr NUMERIC(5,2),
+                    bat_death_sr NUMERIC(5,2),
+                    bat_vs_pace_avg NUMERIC(5,2),
+                    bat_vs_spin_avg NUMERIC(5,2),
+                    bowl_matches INT DEFAULT 0,
+                    bowl_innings INT DEFAULT 0,
+                    bowl_wickets INT DEFAULT 0,
+                    bowl_average NUMERIC(5,2) DEFAULT 0,
+                    bowl_economy NUMERIC(5,2) DEFAULT 0,
+                    bowl_strike_rate NUMERIC(5,2) DEFAULT 0,
+                    bowl_best VARCHAR(10),
+                    bowl_powerplay_econ NUMERIC(5,2),
+                    bowl_middle_econ NUMERIC(5,2),
+                    bowl_death_econ NUMERIC(5,2),
+                    catches INT DEFAULT 0,
+                    run_outs INT DEFAULT 0,
+                    stumpings INT DEFAULT 0,
+                    bat_rating INT DEFAULT 0,
+                    bowl_rating INT DEFAULT 0,
+                    overall_rating INT DEFAULT 0,
+                    power_rating INT DEFAULT 0,
+                    timing_rating INT DEFAULT 0,
+                    consistency_rating INT DEFAULT 0,
+                    clutch_rating INT DEFAULT 0,
+                    last_updated TIMESTAMP,
+                    source VARCHAR(50)
+                )
+            """))
+            await session.commit()
+        logging.info("Ensured player_stats table exists")
+    except Exception as e:
+        logging.warning("Could not create player_stats table: %s", e)
+
+
 async def main():
     logging.basicConfig(
         level=logging.INFO,
@@ -170,6 +357,8 @@ async def main():
     await _fix_auction_results_nullable()
     await _ensure_coowner_columns()
     await _ensure_media_files_table()
+    await _ensure_match_tables()
+    await _ensure_player_stats_table()
 
     # Recover orphaned auctions from previous runs
     await _recover_orphaned_auctions()

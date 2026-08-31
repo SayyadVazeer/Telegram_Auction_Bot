@@ -8,6 +8,7 @@ from app.bot.handlers.bidding import router as bidding_router
 from app.bot.handlers.auction import router as auction_router
 from app.bot.handlers.start import router as start_router
 from app.bot.handlers.players_admin import router as players_admin_router
+from app.bot.handlers.simulate import router as simulate_router
 
 bot = Bot(token=settings.bot_token)
 
@@ -19,6 +20,7 @@ dp.include_router(bidding_router)
 dp.include_router(auction_router)
 dp.include_router(start_router)
 dp.include_router(players_admin_router)
+dp.include_router(simulate_router)
 
 # Register commands with Telegram
 async def register_commands():
@@ -58,4 +60,10 @@ async def register_commands():
         BotCommand(command="manual_unsell", description="💸 Remove player from team"),
         BotCommand(command="trade_on", description="🔄 Enable player trading"),
         BotCommand(command="trade_off", description="🔄 Disable player trading"),
+        # ── Simulation ──
+        BotCommand(command="simulate_match", description="🏏 Simulate a match between two teams"),
+        BotCommand(command="tournament_table", description="📊 View tournament standings"),
+        BotCommand(command="match_history", description="📋 View past matches"),
+        BotCommand(command="refresh_stats", description="🔄 Refresh player stats from internet"),
+        BotCommand(command="import_stats", description="📥 Import player stats from CSV"),
     ])

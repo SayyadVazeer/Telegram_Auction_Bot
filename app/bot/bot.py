@@ -45,6 +45,7 @@ async def register_commands():
         # ── Admin ──
         BotCommand(command="create_tournament", description="🏆 Create a new tournament"),
         BotCommand(command="complete_tournament", description="❌ Complete/delete tournament"),
+        BotCommand(command="add_player", description="➕ Add a new player"),
         BotCommand(command="add_team", description="➕ Add a new team"),
         BotCommand(command="assign_owner", description="👤 Assign owner to a team"),
         BotCommand(command="edit_team", description="✏️ Edit team name or code"),
@@ -66,4 +67,5 @@ async def register_commands():
         BotCommand(command="match_history", description="📋 View past matches"),
         BotCommand(command="refresh_stats", description="🔄 Refresh player stats from internet"),
         BotCommand(command="import_stats", description="📥 Import player stats from CSV"),
+        BotCommand(command="update_tournament_stats", description="📈 Merge auction results into player stats"),
     ])

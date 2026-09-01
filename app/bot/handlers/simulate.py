@@ -604,7 +604,7 @@ async def view_scorecard(message: Message) -> None:
 
 @router.message(Command("refresh_stats"))
 async def refresh_stats(message: Message) -> None:
-    """Fetch player stats from EliteSport Cricket API."""
+    """Fetch player stats from EliteSport API — only for players missing from player_stats table."""
     if not is_admin(message.from_user.id):
         await message.answer("Only admins can refresh stats.")
         return
@@ -619,21 +619,38 @@ async def refresh_stats(message: Message) -> None:
         )
         return
 
-    await message.answer("🔄 Fetching stats from EliteSport API... (1 request/second)")
-
+    # Find players that DON'T have stats yet
     async with AsyncSessionLocal() as session:
-        players = list((await session.execute(select(Player))).scalars())
+        from sqlalchemy import text
+        result = await session.execute(text("""
+            SELECT p.player_id, p.name, p.role, p.country, p.is_overseas
+            FROM players p
+            LEFT JOIN player_stats ps ON ps.player_id = p.player_id
+            WHERE ps.player_id IS NULL
+        """))
+        missing = [dict(row) for row in result.mappings()]
 
-    player_data = [
-        {"player_id": p.player_id, "name": p.name, "role": p.role, "country": p.country, "is_overseas": p.is_overseas}
-        for p in players
-    ]
+    if not missing:
+        await message.answer("✅ All players already have stats in the database. No API calls needed.")
+        return
+
+    api_calls = len(missing)
+    await message.answer(
+        f"🔄 Found {api_calls} players without stats.\n"
+        f"Fetching from EliteSport API... (~{api_calls} seconds)\n\n"
+        "Send /cancel to abort."
+    )
 
     from app.simulation.stats_scraper import scrape_from_api
-    total, saved = await scrape_from_api(player_data, api_key)
+    total, saved = await scrape_from_api(missing, api_key)
 
     clear_profile_cache()
-    await message.answer(f"✅ Stats refresh complete! {saved}/{total} players updated from EliteSport API.")
+    await message.answer(
+        f"✅ Stats refresh complete!\n"
+        f"Fetched: {saved}/{total} players\n"
+        f"API calls used: ~{api_calls}\n"
+        f"API calls remaining: ~{500 - api_calls}"
+    )
 
 
 # ── /import_stats ────────────────────────────────────────────────
@@ -658,6 +675,116 @@ async def import_stats(message: Message) -> None:
 
     clear_profile_cache()
     await message.answer(f"✅ Import complete! {saved}/{total} players loaded into database.")
+
+
+# ── /update_tournament_stats ────────────────────────────────────
+
+@router.message(Command("update_tournament_stats"))
+async def update_tournament_stats(message: Message) -> None:
+    """Merge current tournament auction results into player_stats for future seasons.
+    
+    Adds sold player performance hints: if a player was bought at high price,
+    they get a small boost to their ratings. This helps future simulations
+    reflect that the market valued them highly.
+    """
+    if not is_admin(message.from_user.id):
+        await message.answer("Only admins can update tournament stats.")
+        return
+
+    from sqlalchemy import text as sa_text
+    updated = 0
+    boosted = 0
+
+    async with AsyncSessionLocal() as session:
+        # Get all sold players with their auction prices
+        result = await session.execute(sa_text("""
+            SELECT 
+                p.player_id,
+                p.name,
+                ar.final_bid_cr,
+                p.base_price_cr,
+                t.name as team_name
+            FROM auction_results ar
+            JOIN players p ON p.id = ar.player_id
+            JOIN teams t ON t.id = ar.winning_team_id
+            WHERE ar.result_status = 'SOLD'
+        """))
+        sold_players = [dict(row) for row in result.mappings()]
+
+        if not sold_players:
+            await message.answer("No sold players found in auction results.")
+            return
+
+        for sp in sold_players:
+            pid = sp["player_id"]
+            final_bid = float(sp["final_bid_cr"] or 0)
+            base_price = float(sp["base_price_cr"] or 1)
+            bid_ratio = final_bid / base_price if base_price > 0 else 1.0
+
+            # Check if player already has stats
+            existing = await session.execute(
+                sa_text("SELECT player_id FROM player_stats WHERE player_id = :pid"),
+                {"pid": pid}
+            )
+            has_stats = existing.first() is not None
+
+            if has_stats:
+                # Boost existing stats based on auction price ratio
+                # If bought for 3x base price, give a small rating boost
+                boost = min(5, max(0, int((bid_ratio - 1) * 3)))  # 0-5 points
+                if boost > 0:
+                    await session.execute(sa_text("""
+                        UPDATE player_stats SET
+                            bat_average = bat_average + :boost,
+                            bat_strike_rate = bat_strike_rate + :boost,
+                            bowl_economy = bowl_economy - (:boost / 2),
+                            last_updated = NOW(),
+                            source = 'tournament_update'
+                        WHERE player_id = :pid
+                    """), {"pid": pid, "boost": boost})
+                    boosted += 1
+            else:
+                # No stats yet — create entry with auction-derived ratings
+                # Use bid ratio as a skill indicator
+                avg = min(45, max(10, 15 + (bid_ratio * 8)))
+                sr = min(160, max(80, 100 + (bid_ratio * 20)))
+                await session.execute(sa_text("""
+                    INSERT INTO player_stats (
+                        player_id, bat_matches, bat_innings, bat_runs, bat_highest,
+                        bat_average, bat_strike_rate, bat_100s, bat_50s, bat_4s, bat_6s,
+                        bowl_matches, bowl_innings, bowl_wickets, bowl_average, bowl_economy,
+                        bowl_best, catches, run_outs, stumpings,
+                        last_updated, source
+                    ) VALUES (
+                        :pid, 50, 40, :runs, :hs,
+                        :avg, :sr, :fifties, :fifties, :fours, :sixes,
+                        0, 0, 0, 0, 0,
+                        '', 0, 0, 0,
+                        NOW(), 'tournament_derived'
+                    )
+                    ON CONFLICT (player_id) DO NOTHING
+                """), {
+                    "pid": pid,
+                    "runs": int(avg * 40),
+                    "hs": int(avg * 2.5),
+                    "avg": round(avg, 1),
+                    "sr": round(sr, 1),
+                    "fifties": int(avg / 25),
+                    "fours": int(avg * 1.5),
+                    "sixes": int(avg * 0.8),
+                })
+            updated += 1
+
+        await session.commit()
+
+    clear_profile_cache()
+    await message.answer(
+        f"✅ Tournament stats updated!\n\n"
+        f"Players processed: {updated}\n"
+        f"Existing stats boosted: {boosted}\n"
+        f"New stats created: {updated - boosted}\n\n"
+        "These stats will be used in future simulations."
+    )
 
 
 # ── Cancel ────────────────────────────────────────────────────────

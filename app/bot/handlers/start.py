@@ -541,6 +541,38 @@ async def player_photo_edit_receive(message: Message, state: FSMContext) -> None
     )
 
 
+@router.message(Command("add_player"))
+async def add_player_command(message: Message, state: FSMContext) -> None:
+    """Start the add-player flow via /add_player (same as admin panel button)."""
+    if not is_admin(message.from_user.id if message.from_user else None):
+        await message.answer("🛡️ Admin access required.")
+        return
+    # Auto-generate next player ID — fill gaps first
+    async with AsyncSessionLocal() as session:
+        all_ids = list((await session.execute(select(Player.player_id))).scalars())
+        existing = {int(x[3:]) for x in all_ids if x and x.startswith("PLY")}
+        if existing:
+            max_id = max(existing)
+            new_num = None
+            for candidate in range(1, max_id + 1):
+                if candidate not in existing:
+                    new_num = candidate
+                    break
+            if new_num is None:
+                new_num = max_id + 1
+        else:
+            new_num = 1
+        new_id = f"PLY{new_num:04d}"
+    await state.clear()
+    await state.update_data(player_id=new_id)
+    await state.set_state(AdminPlayerStates.waiting_for_name)
+    await message.answer(
+        f"➕ New player ID: {new_id}\n\n"
+        "Enter the player name:\n"
+        "Use /cancel to cancel."
+    )
+
+
 # ── admin panel ───────────────────────────────────────────────────
 
 @router.callback_query(F.data == "home:admin")
@@ -1095,8 +1127,9 @@ async def send_help(message: Message, user: User) -> None:
     guide += "  /reject_trade - Reject trade proposal\n"
     guide += "  /add_coowner <team> - Add co-owner to team\n"
     guide += "  /remove_coowner <team> - Remove co-owner\n"
-    guide += "  /player_photo <ID> - View a player photo\n"
+    guide += "  /player_photo <ID> - View/edit player photo\n"
     guide += "\n🛡️ Admin:\n"
+    guide += "  /add_player - Add a new player\n"
     guide += "  /create_tournament - Create tournament\n"
     guide += "  /complete_tournament - Complete tournament\n"
     guide += "  /add_team - Add a new team\n"
@@ -1114,6 +1147,11 @@ async def send_help(message: Message, user: User) -> None:
     guide += "  /manual_unsell - Remove player from team\n"
     guide += "  /trade_on - Enable trading\n"
     guide += "  /trade_off - Disable trading\n"
+    guide += "\n📊 Simulation:\n"
+    guide += "  /simulate_match - Simulate a match\n"
+    guide += "  /tournament_table - View standings\n"
+    guide += "  /match_history - Past matches\n"
+    guide += "  /update_tournament_stats - Merge auction results into stats\n"
 
     try:
         await message.bot.send_message(user.id, guide)
@@ -1176,7 +1214,7 @@ async def help_all_command(message: Message) -> None:
     g.append("  /reject_trade - Reject trade proposal")
     g.append("  /add_coowner <team> - Add co-owner to team")
     g.append("  /remove_coowner <team> - Remove co-owner")
-    g.append("  /player_photo <ID> - View a player photo")
+    g.append("  /player_photo <ID> - View/edit player photo")
     g.append("")
     g.append("Auction Commands")
     g.append("-" * 20)
@@ -1199,13 +1237,25 @@ async def help_all_command(message: Message) -> None:
     g.append("")
     g.append("Player Management")
     g.append("-" * 20)
+    g.append("  /add_player - Add a new player")
     g.append("  /manual_sell - Manually sell player to team")
     g.append("  /manual_unsell - Remove player from team")
+    g.append("  /player_photo <ID> - View/edit player photo")
     g.append("")
     g.append("Trade Control")
     g.append("-" * 20)
     g.append("  /trade_on - Enable player trading")
     g.append("  /trade_off - Disable player trading")
+    g.append("")
+    g.append("Match Simulation")
+    g.append("-" * 20)
+    g.append("  /simulate_match - Simulate a match between two teams")
+    g.append("  /tournament_table - View tournament standings")
+    g.append("  /match_history - View past matches")
+    g.append("  /view_scorecard <id> - View match scorecard")
+    g.append("  /refresh_stats - Fetch missing player stats from API")
+    g.append("  /import_stats - Import player stats from CSV")
+    g.append("  /update_tournament_stats - Merge auction results into stats")
     g.append("")
     g.append("Media Cache")
     g.append("-" * 20)

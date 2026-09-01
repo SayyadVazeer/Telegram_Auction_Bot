@@ -50,7 +50,7 @@ async def register_commands():
         BotCommand(command="assign_owner", description="👤 Assign owner to a team"),
         BotCommand(command="edit_team", description="✏️ Edit team name or code"),
         BotCommand(command="delete_team", description="🗑️ Delete a team"),
-        BotCommand(command="change_owner", description="👤 Change team owner"),
+        BotCommand(command="remove_owner", description="👤 Remove team owner"),
         BotCommand(command="start_auction", description="🔴 Start auction for a set"),
         BotCommand(command="pause_auction", description="⏸️ Pause running auction"),
         BotCommand(command="resume_auction", description="▶️ Resume paused auction"),

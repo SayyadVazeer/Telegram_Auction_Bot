@@ -53,7 +53,7 @@ def admin_teams_keyboard():
         [InlineKeyboardButton(text="👤 Assign Owner", callback_data="admin:teams:assign")],
         [InlineKeyboardButton(text="✏️ Edit Team", callback_data="admin:teams:edit")],
         [InlineKeyboardButton(text="🗑️ Delete Team", callback_data="admin:teams:delete")],
-        [InlineKeyboardButton(text="🔄 Change Owner", callback_data="admin:teams:change_owner")],
+        [InlineKeyboardButton(text="🔄 Remove Owner", callback_data="admin:teams:remove_owner")],
         [InlineKeyboardButton(text="⬅️ Back", callback_data="home:admin")],
     ]
     return InlineKeyboardMarkup(inline_keyboard=rows)

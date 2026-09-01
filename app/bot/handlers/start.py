@@ -1024,12 +1024,12 @@ async def admin_teams_delete_button(callback: CallbackQuery) -> None:
     await callback.answer()
 
 
-@router.callback_query(F.data == "admin:teams:change_owner")
-async def admin_teams_change_owner_button(callback: CallbackQuery) -> None:
+@router.callback_query(F.data == "admin:teams:remove_owner")
+async def admin_teams_remove_owner_button(callback: CallbackQuery) -> None:
     if not is_admin(callback.from_user.id):
         await callback.answer("🛡️ Admin access required.", show_alert=True)
         return
-    await callback.message.answer("🔄 Send /change_owner <team_code> <new_owner_id> to change owner.")
+    await callback.message.answer("🔄 Send /remove_owner <team_code> to remove owner.")
     await callback.answer()
 
 
@@ -1150,7 +1150,7 @@ async def send_help(message: Message, user: User) -> None:
     guide += "  /assign_owner - Assign owner to a team\n"
     guide += "  /edit_team - Edit team name or code\n"
     guide += "  /delete_team - Delete a team\n"
-    guide += "  /change_owner - Change team owner\n"
+    guide += "  /remove_owner <code> - Remove team owner\n"
     guide += "  /start_auction - Start auction for a set\n"
     guide += "  /pause_auction - Pause running auction\n"
     guide += "  /resume_auction - Resume paused auction\n"
@@ -1247,7 +1247,7 @@ async def help_all_command(message: Message) -> None:
     g.append("  /assign_owner - Assign owner to a team")
     g.append("  /edit_team - Edit team name or code")
     g.append("  /delete_team - Delete a team")
-    g.append("  /change_owner - Change team owner")
+    g.append("  /remove_owner <code> - Remove team owner")
     g.append("")
     g.append("Player Management")
     g.append("-" * 20)

@@ -1114,8 +1114,8 @@ async def accept_trade(message: Message, state: FSMContext) -> None:
 class TeamAdmin(StatesGroup):
     waiting_for_delete_code = State()
     waiting_for_delete_confirm = State()
-    waiting_for_change_team_code = State()
-    waiting_for_change_new_owner = State()
+    waiting_for_remove_owner_code = State()
+    waiting_for_remove_owner_confirm = State()
 
 
 @router.message(Command("delete_team"), AdminFilter())
@@ -1186,74 +1186,63 @@ async def delete_team_confirm(message: Message, state: FSMContext) -> None:
     await message.answer(f"✅ Deleted team {data['delete_team_name']} ({data['delete_team_code']}).")
 
 
-@router.message(Command("change_owner"), AdminFilter())
-async def change_owner_start(message: Message, state: FSMContext) -> None:
-    """Admin changes the owner of a team."""
+@router.message(Command("remove_owner"), AdminFilter())
+async def remove_owner_start(message: Message, state: FSMContext) -> None:
+    """Admin removes owner and co-owner from a team."""
     if message.chat.type not in {"group", "supergroup"}:
         await message.answer("This command can only be used inside the tournament group.")
         return
+    parts = (message.text or "").split()
+    if len(parts) != 2:
+        await message.answer("⚠️ Usage:\n/remove_owner CSK")
+        return
+    code = parts[1].strip().upper()
     async with AsyncSessionLocal() as session:
         tournament = await TournamentService(session).get_by_telegram_chat_id(message.chat.id)
         if not tournament:
             await message.answer("No tournament configured.")
             return
-        teams = list((await session.execute(
-            select(Team).where(Team.tournament_id == tournament.id)
-        )).scalars())
-        if not teams:
-            await message.answer("No teams found.")
-            return
-    await state.clear()
-    team_list = "\n".join(f"{t.short_code} | {t.name} | Owner: @{t.owner_username or 'N/A'}" for t in teams)
-    await state.set_state(TeamAdmin.waiting_for_change_team_code)
-    await message.answer(
-        f"Teams:\n\n{team_list}\n\n"
-        "Enter the team short code to change owner:"
-    )
-
-
-@router.message(TeamAdmin.waiting_for_change_team_code)
-async def change_owner_team(message: Message, state: FSMContext) -> None:
-    code = (message.text or "").strip().upper()
-    async with AsyncSessionLocal() as session:
-        tournament = await TournamentService(session).get_by_telegram_chat_id(message.chat.id)
-        team = await get_team_by_short_code(session, tournament.id, code) if tournament else None
+        team = await get_team_by_short_code(session, tournament.id, code)
     if not team:
-        await message.answer(f"No team with code {code}. Try again:")
+        await message.answer(f"❌ No team with short code {code}.")
         return
-    await state.update_data(change_team_id=team.id, change_team_name=team.name, change_team_code=team.short_code)
-    await state.set_state(TeamAdmin.waiting_for_change_new_owner)
+    await state.clear()
+    await state.update_data(remove_owner_team_id=team.id, remove_owner_team_name=team.name, remove_owner_team_code=team.short_code)
+    await state.set_state(TeamAdmin.waiting_for_remove_owner_confirm)
+    owner_display = f"@{team.owner_username}" if team.owner_username else (str(team.owner_telegram_id) if team.owner_telegram_id else "None")
+    coowner_display = f"@{team.co_owner_username}" if team.co_owner_username else (str(team.co_owner_telegram_id) if team.co_owner_telegram_id else "None")
     await message.answer(
-        f"Current owner of {team.name} ({team.short_code}): @{team.owner_username or 'N/A'}\n\n"
-        "Send the new owner's Telegram user ID or @username:"
+        f"⚠️ Remove owner from {team.name} ({team.short_code})?\n\n"
+        f"Current owner: {owner_display}\n"
+        f"Current co-owner: {coowner_display}\n\n"
+        "This will clear all owner data. You can reassign later with /assign_owner.\n\n"
+        "Type 'yes' to confirm:"
     )
 
 
-@router.message(TeamAdmin.waiting_for_change_new_owner)
-async def change_owner_new(message: Message, state: FSMContext) -> None:
-    text = (message.text or "").strip()
+@router.message(TeamAdmin.waiting_for_remove_owner_confirm)
+async def remove_owner_confirm(message: Message, state: FSMContext) -> None:
+    if (message.text or "").strip().lower() != "yes":
+        await state.clear()
+        await message.answer("Cancelled.")
+        return
     data = await state.get_data()
     async with AsyncSessionLocal() as session:
-        team = await session.get(Team, data["change_team_id"])
+        team = await session.get(Team, data["remove_owner_team_id"])
         if not team:
             await message.answer("Team not found.")
             await state.clear()
             return
-        if text.startswith("@"):
-            team.owner_username = text[1:]
-            # Try to find user by username
-            team.owner_telegram_id = None
-        else:
-            try:
-                team.owner_telegram_id = int(text)
-                team.owner_username = None
-            except ValueError:
-                await message.answer("Invalid user ID or username. Try again:")
-                return
+        team.owner_telegram_id = None
+        team.owner_username = None
+        team.co_owner_telegram_id = None
+        team.co_owner_username = None
         await session.commit()
     await state.clear()
-    new_owner = f"@{team.owner_username}" if team.owner_username else str(team.owner_telegram_id)
-    await message.answer(f"✅ Changed owner of {team.name} ({team.short_code}) to {new_owner}.")
+    await message.answer(
+        f"✅ Owner removed from {team.name} ({team.short_code}).\n\n"
+        "Use /assign_owner to assign a new owner."
+    )
 
 
 

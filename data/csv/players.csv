@@ -1,445 +1,466 @@
-name,country,role,is_overseas,set_number,base_price_cr,player_id
-Travis Head,Australia,Left-Hand Opening Batter,TRUE,1,4,PLY0001
-David Warner,Australia,Left-Hand Opening Batter,TRUE,1,4,PLY0002
-Kane Williamson,New Zealand,Right-Hand Batter,TRUE,1,3.75,PLY0003
-Jason Roy,England,Batter,FALSE,1,3.75,PLY0004
-Quinton de Kock,South Africa,Left-Hand Batter/Wicketkeeper,TRUE,1,3.5,PLY0005
-Andre Russell,West Indies,Right-Hand Batter/Right-Arm Fast All-Rounder,TRUE,1,3.5,PLY0006
-Sam Curran,England,Bowling All-Rounder (Pace),FALSE,1,3.25,PLY0007
-Shakib Al Hasan,Bangladesh,Left-Hand Batter/Left-Arm Orthodox Spin All-Rounder,TRUE,1,3.25,PLY0008
-Trent Boult,New Zealand,Left-Arm Fast Bowler,TRUE,1,3,PLY0009
-Kagiso Rabada,South Africa,Right-Arm Fast Bowler,TRUE,1,3,PLY0010
-Jake Fraser-McGurk,Australia,Right-Hand Opening Batter,TRUE,2,3,PLY0011
-Steve Smith,Australia,Right-Hand Batter,TRUE,2,3,PLY0012
-Matthew Short,Australia,Right-Hand Batter,TRUE,2,3,PLY0013
-Faf du Plessis,South Africa,Right-Hand Batter,TRUE,2,3,PLY0014
-Alex Hales,England,Batter,FALSE,2,2.75,PLY0015
-James Vince,England,Batter,FALSE,2,2.75,PLY0016
-Tristan Stubbs,South Africa,Right-Hand Batter/Wicketkeeper,TRUE,2,2.75,PLY0017
-Shai Hope,West Indies,Right-Hand Batter/Wicketkeeper,TRUE,2,2.75,PLY0018
-Devon Conway,New Zealand,Left-Hand Batter/Wicketkeeper,TRUE,2,2.75,PLY0019
-Mohammad Rizwan,Pakistan,Right-Hand Batter/Wicketkeeper,TRUE,2,2.75,PLY0020
-Tom Kohler-Cadmore,England,Wicketkeeper Batter,FALSE,2,2.75,PLY0021
-Ben Foakes,England,Wicketkeeper Batter,FALSE,2,2.5,PLY0022
-Marcus Stoinis,Australia,Right-Hand Batter/Right-Arm Medium All-Rounder,TRUE,2,2.5,PLY0023
-Cameron Green,Australia,Right-Hand Batter/Right-Arm Fast All-Rounder,TRUE,2,2.5,PLY0024
-Jason Holder,West Indies,Right-Arm Fast All-Rounder,TRUE,2,2.5,PLY0025
-Tom Curran,England,Bowling All-Rounder (Pace),FALSE,2,2.5,PLY0026
-Chris Woakes,England,Bowling All-Rounder (Pace),FALSE,2,2.5,PLY0027
-Imad Wasim,Pakistan,Left-Hand Batter/Left-Arm Orthodox Spin All-Rounder,TRUE,2,2.5,PLY0028
-Spencer Johnson,Australia,Left-Arm Fast Bowler,TRUE,2,2.5,PLY0029
-Lockie Ferguson,New Zealand,Right-Arm Fast Bowler,TRUE,2,2.25,PLY0030
-Anrich Nortje,South Africa,Right-Arm Fast Bowler,TRUE,2,2.25,PLY0031
-Shaheen Shah Afridi,Pakistan,Left-Arm Fast Bowler,TRUE,2,2.25,PLY0032
-Stuart Broad,England,Fast Bowler,FALSE,2,2.25,PLY0033
-Gus Atkinson,England,Fast Bowler,FALSE,2,2.25,PLY0034
-Adam Zampa,Australia,Right-Arm Leg-Spin Bowler,TRUE,2,2.25,PLY0035
-Tabraiz Shamsi,South Africa,Left-Arm Wrist-Spin Bowler,TRUE,2,2.25,PLY0036
-Maheesh Theekshana,Sri Lanka,Right-Arm Off-Spin Bowler,TRUE,2,2,PLY0037
-Noor Ahmad,Afghanistan,Left-Arm Wrist-Spin Bowler,TRUE,2,2,PLY0038
-Jack Leach,England,Spin Bowler,FALSE,2,2,PLY0039
-Shoaib Bashir,England,Spin Bowler,FALSE,2,2,PLY0040
-Matthew Breetzke,South Africa,Right-Hand Batter,TRUE,3,2.5,PLY0041
-Evin Lewis,West Indies,Left-Hand Opening Batter,TRUE,3,2.5,PLY0042
-Shimron Hetmyer,West Indies,Left-Hand Batter,TRUE,3,2.5,PLY0043
-Glenn Phillips,New Zealand,Right-Hand Batter,TRUE,3,2.5,PLY0044
-Will Smeed,England,Batter,FALSE,3,2.25,PLY0045
-Zak Crawley,England,Batter,FALSE,3,2.25,PLY0046
-Ryan Rickelton,South Africa,Left-Hand Batter/Wicketkeeper,TRUE,3,2.25,PLY0047
-Johnson Charles,West Indies,Right-Hand Batter/Wicketkeeper,TRUE,3,2.25,PLY0048
-Rahmanullah Gurbaz,Afghanistan,Right-Hand Batter/Wicketkeeper,TRUE,3,2.25,PLY0049
-Josh Inglis,Australia,Right-Hand Batter/Wicketkeeper,TRUE,3,2.25,PLY0050
-Jamie Smith,England,Wicketkeeper Batter,FALSE,3,2.25,PLY0051
-Ben Duckett,England,Wicketkeeper Batter,FALSE,3,2,PLY0052
-Wanindu Hasaranga,Sri Lanka,Right-Arm Leg-Spin All-Rounder,TRUE,3,2,PLY0053
-Aiden Markram,South Africa,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,TRUE,3,2,PLY0054
-Liam Dawson,England,Bowling All-Rounder (Spin),FALSE,3,2,PLY0055
-Marco Jansen,South Africa,Left-Hand Batter/Left-Arm Fast All-Rounder,TRUE,3,2,PLY0056
-Romario Shepherd,West Indies,Right-Arm Fast All-Rounder,TRUE,3,2,PLY0057
-David Willey,England,Bowling All-Rounder (Pace),FALSE,3,2,PLY0058
-Gerald Coetzee,South Africa,Right-Arm Fast Bowler,TRUE,3,2,PLY0059
-Naveen-ul-Haq,Afghanistan,Right-Arm Fast Bowler,TRUE,3,1.75,PLY0060
-Haris Rauf,Pakistan,Right-Arm Fast Bowler,TRUE,3,1.75,PLY0061
-Mustafizur Rahman,Bangladesh,Left-Arm Fast Bowler,TRUE,3,1.75,PLY0062
-Reece Topley,England,Fast Bowler,FALSE,3,1.75,PLY0063
-Matthew Potts,England,Fast Bowler,FALSE,3,1.75,PLY0064
-Keshav Maharaj,South Africa,Left-Arm Orthodox Spin Bowler,TRUE,3,1.75,PLY0065
-Gudakesh Motie,West Indies,Left-Arm Orthodox Spin Bowler,TRUE,3,1.75,PLY0066
-Waqar Salamkheil,Afghanistan,Left-Arm Wrist-Spin Bowler,TRUE,3,1.5,PLY0067
-Ish Sodhi,New Zealand,Right-Arm Leg-Spin Bowler,TRUE,3,1.5,PLY0068
-Tom Hartley,England,Spin Bowler,FALSE,3,1.5,PLY0069
-Matt Parkinson,England,Spin Bowler,FALSE,3,1.5,PLY0070
-Dewald Brevis,South Africa,Right-Hand Batter,TRUE,4,2,PLY0071
-Rilee Rossouw,South Africa,Left-Hand Batter,TRUE,4,2,PLY0072
-Rassie van der Dussen,South Africa,Right-Hand Batter,TRUE,4,2,PLY0073
-Rovman Powell,West Indies,Right-Hand Batter,TRUE,4,2,PLY0074
-Dan Lawrence,England,Batter,FALSE,4,2,PLY0075
-Max Holden,England,Batter,FALSE,4,1.75,PLY0076
-Matthew Wade,Australia,Left-Hand Batter/Wicketkeeper,TRUE,4,1.75,PLY0077
-Kusal Mendis,Sri Lanka,Right-Hand Batter/Wicketkeeper,TRUE,4,1.75,PLY0078
-Litton Das,Bangladesh,Right-Hand Batter/Wicketkeeper,TRUE,4,1.75,PLY0079
-Azam Khan,Pakistan,Right-Hand Batter/Wicketkeeper,TRUE,4,1.75,PLY0080
-Alex Davies,England,Wicketkeeper Batter,FALSE,4,1.75,PLY0081
-Joe Clarke,England,Wicketkeeper Batter,FALSE,4,1.75,PLY0082
-Mitchell Marsh,Australia,Right-Hand Batter/Right-Arm Fast All-Rounder,TRUE,4,1.75,PLY0083
-Aaron Hardie,Australia,Right-Hand Batter/Right-Arm Medium All-Rounder,TRUE,4,1.75,PLY0084
-Benny Howell,England,Bowling All-Rounder (Pace),FALSE,4,1.5,PLY0085
-Rachin Ravindra,New Zealand,Left-Hand Batter/Left-Arm Orthodox All-Rounder,TRUE,4,1.5,PLY0086
-Sikandar Raza,Zimbabwe,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,TRUE,4,1.5,PLY0087
-Rehan Ahmed,England,Bowling All-Rounder (Spin),FALSE,4,1.5,PLY0088
-Fazalhaq Farooqi,Afghanistan,Left-Arm Fast Bowler,TRUE,4,1.5,PLY0089
-Alzarri Joseph,West Indies,Right-Arm Fast Bowler,TRUE,4,1.5,PLY0090
-Nuwan Thushara,Sri Lanka,Left-Arm Fast Bowler,TRUE,4,1.5,PLY0091
-Adam Milne,New Zealand,Right-Arm Fast Bowler,TRUE,4,1.5,PLY0092
-Olly Stone,England,Fast Bowler,FALSE,4,1.5,PLY0093
-Luke Wood,England,Fast Bowler,FALSE,4,1.25,PLY0094
-Mujeeb Ur Rahman,Afghanistan,Right-Arm Off-Spin Bowler,TRUE,4,1.25,PLY0095
-Abrar Ahmed,Pakistan,Right-Arm Leg-Spin Bowler,TRUE,4,1.25,PLY0096
-Qais Ahmad,Afghanistan,Right-Arm Leg-Spin Bowler,TRUE,4,1.25,PLY0097
-Ajaz Patel,New Zealand,Left-Arm Orthodox Spin Bowler,TRUE,4,1.25,PLY0098
-Danny Moriarty,England,Spin Bowler,FALSE,4,1.25,PLY0099
-Dominic Bess,England,Spin Bowler,FALSE,4,1.25,PLY0100
-Sherfane Rutherford,West Indies,Left-Hand Batter,TRUE,5,1.75,PLY0101
-Finn Allen,New Zealand,Right-Hand Opening Batter,TRUE,5,1.75,PLY0102
-Pathum Nissanka,Sri Lanka,Right-Hand Batter,TRUE,5,1.75,PLY0103
-Babar Azam,Pakistan,Right-Hand Batter,TRUE,5,1.75,PLY0104
-Sam Hain,England,Batter,FALSE,5,1.75,PLY0105
-Laurie Evans,England,Batter,FALSE,5,1.5,PLY0106
-Tim Seifert,New Zealand,Right-Hand Batter/Wicketkeeper,TRUE,5,1.5,PLY0107
-Donovan Ferreira,South Africa,Right-Hand Batter/Wicketkeeper,TRUE,5,1.5,PLY0108
-Josh Philippe,Australia,Right-Hand Batter/Wicketkeeper,TRUE,5,1.5,PLY0109
-Sam Billings,England,Wicketkeeper Batter,FALSE,5,1.5,PLY0110
-Michael Pepper,England,Wicketkeeper Batter,FALSE,5,1.5,PLY0111
-Adam Rossington,England,Wicketkeeper Batter,FALSE,5,1.5,PLY0112
-Akeal Hosein,West Indies,Left-Hand Batter/Left-Arm Orthodox Spin All-Rounder,TRUE,5,1.5,PLY0113
-Shadab Khan,Pakistan,Right-Hand Batter/Right-Arm Leg-Spin All-Rounder,TRUE,5,1.5,PLY0114
-Daniel Sams,Australia,Left-Hand Batter/Left-Arm Fast All-Rounder,TRUE,5,1.5,PLY0115
-Azmatullah Omarzai,Afghanistan,Right-Hand Batter/Right-Arm Fast All-Rounder,TRUE,5,1.25,PLY0116
-Chris Jordan,England,Bowling All-Rounder (Pace),FALSE,5,1.25,PLY0117
-Brydon Carse,England,Bowling All-Rounder (Pace),FALSE,5,1.25,PLY0118
-Nathan Ellis,Australia,Right-Arm Fast Bowler,TRUE,5,1.25,PLY0119
-Nandre Burger,South Africa,Left-Arm Fast Bowler,TRUE,5,1.25,PLY0120
-Naseem Shah,Pakistan,Right-Arm Fast Bowler,TRUE,5,1.25,PLY0121
-Matt Henry,New Zealand,Right-Arm Fast Bowler,TRUE,5,1.25,PLY0122
-Saqib Mahmood,England,Fast Bowler,FALSE,5,1.25,PLY0123
-Tymal Mills,England,Fast Bowler,FALSE,5,1.25,PLY0124
-Allah Ghazanfar,Afghanistan,Right-Arm Off-Spin Bowler,TRUE,5,1.25,PLY0125
-Usama Mir,Pakistan,Right-Arm Leg-Spin Bowler,TRUE,5,1,PLY0126
-Ashton Agar,Australia,Left-Arm Orthodox Spin Bowler,TRUE,5,1,PLY0127
-Callum Parkinson,England,Spin Bowler,FALSE,5,1,PLY0128
-Mason Crane,England,Spin Bowler,FALSE,5,1,PLY0129
-Jake Lintott,England,Spin Bowler,FALSE,5,1,PLY0130
-Fakhar Zaman,Pakistan,Left-Hand Opening Batter,TRUE,6,1.5,PLY0131
-Reeza Hendricks,South Africa,Right-Hand Batter,TRUE,6,1.5,PLY0132
-Brandon King,West Indies,Right-Hand Batter,TRUE,6,1.5,PLY0133
-Ibrahim Zadran,Afghanistan,Right-Hand Batter,TRUE,6,1.5,PLY0134
-Stevie Eskinazi,England,Batter,FALSE,6,1.5,PLY0135
-Leus Du Plooy,England,Batter,FALSE,6,1.5,PLY0136
-Alex Carey,Australia,Left-Hand Batter/Wicketkeeper,TRUE,6,1.25,PLY0137
-Kusal Perera,Sri Lanka,Left-Hand Batter/Wicketkeeper,TRUE,6,1.25,PLY0138
-Scott Edwards,Netherlands,Right-Hand Batter/Wicketkeeper,TRUE,6,1.25,PLY0139
-Mohammad Haris,Pakistan,Right-Hand Batter/Wicketkeeper,TRUE,6,1.25,PLY0140
-John Simpson,England,Wicketkeeper Batter,FALSE,6,1.25,PLY0141
-Tom Moores,England,Wicketkeeper Batter,FALSE,6,1.25,PLY0142
-Kieron Pollard,West Indies,Right-Hand Batter/Right-Arm Medium All-Rounder,TRUE,6,1.25,PLY0143
-Jimmy Neesham,New Zealand,Left-Hand Batter/Right-Arm Medium All-Rounder,TRUE,6,1.25,PLY0144
-Gulbadin Naib,Afghanistan,Right-Hand Batter/Right-Arm Medium All-Rounder,TRUE,6,1.25,PLY0145
-Lewis Gregory,England,Bowling All-Rounder (Pace),FALSE,6,1.25,PLY0146
-Mohammad Nabi,Afghanistan,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,TRUE,6,1,PLY0147
-Dan Mousley,England,Bowling All-Rounder (Spin),FALSE,6,1,PLY0148
-Jason Behrendorff,Australia,Left-Arm Fast Bowler,TRUE,6,1,PLY0149
-Lungi Ngidi,South Africa,Right-Arm Fast Bowler,TRUE,6,1,PLY0150
-Ottniel Baartman,South Africa,Right-Arm Fast Bowler,TRUE,6,1,PLY0151
-Taskin Ahmed,Bangladesh,Right-Arm Fast Bowler,TRUE,6,1,PLY0152
-Josh Tongue,England,Fast Bowler,FALSE,6,1,PLY0153
-Sam Cook,England,Fast Bowler,FALSE,6,1,PLY0154
-Tanveer Sangha,Australia,Right-Arm Leg-Spin Bowler,TRUE,6,1,PLY0155
-Imran Tahir,South Africa,Right-Arm Leg-Spin Bowler,TRUE,6,1,PLY0156
-Sufiyan Muqeem,Pakistan,Left-Arm Wrist-Spin Bowler,TRUE,6,0.75,PLY0157
-Roelof van der Merwe,Netherlands,Left-Arm Orthodox Spin Bowler,TRUE,6,0.75,PLY0158
-Jafer Chohan,England,Spin Bowler,FALSE,6,0.75,PLY0159
-Calvin Harrison,England,Spin Bowler,FALSE,6,0.75,PLY0160
-Chris Lynn,Australia,Right-Hand Batter,TRUE,7,1.25,PLY0161
-Saim Ayub,Pakistan,Left-Hand Batter,TRUE,7,1.25,PLY0162
-Colin Munro,New Zealand,Left-Hand Batter,TRUE,7,1.25,PLY0163
-Mark Chapman,Hong Kong,Left-Hand Batter,TRUE,7,1.25,PLY0164
-Jacob Bethell,England,Batter,FALSE,7,1.25,PLY0165
-Daniel Bell-Drummond,England,Batter,FALSE,7,1.25,PLY0166
-Lorcan Tucker,Ireland,Right-Hand Batter/Wicketkeeper,TRUE,7,1.25,PLY0167
-Sadeera Samarawickrama,Sri Lanka,Right-Hand Batter/Wicketkeeper,TRUE,7,1.25,PLY0168
-Dinesh Chandimal,Sri Lanka,Right-Hand Batter/Wicketkeeper,TRUE,7,1.25,PLY0169
-Ollie Robinson,England,Wicketkeeper Batter,FALSE,7,1,PLY0170
-Tom Alsop,England,Wicketkeeper Batter,FALSE,7,1,PLY0171
-Chris Cooke,England,Wicketkeeper Batter,FALSE,7,1,PLY0172
-Michael Bracewell,New Zealand,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,TRUE,7,1,PLY0173
-Cooper Connolly,Australia,Left-Hand Batter/Left-Arm Orthodox All-Rounder,TRUE,7,1,PLY0174
-Samit Patel,England,Bowling All-Rounder (Spin),FALSE,7,1,PLY0175
-Beau Webster,Australia,Right-Hand Batter/Right-Arm Medium All-Rounder,TRUE,7,1,PLY0176
-Paul Walter,England,Bowling All-Rounder (Pace),FALSE,7,1,PLY0177
-Ryan Higgins,England,Bowling All-Rounder (Pace),FALSE,7,1,PLY0178
-Xavier Bartlett,Australia,Right-Arm Fast Bowler,TRUE,7,1,PLY0179
-Shamar Joseph,West Indies,Right-Arm Fast Bowler,TRUE,7,1,PLY0180
-Obed McCoy,West Indies,Left-Arm Fast Bowler,TRUE,7,1,PLY0181
-Riley Meredith,Australia,Right-Arm Fast Bowler,TRUE,7,0.75,PLY0182
-John Turner,England,Fast Bowler,FALSE,7,0.75,PLY0183
-Pat Brown,England,Fast Bowler,FALSE,7,0.75,PLY0184
-Matthew Kuhnemann,Australia,Left-Arm Orthodox Spin Bowler,TRUE,7,0.75,PLY0185
-Bjorn Fortuin,South Africa,Left-Arm Orthodox Spin Bowler,TRUE,7,0.75,PLY0186
-Nathan Lyon,Australia,Right-Arm Off-Spin Bowler,TRUE,7,0.75,PLY0187
-Nathan Sowter,England,Spin Bowler,FALSE,7,0.75,PLY0188
-Farhan Ahmed,England,Spin Bowler,FALSE,7,0.75,PLY0189
-Archie Lenham,England,Spin Bowler,FALSE,7,0.75,PLY0190
-Daryl Mitchell,New Zealand,Right-Hand Batter,TRUE,8,1,PLY0191
-D'Arcy Short,Australia,Left-Hand Opening Batter,TRUE,8,1,PLY0192
-Ashton Turner,Australia,Right-Hand Batter,TRUE,8,1,PLY0193
-Charith Asalanka,Sri Lanka,Left-Hand Batter,TRUE,8,1,PLY0194
-Adam Hose,England,Batter,FALSE,8,1,PLY0195
-Wayne Madsen,England,Batter,FALSE,8,1,PLY0196
-Tom Latham,New Zealand,Left-Hand Batter/Wicketkeeper,TRUE,8,1,PLY0197
-Ben McDermott,Australia,Right-Hand Batter/Wicketkeeper,TRUE,8,1,PLY0198
-Usman Khan,Pakistan,Right-Hand Batter/Wicketkeeper,TRUE,8,1,PLY0199
-Haseebullah Khan,Afghanistan,Right-Hand Batter/Wicketkeeper,TRUE,8,1,PLY0200
-James Bracey,England,Wicketkeeper Batter,FALSE,8,1,PLY0201
-Michael Burgess,England,Wicketkeeper Batter,FALSE,8,1,PLY0202
-Kyle Mayers,West Indies,Left-Hand Batter/Right-Arm Medium All-Rounder,TRUE,8,1,PLY0203
-Wiaan Mulder,South Africa,Right-Hand Batter/Right-Arm Fast All-Rounder,TRUE,8,1,PLY0204
-Craig Overton,England,Bowling All-Rounder (Pace),FALSE,8,0.75,PLY0205
-George Garton,England,Bowling All-Rounder (Pace),FALSE,8,0.75,PLY0206
-Iftikhar Ahmed,Pakistan,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,TRUE,8,0.75,PLY0207
-Kamindu Mendis,Sri Lanka,Left-Hand Batter/Ambidextrous Spin All-Rounder,TRUE,8,0.75,PLY0208
-Tim Southee,New Zealand,Right-Arm Fast Bowler,TRUE,8,0.75,PLY0209
-Jhye Richardson,Australia,Right-Arm Fast Bowler,TRUE,8,0.75,PLY0210
-Shoriful Islam,Bangladesh,Left-Arm Fast Bowler,TRUE,8,0.75,PLY0211
-Ben Sears,New Zealand,Right-Arm Fast Bowler,TRUE,8,0.75,PLY0212
-David Payne,England,Fast Bowler,FALSE,8,0.75,PLY0213
-Matthew Fisher,England,Fast Bowler,FALSE,8,0.75,PLY0214
-Zahir Khan,Afghanistan,Left-Arm Wrist-Spin Bowler,TRUE,8,0.75,PLY0215
-Usman Tariq,UAE,Right-Arm Spin Bowler,TRUE,8,0.75,PLY0216
-Danny Briggs,England,Spin Bowler,FALSE,8,0.75,PLY0217
-Amar Virdi,England,Spin Bowler,FALSE,8,0.75,PLY0218
-Liam Patterson-White,England,Spin Bowler,FALSE,8,0.5,PLY0219
-Theo Wylie,England,Spin Bowler,FALSE,8,0.5,PLY0220
-Towhid Hridoy,Bangladesh,Right-Hand Batter,TRUE,9,1,PLY0221
-Shan Masood,Pakistan,Left-Hand Opening Batter,TRUE,9,1,PLY0222
-Temba Bavuma,South Africa,Right-Hand Batter,TRUE,9,0.75,PLY0223
-Marnus Labuschagne,Australia,Right-Hand Batter,TRUE,9,0.75,PLY0224
-Alex Lees,England,Batter,FALSE,9,0.75,PLY0225
-Haseeb Hameed,England,Batter,FALSE,9,0.75,PLY0226
-Ben Brown,England,Wicketkeeper Batter,FALSE,9,0.75,PLY0227
-Ben Cox,England,Wicketkeeper Batter,FALSE,9,0.75,PLY0228
-Gareth Roderick,England,Wicketkeeper Batter,FALSE,9,0.75,PLY0229
-Lewis McManus,England,Wicketkeeper Batter,FALSE,9,0.75,PLY0230
-James Rew,England,Wicketkeeper Batter,FALSE,9,0.75,PLY0231
-Harry Duke,England,Wicketkeeper Batter,FALSE,9,0.75,PLY0232
-Roston Chase,West Indies,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,TRUE,9,0.75,PLY0233
-Rishad Hossain,Bangladesh,Right-Hand Batter/Right-Arm Leg-Spin All-Rounder,TRUE,9,0.75,PLY0234
-Andile Phehlukwayo,South Africa,Right-Hand Batter/Right-Arm Medium All-Rounder,TRUE,9,0.75,PLY0235
-Dasun Shanaka,Sri Lanka,Right-Hand Batter/Right-Arm Medium All-Rounder,TRUE,9,0.75,PLY0236
-Ed Barnard,England,Bowling All-Rounder (Pace),FALSE,9,0.75,PLY0237
-Luke Procter,England,Bowling All-Rounder (Pace),FALSE,9,0.75,PLY0238
-Kwena Maphaka,South Africa,Left-Arm Fast Bowler,TRUE,9,0.75,PLY0239
-Saurabh Netravalkar,USA,Left-Arm Medium-Fast Bowler,TRUE,9,0.75,PLY0240
-Josh Little,Ireland,Left-Arm Fast Bowler,TRUE,9,0.5,PLY0241
-Blessing Muzarabani,Zimbabwe,Right-Arm Fast Bowler,TRUE,9,0.5,PLY0242
-Jake Ball,England,Fast Bowler,FALSE,9,0.5,PLY0243
-Ben Coad,England,Fast Bowler,FALSE,9,0.5,PLY0244
-Josh Baker,England,Spin Bowler,FALSE,9,0.5,PLY0245
-Arthur Rouse,England,Spin Bowler,FALSE,9,0.5,PLY0246
-Tom Hinley,England,Spin Bowler,FALSE,9,0.5,PLY0247
-Max Waller,England,Spin Bowler,FALSE,9,0.5,PLY0248
-Aaron Beard,England,Spin Bowler,FALSE,9,0.5,PLY0249
-Jack Shutt,England,Spin Bowler,FALSE,9,0.5,PLY0250
-Aaron Jones,USA,Right-Hand Batter,TRUE,10,0.75,PLY0251
-Will Young,New Zealand,Right-Hand Batter,TRUE,10,0.75,PLY0252
-Paul Stirling,Ireland,Right-Hand Opening Batter,TRUE,10,0.75,PLY0253
-Bhanuka Rajapaksa,Sri Lanka,Left-Hand Batter,TRUE,10,0.75,PLY0254
-Dom Sibley,England,Batter,FALSE,10,0.75,PLY0255
-Keaton Jennings,England,Batter,FALSE,10,0.75,PLY0256
-Joe Cracknell,England,Wicketkeeper Batter,FALSE,10,0.75,PLY0257
-Chris Benjamin,England,Wicketkeeper Batter,FALSE,10,0.75,PLY0258
-Matthew Waite,England,Wicketkeeper Batter,FALSE,10,0.75,PLY0259
-Harry Swindells,England,Wicketkeeper Batter,FALSE,10,0.75,PLY0260
-Alex Horton,England,Wicketkeeper Batter,FALSE,10,0.75,PLY0261
-Ollie Peake,England,Wicketkeeper Batter,FALSE,10,0.75,PLY0262
-Logan van Beek,Netherlands,Right-Hand Batter/Right-Arm Fast All-Rounder,TRUE,10,0.75,PLY0263
-Mark Adair,Ireland,Right-Hand Batter/Right-Arm Fast All-Rounder,TRUE,10,0.5,PLY0264
-Bas de Leede,Netherlands,Right-Hand Batter/Right-Arm Medium All-Rounder,TRUE,10,0.5,PLY0265
-Aamer Jamal,Pakistan,Right-Hand Batter/Right-Arm Fast All-Rounder,TRUE,10,0.5,PLY0266
-Tom Abell,England,Bowling All-Rounder (Pace),FALSE,10,0.5,PLY0267
-Jordan Thompson,England,Bowling All-Rounder (Pace),FALSE,10,0.5,PLY0268
-Sean Abbott,Australia,Right-Arm Fast Bowler,TRUE,10,0.5,PLY0269
-Ben Dwarshuis,Australia,Left-Arm Fast Bowler,TRUE,10,0.5,PLY0270
-Dilshan Madushanka,Sri Lanka,Left-Arm Fast Bowler,TRUE,10,0.5,PLY0271
-Zaman Khan,Pakistan,Right-Arm Fast Bowler,TRUE,10,0.5,PLY0272
-Daniel Worrall,England,Fast Bowler,FALSE,10,0.5,PLY0273
-Josh Hull,England,Fast Bowler,FALSE,10,0.5,PLY0274
-Chris Green,Australia,Right-Arm Off-Spin Bowler,TRUE,10,0.5,PLY0275
-Dunith Wellalage,Sri Lanka,Left-Arm Orthodox Spin Bowler,TRUE,10,0.5,PLY0276
-Mohammad Nawaz,Pakistan,Left-Arm Orthodox Spin Bowler,TRUE,10,0.5,PLY0277
-Fabian Allen,West Indies,Left-Arm Orthodox Spin Bowler,TRUE,10,0.5,PLY0278
-Matt Critchley,England,Spin Bowler,FALSE,10,0.5,PLY0279
-James Coles,England,Spin Bowler,FALSE,10,0.5,PLY0280
-Caleb Jewell,Australia,Right-Hand Batter,TRUE,11,0.5,PLY0281
-Keacy Carty,West Indies,Right-Hand Batter,TRUE,11,0.5,PLY0282
-Harry Tector,Ireland,Right-Hand Batter,TRUE,11,0.5,PLY0283
-Avishka Fernando,Sri Lanka,Right-Hand Batter,TRUE,11,0.5,PLY0284
-Josh Bohannon,England,Batter,FALSE,11,0.5,PLY0285
-Rob Yates,England,Batter,FALSE,11,0.5,PLY0286
-Alex Green,England,Wicketkeeper Batter,FALSE,11,0.5,PLY0287
-Jack Carney,England,Wicketkeeper Batter,FALSE,11,0.5,PLY0288
-Thomas Rew,England,Wicketkeeper Batter,FALSE,11,0.5,PLY0289
-Harry Singh,England,Wicketkeeper Batter,FALSE,11,0.5,PLY0290
-Odean Smith,West Indies,Right-Hand Batter/Right-Arm Fast All-Rounder,TRUE,11,0.5,PLY0291
-Corbin Bosch,South Africa,Right-Hand Batter/Right-Arm Fast All-Rounder,TRUE,11,0.5,PLY0292
-Matthew Forde,West Indies,Right-Arm Fast All-Rounder,TRUE,11,0.5,PLY0293
-Corey Anderson,USA,Left-Hand Batter/Left-Arm Medium All-Rounder,TRUE,11,0.5,PLY0294
-Wayne Parnell,South Africa,Left-Hand Batter/Left-Arm Fast All-Rounder,TRUE,11,0.5,PLY0295
-Ravi Bopara,England,Bowling All-Rounder (Pace),FALSE,11,0.5,PLY0296
-Sean Williams,Zimbabwe,Left-Hand Batter/Left-Arm Orthodox All-Rounder,TRUE,11,0.5,PLY0297
-Ryan Burl,Zimbabwe,Left-Hand Batter/Left-Arm Orthodox All-Rounder,TRUE,11,0.5,PLY0298
-Dhananjaya de Silva,Sri Lanka,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,TRUE,11,0.5,PLY0299
-Salman Ali Agha,Pakistan,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,TRUE,11,0.5,PLY0300
-Jacob Duffy,New Zealand,Right-Arm Fast Bowler,TRUE,11,0.5,PLY0301
-Lizaad Williams,South Africa,Right-Arm Fast Bowler,TRUE,11,0.5,PLY0302
-Mohammad Wasim Jr,Pakistan,Right-Arm Fast Bowler,TRUE,11,0.25,PLY0303
-Jayden Seales,West Indies,Right-Arm Fast Bowler,TRUE,11,0.25,PLY0304
-Jamie Porter,England,Fast Bowler,FALSE,11,0.25,PLY0305
-Toby Roland-Jones,England,Fast Bowler,FALSE,11,0.25,PLY0306
-Steven Finn,England,Fast Bowler,FALSE,11,0.25,PLY0307
-Luke Fletcher,England,Fast Bowler,FALSE,11,0.25,PLY0308
-Tom Helm,England,Fast Bowler,FALSE,11,0.25,PLY0309
-Chris Rushworth,England,Fast Bowler,FALSE,11,0.25,PLY0310
-Nikhil Choudhary,India,Batter,TRUE,12,0.5,PLY0311
-Ben Compton,England,Batter,FALSE,12,0.5,PLY0312
-Nick Gubbins,England,Batter,FALSE,12,0.5,PLY0313
-Tom Lammonby,England,Batter,FALSE,12,0.5,PLY0314
-Emilio Gay,England,Batter,FALSE,12,0.5,PLY0315
-Jack Haynes,England,Batter,FALSE,12,0.5,PLY0316
-Joe Eckland,England,Wicketkeeper Batter,FALSE,12,0.5,PLY0317
-Angelo Mathews,Sri Lanka,Right-Hand Batter/Right-Arm Medium All-Rounder,TRUE,12,0.5,PLY0318
-Kyle Jamieson,New Zealand,Right-Hand Batter/Right-Arm Fast All-Rounder,TRUE,12,0.5,PLY0319
-George Balderson,England,Bowling All-Rounder (Pace),FALSE,12,0.5,PLY0320
-Ben Green,England,Bowling All-Rounder (Pace),FALSE,12,0.5,PLY0321
-George Hill,England,Bowling All-Rounder (Pace),FALSE,12,0.5,PLY0322
-Fynn Hudson-Prentice,England,Bowling All-Rounder (Pace),FALSE,12,0.5,PLY0323
-Will Rhodes,England,Bowling All-Rounder (Pace),FALSE,12,0.5,PLY0324
-Mehidy Hasan Miraz,Bangladesh,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,TRUE,12,0.5,PLY0325
-Mahmudullah,Bangladesh,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,TRUE,12,0.25,PLY0326
-Dushmantha Chameera,Sri Lanka,Right-Arm Fast Bowler,TRUE,12,0.25,PLY0327
-Tom Bailey,England,Fast Bowler,FALSE,12,0.25,PLY0328
-Jack White,England,Fast Bowler,FALSE,12,0.25,PLY0329
-Sam Conners,England,Fast Bowler,FALSE,12,0.25,PLY0330
-Ben Cliff,England,Fast Bowler,FALSE,12,0.25,PLY0331
-Zaman Akhter,England,Fast Bowler,FALSE,12,0.25,PLY0332
-Henry Brookes,England,Fast Bowler,FALSE,12,0.25,PLY0333
-Mitchell Stanley,England,Fast Bowler,FALSE,12,0.25,PLY0334
-Jack Carson,England,Spin Bowler,FALSE,12,0.25,PLY0335
-Tom Smith,England,Spin Bowler,FALSE,12,0.25,PLY0336
-Brett D'Oliveira,England,Spin Bowler,FALSE,12,0.25,PLY0337
-Lewis Goldsworthy,England,Spin Bowler,FALSE,12,0.25,PLY0338
-Jack Leaning,England,Spin Bowler,FALSE,12,0.25,PLY0339
-George Drissell,England,Spin Bowler,FALSE,12,0.25,PLY0340
-Ben Slater,England,Batter,FALSE,13,0.5,PLY0341
-Luke Wells,England,Batter,FALSE,13,0.5,PLY0342
-Sam Robson,England,Batter,FALSE,13,0.5,PLY0343
-Joe Denly,England,Batter,FALSE,13,0.5,PLY0344
-Adam Lyth,England,Batter,FALSE,13,0.25,PLY0345
-Chris Dent,England,Batter,FALSE,13,0.25,PLY0346
-Tom Westley,England,Batter,FALSE,13,0.25,PLY0347
-Mark Stoneman,England,Batter,FALSE,13,0.25,PLY0348
-Billy Root,England,Batter,FALSE,13,0.25,PLY0349
-Jake Libby,England,Batter,FALSE,13,0.25,PLY0350
-Martin Andersson,England,Bowling All-Rounder (Pace),FALSE,13,0.25,PLY0351
-Gareth Berg,England,Bowling All-Rounder (Pace),FALSE,13,0.25,PLY0352
-James Fuller,England,Bowling All-Rounder (Pace),FALSE,13,0.25,PLY0353
-Tom Lawes,England,Bowling All-Rounder (Pace),FALSE,13,0.25,PLY0354
-Joey Evison,England,Bowling All-Rounder (Pace),FALSE,13,0.25,PLY0355
-Ben Raine,England,Bowling All-Rounder (Pace),FALSE,13,0.25,PLY0356
-Matthew Revis,England,Bowling All-Rounder (Pace),FALSE,13,0.25,PLY0357
-Kasey Aldridge,England,Bowling All-Rounder (Pace),FALSE,13,0.25,PLY0358
-Ethan Brookes,England,Bowling All-Rounder (Pace),FALSE,13,0.25,PLY0359
-Sam Northeast,England,Bowling All-Rounder (Spin),FALSE,13,0.25,PLY0360
-George Thompson,England,Fast Bowler,FALSE,13,0.25,PLY0361
-Craig Miles,England,Fast Bowler,FALSE,13,0.25,PLY0362
-Ben Sanderson,England,Fast Bowler,FALSE,13,0.25,PLY0363
-Harry Podmore,England,Fast Bowler,FALSE,13,0.25,PLY0364
-Jack Brooks,England,Fast Bowler,FALSE,13,0.25,PLY0365
-Boyd Rankin,England,Fast Bowler,FALSE,13,0.25,PLY0366
-Ethan Bamber,England,Fast Bowler,FALSE,13,0.25,PLY0367
-Conor McKerr,England,Fast Bowler,FALSE,13,0.25,PLY0368
-Ajeet Singh Dale,England,Fast Bowler,FALSE,13,0.25,PLY0369
-Brad Wheal,England,Fast Bowler,FALSE,13,0.25,PLY0370
-Tom Haines,England,Batter,FALSE,14,0.25,PLY0371
-Ali Orr,England,Batter,FALSE,14,0.25,PLY0372
-Ben Charlesworth,England,Batter,FALSE,14,0.25,PLY0373
-Oli Carter,England,Batter,FALSE,14,0.25,PLY0374
-Tom Clark,England,Batter,FALSE,14,0.25,PLY0375
-Aneurin Donald,England,Batter,FALSE,14,0.25,PLY0376
-Fin Bean,England,Batter,FALSE,14,0.25,PLY0377
-Harry Came,England,Batter,FALSE,14,0.25,PLY0378
-Will Fraine,England,Batter,FALSE,14,0.25,PLY0379
-Tom Lace,England,Batter,FALSE,14,0.25,PLY0380
-Oliver Carter,England,Bowling All-Rounder (Spin),FALSE,14,0.25,PLY0381
-Hamish Rutherford,England,Bowling All-Rounder (Spin),FALSE,14,0.25,PLY0382
-George Bartlett,England,Bowling All-Rounder (Spin),FALSE,14,0.25,PLY0383
-Ben Kellaway,England,Bowling All-Rounder (Spin),FALSE,14,0.25,PLY0384
-Liam Trevaskis,England,Bowling All-Rounder (Spin),FALSE,14,0.25,PLY0385
-Tom Aspinwall,England,Bowling All-Rounder (Pace),FALSE,14,0.25,PLY0386
-Jordan Clark,England,Bowling All-Rounder (Pace),FALSE,14,0.25,PLY0387
-Noah Thain,England,Bowling All-Rounder (Pace),FALSE,14,0.25,PLY0388
-Alex French,England,Bowling All-Rounder (Pace),FALSE,14,0.25,PLY0389
-James Minto,England,Bowling All-Rounder (Pace),FALSE,14,0.25,PLY0390
-Harry Nijjar,England,Fast Bowler,FALSE,14,0.25,PLY0391
-Liam Norwell,England,Fast Bowler,FALSE,14,0.25,PLY0392
-Blake Cullen,England,Fast Bowler,FALSE,14,0.25,PLY0393
-Aron Nijjar,England,Fast Bowler,FALSE,14,0.25,PLY0394
-Nathan Gilchrist,England,Fast Bowler,FALSE,14,0.25,PLY0395
-Scott Currie,England,Fast Bowler,FALSE,14,0.25,PLY0396
-Chris Wood,England,Fast Bowler,FALSE,14,0.25,PLY0397
-Sonny Baker,England,Fast Bowler,FALSE,14,0.25,PLY0398
-George Scrimshaw,England,Fast Bowler,FALSE,14,0.25,PLY0399
-Sussex,England,Fast Bowler,FALSE,14,0.25,PLY0400
-Joe Weatherley,England,Batter,FALSE,15,0.25,PLY0401
-Ben Geddes,England,Batter,FALSE,15,0.25,PLY0402
-Sol Budinger,England,Batter,FALSE,15,0.25,PLY0403
-Teddy Bishop,England,Batter,FALSE,15,0.25,PLY0404
-Luc Benkenstein,England,Batter,FALSE,15,0.25,PLY0405
-Sam Dalling,England,Batter,FALSE,15,0.25,PLY0406
-Ben Curran,England,Batter,FALSE,15,0.25,PLY0407
-Jake Carder,England,Batter,FALSE,15,0.25,PLY0408
-Will Davis,England,Batter,FALSE,15,0.25,PLY0409
-Sam Young,England,Batter,FALSE,15,0.25,PLY0410
-Ben Wright,England,Batter,FALSE,15,0.25,PLY0411
-Kiran Carlson,England,Batter,FALSE,15,0.25,PLY0412
-Billy Godleman,England,Batter,FALSE,15,0.25,PLY0413
-George Thomas,England,Batter,FALSE,15,0.25,PLY0414
-Will Luxton,England,Batter,FALSE,15,0.25,PLY0415
-Hassan Azad,England,Batter,FALSE,15,0.25,PLY0416
-Nick Browne,England,Batter,FALSE,15,0.25,PLY0417
-Paul Horton,England,Batter,FALSE,15,0.25,PLY0418
-Tom Bevan,England,Batter,FALSE,15,0.25,PLY0419
-Harry Finch,England,Batter,FALSE,15,0.25,PLY0420
-Nick Selman,England,Batter,FALSE,15,0.25,PLY0421
-David Lloyd,England,Batter,FALSE,15,0.25,PLY0422
-Oliver Price,England,Batter,FALSE,15,0.25,PLY0423
-Tom Prest,England,Batter,FALSE,15,0.25,PLY0424
-James Sales,England,Batter,FALSE,15,0.25,PLY0425
-Jack Davies,England,Batter,FALSE,15,0.25,PLY0426
-Chris Wright,England,Batter,FALSE,15,0.25,PLY0427
-Steven Croft,England,Batter,FALSE,15,0.25,PLY0428
-Graham Clark,England,Batter,FALSE,15,0.25,PLY0429
-Tawanda Muyeye,England,Batter,FALSE,15,0.25,PLY0430
-Ollie Sykes,England,Batter,FALSE,16,0.25,PLY0431
-Toby Albert,England,Batter,FALSE,16,0.25,PLY0432
-Louis Kimber,England,Batter,FALSE,16,0.25,PLY0433
-Ben Mayes,England,Batter,FALSE,16,0.25,PLY0434
-Asa Tribe,England,Batter,FALSE,16,0.25,PLY0435
-Ben McKinney,England,Batter,FALSE,16,0.25,PLY0436
-Hamza Shaikh,England,Batter,FALSE,16,0.25,PLY0437
-Jaydn Denly,England,Batter,FALSE,16,0.25,PLY0438
-Rocky Flintoff,England,Batter,FALSE,16,0.25,PLY0439
-Ben Hammond,England,Batter,FALSE,16,0.25,PLY0440
-Tazeem Chaudry,England,Batter,FALSE,16,0.25,PLY0441
-Kian Hilton,England,Batter,FALSE,16,0.25,PLY0442
-Charlie Barnard,England,Batter,FALSE,16,0.25,PLY0443
-Rishi Patel,England,Batter,FALSE,16,0.25,PLY0444
+id,player_id,name,country,role,is_overseas,set_number,base_price_cr,telegram_file_id,telegram_photo_path
+447,PLY0445,Jordan cox,England,Wk - right hand batsman,f,3,3.00,AgACAgUAAyEFAAMBCPr5EgACFMVqlWZAB11aN6UCjo1sn6d5-Bq0twACmxFrG_pRsFSQBdgw9ycKLwEAAwIAA3gAAz0E,data/photos/PLY0445.jpg
+448,PLY0447,Richard gleeson,England,Bowler - right arm fast medium,f,1,3.00,AgACAgUAAyEFAAMBCPr5EgACFQ1qlWg0WmUna1YQRDpGAaHQv0AXjAACrhFrG_pRsFQYEiWl2YsJXAEAAwIAA3gAAz0E,data/photos/PLY0447.jpg
+449,PLY0448,Sunil narine,West Indies,All rounder - right arm off break,t,1,4.00,AgACAgUAAyEFAAMBCPr5EgACFRxqlWjZYkx1zdvSZhERuLepnN3EjgACrxFrG_pRsFSAqMvq0iUHVAEAAwIAA3kAAz0E,data/photos/PLY0448.jpg
+450,PLY0449,Harry brook,England,Right hand batter,f,1,4.00,AgACAgUAAyEFAAMBCPr5EgACFS1qlWm3_Ui4LIhNgClKFQyKYfaE7wACsRFrG_pRsFRmLhFEf4Ou5QEAAwIAA3kAAz0E,data/photos/PLY0449.jpg
+451,PLY0450,Olly pope,England,Right hand batter,f,4,2.50,AgACAgUAAyEFAAMBCPr5EgACFT1qlWpzzXbhUa9XFsDJTgbYfGMBhQACshFrG_pRsFTQgkoeGBgMiwEAAwIAA3kAAz0E,data/photos/PLY0450.jpg
+452,PLY0451,Mitchell Starc,Australia,Bowler - left arm fast,t,2,3.00,AgACAgUAAyEFAAMBCPr5EgACFU5qlWtHsk6sWvzTZiyxFy9ICj1pGQACtBFrG_pRsFRqvpZxT-w59QEAAwIAA3kAAz0E,data/photos/PLY0451.jpg
+15,PLY0015,Alex Hales,England,Batter,f,2,2.75,AgACAgUAAyEGAAT_2KgcAAICVWqTzziC50JURvzyXE4ndlTgnTuHAAIeE2sbW7GYVFkW1dvjrcp8AQADAgADdwADPQQ,data/photos/PLY0015.jpg
+453,PLY0452,Jofra archer,England,Bowler - right arm fast,f,2,4.00,AgACAgUAAyEFAAMBCPr5EgACFV5qlWu_t6k9_oyu0sAAAULz6Uf51Y8AArkRaxv6UbBUDaDMdRY1OXMBAAMCAAN5AAM9BA,data/photos/PLY0452.jpg
+454,PLY0453,Tim david,Australia,Right hand batter,t,3,4.00,AgACAgUAAyEFAAMBCPr5EgACFXpqlW0Pe8a6sC_jPsG3uxHxmi7tugACwhFrG_pRsFQj1m0rU_0CyQEAAwIAA3kAAz0E,data/photos/PLY0453.jpg
+455,PLY0454,Jonny Bairstow,England,Wk battter,f,4,3.00,AgACAgUAAyEFAAMBCPr5EgACFYpqlW3tMREFD8Mh8Qz1sdRNXZ0Y_gACwxFrG_pRsFS0PHdQEsiVRwEAAwIAA3kAAz0E,data/photos/PLY0454.jpg
+456,PLY0455,Josh hazlewood,Australia,Right arm fast medium,t,1,4.00,AgACAgUAAyEFAAMBCPr5EgACFZpqlW6gQH2ad3jFskxshbQeBmBnIwACxxFrG_pRsFQa5z210oh4aQEAAwIAA3kAAz0E,data/photos/PLY0455.jpg
+457,PLY0456,Jamie overton,England,All rounder / right arm fast,f,4,2.00,AgACAgUAAyEFAAMBCPr5EgACFapqlW80jX8uQq2NI2D3bafckOM3UwACyhFrG_pRsFRVy9MRsK9qYQEAAwIAA3kAAz0E,data/photos/PLY0456.jpg
+458,PLY0457,James Anderson,England,Bowler - right arm fast medium,f,3,3.00,AgACAgUAAyEFAAMBCPr5EgACFbpqlW__okrL3TXtzXS2RPzHsT8XywACyxFrG_pRsFRrhUepYOhWKQEAAwIAA3kAAz0E,data/photos/PLY0457.jpg
+459,PLY0458,David Miller,South Africa,Left hand batter,t,1,4.00,AgACAgUAAyEFAAMBCPr5EgACFcpqlXC1dY0LbRyfGhQnXWqQ4P4xvQAC0hFrG_pRsFTWIgsWfXF7egEAAwIAA3kAAz0E,data/photos/PLY0458.jpg
+460,PLY0459,David malan,England,Left hand batter,f,4,3.00,AgACAgUAAyEFAAMBCPr5EgACFdpqlXHyqzNGYCIc6pTOS0c9KdItegAC1BFrG_pRsFSziI0VT92wUQEAAwIAA3kAAz0E,data/photos/PLY0459.jpg
+461,PLY0460,Moeen alli,England,All rounder - right arm off break,f,5,2.00,AgACAgUAAyEFAAMBCPr5EgACFe9qlXaSghl0i20SXDWoZddiUCltvAAC3hFrG_pRsFRU8GQI8gYbDAEAAwIAA3kAAz0E,data/photos/PLY0460.jpg
+462,PLY0461,Ben stokes,England,All rounder - right arm fast medium,f,3,3.50,AgACAgUAAyEFAAMBCPr5EgACFkRqlXwdirQE09tYfX9XiZVN7LxeZgAC-hFrG_pRsFRGPhfl60rj-QEAAwIAA3kAAz0E,data/photos/PLY0461.jpg
+463,PLY0462,Liam Livingstone,England,All rounder - right arm spinner,f,5,3.00,AgACAgUAAyEFAAMBCPr5EgACFlRqlXzsFoGIaSg7rGHyr0XO29755AAC_BFrG_pRsFRDUv5YxVAjdwEAAwIAA3kAAz0E,data/photos/PLY0462.jpg
+464,PLY0463,Matheesha pathirana,Srilanka,Bowler - right arm fast,t,1,4.00,AgACAgUAAyEFAAMBCPr5EgACFmRqlX3jOklbfNQNTq0n4GDs4bRSZwAC_RFrG_pRsFR_NUxU4kSnDwEAAwIAA3kAAz0E,data/photos/PLY0463.jpg
+465,PLY0464,Nicholas pooran,West Indies,Wk - batsman,t,1,4.00,AgACAgUAAyEFAAMBCPr5EgACFn5qlX8Uz85eWWLMf-ZlZQgKdPrF5gACARJrG_pRsFThty3qhw4wrAEAAwIAA3kAAz0E,data/photos/PLY0464.jpg
+466,PLY0465,Pat Cummins,Australia,All rounder - right arm fast,t,3,3.00,AgACAgUAAyEFAAMBCPr5EgACFo5qlYAuViyi4UeDNR2YP_weOTB5ngACBBJrG_pRsFRqS3myWunJmwEAAwIAA3kAAz0E,data/photos/PLY0465.jpg
+341,PLY0341,Ben Slater,England,Batter,f,13,0.50,AgACAgUAAyEGAAT_2KgcAAIBx2qRnxTgq9YSiVB9rLJF4tEa9rC3AAKjEGsb7oqRVNz_ZXBgqfhPAQADAgADeQADPQQ,data/photos/PLY0341.jpg
+344,PLY0344,Joe Denly,England,Batter,f,13,0.50,AgACAgUAAyEGAAT_2KgcAAIBymqRnxck1NEF4_JGAAEOCASpWfPiWwACpxBrG-6KkVQRqqSFNicGywEAAwIAA3gAAz0E,data/photos/PLY0344.jpg
+198,PLY0198,Ben McDermott,Australia,Right-Hand Batter/Wicketkeeper,t,8,1.00,AgACAgUAAyEGAAT_2KgcAAICDGqRvnlLg-hsDIowWQ40x2_-DxZ-AAICEWsb7oqRVOJzXUkZydpRAQADAgADeAADPQQ,data/photos/PLY0198.jpg
+209,PLY0209,Tim Southee,New Zealand,Right-Arm Fast Bowler,t,8,0.75,AgACAgUAAyEGAAT_2KgcAAICkmqT0GV6PNc3FaQgWv8JUtI7mOrrAAJZE2sbW7GYVBfdbRWxFbvzAQADAgADeAADPQQ,data/photos/PLY0209.jpg
+210,PLY0210,Jhye Richardson,Australia,Right-Arm Fast Bowler,t,8,0.75,AgACAgUAAyEGAAT_2KgcAAICk2qT0GnDF4XJeDDlBsun-43H5dDyAAJaE2sbW7GYVEkV3rIqCzq3AQADAgADeAADPQQ,data/photos/PLY0210.jpg
+7,PLY0007,Sam Curran,England,Bowling All-Rounder (Pace),f,1,3.25,AgACAgUAAyEGAAT_2KgcAAICTWqTzy-lLMQk4aYgJfT86wyMaEgNAAIWE2sbW7GYVKm-lX34c-2_AQADAgADdwADPQQ,data/photos/PLY0007.jpg
+8,PLY0008,Shakib Al Hasan,Bangladesh,Left-Hand Batter/Left-Arm Orthodox Spin All-Rounder,t,1,3.25,AgACAgUAAyEGAAT_2KgcAAICTmqTzzDzP9BeTtlpTukb9hqjbz9MAAIXE2sbW7GYVOSDk7GKfdLnAQADAgADeQADPQQ,data/photos/PLY0008.jpg
+21,PLY0021,Tom Kohler-Cadmore,England,Wicketkeeper Batter,f,2,2.75,AgACAgUAAyEGAAT_2KgcAAOIapGQ4lOOo2RvlBjaSVmug_QpEWwAAlwQaxsq-pBUo1z87B5gkwABAQADAgADdwADPQQ,data/photos/PLY0021.jpg
+267,PLY0267,Tom Abell,England,Bowling All-Rounder (Pace),f,10,0.50,AgACAgUAAyEGAAT_2KgcAAPZapGR-hIE2aFIp8wz37KEDW5CKYYAAq8Qaxsq-pBUt7Hi8YGN0MgBAAMCAAN5AAM9BA,data/photos/PLY0267.jpg
+211,PLY0211,Shoriful Islam,Bangladesh,Left-Arm Fast Bowler,t,8,0.75,AgACAgUAAyEGAAT_2KgcAAIClWqT0KYY2H9lnM-XDe6hUHORsfBzAAJbE2sbW7GYVMUb3F_LK2FjAQADAgADeAADPQQ,data/photos/PLY0211.jpg
+213,PLY0213,David Payne,England,Fast Bowler,f,8,0.75,AgACAgUAAyEGAAT_2KgcAAICl2qT0KgRLkTCgOGj8tzkfvIVE9_cAAJdE2sbW7GYVDEjb6QM9B6cAQADAgADeAADPQQ,data/photos/PLY0213.jpg
+214,PLY0214,Matthew Fisher,England,Fast Bowler,f,8,0.75,AgACAgUAAyEGAAT_2KgcAAICmGqT0KgSLKz_OCNOc_qLySyU22z5AAJeE2sbW7GYVB5vTmGvbKe0AQADAgADeQADPQQ,data/photos/PLY0214.jpg
+216,PLY0216,Usman Tariq,UAE,Right-Arm Spin Bowler,t,8,0.75,AgACAgUAAyEGAAT_2KgcAAICmmqT0K3f0DLq9_oK7i1bR1qsMRaYAAJgE2sbW7GYVPAV7fAFMIphAQADAgADeAADPQQ,data/photos/PLY0216.jpg
+217,PLY0217,Danny Briggs,England,Spin Bowler,f,8,0.75,AgACAgUAAyEGAAT_2KgcAAICm2qT0K5ZssUn3aB3oQo0oW5bw-JTAAJhE2sbW7GYVGOV0EfGXwE7AQADAgADeQADPQQ,data/photos/PLY0217.jpg
+91,PLY0091,Nuwan Thushara,Sri Lanka,Left-Arm Fast Bowler,t,4,1.50,AgACAgUAAyEGAAT_2KgcAAIBQ2qRnXYXhyyOAzwJy_RExdbF1J4sAAIhEGsb7oqRVNx8t9Ucu72BAQADAgADeAADPQQ,data/photos/PLY0091.jpg
+94,PLY0094,Luke Wood,England,Fast Bowler,f,4,1.25,AgACAgUAAyEGAAT_2KgcAAIBRmqRnXkRWrz_iXtB_eDWAnU_T5M3AAIkEGsb7oqRVNZbf_8gow2aAQADAgADeAADPQQ,data/photos/PLY0094.jpg
+96,PLY0096,Abrar Ahmed,Pakistan,Right-Arm Leg-Spin Bowler,t,4,1.25,AgACAgUAAyEGAAT_2KgcAAIBSGqRnX7qXzqbjVWjwKHBGf1QVzSAAAImEGsb7oqRVAvmdsJP_cPUAQADAgADeQADPQQ,data/photos/PLY0096.jpg
+98,PLY0098,Ajaz Patel,New Zealand,Left-Arm Orthodox Spin Bowler,t,4,1.25,AgACAgUAAyEGAAT_2KgcAAIBSmqRnYBNW6TT5WcYtTf9NfoLXnyrAAIoEGsb7oqRVFBAcwyp65C8AQADAgADeQADPQQ,data/photos/PLY0098.jpg
+396,PLY0396,Scott Currie,England,Fast Bowler,f,14,0.25,AgACAgUAAyEGAAT_2KgcAAIB1mqRnybPH42Yz5fPu_YelS_1299dAAK0EGsb7oqRVEksfrUtSxIbAQADAgADeAADPQQ,data/photos/PLY0396.jpg
+161,PLY0161,Chris Lynn,Australia,Right-Hand Batter,t,7,1.25,AgACAgUAAyEGAAT_2KgcAAIBUGqRnaeJIRUWd0XAuXkLuedCTi18AAIvEGsb7oqRVKyA1ZCQfjn9AQADAgADeAADPQQ,data/photos/PLY0161.jpg
+128,PLY0128,Callum Parkinson,England,Spin Bowler,f,5,1.00,AgACAgUAAyEGAAT_2KgcAAPLapGRxulTOV1yCssnxgilbutFmjAAAqAQaxsq-pBUvL0q9nQEY78BAAMCAAN4AAM9BA,data/photos/PLY0128.jpg
+17,PLY0017,Tristan Stubbs,South Africa,Right-Hand Batter/Wicketkeeper,t,2,2.75,AgACAgUAAyEGAAT_2KgcAAICV2qTzz0NqXpDhDkpwuJNM_owfKAQAAIgE2sbW7GYVPeH7tXusU1cAQADAgADeAADPQQ,data/photos/PLY0017.jpg
+19,PLY0019,Devon Conway,New Zealand,Left-Hand Batter/Wicketkeeper,t,2,2.75,AgACAgUAAyEGAAT_2KgcAAICWWqTzz6oOFcLhZYNrRrJ8shb-zFOAAIiE2sbW7GYVJBH1TVA6FmLAQADAgADeAADPQQ,data/photos/PLY0019.jpg
+20,PLY0020,Mohammad Rizwan,Pakistan,Right-Hand Batter/Wicketkeeper,t,2,2.75,AgACAgUAAyEGAAT_2KgcAAICWmqTz0CK8wABE6UMQiuSpmFJ1g3dmQACIxNrG1uxmFTSh9QSQm_kAAEBAAMCAAN4AAM9BA,data/photos/PLY0020.jpg
+62,PLY0062,Mustafizur Rahman,Bangladesh,Left-Arm Fast Bowler,t,3,1.75,AgACAgUAAyEGAAT_2KgcAAICxmqT0jCz47yYCU2IJDgVb8YzqjCYAAJ2E2sbW7GYVIMQQtFd_K8oAQADAgADeAADPQQ,data/photos/PLY0062.jpg
+63,PLY0063,Reece Topley,England,Fast Bowler,f,3,1.75,AgACAgUAAyEGAAT_2KgcAAICx2qT0jHNkqMQrcrZ4CmgNJ_r2HmTAAJ3E2sbW7GYVDufM-EyKsxIAQADAgADeAADPQQ,data/photos/PLY0063.jpg
+59,PLY0059,Gerald Coetzee,South Africa,Right-Arm Fast Bowler,t,3,2.00,AgACAgUAAyEGAAT_2KgcAAOJapGRCZpE3MTK2Czf-hi9x5TdnLoAAl0Qaxsq-pBUy3s_cyQhuFUBAAMCAAN4AAM9BA,data/photos/PLY0059.jpg
+60,PLY0060,Naveen-ul-Haq,Afghanistan,Right-Arm Fast Bowler,t,3,1.75,AgACAgUAAyEGAAT_2KgcAAOKapGRCjeAXKhmUI8V1a-CHyLdHcoAAl4Qaxsq-pBUu5U_Hudd7YUBAAMCAAN4AAM9BA,data/photos/PLY0060.jpg
+22,PLY0022,Ben Foakes,England,Wicketkeeper Batter,f,2,2.50,AgACAgUAAyEGAAT_2KgcAAIBI2qRnSqPsgKUsW7FttUS52KRybvUAAL_D2sb7oqRVJMFYo_JNsfcAQADAgADeAADPQQ,data/photos/PLY0022.jpg
+24,PLY0024,Cameron Green,Australia,Right-Hand Batter/Right-Arm Fast All-Rounder,t,2,2.50,AgACAgUAAyEGAAT_2KgcAAIBJWqRnS6tE-lFkOjlgzFYae-1uwKDAAIBEGsb7oqRVJskKuS8u-KLAQADAgADdwADPQQ,data/photos/PLY0024.jpg
+25,PLY0025,Jason Holder,West Indies,Right-Arm Fast All-Rounder,t,2,2.50,AgACAgUAAyEGAAT_2KgcAAIBJmqRnS9COkhIDqcmjRq4WgcHYiTJAAICEGsb7oqRVF1tZIIDod8UAQADAgADeAADPQQ,data/photos/PLY0025.jpg
+27,PLY0027,Chris Woakes,England,Bowling All-Rounder (Pace),f,2,2.50,AgACAgUAAyEGAAT_2KgcAAIBKGqRnTE4vNiabFGa4617kYMTUfqGAAIEEGsb7oqRVEAlUXRJvDpYAQADAgADeAADPQQ,data/photos/PLY0027.jpg
+29,PLY0029,Spencer Johnson,Australia,Left-Arm Fast Bowler,t,2,2.50,AgACAgUAAyEGAAT_2KgcAAIBKmqRnTRehqbH9WFPbbSHSmgM3fdhAAIGEGsb7oqRVOT4pWYcTJGAAQADAgADeAADPQQ,data/photos/PLY0029.jpg
+30,PLY0030,Lockie Ferguson,New Zealand,Right-Arm Fast Bowler,t,2,2.25,AgACAgUAAyEGAAT_2KgcAAIBK2qRnTX6PEdxwj_Iff_R-h3N1A30AAIHEGsb7oqRVOfBpdVig74WAQADAgADeAADPQQ,data/photos/PLY0030.jpg
+197,PLY0197,Tom Latham,New Zealand,Left-Hand Batter/Wicketkeeper,t,8,1.00,AgACAgUAAyEGAAT_2KgcAAICC2qRvnhJrgE6bXZeV-Ao7a8tw3H1AAIBEWsb7oqRVEYFsZ0BOcFIAQADAgADeQADPQQ,data/photos/PLY0197.jpg
+200,PLY0200,Haseebullah Khan,Afghanistan,Right-Hand Batter/Wicketkeeper,t,8,1.00,AgACAgUAAyEGAAT_2KgcAAICDmqRvnxJdc3qW9SzMkMKaXwzTnbtAAIEEWsb7oqRVHcPOPLMUvkSAQADAgADeAADPQQ,data/photos/PLY0200.jpg
+203,PLY0203,Kyle Mayers,West Indies,Left-Hand Batter/Right-Arm Medium All-Rounder,t,8,1.00,AgACAgUAAyEGAAT_2KgcAAICEWqRvoBOt6NhWQijFix-oMg-KWGKAAIHEWsb7oqRVLiFq9o4KU0vAQADAgADeQADPQQ,data/photos/PLY0203.jpg
+31,PLY0031,Anrich Nortje,South Africa,Right-Arm Fast Bowler,t,2,2.25,AgACAgUAAyEGAAT_2KgcAAIBLGqRnTazWaY2To2TyjUjCV6gWoIZAAIIEGsb7oqRVFkOkUOddxaGAQADAgADeAADPQQ,data/photos/PLY0031.jpg
+33,PLY0033,Stuart Broad,England,Fast Bowler,f,2,2.25,AgACAgUAAyEGAAT_2KgcAAIBLmqRnTnvRPbuEBh_In01Fd5eEQ-jAAIKEGsb7oqRVODevRBWGUwwAQADAgADdwADPQQ,data/photos/PLY0033.jpg
+34,PLY0034,Gus Atkinson,England,Fast Bowler,f,2,2.25,AgACAgUAAyEGAAT_2KgcAAIBL2qRnTvcsnAD1DGroH1jH3I3s2oiAAILEGsb7oqRVH9poOrPLVviAQADAgADeAADPQQ,data/photos/PLY0034.jpg
+36,PLY0036,Tabraiz Shamsi,South Africa,Left-Arm Wrist-Spin Bowler,t,2,2.25,AgACAgUAAyEGAAT_2KgcAAIBMWqRnT_r0dOfw4f-uRAfkynVB_BgAAINEGsb7oqRVN3KYo4o0YpzAQADAgADdwADPQQ,data/photos/PLY0036.jpg
+38,PLY0038,Noor Ahmad,Afghanistan,Left-Arm Wrist-Spin Bowler,t,2,2.00,AgACAgUAAyEGAAT_2KgcAAIBM2qRnUF2HaVXbNVA-d-Fj62-wpq9AAIPEGsb7oqRVAijCud8yJNKAQADAgADeAADPQQ,data/photos/PLY0038.jpg
+39,PLY0039,Jack Leach,England,Spin Bowler,f,2,2.00,AgACAgUAAyEGAAT_2KgcAAIBNGqRnUPRgsawPjnyDN8ev_tGgkiQAAIREGsb7oqRVDYoTt8dqsaUAQADAgADeAADPQQ,data/photos/PLY0039.jpg
+41,PLY0041,Matthew Breetzke,South Africa,Right-Hand Batter,t,3,2.50,AgACAgUAAyEGAAT_2KgcAAIBNmqRnUg4U-kn9abZwEnt0RDSkoY9AAITEGsb7oqRVCeeYlaqZJfPAQADAgADdwADPQQ,data/photos/PLY0041.jpg
+43,PLY0043,Shimron Hetmyer,West Indies,Left-Hand Batter,t,3,2.50,AgACAgUAAyEGAAT_2KgcAAIBl2qRnoYcCgfSJVqxiAo7g7EnMFd9AAJzEGsb7oqRVL1hzbFhrcJWAQADAgADeAADPQQ,data/photos/PLY0043.jpg
+44,PLY0044,Glenn Phillips,New Zealand,Right-Hand Batter,t,3,2.50,AgACAgUAAyEGAAT_2KgcAAIBmGqRnofTMuRV0C9LYR4BfMx5lleeAAJ0EGsb7oqRVL0nai3xtr5_AQADAgADeQADPQQ,data/photos/PLY0044.jpg
+46,PLY0046,Zak Crawley,England,Batter,f,3,2.25,AgACAgUAAyEGAAT_2KgcAAIBmmqRno1Azt8HKlZLXqFyp5yneOXXAAJ2EGsb7oqRVAitEG9TsP58AQADAgADeAADPQQ,data/photos/PLY0046.jpg
+48,PLY0048,Johnson Charles,West Indies,Right-Hand Batter/Wicketkeeper,t,3,2.25,AgACAgUAAyEGAAT_2KgcAAIBnGqRno8vZEHmgkvgtZdBNwrRD2phAAJ4EGsb7oqRVHU6IMQ0DBVaAQADAgADeAADPQQ,data/photos/PLY0048.jpg
+49,PLY0049,Rahmanullah Gurbaz,Afghanistan,Right-Hand Batter/Wicketkeeper,t,3,2.25,AgACAgUAAyEGAAT_2KgcAAIBnWqRnpCQSejhj2IrSj7MOTuJMHgOAAJ5EGsb7oqRVFODsTSjmQIOAQADAgADeAADPQQ,data/photos/PLY0049.jpg
+51,PLY0051,Jamie Smith,England,Wicketkeeper Batter,f,3,2.25,AgACAgUAAyEGAAT_2KgcAAIBn2qRnplNba5VaPaZ4clx684AAV4iUgACexBrG-6KkVSavrYFLlHXVQEAAwIAA3gAAz0E,data/photos/PLY0051.jpg
+243,PLY0243,Jake Ball,England,Fast Bowler,f,9,0.50,AgACAgUAAyEGAAT_2KgcAAIBxGqRnuynCnhqNYQh5fHOPKy_rUE3AAKfEGsb7oqRVH3ve2Ymuu9KAQADAgADeAADPQQ,data/photos/PLY0243.jpg
+406,PLY0406,Sam Dalling,England,Batter,f,15,0.25,AgACAgUAAyEGAAT_2KgcAAICKWqRvtvCWS-xMAcekMlXh14souSgAAIeEWsb7oqRVOwmUwABKsMwPwEAAwIAA3gAAz0E,data/photos/PLY0406.jpg
+206,PLY0206,George Garton,England,Bowling All-Rounder (Pace),f,8,0.75,AgACAgUAAyEGAAT_2KgcAAICj2qT0GO81Ywyv6KcUv7Fw1Xc_WurAAJWE2sbW7GYVOTtkvAcVbqyAQADAgADeAADPQQ,data/photos/PLY0206.jpg
+52,PLY0052,Ben Duckett,England,Wicketkeeper Batter,f,3,2.00,AgACAgUAAyEGAAT_2KgcAAIBoGqRnpqs7gVQcqtP435DceBBgkrZAAJ8EGsb7oqRVDZOJvN-0lvLAQADAgADeAADPQQ,data/photos/PLY0052.jpg
+54,PLY0054,Aiden Markram,South Africa,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,t,3,2.00,AgACAgUAAyEGAAT_2KgcAAIBomqRnpwFXeSVqLsi6byYi4wZ-2XsAAJ-EGsb7oqRVJbCIj38GAxwAQADAgADeAADPQQ,data/photos/PLY0054.jpg
+55,PLY0055,Liam Dawson,England,Bowling All-Rounder (Spin),f,3,2.00,AgACAgUAAyEGAAT_2KgcAAIBo2qRnpzxxgOIjVHAuqgDX45bvKplAAJ_EGsb7oqRVOkKr1fX7DEnAQADAgADeAADPQQ,data/photos/PLY0055.jpg
+57,PLY0057,Romario Shepherd,West Indies,Right-Arm Fast All-Rounder,t,3,2.00,AgACAgUAAyEGAAT_2KgcAAIBpWqRnp4fT_CeSPOYlz0f7C_BDY-7AAKBEGsb7oqRVNro1NhR-sO0AQADAgADeQADPQQ,data/photos/PLY0057.jpg
+58,PLY0058,David Willey,England,Bowling All-Rounder (Pace),f,3,2.00,AgACAgUAAyEGAAT_2KgcAAIBpmqRnqOnB7s5gfBoz7p8YtnYU1TnAAKCEGsb7oqRVHxuSAdG8XblAQADAgADeAADPQQ,data/photos/PLY0058.jpg
+68,PLY0068,Ish Sodhi,New Zealand,Right-Arm Leg-Spin Bowler,t,3,1.50,AgACAgUAAyEGAAT_2KgcAAICXmqTz2arG2B5OZ8C2OJqQrwFAAHDmgACJxNrG1uxmFR6dbCivyVbSAEAAwIAA3gAAz0E,data/photos/PLY0068.jpg
+70,PLY0070,Matt Parkinson,England,Spin Bowler,f,3,1.50,AgACAgUAAyEGAAT_2KgcAAICYWqTz6daZCT1b3Zq4-A6US5jzuRGAAIpE2sbW7GYVP-espz3-GETAQADAgADeQADPQQ,data/photos/PLY0070.jpg
+71,PLY0071,Dewald Brevis,South Africa,Right-Hand Batter,t,4,2.00,AgACAgUAAyEGAAT_2KgcAAICYmqTz6iiZOulS4mmwydvxeU8AbRxAAIqE2sbW7GYVHld3w-R2qDnAQADAgADeAADPQQ,data/photos/PLY0071.jpg
+73,PLY0073,Rassie van der Dussen,South Africa,Right-Hand Batter,t,4,2.00,AgACAgUAAyEGAAT_2KgcAAICZGqTz6ms7H_6PMLFJFauoPnHLHf8AAIsE2sbW7GYVAm_eea92v00AQADAgADeAADPQQ,data/photos/PLY0073.jpg
+75,PLY0075,Dan Lawrence,England,Batter,f,4,2.00,AgACAgUAAyEGAAT_2KgcAAICZmqTz67apCYaL4d3WZQWs6bktfPfAAIuE2sbW7GYVIwPuNi8imK4AQADAgADeAADPQQ,data/photos/PLY0075.jpg
+76,PLY0076,Max Holden,England,Batter,f,4,1.75,AgACAgUAAyEGAAT_2KgcAAICZ2qTz68G6Vlveq1RbxXEPFg7drNaAAIvE2sbW7GYVHZ1dJsZtSndAQADAgADdwADPQQ,data/photos/PLY0076.jpg
+78,PLY0078,Kusal Mendis,Sri Lanka,Right-Hand Batter/Wicketkeeper,t,4,1.75,AgACAgUAAyEGAAT_2KgcAAICaWqTz7Et0KKxNj_k009qIxrNc-cSAAIxE2sbW7GYVBKtDy9ntL-VAQADAgADeQADPQQ,data/photos/PLY0078.jpg
+79,PLY0079,Litton Das,Bangladesh,Right-Hand Batter/Wicketkeeper,t,4,1.75,AgACAgUAAyEGAAT_2KgcAAICamqTz7IkMeqSTudib_76Uc8UnrzvAAIyE2sbW7GYVB9AkQpsf7t5AQADAgADeAADPQQ,data/photos/PLY0079.jpg
+81,PLY0081,Alex Davies,England,Wicketkeeper Batter,f,4,1.75,AgACAgUAAyEGAAT_2KgcAAICbGqTz7f14sO4AdIozcpc1HPr6SzCAAI0E2sbW7GYVLMz2FpIUBbcAQADAgADeAADPQQ,data/photos/PLY0081.jpg
+82,PLY0082,Joe Clarke,England,Wicketkeeper Batter,f,4,1.75,AgACAgUAAyEGAAT_2KgcAAICbWqTz7g6somptJAESyVK3uRgngXpAAI1E2sbW7GYVGhuFh8kGvNeAQADAgADeAADPQQ,data/photos/PLY0082.jpg
+84,PLY0084,Aaron Hardie,Australia,Right-Hand Batter/Right-Arm Medium All-Rounder,t,4,1.75,AgACAgUAAyEGAAT_2KgcAAICb2qTz7kFAAE8qDnbkayXorrltefFXwACNxNrG1uxmFSieWqxdowSDQEAAwIAA3gAAz0E,data/photos/PLY0084.jpg
+86,PLY0086,Rachin Ravindra,New Zealand,Left-Hand Batter/Left-Arm Orthodox All-Rounder,t,4,1.50,AgACAgUAAyEGAAT_2KgcAAICcWqTz77CSgV0nycsS3ZU3B9NeHS0AAI5E2sbW7GYVPfZEfdYneo-AQADAgADeAADPQQ,data/photos/PLY0086.jpg
+87,PLY0087,Sikandar Raza,Zimbabwe,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,t,4,1.50,AgACAgUAAyEGAAT_2KgcAAICcmqTz74J44fHLRdiGKMiuN5u8TmQAAI6E2sbW7GYVNqrKrgCZQ0dAQADAgADeAADPQQ,data/photos/PLY0087.jpg
+89,PLY0089,Fazalhaq Farooqi,Afghanistan,Left-Arm Fast Bowler,t,4,1.50,AgACAgUAAyEGAAT_2KgcAAICdGqTz8B-YWsbplGV-ltXffwe0dRnAAI8E2sbW7GYVCAadlLA_-U6AQADAgADeQADPQQ,data/photos/PLY0089.jpg
+104,PLY0104,Babar Azam,Pakistan,Right-Hand Batter,t,5,1.75,AgACAgUAAyEGAAT_2KgcAAOdapGRRQq_0lpFnRwnHDOtqmijGMMAAnEQaxsq-pBUJbdpQVhGgEcBAAMCAAN5AAM9BA,data/photos/PLY0104.jpg
+106,PLY0106,Laurie Evans,England,Batter,f,5,1.50,AgACAgUAAyEGAAT_2KgcAAOfapGRR-QCHU7LhkUhbPBQbdhR2cQAAnMQaxsq-pBUvRoJcpkF5lABAAMCAAN4AAM9BA,data/photos/PLY0106.jpg
+108,PLY0108,Donovan Ferreira,South Africa,Right-Hand Batter/Wicketkeeper,t,5,1.50,AgACAgUAAyEGAAT_2KgcAAOhapGRSV34Mx8vUF4eZ7K5nTQAAfEJAAJ1EGsbKvqQVLflYEVDx_DeAQADAgADdwADPQQ,data/photos/PLY0108.jpg
+109,PLY0109,Josh Philippe,Australia,Right-Hand Batter/Wicketkeeper,t,5,1.50,AgACAgUAAyEGAAT_2KgcAAOiapGRSmExiQwCgsnubuO7Yrr4dwMAAnYQaxsq-pBUWBp1MZ32Nw0BAAMCAAN4AAM9BA,data/photos/PLY0109.jpg
+111,PLY0111,Michael Pepper,England,Wicketkeeper Batter,f,5,1.50,AgACAgUAAyEGAAT_2KgcAAOkapGRTPYB0eprVAuQAV9sGGCCOyUAAngQaxsq-pBUJmG94WdkqtsBAAMCAAN3AAM9BA,data/photos/PLY0111.jpg
+113,PLY0113,Akeal Hosein,West Indies,Left-Hand Batter/Left-Arm Orthodox Spin All-Rounder,t,5,1.50,AgACAgUAAyEGAAT_2KgcAAOmapGRTsQ0KTe6BaMojnWGWC6vKJMAAnoQaxsq-pBU9pPJfQp4yLIBAAMCAAN4AAM9BA,data/photos/PLY0113.jpg
+114,PLY0114,Shadab Khan,Pakistan,Right-Hand Batter/Right-Arm Leg-Spin All-Rounder,t,5,1.50,AgACAgUAAyEGAAT_2KgcAAOnapGRT-gMq6tbHKQCR9-aoQgq6GUAAnsQaxsq-pBULJK5UoF7PZEBAAMCAAN4AAM9BA,data/photos/PLY0114.jpg
+116,PLY0116,Azmatullah Omarzai,Afghanistan,Right-Hand Batter/Right-Arm Fast All-Rounder,t,5,1.25,AgACAgUAAyEGAAT_2KgcAAOpapGRUVMlijdlfQwsB_7IV7gUNXMAAn0Qaxsq-pBUHxZzTL8kXOsBAAMCAAN4AAM9BA,data/photos/PLY0116.jpg
+117,PLY0117,Chris Jordan,England,Bowling All-Rounder (Pace),f,5,1.25,AgACAgUAAyEGAAT_2KgcAAOqapGRUgkebZsWkEAGbc7VfFhNd2kAAn4Qaxsq-pBUqVMHSP2-XpEBAAMCAAN4AAM9BA,data/photos/PLY0117.jpg
+90,PLY0090,Alzarri Joseph,West Indies,Right-Arm Fast Bowler,t,4,1.50,AgACAgUAAyEGAAT_2KgcAAIBQmqRnXUtrjQhSu3ur2SpcU-2iqgIAAIgEGsb7oqRVB-ZLnkFEX0tAQADAgADeAADPQQ,data/photos/PLY0090.jpg
+92,PLY0092,Adam Milne,New Zealand,Right-Arm Fast Bowler,t,4,1.50,AgACAgUAAyEGAAT_2KgcAAIBRGqRnXi42OJ1GhstEEYElBfXIMBvAAIiEGsb7oqRVPI2nZd1lRwPAQADAgADeAADPQQ,data/photos/PLY0092.jpg
+93,PLY0093,Olly Stone,England,Fast Bowler,f,4,1.50,AgACAgUAAyEGAAT_2KgcAAIBRWqRnXmAfAevN4F1c4jqnEwg9HAdAAIjEGsb7oqRVJIqKt-hFtdzAQADAgADeAADPQQ,data/photos/PLY0093.jpg
+95,PLY0095,Mujeeb Ur Rahman,Afghanistan,Right-Arm Off-Spin Bowler,t,4,1.25,AgACAgUAAyEGAAT_2KgcAAIBR2qRnX7ViNXgBodK4jMtbdcYKIf7AAIlEGsb7oqRVMRldVY37pjGAQADAgADeAADPQQ,data/photos/PLY0095.jpg
+97,PLY0097,Qais Ahmad,Afghanistan,Right-Arm Leg-Spin Bowler,t,4,1.25,AgACAgUAAyEGAAT_2KgcAAIBSWqRnX8jGC3wYqQ-gpCRgGkVuGkvAAInEGsb7oqRVC-cXiSAr2crAQADAgADeQADPQQ,data/photos/PLY0097.jpg
+99,PLY0099,Danny Moriarty,England,Spin Bowler,f,4,1.25,AgACAgUAAyEGAAT_2KgcAAIBS2qRnYG_AAGgUkzQQ4uhxlYrIIibkAACKRBrG-6KkVS7CNohOYpwjwEAAwIAA3kAAz0E,data/photos/PLY0099.jpg
+366,PLY0366,Boyd Rankin,England,Fast Bowler,f,13,0.25,AgACAgUAAyEGAAT_2KgcAAIDPmqT1Hmi9NzC1Ne2SiRSQnTmtV8zAAKtE2sbW7GYVOB7UvTWse9fAQADAgADeAADPQQ,data/photos/PLY0366.jpg
+367,PLY0367,Ethan Bamber,England,Fast Bowler,f,13,0.25,AgACAgUAAyEGAAT_2KgcAAIDP2qT1H2t2hsd57U4I6hIJqbHsnZ3AAKuE2sbW7GYVNYkG9r_BAa5AQADAgADeQADPQQ,data/photos/PLY0367.jpg
+368,PLY0368,Conor McKerr,England,Fast Bowler,f,13,0.25,AgACAgUAAyEGAAT_2KgcAAIDQGqT1H4FunuGaobgT3OKBXmYayexAAKvE2sbW7GYVM_AUBVWGh-2AQADAgADeQADPQQ,data/photos/PLY0368.jpg
+369,PLY0369,Ajeet Singh Dale,England,Fast Bowler,f,13,0.25,AgACAgUAAyEGAAT_2KgcAAIDQWqT1H89JxqWZdcDkyCc638qfA5kAAKwE2sbW7GYVElnSGYwbiLbAQADAgADeAADPQQ,data/photos/PLY0369.jpg
+370,PLY0370,Brad Wheal,England,Fast Bowler,f,13,0.25,AgACAgUAAyEGAAT_2KgcAAIDQmqT1H_CTGfELbbvPRsQfVGU_nZlAAKxE2sbW7GYVHaGp5iXnw-lAQADAgADeQADPQQ,data/photos/PLY0370.jpg
+371,PLY0371,Tom Haines,England,Batter,f,14,0.25,AgACAgUAAyEGAAT_2KgcAAIDQ2qT1IC4ppchEOt1jIPViVlbl8lsAAKyE2sbW7GYVPOJd4ZUBf9kAQADAgADeQADPQQ,data/photos/PLY0371.jpg
+101,PLY0101,Sherfane Rutherford,West Indies,Left-Hand Batter,t,5,1.75,AgACAgUAAyEGAAT_2KgcAAIBqWqRnqYFgxh-l4Ob1k0Nt47u-2diAAKFEGsb7oqRVAeHAg2_J54aAQADAgADeAADPQQ,data/photos/PLY0101.jpg
+102,PLY0102,Finn Allen,New Zealand,Right-Hand Opening Batter,t,5,1.75,AgACAgUAAyEGAAT_2KgcAAIBqmqRnqcD9bAaKpFrrMynWU9Lv0NRAAKGEGsb7oqRVPUxS0Urq01PAQADAgADeAADPQQ,data/photos/PLY0102.jpg
+132,PLY0132,Reeza Hendricks,South Africa,Right-Hand Batter,t,6,1.50,AgACAgUAAyEGAAT_2KgcAAIB3WqRoEcJve68FBWM42N_5xDfqkQ-AAK7EGsb7oqRVIpfyDWU-jB-AQADAgADeAADPQQ,data/photos/PLY0132.jpg
+133,PLY0133,Brandon King,West Indies,Right-Hand Batter,t,6,1.50,AgACAgUAAyEGAAT_2KgcAAIB3mqRoEi89I92ESM82Sf0a1j7eu7tAAK8EGsb7oqRVJRzJoiYGHiyAQADAgADeAADPQQ,data/photos/PLY0133.jpg
+137,PLY0137,Alex Carey,Australia,Left-Hand Batter/Wicketkeeper,t,6,1.25,AgACAgUAAyEGAAT_2KgcAAICeGqTz-lSZ1NXnTVFRTZRhpnDuOppAAJAE2sbW7GYVK8qgnMjxBBzAQADAgADeQADPQQ,data/photos/PLY0137.jpg
+138,PLY0138,Kusal Perera,Sri Lanka,Left-Hand Batter/Wicketkeeper,t,6,1.25,AgACAgUAAyEGAAT_2KgcAAICeWqTz-kw0QQpFXGNXrzyFwdIgQ-jAAJBE2sbW7GYVAmdKYZLu_TXAQADAgADeAADPQQ,data/photos/PLY0138.jpg
+140,PLY0140,Mohammad Haris,Pakistan,Right-Hand Batter/Wicketkeeper,t,6,1.25,AgACAgUAAyEGAAT_2KgcAAICfGqT0CeFQxghAmNGhWbDaBuVd9VwAAJDE2sbW7GYVLnj8bIEtN_5AQADAgADeAADPQQ,data/photos/PLY0140.jpg
+141,PLY0141,John Simpson,England,Wicketkeeper Batter,f,6,1.25,AgACAgUAAyEGAAT_2KgcAAICfWqT0CdK0ly0ESo_h-uF53gcFBRwAAJEE2sbW7GYVCbHg-qyRFZfAQADAgADeQADPQQ,data/photos/PLY0141.jpg
+143,PLY0143,Kieron Pollard,West Indies,Right-Hand Batter/Right-Arm Medium All-Rounder,t,6,1.25,AgACAgUAAyEGAAT_2KgcAAICf2qT0ClpEfN_tNDFk_L6or6Wy-8RAAJGE2sbW7GYVO1EDwjpxj59AQADAgADeAADPQQ,data/photos/PLY0143.jpg
+145,PLY0145,Gulbadin Naib,Afghanistan,Right-Hand Batter/Right-Arm Medium All-Rounder,t,6,1.25,AgACAgUAAyEGAAT_2KgcAAICgWqT0C3Q5a2_3YBlJFsSduGnFLa6AAJIE2sbW7GYVPDpfUaYnR2NAQADAgADeAADPQQ,data/photos/PLY0145.jpg
+146,PLY0146,Lewis Gregory,England,Bowling All-Rounder (Pace),f,6,1.25,AgACAgUAAyEGAAT_2KgcAAICgmqT0C62XS5NKXSSVyTq4XIpLZ9JAAJJE2sbW7GYVI6is6OHWO9YAQADAgADeAADPQQ,data/photos/PLY0146.jpg
+148,PLY0148,Dan Mousley,England,Bowling All-Rounder (Spin),f,6,1.00,AgACAgUAAyEGAAT_2KgcAAIChGqT0C8IxUFegJgYMwHXH8WlXu2AAAJLE2sbW7GYVAABK0I8hW4OpwEAAwIAA3kAAz0E,data/photos/PLY0148.jpg
+120,PLY0120,Nandre Burger,South Africa,Left-Arm Fast Bowler,t,5,1.25,AgACAgUAAyEGAAT_2KgcAAOtapGRWEKAeU58InLUFaxeOsq-daAAAoEQaxsq-pBU2BfP2RyHtnkBAAMCAAN5AAM9BA,data/photos/PLY0120.jpg
+121,PLY0121,Naseem Shah,Pakistan,Right-Arm Fast Bowler,t,5,1.25,AgACAgUAAyEGAAT_2KgcAAOuapGRWP95MMI26w5pGpJQ_Vm82boAAoIQaxsq-pBUj2ccL4E6pi0BAAMCAAN5AAM9BA,data/photos/PLY0121.jpg
+123,PLY0123,Saqib Mahmood,England,Fast Bowler,f,5,1.25,AgACAgUAAyEGAAT_2KgcAAOwapGRWp-nEIvm4UnEO710Rm0ZEf4AAoQQaxsq-pBUajr06SyihxABAAMCAAN5AAM9BA,data/photos/PLY0123.jpg
+171,PLY0171,Tom Alsop,England,Wicketkeeper Batter,f,7,1.00,AgACAgUAAyEGAAT_2KgcAAOyapGRg3QuEMDCLoNiM98VA-lxyTkAAocQaxsq-pBUcn8zkJA3FXYBAAMCAAN4AAM9BA,data/photos/PLY0171.jpg
+159,PLY0159,Jafer Chohan,England,Spin Bowler,f,6,0.75,AgACAgUAAyEGAAT_2KgcAAIC-WqT0wKKYvHPIvuynovCXZuct2m3AAJ5E2sbW7GYVEFYkHgKQUk8AQADAgADeQADPQQ,data/photos/PLY0159.jpg
+160,PLY0160,Calvin Harrison,England,Spin Bowler,f,6,0.75,AgACAgUAAyEGAAT_2KgcAAIC-mqT0wOAVU2VdEwiY6Dh443sk_JyAAJ6E2sbW7GYVDxB0n_qYn1NAQADAgADeAADPQQ,data/photos/PLY0160.jpg
+162,PLY0162,Saim Ayub,Pakistan,Left-Hand Batter,t,7,1.25,AgACAgUAAyEGAAT_2KgcAAIBUWqRnav1MynjyJTf_SfBIrdP6nwiAAIwEGsb7oqRVAABA0C_uyHzMAEAAwIAA3gAAz0E,data/photos/PLY0162.jpg
+164,PLY0164,Mark Chapman,Hong Kong,Left-Hand Batter,t,7,1.25,AgACAgUAAyEGAAT_2KgcAAIBU2qRna0pRd8jo-xYyczmgzqFpRjqAAIyEGsb7oqRVNy4qbnLRJv1AQADAgADeAADPQQ,data/photos/PLY0164.jpg
+165,PLY0165,Jacob Bethell,England,Batter,f,7,1.25,AgACAgUAAyEGAAT_2KgcAAIBVGqRna4SsXxzEnS11jLoS2t0PZtDAAIzEGsb7oqRVCyypXK-kKMJAQADAgADeAADPQQ,data/photos/PLY0165.jpg
+434,PLY0434,Ben Mayes,England,Batter,f,16,0.25,AgACAgUAAyEGAAT_2KgcAAIBFmqRkrAiNe4iXwb2lzS-9nZXa8D5AALrEGsbKvqQVET1oDmA-c-4AQADAgADeAADPQQ,data/photos/PLY0434.jpg
+435,PLY0435,Asa Tribe,England,Batter,f,16,0.25,AgACAgUAAyEGAAT_2KgcAAIBF2qRkrEnkN4Wdg7IuPGnj8X5vvFFAALsEGsbKvqQVKMOneBDYaP0AQADAgADeAADPQQ,data/photos/PLY0435.jpg
+436,PLY0436,Ben McKinney,England,Batter,f,16,0.25,AgACAgUAAyEGAAT_2KgcAAIBGGqRkrItUi3THVbPMsVji7NIWvg6AALtEGsbKvqQVMtuH-28fAWUAQADAgADeAADPQQ,data/photos/PLY0436.jpg
+167,PLY0167,Lorcan Tucker,Ireland,Right-Hand Batter/Wicketkeeper,t,7,1.25,AgACAgUAAyEGAAT_2KgcAAIBVmqRnbP310J4muo2gcd7T1wHEOnJAAI1EGsb7oqRVBW8qdLANU2yAQADAgADeAADPQQ,data/photos/PLY0167.jpg
+169,PLY0169,Dinesh Chandimal,Sri Lanka,Right-Hand Batter/Wicketkeeper,t,7,1.25,AgACAgUAAyEGAAT_2KgcAAIBWGqRnbX9FGzVvvkrsauZ_PT975z6AAI3EGsb7oqRVLhXGKsSn8iHAQADAgADeAADPQQ,data/photos/PLY0169.jpg
+124,PLY0124,Tymal Mills,England,Fast Bowler,f,5,1.25,AgACAgUAAyEGAAT_2KgcAAIBrGqRnqtsO1APjihK8EcySY1npSIBAAKIEGsb7oqRVNXwM2VD3y95AQADAgADeAADPQQ,data/photos/PLY0124.jpg
+126,PLY0126,Usama Mir,Pakistan,Right-Arm Leg-Spin Bowler,t,5,1.00,AgACAgUAAyEGAAT_2KgcAAIBrmqRnq1TGKIKjDVa8M5M4cnPB7-tAAKKEGsb7oqRVD2QiNr0kugZAQADAgADeAADPQQ,data/photos/PLY0126.jpg
+127,PLY0127,Ashton Agar,Australia,Left-Arm Orthodox Spin Bowler,t,5,1.00,AgACAgUAAyEGAAT_2KgcAAIBr2qRnq76jy5wRuZGSigF7z-CssvDAAKLEGsb7oqRVEqFA8-vEgVrAQADAgADeAADPQQ,data/photos/PLY0127.jpg
+129,PLY0129,Mason Crane,England,Spin Bowler,f,5,1.00,AgACAgUAAyEGAAT_2KgcAAIBsWqRnrJRlvOHnIzHghAeqX1Oo2qxAAKMEGsb7oqRVKrPgBPUueU1AQADAgADeAADPQQ,data/photos/PLY0129.jpg
+149,PLY0149,Jason Behrendorff,Australia,Left-Arm Fast Bowler,t,6,1.00,AgACAgUAAyEGAAT_2KgcAAIChWqT0DPmyO3JC0D0crgpey5NP-FhAAJME2sbW7GYVPWyNYK6aH_QAQADAgADeAADPQQ,data/photos/PLY0149.jpg
+151,PLY0151,Ottniel Baartman,South Africa,Right-Arm Fast Bowler,t,6,1.00,AgACAgUAAyEGAAT_2KgcAAICh2qT0DWrf9cZK3TIQr-iNSNDDdylAAJOE2sbW7GYVFPjgOBUy1RSAQADAgADeAADPQQ,data/photos/PLY0151.jpg
+152,PLY0152,Taskin Ahmed,Bangladesh,Right-Arm Fast Bowler,t,6,1.00,AgACAgUAAyEGAAT_2KgcAAICiGqT0DbmEsg1BrV6JBJAe9quEw12AAJPE2sbW7GYVHcBAR2GgWvwAQADAgADeAADPQQ,data/photos/PLY0152.jpg
+154,PLY0154,Sam Cook,England,Fast Bowler,f,6,1.00,AgACAgUAAyEGAAT_2KgcAAICimqT0Dqm0Fu18fCPYGFDsLQaV_dhAAJRE2sbW7GYVD2LLIBjXC1MAQADAgADeAADPQQ,data/photos/PLY0154.jpg
+155,PLY0155,Tanveer Sangha,Australia,Right-Arm Leg-Spin Bowler,t,6,1.00,AgACAgUAAyEGAAT_2KgcAAICi2qT0DuZsX0eNCCpGYhXYawJHj_UAAJSE2sbW7GYVF1Gy7JbdeTKAQADAgADeAADPQQ,data/photos/PLY0155.jpg
+157,PLY0157,Sufiyan Muqeem,Pakistan,Left-Arm Wrist-Spin Bowler,t,6,0.75,AgACAgUAAyEGAAT_2KgcAAICjWqT0Dx1mO71NhwRyP2lI01EDwFHAAJUE2sbW7GYVJaWuecavkjRAQADAgADeAADPQQ,data/photos/PLY0157.jpg
+135,PLY0135,Stevie Eskinazi,England,Batter,f,6,1.50,AgACAgUAAyEGAAT_2KgcAAICdmqTz-fZHyVQwRA--ZURFuu9pPgzAAI-E2sbW7GYVF_Be5uIxXdUAQADAgADeQADPQQ,data/photos/PLY0135.jpg
+199,PLY0199,Usman Khan,Pakistan,Right-Hand Batter/Wicketkeeper,t,8,1.00,AgACAgUAAyEGAAT_2KgcAAICDWqRvns1mccT7sth1PVAXS3sTzjuAAIDEWsb7oqRVD_TpeQ0WOmnAQADAgADeQADPQQ,data/photos/PLY0199.jpg
+201,PLY0201,James Bracey,England,Wicketkeeper Batter,f,8,1.00,AgACAgUAAyEGAAT_2KgcAAICD2qRvn26L4KnVfCPRH3T3cycCG0tAAIFEWsb7oqRVFFZB3HczAEsAQADAgADeQADPQQ,data/photos/PLY0201.jpg
+202,PLY0202,Michael Burgess,England,Wicketkeeper Batter,f,8,1.00,AgACAgUAAyEGAAT_2KgcAAICEGqRvn-IZPMRuUTFkLrCfiovuuSxAAIGEWsb7oqRVM5pLWx8wvioAQADAgADdwADPQQ,data/photos/PLY0202.jpg
+204,PLY0204,Wiaan Mulder,South Africa,Right-Hand Batter/Right-Arm Fast All-Rounder,t,8,1.00,AgACAgUAAyEGAAT_2KgcAAICEmqRvoIUHsfUdl3SWjNqXMJFmKrLAAIIEWsb7oqRVIqaJCqyV8VMAQADAgADdwADPQQ,data/photos/PLY0204.jpg
+207,PLY0207,Iftikhar Ahmed,Pakistan,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,t,8,0.75,AgACAgUAAyEGAAT_2KgcAAICkGqT0GOKz0ZI69Y4HYW9eWsmCXBqAAJXE2sbW7GYVIX4XlFRzFgFAQADAgADeAADPQQ,data/photos/PLY0207.jpg
+219,PLY0219,Liam Patterson-White,England,Spin Bowler,f,8,0.50,AgACAgUAAyEGAAT_2KgcAAICnWqT0K89BhJM5hibfd2OdVykzSF3AAJjE2sbW7GYVCtRFMYQCBkwAQADAgADeQADPQQ,data/photos/PLY0219.jpg
+221,PLY0221,Towhid Hridoy,Bangladesh,Right-Hand Batter,t,9,1.00,AgACAgUAAyEGAAT_2KgcAAICn2qT0LNRRAbqmR1n38_hZf8IKn4zAAJlE2sbW7GYVA2YxWLzc3sYAQADAgADeAADPQQ,data/photos/PLY0221.jpg
+222,PLY0222,Shan Masood,Pakistan,Left-Hand Opening Batter,t,9,1.00,AgACAgUAAyEGAAT_2KgcAAICoGqT0LTGNCosFIhk5wrWj3jgXWHlAAJmE2sbW7GYVGM64lQMQ5P_AQADAgADeAADPQQ,data/photos/PLY0222.jpg
+224,PLY0224,Marnus Labuschagne,Australia,Right-Hand Batter,t,9,0.75,AgACAgUAAyEGAAT_2KgcAAIComqT0LY-cGszfAwr3LLufuxTazhaAAJoE2sbW7GYVGuvGfxljOPzAQADAgADeAADPQQ,data/photos/PLY0224.jpg
+173,PLY0173,Michael Bracewell,New Zealand,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,t,7,1.00,AgACAgUAAyEGAAT_2KgcAAO0apGRhKEP1pKv4f4OTclYyjaDzfAAAokQaxsq-pBUoYebc6PySR0BAAMCAAN4AAM9BA,data/photos/PLY0173.jpg
+175,PLY0175,Samit Patel,England,Bowling All-Rounder (Spin),f,7,1.00,AgACAgUAAyEGAAT_2KgcAAO2apGRifjhAhqnx13O_o_vNpguL-8AAosQaxsq-pBUOle3PwPRXRYBAAMCAAN4AAM9BA,data/photos/PLY0175.jpg
+176,PLY0176,Beau Webster,Australia,Right-Hand Batter/Right-Arm Medium All-Rounder,t,7,1.00,AgACAgUAAyEGAAT_2KgcAAO3apGRii4FqSQsM_gBbjNACShBNcYAAowQaxsq-pBUntSDEf9xSOYBAAMCAAN4AAM9BA,data/photos/PLY0176.jpg
+178,PLY0178,Ryan Higgins,England,Bowling All-Rounder (Pace),f,7,1.00,AgACAgUAAyEGAAT_2KgcAAO5apGRjChXGIJdBaNRBoh_ZirCAAF-AAKOEGsbKvqQVKwSPEJayPekAQADAgADeQADPQQ,data/photos/PLY0178.jpg
+179,PLY0179,Xavier Bartlett,Australia,Right-Arm Fast Bowler,t,7,1.00,AgACAgUAAyEGAAT_2KgcAAO6apGRkOJrujbuBJ2v4lq9CnKiEe0AAo8Qaxsq-pBUfsx5-89P820BAAMCAAN4AAM9BA,data/photos/PLY0179.jpg
+181,PLY0181,Obed McCoy,West Indies,Left-Arm Fast Bowler,t,7,1.00,AgACAgUAAyEGAAT_2KgcAAO8apGRkkmXejj6OaBlSiScqVyWE-gAApEQaxsq-pBUVCzQxPC1oREBAAMCAAN5AAM9BA,data/photos/PLY0181.jpg
+183,PLY0183,John Turner,England,Fast Bowler,f,7,0.75,AgACAgUAAyEGAAT_2KgcAAO-apGRkw_LcIU3UdePRqnQROInmVgAApMQaxsq-pBU4g4Jq_SpbPYBAAMCAAN4AAM9BA,data/photos/PLY0183.jpg
+184,PLY0184,Pat Brown,England,Fast Bowler,f,7,0.75,AgACAgUAAyEGAAT_2KgcAAO_apGRl1VFeTZ6SWPgF1k3Chji70YAApQQaxsq-pBU1D5Xq1PgTnABAAMCAAN4AAM9BA,data/photos/PLY0184.jpg
+186,PLY0186,Bjorn Fortuin,South Africa,Left-Arm Orthodox Spin Bowler,t,7,0.75,AgACAgUAAyEGAAT_2KgcAAPBapGRmQo5AAGxjRMZwxKqeyMSF9IHAAKWEGsbKvqQVDVScXe18PP_AQADAgADeAADPQQ,data/photos/PLY0186.jpg
+187,PLY0187,Nathan Lyon,Australia,Right-Arm Off-Spin Bowler,t,7,0.75,AgACAgUAAyEGAAT_2KgcAAPCapGRmt29T5wZJx4zWZzdSjF7z8gAApcQaxsq-pBUedaeK5JaUwsBAAMCAAN4AAM9BA,data/photos/PLY0187.jpg
+189,PLY0189,Farhan Ahmed,England,Spin Bowler,f,7,0.75,AgACAgUAAyEGAAT_2KgcAAPEapGRn4w93Ye9relBraa4tmxcSnMAApkQaxsq-pBU0bbGGdey5VQBAAMCAAN3AAM9BA,data/photos/PLY0189.jpg
+191,PLY0191,Daryl Mitchell,New Zealand,Right-Hand Batter,t,8,1.00,AgACAgUAAyEGAAT_2KgcAAIBWmqRnbZo9bmNP-3CQO5wCEjpuyxpAAI5EGsb7oqRVOzSTv9b4WuNAQADAgADeAADPQQ,data/photos/PLY0191.jpg
+192,PLY0192,D'Arcy Short,Australia,Left-Hand Opening Batter,t,8,1.00,AgACAgUAAyEGAAT_2KgcAAIBW2qRnboqqYDfYu_6cC8MZNL4vLHhAAI6EGsb7oqRVAQhz52klicoAQADAgADeAADPQQ,data/photos/PLY0192.jpg
+194,PLY0194,Charith Asalanka,Sri Lanka,Left-Hand Batter,t,8,1.00,AgACAgUAAyEGAAT_2KgcAAIBXWqRnbw_9vr_l2hYxSNsWHle0BV8AAI8EGsb7oqRVLjsvkQUbgXiAQADAgADeQADPQQ,data/photos/PLY0194.jpg
+195,PLY0195,Adam Hose,England,Batter,f,8,1.00,AgACAgUAAyEGAAT_2KgcAAIBXmqRnb38rIuQP_9CEdSkFyXiNY2qAAI9EGsb7oqRVBrWRUoRFQYqAQADAgADeAADPQQ,data/photos/PLY0195.jpg
+205,PLY0205,Craig Overton,England,Bowling All-Rounder (Pace),f,8,0.75,AgACAgUAAyEGAAT_2KgcAAIBsmqRntToLstR80HKmhegrU0w5kaiAAKNEGsb7oqRVMCIpedYiDEJAQADAgADeAADPQQ,data/photos/PLY0205.jpg
+346,PLY0346,Chris Dent,England,Batter,f,13,0.25,AgACAgUAAyEGAAT_2KgcAAIBzGqRnxkNT0EbnBuZgo0LWuL-wt3wAAKqEGsb7oqRVDRSisIbvfTyAQADAgADeAADPQQ,data/photos/PLY0346.jpg
+226,PLY0226,Haseeb Hameed,England,Batter,f,9,0.75,AgACAgUAAyEGAAT_2KgcAAICpGqT0LrCeA4kUXxx3BMb1v-JaYn4AAJqE2sbW7GYVKoS3novr_33AQADAgADeAADPQQ,data/photos/PLY0226.jpg
+228,PLY0228,Ben Cox,England,Wicketkeeper Batter,f,9,0.75,AgACAgUAAyEGAAT_2KgcAAICpmqT0LzRIRRPHONMQehQeBSJaLNvAAJsE2sbW7GYVJjL0nGyljQLAQADAgADeQADPQQ,data/photos/PLY0228.jpg
+230,PLY0230,Lewis McManus,England,Wicketkeeper Batter,f,9,0.75,AgACAgUAAyEGAAT_2KgcAAICqGqT0L3IYUsGnjgHo6W4aFd-aaLGAAJuE2sbW7GYVNADrxLTer3NAQADAgADdwADPQQ,data/photos/PLY0230.jpg
+231,PLY0231,James Rew,England,Wicketkeeper Batter,f,9,0.75,AgACAgUAAyEGAAT_2KgcAAIDCmqT03caVCNhSZ5Cpsr5ETYGCkTXAAJ7E2sbW7GYVMYM91Nc4UXeAQADAgADdwADPQQ,data/photos/PLY0231.jpg
+233,PLY0233,Roston Chase,West Indies,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,t,9,0.75,AgACAgUAAyEGAAT_2KgcAAIDDGqT03wb1JNXYhSZoN9jYu4xSzuKAAJ8E2sbW7GYVEInNPlZDk9dAQADAgADeAADPQQ,data/photos/PLY0233.jpg
+234,PLY0234,Rishad Hossain,Bangladesh,Right-Hand Batter/Right-Arm Leg-Spin All-Rounder,t,9,0.75,AgACAgUAAyEGAAT_2KgcAAIDDWqT033tTwceBRXDkwMtTgf7mA74AAJ9E2sbW7GYVL4VQUrB4L_VAQADAgADeAADPQQ,data/photos/PLY0234.jpg
+236,PLY0236,Dasun Shanaka,Sri Lanka,Right-Hand Batter/Right-Arm Medium All-Rounder,t,9,0.75,AgACAgUAAyEGAAT_2KgcAAIDD2qT034chtNBxGp364eLoPTvQTLbAAJ_E2sbW7GYVIkyO_LQNhBxAQADAgADeQADPQQ,data/photos/PLY0236.jpg
+237,PLY0237,Ed Barnard,England,Bowling All-Rounder (Pace),f,9,0.75,AgACAgUAAyEGAAT_2KgcAAIDEGqT04Lmfsy90mNkNZ1fPnK2JrwyAAKAE2sbW7GYVASnMF2ecKr2AQADAgADeQADPQQ,data/photos/PLY0237.jpg
+239,PLY0239,Kwena Maphaka,South Africa,Left-Arm Fast Bowler,t,9,0.75,AgACAgUAAyEGAAT_2KgcAAIDEmqT04QpYXa4ytMg8K4Jx-U--0sLAAKCE2sbW7GYVHVJucbVLhnAAQADAgADeAADPQQ,data/photos/PLY0239.jpg
+240,PLY0240,Saurabh Netravalkar,USA,Left-Arm Medium-Fast Bowler,t,9,0.75,AgACAgUAAyEGAAT_2KgcAAIDE2qT04Q5M27vJkKlC14d03-Ld4PFAAKDE2sbW7GYVDbKfwO9vC5sAQADAgADeQADPQQ,data/photos/PLY0240.jpg
+268,PLY0268,Jordan Thompson,England,Bowling All-Rounder (Pace),f,10,0.50,AgACAgUAAyEGAAT_2KgcAAPaapGR--HHs3uZaBr4bW49efZUpjQAArAQaxsq-pBUlK7I45otu8oBAAMCAAN5AAM9BA,data/photos/PLY0268.jpg
+269,PLY0269,Sean Abbott,Australia,Right-Arm Fast Bowler,t,10,0.50,AgACAgUAAyEGAAT_2KgcAAPbapGR_LbhaCOdNCEgySGsO4O31wADsRBrGyr6kFRBAqEt11opEQEAAwIAA3gAAz0E,data/photos/PLY0269.jpg
+271,PLY0271,Dilshan Madushanka,Sri Lanka,Left-Arm Fast Bowler,t,10,0.50,AgACAgUAAyEGAAT_2KgcAAPdapGSAQlWb07pwn31J0rFeeVVzKMAArMQaxsq-pBUFTxxyLmz6g8BAAMCAAN4AAM9BA,data/photos/PLY0271.jpg
+272,PLY0272,Zaman Khan,Pakistan,Right-Arm Fast Bowler,t,10,0.50,AgACAgUAAyEGAAT_2KgcAAPeapGSAtcZ_b3NZ3aWAAEaIpuVhVW4AAK0EGsbKvqQVA3viM7eKgxiAQADAgADeAADPQQ,data/photos/PLY0272.jpg
+274,PLY0274,Josh Hull,England,Fast Bowler,f,10,0.50,AgACAgUAAyEGAAT_2KgcAAPgapGSA8KFhBPRQ3YthwVN4ZnnYjcAArYQaxsq-pBU_yoEWtQ5SQwBAAMCAAN5AAM9BA,data/photos/PLY0274.jpg
+276,PLY0276,Dunith Wellalage,Sri Lanka,Left-Arm Orthodox Spin Bowler,t,10,0.50,AgACAgUAAyEGAAT_2KgcAAPiapGSCFzpHsuiQ3vhvxUdN03BT-oAArgQaxsq-pBU9ilxrnnWjkYBAAMCAAN5AAM9BA,data/photos/PLY0276.jpg
+277,PLY0277,Mohammad Nawaz,Pakistan,Left-Arm Orthodox Spin Bowler,t,10,0.50,AgACAgUAAyEGAAT_2KgcAAPjapGSCe8QQbXZKmhE9tuW6lL0cFkAArkQaxsq-pBUUmu98G2T0Q4BAAMCAAN4AAM9BA,data/photos/PLY0277.jpg
+247,PLY0247,Tom Hinley,England,Spin Bowler,f,9,0.50,AgACAgUAAyEGAAT_2KgcAAIBYGqRneBHaflDeGK8640ROtBOTyKIAAI_EGsb7oqRVPMYwIQKd4BNAQADAgADeAADPQQ,data/photos/PLY0247.jpg
+248,PLY0248,Max Waller,England,Spin Bowler,f,9,0.50,AgACAgUAAyEGAAT_2KgcAAIBYWqRneHKaxgM3L_4cBnkwz0EtbE0AAJAEGsb7oqRVLz61ViGuPHPAQADAgADeAADPQQ,data/photos/PLY0248.jpg
+250,PLY0250,Jack Shutt,England,Spin Bowler,f,9,0.50,AgACAgUAAyEGAAT_2KgcAAIBY2qRneOATFURR6okkCnz5Dbv6JgAA0IQaxvuipFUrLwHeH4PCTYBAAMCAAN4AAM9BA,data/photos/PLY0250.jpg
+251,PLY0251,Aaron Jones,USA,Right-Hand Batter,t,10,0.75,AgACAgUAAyEGAAT_2KgcAAIBZGqRneQGg-mlOmBJpVXkQvhw1onNAAJDEGsb7oqRVCUUHt99xacuAQADAgADeAADPQQ,data/photos/PLY0251.jpg
+253,PLY0253,Paul Stirling,Ireland,Right-Hand Opening Batter,t,10,0.75,AgACAgUAAyEGAAT_2KgcAAIBZmqRnejKJMzfc2-RlZxNEiGAqn-AAAJFEGsb7oqRVEpX1OzHPtywAQADAgADeAADPQQ,data/photos/PLY0253.jpg
+255,PLY0255,Dom Sibley,England,Batter,f,10,0.75,AgACAgUAAyEGAAT_2KgcAAIBaGqRnerrq7hACHERWsQ8DyeDePG_AAJHEGsb7oqRVO9X0ndIVuG3AQADAgADeAADPQQ,data/photos/PLY0255.jpg
+256,PLY0256,Keaton Jennings,England,Batter,f,10,0.75,AgACAgUAAyEGAAT_2KgcAAIBaWqRneuSJVeYEYYJOU_qbCRS4lTXAAJIEGsb7oqRVE1F6ZQSGnZZAQADAgADeAADPQQ,data/photos/PLY0256.jpg
+258,PLY0258,Chris Benjamin,England,Wicketkeeper Batter,f,10,0.75,AgACAgUAAyEGAAT_2KgcAAIBa2qRnfC-mDtEnNOCWuiBaOA72MGDAAJKEGsb7oqRVM7OyzGpVuWdAQADAgADeQADPQQ,data/photos/PLY0258.jpg
+260,PLY0260,Harry Swindells,England,Wicketkeeper Batter,f,10,0.75,AgACAgUAAyEGAAT_2KgcAAP8apGSSp11nKPCSsPrrY420wsZkUUAAtIQaxsq-pBURDTeVfL8BncBAAMCAAN4AAM9BA,data/photos/PLY0260.jpg
+261,PLY0261,Alex Horton,England,Wicketkeeper Batter,f,10,0.75,AgACAgUAAyEGAAT_2KgcAAIBbmqRnfOTpdhdqQi0ICjb39aZDFJVAAJMEGsb7oqRVEEilG2gmSWUAQADAgADdwADPQQ,data/photos/PLY0261.jpg
+263,PLY0263,Logan van Beek,Netherlands,Right-Hand Batter/Right-Arm Fast All-Rounder,t,10,0.75,AgACAgUAAyEGAAT_2KgcAAIBcGqRnfW9D4LXOhODS-18njijmPGnAAJOEGsb7oqRVD5rOFiOGKg9AQADAgADeAADPQQ,data/photos/PLY0263.jpg
+264,PLY0264,Mark Adair,Ireland,Right-Hand Batter/Right-Arm Fast All-Rounder,t,10,0.50,AgACAgUAAyEGAAT_2KgcAAIBcWqRnfXNvrKG2m9dlmzhEFXy1kQKAAJPEGsb7oqRVMtxfFcWq-zWAQADAgADeAADPQQ,data/photos/PLY0264.jpg
+266,PLY0266,Aamer Jamal,Pakistan,Right-Hand Batter/Right-Arm Fast All-Rounder,t,10,0.50,AgACAgUAAyEGAAT_2KgcAAIBc2qRnfevSd7TB34ijy8ibrHkn-rdAAJREGsb7oqRVCXzVMqPx9nFAQADAgADeAADPQQ,data/photos/PLY0266.jpg
+242,PLY0242,Blessing Muzarabani,Zimbabwe,Right-Arm Fast Bowler,t,9,0.50,AgACAgUAAyEGAAT_2KgcAAIBw2qRnuvsxf7DtpxACglIMM1vRvyZAAKeEGsb7oqRVDzPnQXUstO6AQADAgADeAADPQQ,data/photos/PLY0242.jpg
+244,PLY0244,Ben Coad,England,Fast Bowler,f,9,0.50,AgACAgUAAyEGAAT_2KgcAAIBxWqRnu0AARblYtY6UCWx35pJExr7CwACoBBrG-6KkVQBTsTPuXj4EgEAAwIAA3kAAz0E,data/photos/PLY0244.jpg
+393,PLY0393,Blake Cullen,England,Fast Bowler,f,14,0.25,AgACAgUAAyEGAAT_2KgcAAIB02qRnyP95tkCKRF0cE-rLzmBg0fmAAKxEGsb7oqRVEJXlVrgz5D_AQADAgADeQADPQQ,data/photos/PLY0393.jpg
+308,PLY0308,Luke Fletcher,England,Fast Bowler,f,11,0.25,AgACAgUAAyEGAAT_2KgcAAIDKGqT0_-kogNEZPu6NKHoTU6mbJX2AAKXE2sbW7GYVLkUd4iak_biAQADAgADeAADPQQ,data/photos/PLY0308.jpg
+309,PLY0309,Tom Helm,England,Fast Bowler,f,11,0.25,AgACAgUAAyEGAAT_2KgcAAIDKWqT1AABzoLLg-KdOPOy8FOQZZ65VwACmBNrG1uxmFT0OQmjpM4YNQEAAwIAA3kAAz0E,data/photos/PLY0309.jpg
+311,PLY0311,Nikhil Choudhary,India,Batter,t,12,0.50,AgACAgUAAyEGAAT_2KgcAAIDK2qT1ATNK_iHPfPQmYVNN9y8blpPAAKaE2sbW7GYVHaJF6CrEJa6AQADAgADeQADPQQ,data/photos/PLY0311.jpg
+313,PLY0313,Nick Gubbins,England,Batter,f,12,0.50,AgACAgUAAyEGAAT_2KgcAAIDLWqT1Ab4M-IvwY1xU7y5Dl4H-htIAAKcE2sbW7GYVJFMnHBc2IsmAQADAgADeQADPQQ,data/photos/PLY0313.jpg
+314,PLY0314,Tom Lammonby,England,Batter,f,12,0.50,AgACAgUAAyEGAAT_2KgcAAIDLmqT1AZzbAABHcN7MJOWobI9XdwtfwACnRNrG1uxmFSG5vp7An0UXAEAAwIAA3kAAz0E,data/photos/PLY0314.jpg
+316,PLY0316,Jack Haynes,England,Batter,f,12,0.50,AgACAgUAAyEGAAT_2KgcAAIB-2qRoJHQoNeLfS1pUJVhjcExEfEsAALYEGsb7oqRVM3wXr-QIMazAQADAgADeQADPQQ,data/photos/PLY0316.jpg
+318,PLY0318,Angelo Mathews,Sri Lanka,Right-Hand Batter/Right-Arm Medium All-Rounder,t,12,0.50,AgACAgUAAyEGAAT_2KgcAAIB_WqRoJMFCOUnEgToKY9hoh9RlBJjAALaEGsb7oqRVEqwIXWgE1RlAQADAgADeQADPQQ,data/photos/PLY0318.jpg
+282,PLY0282,Keacy Carty,West Indies,Right-Hand Batter,t,11,0.50,AgACAgUAAyEGAAT_2KgcAAICrGqT0OVQGKkXCtuJ44Txyi-gF_VfAAJyE2sbW7GYVH2EkHx8D_h7AQADAgADeAADPQQ,data/photos/PLY0282.jpg
+291,PLY0291,Odean Smith,West Indies,Right-Hand Batter/Right-Arm Fast All-Rounder,t,11,0.50,AgACAgUAAyEGAAT_2KgcAAIDFmqT06xw7kKuHq4QMjSQRe3x9JSDAAKGE2sbW7GYVHHY2edD8T80AQADAgADeAADPQQ,data/photos/PLY0291.jpg
+284,PLY0284,Avishka Fernando,Sri Lanka,Right-Hand Batter,t,11,0.50,AgACAgUAAyEGAAT_2KgcAAPqapGSEt6VGxj3PNpZheyRHVMKWW8AAsAQaxsq-pBUd40gUhdz4ZYBAAMCAAN4AAM9BA,data/photos/PLY0284.jpg
+285,PLY0285,Josh Bohannon,England,Batter,f,11,0.50,AgACAgUAAyEGAAT_2KgcAAPrapGSE0P0NP_6B4mo5qZ_Lghyt3wAAsEQaxsq-pBU-M5yyfH45_8BAAMCAAN4AAM9BA,data/photos/PLY0285.jpg
+320,PLY0320,George Balderson,England,Bowling All-Rounder (Pace),f,12,0.50,AgACAgUAAyEGAAT_2KgcAAPtapGSNzA8h3BRf43PrfKAQE3S4KYAAsMQaxsq-pBU6VpgtQ-kArYBAAMCAAN5AAM9BA,data/photos/PLY0320.jpg
+322,PLY0322,George Hill,England,Bowling All-Rounder (Pace),f,12,0.50,AgACAgUAAyEGAAT_2KgcAAPvapGSOiOGPJufwNKSE-rpZP9jiUcAAsUQaxsq-pBUn3sMhaWD1foBAAMCAAN3AAM9BA,data/photos/PLY0322.jpg
+323,PLY0323,Fynn Hudson-Prentice,England,Bowling All-Rounder (Pace),f,12,0.50,AgACAgUAAyEGAAT_2KgcAAPwapGSOrY-cQuoQX6QUFd7dUaz-j0AAsYQaxsq-pBUz-9E7wABLpYbAQADAgADeQADPQQ,data/photos/PLY0323.jpg
+325,PLY0325,Mehidy Hasan Miraz,Bangladesh,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,t,12,0.50,AgACAgUAAyEGAAT_2KgcAAPyapGSPOakD5JeIJG5gufjezvU9oIAAsgQaxsq-pBUpSt5GOLbTIQBAAMCAAN4AAM9BA,data/photos/PLY0325.jpg
+327,PLY0327,Dushmantha Chameera,Sri Lanka,Right-Arm Fast Bowler,t,12,0.25,AgACAgUAAyEGAAT_2KgcAAP0apGSPd4T_Cp8YsdR1JYjExVBA5kAAsoQaxsq-pBUBEV-eGiFgnsBAAMCAAN5AAM9BA,data/photos/PLY0327.jpg
+328,PLY0328,Tom Bailey,England,Fast Bowler,f,12,0.25,AgACAgUAAyEGAAT_2KgcAAP1apGSPmi5Ey6kCldbVSjxxHUk85cAAssQaxsq-pBU7pdpukzYEBABAAMCAAN5AAM9BA,data/photos/PLY0328.jpg
+329,PLY0329,Jack White,England,Fast Bowler,f,12,0.25,AgACAgUAAyEGAAT_2KgcAAP2apGSQu8Fbiw7X3zsD6Hja5bVZB8AAswQaxsq-pBUvvJUWxrLIdsBAAMCAAN4AAM9BA,data/photos/PLY0329.jpg
+331,PLY0331,Ben Cliff,England,Fast Bowler,f,12,0.25,AgACAgUAAyEGAAT_2KgcAAP4apGSRu1Uo9Je7q_8eyLLZK7a0ZsAAs4Qaxsq-pBUXB1ChkyMhWABAAMCAAN3AAM9BA,data/photos/PLY0331.jpg
+287,PLY0287,Alex Green,England,Wicketkeeper Batter,f,11,0.50,AgACAgUAAyEGAAT_2KgcAAICFWqRvoawSGkKNTx6qM85da-miiZKAAILEWsb7oqRVDJknxkWN7-zAQADAgADeAADPQQ,data/photos/PLY0287.jpg
+288,PLY0288,Jack Carney,England,Wicketkeeper Batter,f,11,0.50,AgACAgUAAyEGAAT_2KgcAAICFmqRvocD_Emk_gaPhlT1Cl_TXU1eAAIMEWsb7oqRVH6LxQ1N_j1pAQADAgADeAADPQQ,data/photos/PLY0288.jpg
+289,PLY0289,Thomas Rew,England,Wicketkeeper Batter,f,11,0.50,AgACAgUAAyEGAAT_2KgcAAICF2qRvogZmtMKErZd3cNpUdB11smtAAINEWsb7oqRVBlnqh1_P4nnAQADAgADeAADPQQ,data/photos/PLY0289.jpg
+293,PLY0293,Matthew Forde,West Indies,Right-Arm Fast All-Rounder,t,11,0.50,AgACAgUAAyEGAAT_2KgcAAIDGGqT064hsQS_spbBeCvFNTRy4PQxAAKIE2sbW7GYVOSS-mgrlOKjAQADAgADeAADPQQ,data/photos/PLY0293.jpg
+294,PLY0294,Corey Anderson,USA,Left-Hand Batter/Left-Arm Medium All-Rounder,t,11,0.50,AgACAgUAAyEGAAT_2KgcAAIDGWqT07Kf29wz4vY3miPh1riYTH7AAAKJE2sbW7GYVKhnQfoG1t9LAQADAgADeAADPQQ,data/photos/PLY0294.jpg
+296,PLY0296,Ravi Bopara,England,Bowling All-Rounder (Pace),f,11,0.50,AgACAgUAAyEGAAT_2KgcAAIDHGqT0-8QvZ_kdyVNX3_z7qZzEjhIAAKLE2sbW7GYVJg47yjv-kO2AQADAgADeAADPQQ,data/photos/PLY0296.jpg
+297,PLY0297,Sean Williams,Zimbabwe,Left-Hand Batter/Left-Arm Orthodox All-Rounder,t,11,0.50,AgACAgUAAyEGAAT_2KgcAAIDHWqT0_DqJTyY0VymsyCOsA_oPc3aAAKME2sbW7GYVIIO57m5dRnBAQADAgADeAADPQQ,data/photos/PLY0297.jpg
+299,PLY0299,Dhananjaya de Silva,Sri Lanka,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,t,11,0.50,AgACAgUAAyEGAAT_2KgcAAIDH2qT0_JoWiuTkgwZe2BPBQQtKtlPAAKOE2sbW7GYVAmJhJGZ0PJuAQADAgADeAADPQQ,data/photos/PLY0299.jpg
+301,PLY0301,Jacob Duffy,New Zealand,Right-Arm Fast Bowler,t,11,0.50,AgACAgUAAyEGAAT_2KgcAAIDIWqT0_b3F1IuCxf9-ZKHdVmEbIXtAAKQE2sbW7GYVOnmzxR4JKUyAQADAgADeAADPQQ,data/photos/PLY0301.jpg
+302,PLY0302,Lizaad Williams,South Africa,Right-Arm Fast Bowler,t,11,0.50,AgACAgUAAyEGAAT_2KgcAAIDImqT0_c9eBVsSGsVSD5MNuDtblc6AAKRE2sbW7GYVBKoQdRijQSoAQADAgADeAADPQQ,data/photos/PLY0302.jpg
+303,PLY0303,Mohammad Wasim Jr,Pakistan,Right-Arm Fast Bowler,t,11,0.25,AgACAgUAAyEGAAT_2KgcAAIDI2qT0_hh0tBqUEgfWxpaqMzuRz1KAAKSE2sbW7GYVN6SfAjoUBBzAQADAgADeAADPQQ,data/photos/PLY0303.jpg
+306,PLY0306,Toby Roland-Jones,England,Fast Bowler,f,11,0.25,AgACAgUAAyEGAAT_2KgcAAIDJmqT0_2dUZnHprOSVQABmO36s8rgagAClRNrG1uxmFSRoQPXzDzf4gEAAwIAA3gAAz0E,data/photos/PLY0306.jpg
+281,PLY0281,Caleb Jewell,Australia,Right-Hand Batter,t,11,0.50,AgACAgUAAyEGAAT_2KgcAAICq2qT0OTwSk56U9UAARzdfkQbDt0_cAACcRNrG1uxmFTjtnm7uSV9DwEAAwIAA3gAAz0E,data/photos/PLY0281.jpg
+9,PLY0009,Trent Boult,New Zealand,Left-Arm Fast Bowler,t,1,3.00,AgACAgUAAyEGAAT_2KgcAAICT2qTzzATrjjUwL5tfs3SVUKtZQvwAAIYE2sbW7GYVN1wSJb6enVoAQADAgADeAADPQQ,data/photos/PLY0009.jpg
+10,PLY0010,Kagiso Rabada,South Africa,Right-Arm Fast Bowler,t,1,3.00,AgACAgUAAyEGAAT_2KgcAAICUGqTzzHsLhjrVa9u9QQ3C4sFAoIeAAIZE2sbW7GYVCK7Ul1JPNT1AQADAgADdwADPQQ,data/photos/PLY0010.jpg
+11,PLY0011,Jake Fraser-McGurk,Australia,Right-Hand Opening Batter,t,2,3.00,AgACAgUAAyEGAAT_2KgcAAICUWqTzzWRZ8b8dO6S3-cN5eQlu76uAAIaE2sbW7GYVEc6rzfD45DsAQADAgADeAADPQQ,data/photos/PLY0011.jpg
+12,PLY0012,Steve Smith,Australia,Right-Hand Batter,t,2,3.00,AgACAgUAAyEGAAT_2KgcAAICUmqTzzbB7QlY81g8ItqyBjvwgNjnAAIbE2sbW7GYVJ9ZxZhm_dPCAQADAgADeQADPQQ,data/photos/PLY0012.jpg
+13,PLY0013,Matthew Short,Australia,Right-Hand Batter,t,2,3.00,AgACAgUAAyEGAAT_2KgcAAICU2qTzzdGg86hGI8IM1laUGfiCT5BAAIcE2sbW7GYVH2QbAMGdiluAQADAgADeAADPQQ,data/photos/PLY0013.jpg
+333,PLY0333,Henry Brookes,England,Fast Bowler,f,12,0.25,AgACAgUAAyEGAAT_2KgcAAP6apGSSNI5I4OxluM0zOoeS8TZ5vUAAtAQaxsq-pBUqfg6xLTBO88BAAMCAAN5AAM9BA,data/photos/PLY0333.jpg
+334,PLY0334,Mitchell Stanley,England,Fast Bowler,f,12,0.25,AgACAgUAAyEGAAT_2KgcAAP7apGSSXPid5N7aS5TZR1FXIxGe1sAAtEQaxsq-pBUyDQku6YZuJEBAAMCAAN4AAM9BA,data/photos/PLY0334.jpg
+340,PLY0340,George Drissell,England,Spin Bowler,f,12,0.25,AgACAgUAAyEGAAT_2KgcAAIBxmqRnxMan9-rElyVsPt4mf3KNtzyAAKiEGsb7oqRVFLKYsKmCfpZAQADAgADeQADPQQ,data/photos/PLY0340.jpg
+342,PLY0342,Luke Wells,England,Batter,f,13,0.50,AgACAgUAAyEGAAT_2KgcAAIByGqRnxX6MnXXerujuGgxPNkKrk26AAKkEGsb7oqRVI_Ff6g_4vuHAQADAgADeQADPQQ,data/photos/PLY0342.jpg
+343,PLY0343,Sam Robson,England,Batter,f,13,0.50,AgACAgUAAyEGAAT_2KgcAAIByWqRnxZhxPFXLDgeOluDLve3x2JzAAKlEGsb7oqRVGkfu2bTUGj1AQADAgADdwADPQQ,data/photos/PLY0343.jpg
+345,PLY0345,Adam Lyth,England,Batter,f,13,0.25,AgACAgUAAyEGAAT_2KgcAAIBy2qRnxhVpghOg92y3winrXvEDSW_AAKpEGsb7oqRVKNmzYASV5u6AQADAgADeAADPQQ,data/photos/PLY0345.jpg
+347,PLY0347,Tom Westley,England,Batter,f,13,0.25,AgACAgUAAyEGAAT_2KgcAAIBzWqRnx1-Fk-eCMGUxZiT2jH3i4IkAAKrEGsb7oqRVBI1XoYt6_SDAQADAgADeAADPQQ,data/photos/PLY0347.jpg
+1,PLY0001,Travis Head,Australia,Left-Hand Opening Batter,t,1,4.00,AgACAgUAAyEGAAT_2KgcAAICR2qTzyjN2oIN53y-iA_GOC2EvLVvAAIQE2sbW7GYVPO-PRTVab3KAQADAgADeAADPQQ,data/photos/PLY0001.jpg
+2,PLY0002,David Warner,Australia,Left-Hand Opening Batter,t,1,4.00,AgACAgUAAyEGAAT_2KgcAAICSGqTzyrCDF-hBW9mKnASdBpdaIbBAAIRE2sbW7GYVLEKiZ-TJvJ7AQADAgADdwADPQQ,data/photos/PLY0002.jpg
+3,PLY0003,Kane Williamson,New Zealand,Right-Hand Batter,t,1,3.75,AgACAgUAAyEGAAT_2KgcAAICSWqTzytmGPda0K4hUWSvMH4vLXLOAAISE2sbW7GYVFEFwe5UDsBlAQADAgADdwADPQQ,data/photos/PLY0003.jpg
+4,PLY0004,Jason Roy,England,Batter,f,1,3.75,AgACAgUAAyEGAAT_2KgcAAICSmqTzyz5ZpoS84ggnW7BLR0Hkby3AAITE2sbW7GYVJxDC4OU21sqAQADAgADdwADPQQ,data/photos/PLY0004.jpg
+5,PLY0005,Quinton de Kock,South Africa,Left-Hand Batter/Wicketkeeper,t,1,3.50,AgACAgUAAyEGAAT_2KgcAAICS2qTzy0VJ4OQUkqSuDkl2CL3zF_TAAIUE2sbW7GYVDJyJf66TvLOAQADAgADeAADPQQ,data/photos/PLY0005.jpg
+352,PLY0352,Gareth Berg,England,Bowling All-Rounder (Pace),f,13,0.25,AgACAgUAAyEGAAT_2KgcAAIDL2qT1CvD6t5Sq2Q1xhBG-N-JD0_cAAKeE2sbW7GYVDCFv0A1P3d5AQADAgADeQADPQQ,data/photos/PLY0352.jpg
+353,PLY0353,James Fuller,England,Bowling All-Rounder (Pace),f,13,0.25,AgACAgUAAyEGAAT_2KgcAAIDMGqT1CzumNH-xk1q69gS70yJZesMAAKfE2sbW7GYVA1B520UICuaAQADAgADdwADPQQ,data/photos/PLY0353.jpg
+355,PLY0355,Joey Evison,England,Bowling All-Rounder (Pace),f,13,0.25,AgACAgUAAyEGAAT_2KgcAAIDMmqT1C5iAkNHQWfBGjAp4tWtJlAUAAKiE2sbW7GYVJeKh3rjc2XFAQADAgADeQADPQQ,data/photos/PLY0355.jpg
+336,PLY0336,Tom Smith,England,Spin Bowler,f,12,0.25,AgACAgUAAyEGAAT_2KgcAAP9apGSS0aYYm84G565X2d5NJySjm0AAtMQaxsq-pBU9IVaTRKAK9wBAAMCAAN5AAM9BA,data/photos/PLY0336.jpg
+337,PLY0337,Brett D'Oliveira,England,Spin Bowler,f,12,0.25,AgACAgUAAyEGAAT_2KgcAAP-apGST6Df2S96jifT6e60N598wPwAAtQQaxsq-pBUfKjgSKit7CABAAMCAAN5AAM9BA,data/photos/PLY0337.jpg
+339,PLY0339,Jack Leaning,England,Spin Bowler,f,12,0.25,AgACAgUAAyEGAAT_2KgcAAIBAAFqkZJRa55-0f2BN2DiPc63j47bEQAC1hBrGyr6kFSv7ddsIr4WwwEAAwIAA3kAAz0E,data/photos/PLY0339.jpg
+349,PLY0349,Billy Root,England,Batter,f,13,0.25,AgACAgUAAyEGAAT_2KgcAAIBdWqRnh3QZ84-rJ7SRaB3O9ZzMRbZAAJTEGsb7oqRVAABLCq1DnfoTAEAAwIAA3gAAz0E,data/photos/PLY0349.jpg
+350,PLY0350,Jake Libby,England,Batter,f,13,0.25,AgACAgUAAyEGAAT_2KgcAAIBdmqRnh4ppcLfIgm-z2B4zFQR2w08AAJUEGsb7oqRVEVObho4xznvAQADAgADeQADPQQ,data/photos/PLY0350.jpg
+357,PLY0357,Matthew Revis,England,Bowling All-Rounder (Pace),f,13,0.25,AgACAgUAAyEGAAT_2KgcAAIDNWqT1HBAobkK-VFI_Iy0o-u4s3B8AAKlE2sbW7GYVITNMkEOT27dAQADAgADeQADPQQ,data/photos/PLY0357.jpg
+358,PLY0358,Kasey Aldridge,England,Bowling All-Rounder (Pace),f,13,0.25,AgACAgUAAyEGAAT_2KgcAAIDNmqT1HFSQX-RJt8YlXHwmZ-Efld1AAKmE2sbW7GYVGbJtO96__qKAQADAgADeQADPQQ,data/photos/PLY0358.jpg
+360,PLY0360,Sam Northeast,England,Bowling All-Rounder (Spin),f,13,0.25,AgACAgUAAyEGAAT_2KgcAAIDOGqT1HMsYLU0YKcS8dJl0LorUIdFAAKoE2sbW7GYVG5r-VYRQPLSAQADAgADeQADPQQ,data/photos/PLY0360.jpg
+361,PLY0361,George Thompson,England,Fast Bowler,f,13,0.25,AgACAgUAAyEGAAT_2KgcAAIDOWqT1HXfONYVRE7YMIUHOgjUvHSvAAKpE2sbW7GYVAWc7fB8TPsrAQADAgADeAADPQQ,data/photos/PLY0361.jpg
+363,PLY0363,Ben Sanderson,England,Fast Bowler,f,13,0.25,AgACAgUAAyEGAAT_2KgcAAIDO2qT1HYGzasm-uPgXc0CXDbpy2qnAAKrE2sbW7GYVJuVYV9SpaSfAQADAgADeQADPQQ,data/photos/PLY0363.jpg
+364,PLY0364,Harry Podmore,England,Fast Bowler,f,13,0.25,AgACAgUAAyEGAAT_2KgcAAICfmqT0Cg5naVLuc4gnRYZ-RiU21baAAJFE2sbW7GYVFBuP1-8PedjAQADAgADeAADPQQ,data/photos/PLY0364.jpg
+105,PLY0105,Sam Hain,England,Batter,f,5,1.75,AgACAgUAAyEGAAT_2KgcAAOeapGRRme1vufSo43ehRNagSVMj-QAAnIQaxsq-pBUuPFFpOhQlqABAAMCAAN4AAM9BA,data/photos/PLY0105.jpg
+107,PLY0107,Tim Seifert,New Zealand,Right-Hand Batter/Wicketkeeper,t,5,1.50,AgACAgUAAyEGAAT_2KgcAAOgapGRSNxAVAABuzMM33WoJV_mRfq4AAJ0EGsbKvqQVJVDq9JgNCi2AQADAgADeAADPQQ,data/photos/PLY0107.jpg
+110,PLY0110,Sam Billings,England,Wicketkeeper Batter,f,5,1.50,AgACAgUAAyEGAAT_2KgcAAOjapGRS2P0mw41TSYEeThXmuDHGtEAAncQaxsq-pBU7yayYkus5FABAAMCAAN4AAM9BA,data/photos/PLY0110.jpg
+112,PLY0112,Adam Rossington,England,Wicketkeeper Batter,f,5,1.50,AgACAgUAAyEGAAT_2KgcAAOlapGRTQAB33d6PHv9T4XhgpBfpiccAAJ5EGsbKvqQVIW2k1MyA9mLAQADAgADdwADPQQ,data/photos/PLY0112.jpg
+115,PLY0115,Daniel Sams,Australia,Left-Hand Batter/Left-Arm Fast All-Rounder,t,5,1.50,AgACAgUAAyEGAAT_2KgcAAOoapGRUPb5tLXYeBaAl9t4UljuvYsAAnwQaxsq-pBUeiB-x0OnzRgBAAMCAAN4AAM9BA,data/photos/PLY0115.jpg
+118,PLY0118,Brydon Carse,England,Bowling All-Rounder (Pace),f,5,1.25,AgACAgUAAyEGAAT_2KgcAAOrapGRU7HG4l8uxj54zrxy9K6SuHcAAn8Qaxsq-pBU8QP-pDQDWuEBAAMCAAN4AAM9BA,data/photos/PLY0118.jpg
+119,PLY0119,Nathan Ellis,Australia,Right-Arm Fast Bowler,t,5,1.25,AgACAgUAAyEGAAT_2KgcAAOsapGRV_hzw4DMBQ90wjr53galTQkAAoAQaxsq-pBUqjoRAjF4zYUBAAMCAAN4AAM9BA,data/photos/PLY0119.jpg
+122,PLY0122,Matt Henry,New Zealand,Right-Arm Fast Bowler,t,5,1.25,AgACAgUAAyEGAAT_2KgcAAOvapGRWQ8EIf6YAAEunNRlTMtZQ-9zAAKDEGsbKvqQVElYKLxjL0hdAQADAgADeAADPQQ,data/photos/PLY0122.jpg
+170,PLY0170,Ollie Robinson,England,Wicketkeeper Batter,f,7,1.00,AgACAgUAAyEGAAT_2KgcAAOxapGRgp_OzFpUm5w7CN4l1HnsRkIAAoYQaxsq-pBURLfhibl75aUBAAMCAAN3AAM9BA,data/photos/PLY0170.jpg
+172,PLY0172,Chris Cooke,England,Wicketkeeper Batter,f,7,1.00,AgACAgUAAyEGAAT_2KgcAAOzapGRg11zJ2SSXSatnz8z8Whq9AADiBBrGyr6kFThaNUj9NJJ8AEAAwIAA3kAAz0E,data/photos/PLY0172.jpg
+174,PLY0174,Cooper Connolly,Australia,Left-Hand Batter/Left-Arm Orthodox All-Rounder,t,7,1.00,AgACAgUAAyEGAAT_2KgcAAO1apGRiFHOBjdgtxAFdNaLAAHvdTrWAAKKEGsbKvqQVAHdkdsOj-yjAQADAgADeAADPQQ,data/photos/PLY0174.jpg
+177,PLY0177,Paul Walter,England,Bowling All-Rounder (Pace),f,7,1.00,AgACAgUAAyEGAAT_2KgcAAO4apGRi05KTBiL-iohMIm8olXCnXIAAo0Qaxsq-pBUmH5b8Mr49G4BAAMCAAN4AAM9BA,data/photos/PLY0177.jpg
+180,PLY0180,Shamar Joseph,West Indies,Right-Arm Fast Bowler,t,7,1.00,AgACAgUAAyEGAAT_2KgcAAO7apGRkUb1BEsplbjvQvqvwwM_Md4AApAQaxsq-pBUjZIUYGsHvSIBAAMCAAN5AAM9BA,data/photos/PLY0180.jpg
+182,PLY0182,Riley Meredith,Australia,Right-Arm Fast Bowler,t,7,0.75,AgACAgUAAyEGAAT_2KgcAAO9apGRktVNRMcVT22guNVjeLJmdBIAApIQaxsq-pBUwebQ889_ATkBAAMCAAN4AAM9BA,data/photos/PLY0182.jpg
+185,PLY0185,Matthew Kuhnemann,Australia,Left-Arm Orthodox Spin Bowler,t,7,0.75,AgACAgUAAyEGAAT_2KgcAAPAapGRmDQ_b2mN5GcWfSGce-sBrkcAApUQaxsq-pBUSVp7erqyRT8BAAMCAAN4AAM9BA,data/photos/PLY0185.jpg
+188,PLY0188,Nathan Sowter,England,Spin Bowler,f,7,0.75,AgACAgUAAyEGAAT_2KgcAAPDapGRmo-pPXx8hrYqnqcnCp7Gbo8AApgQaxsq-pBUTHBtUro-4t4BAAMCAAN5AAM9BA,data/photos/PLY0188.jpg
+18,PLY0018,Shai Hope,West Indies,Right-Hand Batter/Wicketkeeper,t,2,2.75,AgACAgUAAyEGAAT_2KgcAAICWGqTzz7BRB_qsdCXwWLRn9eoXzzLAAIhE2sbW7GYVNwai3yhF65nAQADAgADeAADPQQ,data/photos/PLY0018.jpg
+65,PLY0065,Keshav Maharaj,South Africa,Left-Arm Orthodox Spin Bowler,t,3,1.75,AgACAgUAAyEGAAT_2KgcAAICW2qTz2SvjOXxWJL9hUzIrUGFTFm2AAIkE2sbW7GYVO2y8BpLZElZAQADAgADeAADPQQ,data/photos/PLY0065.jpg
+66,PLY0066,Gudakesh Motie,West Indies,Left-Arm Orthodox Spin Bowler,t,3,1.75,AgACAgUAAyEGAAT_2KgcAAICXGqTz2WQWudyp46OPOVKa22UKEJZAAIlE2sbW7GYVH3-fmvLlDjSAQADAgADeAADPQQ,data/photos/PLY0066.jpg
+69,PLY0069,Tom Hartley,England,Spin Bowler,f,3,1.50,AgACAgUAAyEGAAT_2KgcAAICX2qTz2r629IlqoXGHnQyJh_TDSz4AAIoE2sbW7GYVLEDuuBIUaz-AQADAgADeQADPQQ,data/photos/PLY0069.jpg
+72,PLY0072,Rilee Rossouw,South Africa,Left-Hand Batter,t,4,2.00,AgACAgUAAyEGAAT_2KgcAAICY2qTz6lfUB5apCZjPSULGTqv5yC8AAIrE2sbW7GYVAs2oP2sdtsdAQADAgADeAADPQQ,data/photos/PLY0072.jpg
+74,PLY0074,Rovman Powell,West Indies,Right-Hand Batter,t,4,2.00,AgACAgUAAyEGAAT_2KgcAAICZWqTz6qhOLRMaq3dHuAfds0gj1wHAAItE2sbW7GYVC3EXKaG_siGAQADAgADeQADPQQ,data/photos/PLY0074.jpg
+77,PLY0077,Matthew Wade,Australia,Left-Hand Batter/Wicketkeeper,t,4,1.75,AgACAgUAAyEGAAT_2KgcAAICaGqTz7DI1LDG_YyzqkUCWXv-qS52AAIwE2sbW7GYVFuQfbdgmOdzAQADAgADeAADPQQ,data/photos/PLY0077.jpg
+215,PLY0215,Zahir Khan,Afghanistan,Left-Arm Wrist-Spin Bowler,t,8,0.75,AgACAgUAAyEGAAT_2KgcAAICmWqT0KnxQykhOMwF5bycM0BQHDN8AAJfE2sbW7GYVHHND_vZytKMAQADAgADeAADPQQ,data/photos/PLY0215.jpg
+218,PLY0218,Amar Virdi,England,Spin Bowler,f,8,0.75,AgACAgUAAyEGAAT_2KgcAAICnGqT0K4wqYoOop8EjEHC_cRdsp-wAAJiE2sbW7GYVCYGizA_yKOOAQADAgADeAADPQQ,data/photos/PLY0218.jpg
+220,PLY0220,Theo Wylie,England,Spin Bowler,f,8,0.50,AgACAgUAAyEGAAT_2KgcAAICnmqT0LD40HQGD_N0q8kHvavLvTV3AAJkE2sbW7GYVBaBz2DTEDM2AQADAgADeAADPQQ,data/photos/PLY0220.jpg
+223,PLY0223,Temba Bavuma,South Africa,Right-Hand Batter,t,9,0.75,AgACAgUAAyEGAAT_2KgcAAICoWqT0LW-D6-tkHYHX4khlqaYhxTfAAJnE2sbW7GYVNn5WSemTpK-AQADAgADdwADPQQ,data/photos/PLY0223.jpg
+225,PLY0225,Alex Lees,England,Batter,f,9,0.75,AgACAgUAAyEGAAT_2KgcAAICo2qT0LfYv1M7SvhgbeZl0Alb4TFAAAJpE2sbW7GYVKFAQ5L5Q-IOAQADAgADeQADPQQ,data/photos/PLY0225.jpg
+229,PLY0229,Gareth Roderick,England,Wicketkeeper Batter,f,9,0.75,AgACAgUAAyEGAAT_2KgcAAICp2qT0L29Vl5Vd-aw_7zyQU9trSkAA20TaxtbsZhUpmjq5949VAsBAAMCAAN5AAM9BA,data/photos/PLY0229.jpg
+61,PLY0061,Haris Rauf,Pakistan,Right-Arm Fast Bowler,t,3,1.75,AgACAgUAAyEGAAT_2KgcAAICxWqT0i99xUDDYV_LwmFTmljfoJUEAAJ1E2sbW7GYVOtjwmg7L0U2AQADAgADeAADPQQ,data/photos/PLY0061.jpg
+64,PLY0064,Matthew Potts,England,Fast Bowler,f,3,1.75,AgACAgUAAyEGAAT_2KgcAAICyGqT0jF2P0Q0yrSuOKA8X5fQaOCXAAJ4E2sbW7GYVB7HzCgBjLMhAQADAgADeAADPQQ,data/photos/PLY0064.jpg
+232,PLY0232,Harry Duke,England,Wicketkeeper Batter,f,9,0.75,AgACAgUAAyEGAAT_2KgcAAICgmqT0C62XS5NKXSSVyTq4XIpLZ9JAAJJE2sbW7GYVI6is6OHWO9YAQADAgADeAADPQQ,data/photos/PLY0232.jpg
+270,PLY0270,Ben Dwarshuis,Australia,Left-Arm Fast Bowler,t,10,0.50,AgACAgUAAyEGAAT_2KgcAAPcapGR_QZNePfec78mSCwKUeQPAk8AArIQaxsq-pBU4MVWZDaE9LYBAAMCAAN4AAM9BA,data/photos/PLY0270.jpg
+273,PLY0273,Daniel Worrall,England,Fast Bowler,f,10,0.50,AgACAgUAAyEGAAT_2KgcAAPfapGSA12LCSHyLursJiuzL2zfFqMAArUQaxsq-pBUmo2LG1j1edoBAAMCAAN4AAM9BA,data/photos/PLY0273.jpg
+275,PLY0275,Chris Green,Australia,Right-Arm Off-Spin Bowler,t,10,0.50,AgACAgUAAyEGAAT_2KgcAAPhapGSBGYGIEmPPv1G66Ud7XGYWP8AArcQaxsq-pBUYSocNlKILPkBAAMCAAN4AAM9BA,data/photos/PLY0275.jpg
+278,PLY0278,Fabian Allen,West Indies,Left-Arm Orthodox Spin Bowler,t,10,0.50,AgACAgUAAyEGAAT_2KgcAAPkapGSCpSXwIU825Ah-p_tqy5BWzYAAroQaxsq-pBU0YJwm1xBp2ABAAMCAAN4AAM9BA,data/photos/PLY0278.jpg
+286,PLY0286,Rob Yates,England,Batter,f,11,0.50,AgACAgUAAyEGAAT_2KgcAAPsapGSF_gUBlS10cL3JEvxihR4SCIAAsIQaxsq-pBUq4ND6NDB90oBAAMCAAN5AAM9BA,data/photos/PLY0286.jpg
+321,PLY0321,Ben Green,England,Bowling All-Rounder (Pace),f,12,0.50,AgACAgUAAyEGAAT_2KgcAAPuapGSODyYlgi53HYB_YSilssIm9oAAsQQaxsq-pBUybG4tz0wTkwBAAMCAAN5AAM9BA,data/photos/PLY0321.jpg
+324,PLY0324,Will Rhodes,England,Bowling All-Rounder (Pace),f,12,0.50,AgACAgUAAyEGAAT_2KgcAAPxapGSO71MJqV5N7OPBrpNAV7X3vIAAscQaxsq-pBUPBjakC1DeCIBAAMCAAN5AAM9BA,data/photos/PLY0324.jpg
+326,PLY0326,Mahmudullah,Bangladesh,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,t,12,0.25,AgACAgUAAyEGAAT_2KgcAAPzapGSPYBq6ECizdYr4OijKJiSuBgAAskQaxsq-pBUuQvuDf1ChNQBAAMCAAN4AAM9BA,data/photos/PLY0326.jpg
+330,PLY0330,Sam Conners,England,Fast Bowler,f,12,0.25,AgACAgUAAyEGAAT_2KgcAAP3apGSRAF_6s7igzBDOX7gsFIURZgAAs0Qaxsq-pBUmpdWM0tf4Q4BAAMCAAN3AAM9BA,data/photos/PLY0330.jpg
+332,PLY0332,Zaman Akhter,England,Fast Bowler,f,12,0.25,AgACAgUAAyEGAAT_2KgcAAP5apGSSETgsFSQb1i1sUo6sDUMOdkAAs8Qaxsq-pBUBvv1R1jn-4ABAAMCAAN4AAM9BA,data/photos/PLY0332.jpg
+335,PLY0335,Jack Carson,England,Spin Bowler,f,12,0.25,AgACAgUAAyEGAAT_2KgcAAP8apGSSp11nKPCSsPrrY420wsZkUUAAtIQaxsq-pBURDTeVfL8BncBAAMCAAN4AAM9BA,data/photos/PLY0335.jpg
+338,PLY0338,Lewis Goldsworthy,England,Spin Bowler,f,12,0.25,AgACAgUAAyEGAAT_2KgcAAP_apGSUKOwtpzsUIgD-Ql6Al_8muoAAtUQaxsq-pBUJqnsWnK8yIgBAAMCAAN3AAM9BA,data/photos/PLY0338.jpg
+379,PLY0379,Will Fraine,England,Batter,f,14,0.25,AgACAgUAAyEGAAT_2KgcAAIBCGqRknwnj-I31wwODg3tfQ2zof36AALdEGsbKvqQVLc3XPElyRtFAQADAgADeQADPQQ,data/photos/PLY0379.jpg
+381,PLY0381,Oliver Carter,England,Bowling All-Rounder (Spin),f,14,0.25,AgACAgUAAyEGAAT_2KgcAAIBCmqRkn3vFfMSaZ84ro22gj0tCDXwAALfEGsbKvqQVAtu-VLk91AQAQADAgADeQADPQQ,data/photos/PLY0381.jpg
+384,PLY0384,Ben Kellaway,England,Bowling All-Rounder (Spin),f,14,0.25,AgACAgUAAyEGAAT_2KgcAAIBDWqRkoTBhcB2xrsR-QTld9UmY6VWAALiEGsbKvqQVKyyxIQtLRf9AQADAgADdwADPQQ,data/photos/PLY0384.jpg
+386,PLY0386,Tom Aspinwall,England,Bowling All-Rounder (Pace),f,14,0.25,AgACAgUAAyEGAAT_2KgcAAIBD2qRkoaYAXBopeiq81calB6JyniuAALkEGsbKvqQVL6Va3BbDSvUAQADAgADeAADPQQ,data/photos/PLY0386.jpg
+389,PLY0389,Alex French,England,Bowling All-Rounder (Pace),f,14,0.25,AgACAgUAAyEGAAT_2KgcAAIBEmqRkomjGhXaxuXxRtm0e5FOuvpTAALnEGsbKvqQVGiR3q7AEXcpAQADAgADeQADPQQ,data/photos/PLY0389.jpg
+23,PLY0023,Marcus Stoinis,Australia,Right-Hand Batter/Right-Arm Medium All-Rounder,t,2,2.50,AgACAgUAAyEGAAT_2KgcAAIBJGqRnSyMITfIbqYQhrWupu1h5W_KAAMQaxvuipFUSYfR8PFG2ckBAAMCAAN4AAM9BA,data/photos/PLY0023.jpg
+26,PLY0026,Tom Curran,England,Bowling All-Rounder (Pace),f,2,2.50,AgACAgUAAyEGAAT_2KgcAAIBJ2qRnTBZ0ke6WaRgf3QdW4D05A0wAAIDEGsb7oqRVEGxxbb8hLwYAQADAgADeAADPQQ,data/photos/PLY0026.jpg
+28,PLY0028,Imad Wasim,Pakistan,Left-Hand Batter/Left-Arm Orthodox Spin All-Rounder,t,2,2.50,AgACAgUAAyEGAAT_2KgcAAIBKWqRnTNiIEv0RMAZXSdhsx6tLfKgAAIFEGsb7oqRVCwgfRY9yJKMAQADAgADeAADPQQ,data/photos/PLY0028.jpg
+32,PLY0032,Shaheen Shah Afridi,Pakistan,Left-Arm Fast Bowler,t,2,2.25,AgACAgUAAyEGAAT_2KgcAAIBLWqRnTheKEmtrQtARTz04TFKGf9JAAIJEGsb7oqRVIGr-47hl_C7AQADAgADdwADPQQ,data/photos/PLY0032.jpg
+35,PLY0035,Adam Zampa,Australia,Right-Arm Leg-Spin Bowler,t,2,2.25,AgACAgUAAyEGAAT_2KgcAAIBMGqRnTzEgJs5HdMDSjYFfPuv_BCSAAIMEGsb7oqRVPhYuefZUF8LAQADAgADeAADPQQ,data/photos/PLY0035.jpg
+37,PLY0037,Maheesh Theekshana,Sri Lanka,Right-Arm Off-Spin Bowler,t,2,2.00,AgACAgUAAyEGAAT_2KgcAAIBMmqRnUDsTEciJf8NtxtK4Rtr6Et6AAIOEGsb7oqRVNHbyM8tjwrwAQADAgADeAADPQQ,data/photos/PLY0037.jpg
+40,PLY0040,Shoaib Bashir,England,Spin Bowler,f,2,2.00,AgACAgUAAyEGAAT_2KgcAAIBNWqRnUTcuAcyo6OvTvn7ECoEOYzdAAISEGsb7oqRVMcnGSIkeK_8AQADAgADeAADPQQ,data/photos/PLY0040.jpg
+42,PLY0042,Evin Lewis,West Indies,Left-Hand Opening Batter,t,3,2.50,AgACAgUAAyEGAAT_2KgcAAIBN2qRnUnTYttxvqwuiA1QQrVZZbnNAAIUEGsb7oqRVAjFROD4ID56AQADAgADeQADPQQ,data/photos/PLY0042.jpg
+83,PLY0083,Mitchell Marsh,Australia,Right-Hand Batter/Right-Arm Fast All-Rounder,t,4,1.75,AgACAgUAAyEGAAT_2KgcAAICbmqTz7jHdjwazrM6joLzIy5VzGXxAAI2E2sbW7GYVAfojjs0D_M2AQADAgADeAADPQQ,data/photos/PLY0083.jpg
+85,PLY0085,Benny Howell,England,Bowling All-Rounder (Pace),f,4,1.50,AgACAgUAAyEGAAT_2KgcAAICcGqTz711ERMgiC2IbnBwmE1wA_FFAAI4E2sbW7GYVK163VxYeB7vAQADAgADeAADPQQ,data/photos/PLY0085.jpg
+279,PLY0279,Matt Critchley,England,Spin Bowler,f,10,0.50,AgACAgUAAyEGAAT_2KgcAAICqWqT0OI2k1mW7RHyp61NFaSU6VKAAAJvE2sbW7GYVJVE6QV2-XKUAQADAgADeAADPQQ,data/photos/PLY0279.jpg
+280,PLY0280,James Coles,England,Spin Bowler,f,10,0.50,AgACAgUAAyEGAAT_2KgcAAICqmqT0OOaJ1zbuJeZDfkLW_BdYf1SAAJwE2sbW7GYVAHru4fkEF45AQADAgADeAADPQQ,data/photos/PLY0280.jpg
+283,PLY0283,Harry Tector,Ireland,Right-Hand Batter,t,11,0.50,AgACAgUAAyEGAAT_2KgcAAICrWqT0OgOuUv3oxRDdoYhCqZ3n0nzAAJzE2sbW7GYVIg3kDmk91ZBAQADAgADeQADPQQ,data/photos/PLY0283.jpg
+372,PLY0372,Ali Orr,England,Batter,f,14,0.25,AgACAgUAAyEGAAT_2KgcAAIDRGqT1IIDDv-1TPgnRR0OH015hDRMAAKzE2sbW7GYVJMcHRZbfOrXAQADAgADdwADPQQ,data/photos/PLY0372.jpg
+374,PLY0374,Oli Carter,England,Batter,f,14,0.25,AgACAgUAAyEGAAT_2KgcAAIDRmqT1IM1W5aqERmTiyQFzs0a-_LKAAK1E2sbW7GYVDMvS0vj-B2IAQADAgADeQADPQQ,data/photos/PLY0374.jpg
+376,PLY0376,Aneurin Donald,England,Batter,f,14,0.25,AgACAgUAAyEGAAT_2KgcAAIDSGqT1IVGBaQ_28oYu1KJUPwhV7RfAAK3E2sbW7GYVAbcOjq72S4UAQADAgADeQADPQQ,data/photos/PLY0376.jpg
+399,PLY0399,George Scrimshaw,England,Fast Bowler,f,14,0.25,AgACAgUAAyEGAAT_2KgcAAIB2WqRnyy65vQ3nucBzpMKC5x6sOsYAAK3EGsb7oqRVHSP7TWj9Ny9AQADAgADeQADPQQ,data/photos/PLY0399.jpg
+130,PLY0130,Jake Lintott,England,Spin Bowler,f,5,1.00,AgACAgUAAyEGAAT_2KgcAAIB22qRoEU_k-Lp14xBlrxBtWSqubKvAAK5EGsb7oqRVJ0nhCQhHBa5AQADAgADeQADPQQ,data/photos/PLY0130.jpg
+131,PLY0131,Fakhar Zaman,Pakistan,Left-Hand Opening Batter,t,6,1.50,AgACAgUAAyEGAAT_2KgcAAIB3GqRoEbLVsZObXFESbOVocjVPRryAAK6EGsb7oqRVJkMd_eeC6faAQADAgADeAADPQQ,data/photos/PLY0131.jpg
+315,PLY0315,Emilio Gay,England,Batter,f,12,0.50,AgACAgUAAyEGAAT_2KgcAAIB-mqRoJFjn6tJDrRyj17smY7thEa9AALXEGsb7oqRVLWRUMpyBstQAQADAgADeQADPQQ,data/photos/PLY0315.jpg
+317,PLY0317,Joe Eckland,England,Wicketkeeper Batter,f,12,0.50,AgACAgUAAyEGAAT_2KgcAAIB_GqRoJJq96I7Yt2warDHiW1VIo-RAALZEGsb7oqRVBhN53nX7euiAQADAgADeAADPQQ,data/photos/PLY0317.jpg
+319,PLY0319,Kyle Jamieson,New Zealand,Right-Hand Batter/Right-Arm Fast All-Rounder,t,12,0.50,AgACAgUAAyEGAAT_2KgcAAIB_mqRoJS4Sm3iZ_aIXsRV3z2nGJDmAALbEGsb7oqRVOu18k1MB2fwAQADAgADeAADPQQ,data/photos/PLY0319.jpg
+401,PLY0401,Joe Weatherley,England,Batter,f,15,0.25,AgACAgUAAyEGAAT_2KgcAAICAAFqkaCZRVl5F8ZTYLu_DIkygW2UiQAC3RBrG-6KkVQqxiIXK171gwEAAwIAA3kAAz0E,data/photos/PLY0401.jpg
+404,PLY0404,Teddy Bishop,England,Batter,f,15,0.25,AgACAgUAAyEGAAT_2KgcAAICA2qRoJvgEWrjvN_eufHF1OOixJw0AALgEGsb7oqRVDZqbdLsAnZUAQADAgADeAADPQQ,data/photos/PLY0404.jpg
+88,PLY0088,Rehan Ahmed,England,Bowling All-Rounder (Spin),f,4,1.50,AgACAgUAAyEGAAT_2KgcAAICc2qTz78DKTJLAAFqWUs6NLUc6rouLwACOxNrG1uxmFSyp2QWO-_Z-QEAAwIAA3kAAz0E,data/photos/PLY0088.jpg
+134,PLY0134,Ibrahim Zadran,Afghanistan,Right-Hand Batter,t,6,1.50,AgACAgUAAyEGAAT_2KgcAAICdWqTz-a4imZrCIwQiDWwai9F4E4cAAI9E2sbW7GYVPxR6MZ5ieynAQADAgADeAADPQQ,data/photos/PLY0134.jpg
+136,PLY0136,Leus Du Plooy,England,Batter,f,6,1.50,AgACAgUAAyEGAAT_2KgcAAICd2qTz-jT-CNJv0yHgs1Bz8pOEC3NAAI_E2sbW7GYVAIu-bWBA4fyAQADAgADeQADPQQ,data/photos/PLY0136.jpg
+139,PLY0139,Scott Edwards,Netherlands,Right-Hand Batter/Wicketkeeper,t,6,1.25,AgACAgUAAyEGAAT_2KgcAAICe2qT0CaSDX0LHdhmaaxeas8QgQTGAAJCE2sbW7GYVPfsgfB4JpBwAQADAgADeAADPQQ,data/photos/PLY0139.jpg
+142,PLY0142,Tom Moores,England,Wicketkeeper Batter,f,6,1.25,AgACAgUAAyEGAAT_2KgcAAICfmqT0Cg5naVLuc4gnRYZ-RiU21baAAJFE2sbW7GYVFBuP1-8PedjAQADAgADeAADPQQ,data/photos/PLY0142.jpg
+144,PLY0144,Jimmy Neesham,New Zealand,Left-Hand Batter/Right-Arm Medium All-Rounder,t,6,1.25,AgACAgUAAyEGAAT_2KgcAAICgGqT0C2CqAVAWKuKgg_ZKqwCrTdjAAJHE2sbW7GYVEHgP4yLEhifAQADAgADeAADPQQ,data/photos/PLY0144.jpg
+147,PLY0147,Mohammad Nabi,Afghanistan,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,t,6,1.00,AgACAgUAAyEGAAT_2KgcAAICg2qT0C_ZvcBeUYf5fHfPXOvED4OjAAJKE2sbW7GYVE8bikfw2u7BAQADAgADeAADPQQ,data/photos/PLY0147.jpg
+150,PLY0150,Lungi Ngidi,South Africa,Right-Arm Fast Bowler,t,6,1.00,AgACAgUAAyEGAAT_2KgcAAIChmqT0DSEN73o-d5nKa-MbiHrUOgSAAJNE2sbW7GYVBCgDFkjx1TyAQADAgADeAADPQQ,data/photos/PLY0150.jpg
+305,PLY0305,Jamie Porter,England,Fast Bowler,f,11,0.25,AgACAgUAAyEGAAT_2KgcAAIDJWqT0_wjLRtkAAEtA5LNSMlOZYupawAClBNrG1uxmFQo3BQO83J1cQEAAwIAA3gAAz0E,data/photos/PLY0305.jpg
+307,PLY0307,Steven Finn,England,Fast Bowler,f,11,0.25,AgACAgUAAyEGAAT_2KgcAAIDJ2qT0_6dWliJiOBdxJymqTvMhwABdAAClhNrG1uxmFQbBcHpLaI3PwEAAwIAA3gAAz0E,data/photos/PLY0307.jpg
+310,PLY0310,Chris Rushworth,England,Fast Bowler,f,11,0.25,AgACAgUAAyEGAAT_2KgcAAIDKmqT1AR36TPY5DlhpATWQx-S_ntvAAKZE2sbW7GYVLAxFZNxlzgDAQADAgADeQADPQQ,data/photos/PLY0310.jpg
+312,PLY0312,Ben Compton,England,Batter,f,12,0.50,AgACAgUAAyEGAAT_2KgcAAIDLGqT1AWdqi7rHoFBhxlFwR5-fqHkAAKbE2sbW7GYVKcui7RP2o0dAQADAgADeQADPQQ,data/photos/PLY0312.jpg
+163,PLY0163,Colin Munro,New Zealand,Left-Hand Batter,t,7,1.25,AgACAgUAAyEGAAT_2KgcAAIBUmqRnaxGbuXm_YzVG7IpHNt8z52GAAIxEGsb7oqRVIiW64orUiFxAQADAgADeAADPQQ,data/photos/PLY0163.jpg
+166,PLY0166,Daniel Bell-Drummond,England,Batter,f,7,1.25,AgACAgUAAyEGAAT_2KgcAAIBVWqRna8D6w_DNz0fsNEShOWm3Wd_AAI0EGsb7oqRVKAOpPXUTMpLAQADAgADeQADPQQ,data/photos/PLY0166.jpg
+168,PLY0168,Sadeera Samarawickrama,Sri Lanka,Right-Hand Batter/Wicketkeeper,t,7,1.25,AgACAgUAAyEGAAT_2KgcAAIBV2qRnbTE0vDG2g8_-g0VHSWDliwSAAI2EGsb7oqRVCrY3MPoOgcWAQADAgADeAADPQQ,data/photos/PLY0168.jpg
+190,PLY0190,Archie Lenham,England,Spin Bowler,f,7,0.75,AgACAgUAAyEGAAT_2KgcAAIBWWqRnbWC_2MLdNrQUGnpDszEdpVuAAI4EGsb7oqRVFuh3pCn86LBAQADAgADeAADPQQ,data/photos/PLY0190.jpg
+193,PLY0193,Ashton Turner,Australia,Right-Hand Batter,t,8,1.00,AgACAgUAAyEGAAT_2KgcAAIBXGqRnbu-aesxclVu-cDPXiMlw31SAAI7EGsb7oqRVMfT7HQwCqhEAQADAgADeAADPQQ,data/photos/PLY0193.jpg
+196,PLY0196,Wayne Madsen,England,Batter,f,8,1.00,AgACAgUAAyEGAAT_2KgcAAIBX2qRnb78fCRj1ILVAm57fLFKKmepAAI-EGsb7oqRVOk9Yd1Dpq3HAQADAgADeQADPQQ,data/photos/PLY0196.jpg
+249,PLY0249,Aaron Beard,England,Spin Bowler,f,9,0.50,AgACAgUAAyEGAAT_2KgcAAIBYmqRneKxxRQSB73UnVg2isBeVRUUAAJBEGsb7oqRVGEiaJR16QatAQADAgADeQADPQQ,data/photos/PLY0249.jpg
+252,PLY0252,Will Young,New Zealand,Right-Hand Batter,t,10,0.75,AgACAgUAAyEGAAT_2KgcAAIBZWqRnecbv5jrjlfK3vn_WS4Q6m5IAAJEEGsb7oqRVFpdKu8XuITXAQADAgADeAADPQQ,data/photos/PLY0252.jpg
+254,PLY0254,Bhanuka Rajapaksa,Sri Lanka,Left-Hand Batter,t,10,0.75,AgACAgUAAyEGAAT_2KgcAAIBZ2qRnen_YPB2Gn3f5V2axOiCEx2yAAJGEGsb7oqRVIxhJHHIOksuAQADAgADeAADPQQ,data/photos/PLY0254.jpg
+257,PLY0257,Joe Cracknell,England,Wicketkeeper Batter,f,10,0.75,AgACAgUAAyEGAAT_2KgcAAIBamqRne-lrUCff8lKWIFY18qs7UChAAJJEGsb7oqRVPhxmPcmED0rAQADAgADeAADPQQ,data/photos/PLY0257.jpg
+259,PLY0259,Matthew Waite,England,Wicketkeeper Batter,f,10,0.75,AgACAgUAAyEGAAT_2KgcAAIBbGqRnfEZ16KdKf82PQgVY2hLEOC0AAJLEGsb7oqRVFllNGRJ9T9OAQADAgADdwADPQQ,data/photos/PLY0259.jpg
+262,PLY0262,Ollie Peake,England,Wicketkeeper Batter,f,10,0.75,AgACAgUAAyEGAAT_2KgcAAIBb2qRnfSO3FCCz_j09EONuGlrq-suAAJNEGsb7oqRVDs1soY7eRUXAQADAgADeAADPQQ,data/photos/PLY0262.jpg
+265,PLY0265,Bas de Leede,Netherlands,Right-Hand Batter/Right-Arm Medium All-Rounder,t,10,0.50,AgACAgUAAyEGAAT_2KgcAAIBcmqRnfbx_14XBK9SOBfhgmiNWL7fAAJQEGsb7oqRVGXSOTQJBz6XAQADAgADeAADPQQ,data/photos/PLY0265.jpg
+348,PLY0348,Mark Stoneman,England,Batter,f,13,0.25,AgACAgUAAyEGAAT_2KgcAAIBdGqRnh3LNjZSXVOZWyxupL-TV7AeAAJSEGsb7oqRVMf6E4i5hBydAQADAgADeAADPQQ,data/photos/PLY0348.jpg
+351,PLY0351,Martin Andersson,England,Bowling All-Rounder (Pace),f,13,0.25,AgACAgUAAyEGAAT_2KgcAAIBd2qRnh90HRoLbGyAB-DkASehyc0rAAJVEGsb7oqRVFPrLHl64EKaAQADAgADeQADPQQ,data/photos/PLY0351.jpg
+45,PLY0045,Will Smeed,England,Batter,f,3,2.25,AgACAgUAAyEGAAT_2KgcAAIBmWqRnojIPH7EM9hpuH6eiEOgysAaAAJ1EGsb7oqRVKl7-8HxMuEhAQADAgADeQADPQQ,data/photos/PLY0045.jpg
+47,PLY0047,Ryan Rickelton,South Africa,Left-Hand Batter/Wicketkeeper,t,3,2.25,AgACAgUAAyEGAAT_2KgcAAIBm2qRno7xl5h2cV5MuC46Lh-RqA4cAAJ3EGsb7oqRVHmty19UT0bnAQADAgADeAADPQQ,data/photos/PLY0047.jpg
+50,PLY0050,Josh Inglis,Australia,Right-Hand Batter/Wicketkeeper,t,3,2.25,AgACAgUAAyEGAAT_2KgcAAIBnmqRnpg7HYi8FiBJT2OBNk8KFhSXAAJ6EGsb7oqRVIN-4faQZbzgAQADAgADeAADPQQ,data/photos/PLY0050.jpg
+53,PLY0053,Wanindu Hasaranga,Sri Lanka,Right-Arm Leg-Spin All-Rounder,t,3,2.00,AgACAgUAAyEGAAT_2KgcAAIBoWqRnpuM3wyy93U2mpcu7jhHQybeAAJ9EGsb7oqRVPcuYE6BEWimAQADAgADeAADPQQ,data/photos/PLY0053.jpg
+56,PLY0056,Marco Jansen,South Africa,Left-Hand Batter/Left-Arm Fast All-Rounder,t,3,2.00,AgACAgUAAyEGAAT_2KgcAAIBpGqRnp0ivsNMtwoGh6g6xrxc4mZlAAKAEGsb7oqRVLRUt2qw7bEGAQADAgADeAADPQQ,data/photos/PLY0056.jpg
+100,PLY0100,Dominic Bess,England,Spin Bowler,f,4,1.25,AgACAgUAAyEGAAT_2KgcAAIBqGqRnqUFY1mJsGFq5rFwX4sdODMZAAKEEGsb7oqRVKJJlleu277EAQADAgADdwADPQQ,data/photos/PLY0100.jpg
+103,PLY0103,Pathum Nissanka,Sri Lanka,Right-Hand Batter,t,5,1.75,AgACAgUAAyEGAAT_2KgcAAIBq2qRnqvLva035sO3D_rrcsrEIZT4AAKHEGsb7oqRVMo7V8ttYTi-AQADAgADeAADPQQ,data/photos/PLY0103.jpg
+125,PLY0125,Allah Ghazanfar,Afghanistan,Right-Arm Off-Spin Bowler,t,5,1.25,AgACAgUAAyEGAAT_2KgcAAIBrWqRnqz_yy0uAuS6DosJJY6qP4u9AAKJEGsb7oqRVLI1wzHQs2i3AQADAgADeAADPQQ,data/photos/PLY0125.jpg
+354,PLY0354,Tom Lawes,England,Bowling All-Rounder (Pace),f,13,0.25,AgACAgUAAyEGAAT_2KgcAAIDMWqT1C3aQV0FMPzKBca_CanuRxRBAAKgE2sbW7GYVFV3TIL3AncvAQADAgADeQADPQQ,data/photos/PLY0354.jpg
+356,PLY0356,Ben Raine,England,Bowling All-Rounder (Pace),f,13,0.25,AgACAgUAAyEGAAT_2KgcAAIDM2qT1DIXFGpRrcM6Ef8OyyWL-EUjAAKjE2sbW7GYVE8hJ4YQmyBJAQADAgADdwADPQQ,data/photos/PLY0356.jpg
+359,PLY0359,Ethan Brookes,England,Bowling All-Rounder (Pace),f,13,0.25,AgACAgUAAyEGAAT_2KgcAAIDN2qT1HLCgiyfw2Ns-UQ9c_FGRFGxAAKnE2sbW7GYVBj_QfItPRSfAQADAgADeAADPQQ,data/photos/PLY0359.jpg
+362,PLY0362,Craig Miles,England,Fast Bowler,f,13,0.25,AgACAgUAAyEGAAT_2KgcAAIDOmqT1HZgCnrQBVv6GYr-j018oeJFAAKqE2sbW7GYVG940WD3CXmxAQADAgADeQADPQQ,data/photos/PLY0362.jpg
+365,PLY0365,Jack Brooks,England,Fast Bowler,f,13,0.25,AgACAgUAAyEGAAT_2KgcAAIDPWqT1HjA0SY8xyYy3SR9ewstyw8ZAAKsE2sbW7GYVJgrhQfswt2jAQADAgADeQADPQQ,data/photos/PLY0365.jpg
+420,PLY0420,Harry Finch,England,Batter,f,15,0.25,AgACAgUAAyEGAAT_2KgcAAIDVWqT1PrQB6qz-DbbWSigE9dxhz1sAALKE2sbW7GYVOsMLD1qxsd3AQADAgADeAADPQQ,data/photos/PLY0420.jpg
+423,PLY0423,Oliver Price,England,Batter,f,15,0.25,AgACAgUAAyEGAAT_2KgcAAIDWGqT1P2Mdrvgg8Ym23-qfQI9cLrEAALNE2sbW7GYVAxAyGRcciUzAQADAgADeAADPQQ,data/photos/PLY0423.jpg
+425,PLY0425,James Sales,England,Batter,f,15,0.25,AgACAgUAAyEGAAT_2KgcAAIDWmqT1QIOuXveCFB4XcyVldBYIRNKAALPE2sbW7GYVLspK9ShpFtzAQADAgADeAADPQQ,data/photos/PLY0425.jpg
+428,PLY0428,Steven Croft,England,Batter,f,15,0.25,AgACAgUAAyEGAAT_2KgcAAIDXWqT1QXLZAnnYBudJscidEkOc0Y_AALSE2sbW7GYVAABFA_oUnn7wQEAAwIAA3gAAz0E,data/photos/PLY0428.jpg
+430,PLY0430,Tawanda Muyeye,England,Batter,f,15,0.25,AgACAgUAAyEGAAT_2KgcAAIDX2qT1Qrx6Bdz-9jCTz5Harkn5c6JAALUE2sbW7GYVCJzFJkfCK5vAQADAgADdwADPQQ,data/photos/PLY0430.jpg
+245,PLY0245,Josh Baker,England,Spin Bowler,f,9,0.50,AgACAgUAAyEGAAT_2KgcAAICE2qRvoTTTgMvgmqvNXVC7R-OblAXAAIJEWsb7oqRVN9TKdc3TR1fAQADAgADeAADPQQ,data/photos/PLY0245.jpg
+246,PLY0246,Arthur Rouse,England,Spin Bowler,f,9,0.50,AgACAgUAAyEGAAT_2KgcAAICFGqRvoUJvpWbUOshll_1iFf1JKnYAAIKEWsb7oqRVMD25bhySTClAQADAgADdwADPQQ,data/photos/PLY0246.jpg
+446,PLY0446,Henrich klaseen,South Africa,Wk - batsman,t,1,4.00,AgACAgUAAyEFAAMBCPr5EgACByxqkojYlx8Z_fUyFrLxpbDsH4iFqAACohBrG5DsmVTUP2f3OpG9dgEAAwIAA3kAAz0E,data/photos/PLY0446.jpg
+6,PLY0006,Andre Russell,West Indies,Right-Hand Batter/Right-Arm Fast All-Rounder,t,1,3.50,AgACAgUAAyEGAAT_2KgcAAICTGqTzy5WMkyJcV2OpXQYnNT6wc_3AAIVE2sbW7GYVFayySNv3R0FAQADAgADeAADPQQ,data/photos/PLY0006.jpg
+14,PLY0014,Faf du Plessis,South Africa,Right-Hand Batter,t,2,3.00,AgACAgUAAyEGAAT_2KgcAAICVGqTzzdAqWZXf-YU_1tsy-gxTfC8AAIdE2sbW7GYVNUp83gBs_acAQADAgADeQADPQQ,data/photos/PLY0014.jpg
+16,PLY0016,James Vince,England,Batter,f,2,2.75,AgACAgUAAyEGAAT_2KgcAAICVmqTzzwGt6utNudMZa1sa7QWYS4bAAIfE2sbW7GYVN0y4q1qOv5AAQADAgADeAADPQQ,data/photos/PLY0016.jpg
+67,PLY0067,Waqar Salamkheil,Afghanistan,Left-Arm Wrist-Spin Bowler,t,3,1.50,AgACAgUAAyEGAAT_2KgcAAICXWqTz2aFGyE0fyfn4zuOCmiwcA9iAAImE2sbW7GYVMyTjUDxPh8LAQADAgADeQADPQQ,data/photos/PLY0067.jpg
+80,PLY0080,Azam Khan,Pakistan,Right-Hand Batter/Wicketkeeper,t,4,1.75,AgACAgUAAyEGAAT_2KgcAAICa2qTz7b0bJi2ko1adL5ljDMEhyXmAAIzE2sbW7GYVEWd-hC0USFLAQADAgADdwADPQQ,data/photos/PLY0080.jpg
+153,PLY0153,Josh Tongue,England,Fast Bowler,f,6,1.00,AgACAgUAAyEGAAT_2KgcAAICiWqT0DYt1ytI0uTUSmxgKyAVsQcqAAJQE2sbW7GYVMUXpoDAsfhdAQADAgADeAADPQQ,data/photos/PLY0153.jpg
+156,PLY0156,Imran Tahir,South Africa,Right-Arm Leg-Spin Bowler,t,6,1.00,AgACAgUAAyEGAAT_2KgcAAICjGqT0Dt_a9svDRl6Pt_kjDoq5NHsAAJTE2sbW7GYVAJxb_PKL_6eAQADAgADeAADPQQ,data/photos/PLY0156.jpg
+158,PLY0158,Roelof van der Merwe,Netherlands,Left-Arm Orthodox Spin Bowler,t,6,0.75,AgACAgUAAyEGAAT_2KgcAAICjmqT0D26gt7j4GVMrQ3BjjNO9fxxAAJVE2sbW7GYVMN4ZM_7SlAmAQADAgADeAADPQQ,data/photos/PLY0158.jpg
+227,PLY0227,Ben Brown,England,Wicketkeeper Batter,f,9,0.75,AgACAgUAAyEGAAT_2KgcAAICpWqT0LsCS6KYO1PPRgUpGeP6WfvKAAJrE2sbW7GYVBKH36JXAZbWAQADAgADeQADPQQ,data/photos/PLY0227.jpg
+290,PLY0290,Harry Singh,England,Wicketkeeper Batter,f,11,0.50,AgACAgUAAyEGAAT_2KgcAAIDFWqT06wDcJftsDpKTV8GFQJkf_1mAAKFE2sbW7GYVMBbToDiIlhFAQADAgADeAADPQQ,data/photos/PLY0290.jpg
+208,PLY0208,Kamindu Mendis,Sri Lanka,Left-Hand Batter/Ambidextrous Spin All-Rounder,t,8,0.75,AgACAgUAAyEGAAT_2KgcAAICkWqT0GSOFz-IRNDmj-mEqjYNDyjRAAJYE2sbW7GYVNF2be5n5ORIAQADAgADeQADPQQ,data/photos/PLY0208.jpg
+212,PLY0212,Ben Sears,New Zealand,Right-Arm Fast Bowler,t,8,0.75,AgACAgUAAyEGAAT_2KgcAAIClmqT0Kfjlr6Ml0g_8UgAAWdTy3c1-QACXBNrG1uxmFSXgrQ3t9EwKwEAAwIAA3cAAz0E,data/photos/PLY0212.jpg
+235,PLY0235,Andile Phehlukwayo,South Africa,Right-Hand Batter/Right-Arm Medium All-Rounder,t,9,0.75,AgACAgUAAyEGAAT_2KgcAAIDDmqT033M2ofKA0J6hNPHc-OqSfRGAAJ-E2sbW7GYVPxd3WoZCgvqAQADAgADeAADPQQ,data/photos/PLY0235.jpg
+238,PLY0238,Luke Procter,England,Bowling All-Rounder (Pace),f,9,0.75,AgACAgUAAyEGAAT_2KgcAAIDEWqT04PnWJfAfo380tVohAFjZsLqAAKBE2sbW7GYVMcf0SxyhZSSAQADAgADdwADPQQ,data/photos/PLY0238.jpg
+241,PLY0241,Josh Little,Ireland,Left-Arm Fast Bowler,t,9,0.50,AgACAgUAAyEGAAT_2KgcAAIDFGqT04Xai57xAVe-oYlJclXbAyV4AAKEE2sbW7GYVPyBQLqTeDrGAQADAgADeAADPQQ,data/photos/PLY0241.jpg
+292,PLY0292,Corbin Bosch,South Africa,Right-Hand Batter/Right-Arm Fast All-Rounder,t,11,0.50,AgACAgUAAyEGAAT_2KgcAAIDF2qT061ydI_Zxaa6TdHMTpSglptCAAKHE2sbW7GYVPoobvJLeL_PAQADAgADeAADPQQ,data/photos/PLY0292.jpg
+295,PLY0295,Wayne Parnell,South Africa,Left-Hand Batter/Left-Arm Fast All-Rounder,t,11,0.50,AgACAgUAAyEGAAT_2KgcAAIDG2qT0-8_n7TUsod1bLuuQm2M_Dd-AAKKE2sbW7GYVA-G5VmCJotqAQADAgADeAADPQQ,data/photos/PLY0295.jpg
+298,PLY0298,Ryan Burl,Zimbabwe,Left-Hand Batter/Left-Arm Orthodox All-Rounder,t,11,0.50,AgACAgUAAyEGAAT_2KgcAAIDHmqT0_Gb_PWa5fts44gXfyVjRlJkAAKNE2sbW7GYVF1FYgRjVP7sAQADAgADeAADPQQ,data/photos/PLY0298.jpg
+300,PLY0300,Salman Ali Agha,Pakistan,Right-Hand Batter/Right-Arm Off-Spin All-Rounder,t,11,0.50,AgACAgUAAyEGAAT_2KgcAAIDIGqT0_UINncskPN4pBkWU2uuA0KKAAKPE2sbW7GYVBY4yV18kevgAQADAgADeAADPQQ,data/photos/PLY0300.jpg
+304,PLY0304,Jayden Seales,West Indies,Right-Arm Fast Bowler,t,11,0.25,AgACAgUAAyEGAAT_2KgcAAIDJGqT0_h2yhzSHkZ14-BnLl1iitzrAAKTE2sbW7GYVBiHrmXMXrbBAQADAgADeAADPQQ,data/photos/PLY0304.jpg
+409,PLY0409,Will Davis,England,Batter,f,15,0.25,AgACAgUAAyEGAAT_2KgcAAIDSWqT1K0roeuybqoJsjL6Bnl18SMNAAK7E2sbW7GYVHyJZM-5Pka2AQADAgADeAADPQQ,data/photos/PLY0409.jpg
+412,PLY0412,Kiran Carlson,England,Batter,f,15,0.25,AgACAgUAAyEGAAT_2KgcAAIDTGqT1LAEEBcsFI_edJ_AWwN5V8sQAAK_E2sbW7GYVEP-05DDfnxiAQADAgADeQADPQQ,data/photos/PLY0412.jpg
+414,PLY0414,George Thomas,England,Batter,f,15,0.25,AgACAgUAAyEGAAT_2KgcAAIDT2qT1PGw5Ah6eh5wDhFVvXH4zZmlAALEE2sbW7GYVKAYCphgERw7AQADAgADeAADPQQ,data/photos/PLY0414.jpg
+417,PLY0417,Nick Browne,England,Batter,f,15,0.25,AgACAgUAAyEGAAT_2KgcAAIDUmqT1PRkS15AvBPxfAdlLQpEh3NsAALHE2sbW7GYVKLsEsHPUmPQAQADAgADeQADPQQ,data/photos/PLY0417.jpg
+419,PLY0419,Tom Bevan,England,Batter,f,15,0.25,AgACAgUAAyEGAAT_2KgcAAIDVGqT1PmXLPCIu-hcEdj3j5gTG82NAALJE2sbW7GYVOMNZB4LD-klAQADAgADeAADPQQ,data/photos/PLY0419.jpg
+392,PLY0392,Liam Norwell,England,Fast Bowler,f,14,0.25,AgACAgUAAyEGAAT_2KgcAAIB0mqRnyIaVZM6iJn2s7n8yptR8gRdAAKwEGsb7oqRVBn6heD9hBjeAQADAgADeQADPQQ,data/photos/PLY0392.jpg
+394,PLY0394,Aron Nijjar,England,Fast Bowler,f,14,0.25,AgACAgUAAyEGAAT_2KgcAAIB1GqRnyQKLhZrElRoYWqAQOy1a6IMAAKyEGsb7oqRVHy0wGvbpu3IAQADAgADeAADPQQ,data/photos/PLY0394.jpg
+395,PLY0395,Nathan Gilchrist,England,Fast Bowler,f,14,0.25,AgACAgUAAyEGAAT_2KgcAAIB1WqRnyUZlWn6MgzCYDm3hmV2JIqKAAKzEGsb7oqRVPMbwMbYEIR-AQADAgADeQADPQQ,data/photos/PLY0395.jpg
+397,PLY0397,Chris Wood,England,Fast Bowler,f,14,0.25,AgACAgUAAyEGAAT_2KgcAAIB12qRnyrFgL_89g9hNudBd1FRCEeVAAK1EGsb7oqRVI72VFtWdb_rAQADAgADeQADPQQ,data/photos/PLY0397.jpg
+398,PLY0398,Sonny Baker,England,Fast Bowler,f,14,0.25,AgACAgUAAyEGAAT_2KgcAAIB2GqRnys4OKUUb5VUhyjKcN7ckHrYAAK2EGsb7oqRVEDmJukScdRDAQADAgADdwADPQQ,data/photos/PLY0398.jpg
+400,PLY0400,Sussex,England,Fast Bowler,f,14,0.25,AgACAgUAAyEGAAT_2KgcAAIB_2qRoJhcSdOuygkDoKSlLLA_rTv9AALcEGsb7oqRVDRd3fJhGyj8AQADAgADeAADPQQ,data/photos/PLY0400.jpg
+402,PLY0402,Ben Geddes,England,Batter,f,15,0.25,AgACAgUAAyEGAAT_2KgcAAICAWqRoJrnNKprChl7Da4ehfhHhZEfAALeEGsb7oqRVDnBrHrUd8qjAQADAgADdwADPQQ,data/photos/PLY0402.jpg
+403,PLY0403,Sol Budinger,England,Batter,f,15,0.25,AgACAgUAAyEGAAT_2KgcAAICAmqRoJt5Tkl48o3To5oITmjztN-JAALfEGsb7oqRVC4kSD9h5z2xAQADAgADeQADPQQ,data/photos/PLY0403.jpg
+405,PLY0405,Luc Benkenstein,England,Batter,f,15,0.25,AgACAgUAAyEGAAT_2KgcAAICKGqRvtpJY6yRNtDVHW3agMwrTZzuAAIdEWsb7oqRVLnpBEAJAAF9tAEAAwIAA3gAAz0E,data/photos/PLY0405.jpg
+407,PLY0407,Ben Curran,England,Batter,f,15,0.25,AgACAgUAAyEGAAT_2KgcAAICKmqRvtvI8lNhJFxx9j0LLVdNw0TSAAIfEWsb7oqRVBqkxRYfSCRHAQADAgADeQADPQQ,data/photos/PLY0407.jpg
+408,PLY0408,Jake Carder,England,Batter,f,15,0.25,AgACAgUAAyEGAAT_2KgcAAICK2qRvuDaO0ihv0bpZ-NFAnY5xv5-AAIgEWsb7oqRVBvwjP6ZGtx0AQADAgADeAADPQQ,data/photos/PLY0408.jpg
+411,PLY0411,Ben Wright,England,Batter,f,15,0.25,AgACAgUAAyEGAAT_2KgcAAIDS2qT1K6Ak4I5vNImUYAhiAoFY0KKAAK-E2sbW7GYVIXgniSAgLmtAQADAgADeQADPQQ,data/photos/PLY0411.jpg
+413,PLY0413,Billy Godleman,England,Batter,f,15,0.25,AgACAgUAAyEGAAT_2KgcAAIDTWqT1LRvJDuqQMYVPuejJXnbNiq6AALAE2sbW7GYVJpMoYoDcqFAAQADAgADeQADPQQ,data/photos/PLY0413.jpg
+375,PLY0375,Tom Clark,England,Batter,f,14,0.25,AgACAgUAAyEGAAT_2KgcAAIDR2qT1IQzEyCsApfUmr50ECvA7eUZAAK2E2sbW7GYVDwo2LDNOSlbAQADAgADeAADPQQ,data/photos/PLY0375.jpg
+410,PLY0410,Sam Young,England,Batter,f,15,0.25,AgACAgUAAyEGAAT_2KgcAAIDSmqT1K24d75-jnGUp96ijuFcBHBBAAK8E2sbW7GYVNAdmvldBx8bAQADAgADeAADPQQ,data/photos/PLY0410.jpg
+377,PLY0377,Fin Bean,England,Batter,f,14,0.25,AgACAgUAAyEGAAT_2KgcAAIBBmqRknpbWjWwQQYokzr4rCD8J8xdAALbEGsbKvqQVOE1EHa9UHstAQADAgADeAADPQQ,data/photos/PLY0377.jpg
+378,PLY0378,Harry Came,England,Batter,f,14,0.25,AgACAgUAAyEGAAT_2KgcAAIBB2qRkntnkWkSavOj7rPVmuqYBR2UAALcEGsbKvqQVFJmAkqSZx1uAQADAgADdwADPQQ,data/photos/PLY0378.jpg
+380,PLY0380,Tom Lace,England,Batter,f,14,0.25,AgACAgUAAyEGAAT_2KgcAAIBCWqRknz-_LJoaJKbzqCdPdLStntnAALeEGsbKvqQVN5eGGpnLmGBAQADAgADeQADPQQ,data/photos/PLY0380.jpg
+382,PLY0382,Hamish Rutherford,England,Bowling All-Rounder (Spin),f,14,0.25,AgACAgUAAyEGAAT_2KgcAAIBC2qRkoH2WuGwy6UGDCTLhV-1cZzxAALgEGsbKvqQVPcOH5uS2Q7fAQADAgADeAADPQQ,data/photos/PLY0382.jpg
+383,PLY0383,George Bartlett,England,Bowling All-Rounder (Spin),f,14,0.25,AgACAgUAAyEGAAT_2KgcAAIBDGqRkoKDCOALSOdioJDiZbQsp0cKAALhEGsbKvqQVJmlIRB2Px6fAQADAgADdwADPQQ,data/photos/PLY0383.jpg
+385,PLY0385,Liam Trevaskis,England,Bowling All-Rounder (Spin),f,14,0.25,AgACAgUAAyEGAAT_2KgcAAIBDmqRkoUeZD5c3jHq2j4aRTXXq-KaAALjEGsbKvqQVNHQRZAnv8fMAQADAgADeQADPQQ,data/photos/PLY0385.jpg
+387,PLY0387,Jordan Clark,England,Bowling All-Rounder (Pace),f,14,0.25,AgACAgUAAyEGAAT_2KgcAAIBEGqRkoexQ_XmXdnlexjJ2DY4_A4tAALlEGsbKvqQVKkNxw7NCOwqAQADAgADeQADPQQ,data/photos/PLY0387.jpg
+388,PLY0388,Noah Thain,England,Bowling All-Rounder (Pace),f,14,0.25,AgACAgUAAyEGAAT_2KgcAAIBEWqRkogqZs-smYfpa6lRbIgxiTyMAALmEGsbKvqQVAh46nWnVKpcAQADAgADeAADPQQ,data/photos/PLY0388.jpg
+390,PLY0390,James Minto,England,Bowling All-Rounder (Pace),f,14,0.25,AgACAgUAAyEGAAT_2KgcAAIBE2qRkoq4mddN_AcP4Pvrnn6AssPeAALoEGsbKvqQVCDa0q0zeZqeAQADAgADeQADPQQ,data/photos/PLY0390.jpg
+391,PLY0391,Harry Nijjar,England,Fast Bowler,f,14,0.25,AgACAgUAAyEGAAT_2KgcAAIBFGqRkotJmN9I87TIkMzbKHFkuc9yAALpEGsbKvqQVAOiSprfXhp3AQADAgADeQADPQQ,data/photos/PLY0391.jpg
+422,PLY0422,David Lloyd,England,Batter,f,15,0.25,AgACAgUAAyEGAAT_2KgcAAIDV2qT1PxFypM7Jnd0cwABNs4yieXrcgACzBNrG1uxmFT9u04lLR-lEAEAAwIAA3gAAz0E,data/photos/PLY0422.jpg
+424,PLY0424,Tom Prest,England,Batter,f,15,0.25,AgACAgUAAyEGAAT_2KgcAAIDWWqT1QGgpd78qi74GUOPpK-yoqO6AALOE2sbW7GYVOp_iI0lCeUdAQADAgADeQADPQQ,data/photos/PLY0424.jpg
+426,PLY0426,Jack Davies,England,Batter,f,15,0.25,AgACAgUAAyEGAAT_2KgcAAIDW2qT1QMNxY4gLoQYdGFeAY763pH1AALQE2sbW7GYVCmhurvvsjq9AQADAgADeQADPQQ,data/photos/PLY0426.jpg
+427,PLY0427,Chris Wright,England,Batter,f,15,0.25,AgACAgUAAyEGAAT_2KgcAAIDXGqT1QT1fbVEpuz_X6hphWQEIJH2AALRE2sbW7GYVGAG7s-Ui71BAQADAgADdwADPQQ,data/photos/PLY0427.jpg
+429,PLY0429,Graham Clark,England,Batter,f,15,0.25,AgACAgUAAyEGAAT_2KgcAAIDXmqT1QnIH0uY281J8eu4VxO5L_NoAALTE2sbW7GYVLutivh9hDKAAQADAgADeQADPQQ,data/photos/PLY0429.jpg
+415,PLY0415,Will Luxton,England,Batter,f,15,0.25,AgACAgUAAyEGAAT_2KgcAAIDUGqT1PIFqLs1xPTeQy6s5JVc75yJAALFE2sbW7GYVEp3Cw0kkHNLAQADAgADeAADPQQ,data/photos/PLY0415.jpg
+416,PLY0416,Hassan Azad,England,Batter,f,15,0.25,AgACAgUAAyEGAAT_2KgcAAIDUWqT1PMeNS23zeTxCqK7OyX49n6-AALGE2sbW7GYVGdFxcuz7nP1AQADAgADeQADPQQ,data/photos/PLY0416.jpg
+418,PLY0418,Paul Horton,England,Batter,f,15,0.25,AgACAgUAAyEGAAT_2KgcAAIDU2qT1PVcmlzs9NchgSYpzmx5nF0yAALIE2sbW7GYVJnr7_56QZFeAQADAgADeAADPQQ,data/photos/PLY0418.jpg
+421,PLY0421,Nick Selman,England,Batter,f,15,0.25,AgACAgUAAyEGAAT_2KgcAAIDVmqT1Psskpf2kw2BWVpzllkAAYxb2QACyxNrG1uxmFTwtTSr37UiVwEAAwIAA3gAAz0E,data/photos/PLY0421.jpg
+373,PLY0373,Ben Charlesworth,England,Batter,f,14,0.25,AgACAgUAAyEGAAT_2KgcAAIDRWqT1INB3hZIX_6vaOdcyCIFN4mlAAK0E2sbW7GYVGRlQGEVdeifAQADAgADeAADPQQ,data/photos/PLY0373.jpg
+437,PLY0437,Hamza Shaikh,England,Batter,f,16,0.25,AgACAgUAAyEGAAT_2KgcAAIBGWqRkrainopMjGM3ZHFbGoLjGI1PAALuEGsbKvqQVNXrhWEVyGOPAQADAgADeQADPQQ,data/photos/PLY0437.jpg
+438,PLY0438,Jaydn Denly,England,Batter,f,16,0.25,AgACAgUAAyEGAAT_2KgcAAIBGmqRkrjLTersjG-CqwnTQ7cl8ez1AALvEGsbKvqQVMrD4k90yWvYAQADAgADeAADPQQ,data/photos/PLY0438.jpg
+439,PLY0439,Rocky Flintoff,England,Batter,f,16,0.25,AgACAgUAAyEGAAT_2KgcAAIBG2qRkrkAAeIsFuvDmYyZxAABnCujclEAAvAQaxsq-pBUs16KskKNZCwBAAMCAAN4AAM9BA,data/photos/PLY0439.jpg
+440,PLY0440,Ben Hammond,England,Batter,f,16,0.25,AgACAgUAAyEGAAT_2KgcAAIBHGqRkrt9ovzUXeA_H-CaXIo-NnEmAALxEGsbKvqQVJ4szNlD-IFpAQADAgADdwADPQQ,data/photos/PLY0440.jpg
+441,PLY0441,Tazeem Chaudry,England,Batter,f,16,0.25,AgACAgUAAyEGAAT_2KgcAAIBHWqRkrxg3-Xo_rW_IyG6q2zhQU-sAALyEGsbKvqQVAnSz-jptKjBAQADAgADeAADPQQ,data/photos/PLY0441.jpg
+442,PLY0442,Kian Hilton,England,Batter,f,16,0.25,AgACAgUAAyEGAAT_2KgcAAIBHmqRkr1Vpd-tmpz7BH38JSkAARwHGwAC8xBrGyr6kFRSbJ_2vgtTWwEAAwIAA3gAAz0E,data/photos/PLY0442.jpg
+443,PLY0443,Charlie Barnard,England,Batter,f,16,0.25,AgACAgUAAyEGAAT_2KgcAAIBH2qRkr6bY9SBrYXAB3tBoxp9G-k4AAL0EGsbKvqQVCLVygL4WQ-CAQADAgADeQADPQQ,data/photos/PLY0443.jpg
+444,PLY0444,Rishi Patel,England,Batter,f,16,0.25,AgACAgUAAyEGAAT_2KgcAAIBIGqRkr_rfeq57swVYaTV7G9sTPsHAAL1EGsbKvqQVAmO3A4oUh9uAQADAgADdwADPQQ,data/photos/PLY0444.jpg
+431,PLY0431,Ollie Sykes,England,Batter,f,16,0.25,AgACAgUAAyEGAAT_2KgcAAIDYGqT1Qunm0FwNX_fswaM9JkYcdMIAALVE2sbW7GYVG8bEXfXlKqOAQADAgADeAADPQQ,data/photos/PLY0431.jpg
+432,PLY0432,Toby Albert,England,Batter,f,16,0.25,AgACAgUAAyEGAAT_2KgcAAIDYWqT1QvcfZtBgXfmpIjpaBgC52cAA9YTaxtbsZhUv1w0ms6HP2cBAAMCAAN4AAM9BA,data/photos/PLY0432.jpg
+433,PLY0433,Louis Kimber,England,Batter,f,16,0.25,AgACAgUAAyEGAAT_2KgcAAIDYmqT1Qww5INBeCq3A4QOivXZDz5tAALXE2sbW7GYVBO5y7AOBmcjAQADAgADeAADPQQ,data/photos/PLY0433.jpg

@@ -1049,7 +1049,14 @@ async def admin_tournaments_edit_button(callback: CallbackQuery) -> None:
     if not is_admin(callback.from_user.id):
         await callback.answer("🛡️ Admin access required.", show_alert=True)
         return
-    await callback.message.answer("✏️ Tournament editing via /edit_tournament command.")
+    from app.database.session import AsyncSessionLocal
+    from app.repositories.tournament_repository import get_tournament_by_chat_id
+    async with AsyncSessionLocal() as session:
+        tournament = await get_tournament_by_chat_id(session, callback.message.chat.id)
+    if not tournament:
+        await callback.message.answer("❌ No tournament exists in this group. Create one first with /create_tournament")
+    else:
+        await callback.message.answer(f"✏️ Tournament: {tournament.name}\n\nUse /create_tournament to edit, or /complete_tournament to delete.")
     await callback.answer()
 
 
@@ -1058,7 +1065,14 @@ async def admin_tournaments_complete_button(callback: CallbackQuery) -> None:
     if not is_admin(callback.from_user.id):
         await callback.answer("🛡️ Admin access required.", show_alert=True)
         return
-    await callback.message.answer("❌ Send /complete_tournament to complete/delete tournament.")
+    from app.database.session import AsyncSessionLocal
+    from app.repositories.tournament_repository import get_tournament_by_chat_id
+    async with AsyncSessionLocal() as session:
+        tournament = await get_tournament_by_chat_id(session, callback.message.chat.id)
+    if not tournament:
+        await callback.message.answer("❌ No tournament exists in this group. Create one first with /create_tournament")
+    else:
+        await callback.message.answer(f"⚠️ Tournament: {tournament.name}\n\nSend /complete_tournament to delete it.")
     await callback.answer()
 
 
@@ -1147,7 +1161,7 @@ async def send_help(message: Message, user: User) -> None:
     guide += "  /manual_unsell - Remove player from team\n"
     guide += "  /trade_on - Enable trading\n"
     guide += "  /trade_off - Disable trading\n"
-    guide += "\n📊 Simulation:\n"
+    guide += "\n📊 Simulation (Coming Soon):\n"
     guide += "  /simulate_match - Simulate a match\n"
     guide += "  /tournament_table - View standings\n"
     guide += "  /match_history - Past matches\n"
@@ -1247,7 +1261,7 @@ async def help_all_command(message: Message) -> None:
     g.append("  /trade_on - Enable player trading")
     g.append("  /trade_off - Disable player trading")
     g.append("")
-    g.append("Match Simulation")
+    g.append("Match Simulation (Coming Soon)")
     g.append("-" * 20)
     g.append("  /simulate_match - Simulate a match between two teams")
     g.append("  /tournament_table - View tournament standings")

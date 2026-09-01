@@ -340,18 +340,41 @@ def main():
     print("    ✅ All tables ready\n")
 
     # Step 2: Import data in FK order
+    # Tables with FK dependencies on parent tables
+    FK_DEPS = {
+        "teams": ["tournaments"],
+        "auction_runs": ["tournaments"],
+        "auction_players": ["auction_runs", "players"],
+        "auction_results": ["tournaments", "auction_runs", "auction_players", "players", "teams"],
+        "player_stats": ["players"],
+    }
+    imported_tables = set()  # Track which tables got data
+
     print("📥 Importing data...")
     total_rows = 0
     for table, filename, columns in TABLES:
         csv_file = CSV_DIR / filename
         rows = load_csv(csv_file)
         if not rows:
-            print(f"    ⏭️  {filename} — not found, skipping")
+            print(f"    ⏭️  {filename} — not found or empty, skipping")
             continue
+
+        # Check parent tables exist
+        deps = FK_DEPS.get(table, [])
+        missing_deps = [d for d in deps if d not in imported_tables]
+        if missing_deps:
+            print(f"    ⏭️  {table} — skipped (missing dependencies: {', '.join(missing_deps)})")
+            continue
+
         if columns is None:
             columns = list(rows[0].keys())
-        import_table(conn, rows, table, columns)
-        total_rows += len(rows)
+        try:
+            import_table(conn, rows, table, columns)
+            imported_tables.add(table)
+            total_rows += len(rows)
+        except Exception as e:
+            print(f"    ❌ {table} — import failed: {e}")
+            conn.rollback()
 
     # Step 3: Reset sequences
     print("\n🔄 Resetting sequences...")

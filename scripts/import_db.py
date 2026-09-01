@@ -1,52 +1,51 @@
 #!/usr/bin/env python3
 """
 Import CSV exports into a fresh PostgreSQL database.
-Run this INSIDE the Docker container on the server:
+Run from the host (outside Docker):
 
     docker compose exec bot python scripts/import_db.py
 
-Or locally to test:
+Or inside the container (bot service):
 
     python scripts/import_db.py
 
-It reads CSV files from data/csv/ and inserts them in the correct order
+Reads CSV files from data/csv/ and inserts them in the correct order
 (respecting foreign keys).
 """
 
 import csv
 import os
 import sys
+import subprocess
 from pathlib import Path
 
-# ---------------------------------------------------------------------------
-#  Database connection — reads from environment (set by docker-compose .env)
-# ---------------------------------------------------------------------------
-try:
-    from app.config.settings import settings
-    DATABASE_URL = settings.database_url
-except Exception:
-    DATABASE_URL = os.getenv(
-        "DATABASE_URL",
-        "postgresql+asyncpg://auction_user:auction_user@localhost:5432/auction_db",
-    )
+CSV_DIR = Path("data/csv")
 
-# We need synchronous psycopg2 for the import script.
-# Fall back to a raw approach if psycopg2 isn't installed.
+# ---------------------------------------------------------------------------
+#  Database connection — detect if running inside Docker or on host
+# ---------------------------------------------------------------------------
+IS_DOCKER = os.path.exists("/.dockerenv") or os.getenv("DOCKER_CONTAINER") == "1"
+
+if IS_DOCKER:
+    # Inside container — connect directly to postgres via Docker network
+    PG_HOST = "postgres"  # Service name in docker-compose
+    PG_PORT = "5432"
+else:
+    # On host — connect via docker exec
+    PG_HOST = None  # Will use docker exec instead
+    PG_PORT = None
+
+PG_USER = os.getenv("POSTGRES_USER", "auction_user")
+PG_PASS = os.getenv("POSTGRES_PASSWORD", "auction_user")
+PG_DB = os.getenv("POSTGRES_DB", "auction_db")
+
+# Try psycopg2 first (direct connection)
 try:
     import psycopg2
     HAS_PSYCOPG2 = True
 except ImportError:
     HAS_PSYCOPG2 = False
 
-# If no psycopg2, try using docker exec with psql
-try:
-    import subprocess
-    HAS_DOCKER = True
-except ImportError:
-    HAS_DOCKER = False
-
-
-CSV_DIR = Path("data/csv")
 
 # Import order matters (foreign keys)
 TABLES = [
@@ -133,8 +132,39 @@ def escape_sql(val: str | None) -> str:
     return str(val).replace("\\", "\\\\").replace("\t", "\\t").replace("\n", "\\n")
 
 
-def import_with_psql(rows: list[dict], table: str, columns: list[str]):
-    """Import using psql \\copy via COPY ... FROM STDIN."""
+def run_psql(sql: str) -> tuple[int, str, str]:
+    """Run a SQL command. Returns (returncode, stdout, stderr)."""
+    if HAS_PSYCOPG2 and IS_DOCKER:
+        # Direct connection inside container
+        try:
+            conn = psycopg2.connect(
+                host=PG_HOST, port=PG_PORT,
+                user=PG_USER, password=PG_PASS, dbname=PG_DB,
+            )
+            conn.autocommit = True
+            cur = conn.cursor()
+            cur.execute(sql)
+            try:
+                result = "\n".join(cur.fetchall().__repr__())
+            except Exception:
+                result = ""
+            cur.close()
+            conn.close()
+            return 0, result, ""
+        except Exception as e:
+            return 1, "", str(e)
+    else:
+        # docker exec from host
+        cmd = (
+            f"docker exec auction_postgres psql "
+            f"-U {PG_USER} -d {PG_DB} -c \"{sql}\""
+        )
+        proc = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+        return proc.returncode, proc.stdout, proc.stderr
+
+
+def import_with_copy(rows: list[dict], table: str, columns: list[str]):
+    """Import using psql \\COPY via COPY ... FROM STDIN."""
     if not rows:
         print(f"    ⚠️  No data for {table}")
         return
@@ -148,18 +178,34 @@ def import_with_psql(rows: list[dict], table: str, columns: list[str]):
     data = "\n".join(lines) + "\n"
     col_str = ", ".join(columns)
 
-    cmd = (
-        f"docker exec auction_postgres psql -U auction_user -d auction_db -c "
-        f"\"\\COPY {table}({col_str}) FROM STDIN WITH (FORMAT text)\""
-    )
-
-    proc = subprocess.run(
-        cmd, shell=True, input=data, capture_output=True, text=True
-    )
-    if proc.returncode != 0:
-        print(f"    ❌ Error importing {table}: {proc.stderr.strip()}")
+    if HAS_PSYCOPG2 and IS_DOCKER:
+        # Direct psycopg2 COPY
+        try:
+            conn = psycopg2.connect(
+                host=PG_HOST, port=PG_PORT,
+                user=PG_USER, password=PG_PASS, dbname=PG_DB,
+            )
+            conn.autocommit = True
+            cur = conn.cursor()
+            copy_sql = f"COPY {table}({col_str}) FROM STDIN WITH (FORMAT text)"
+            cur.copy_expert(copy_sql, open("/dev/stdin", "r") if False else __import__("io").StringIO(data))
+            cur.close()
+            conn.close()
+            print(f"    ✅ {table}: {len(rows)} rows")
+        except Exception as e:
+            print(f"    ❌ Error importing {table}: {e}")
     else:
-        print(f"    ✅ {table}: {len(rows)} rows")
+        # docker exec approach
+        cmd = (
+            f"docker exec -i auction_postgres psql "
+            f"-U {PG_USER} -d {PG_DB} -c "
+            f"\"\\COPY {table}({col_str}) FROM STDIN WITH (FORMAT text)\""
+        )
+        proc = subprocess.run(cmd, shell=True, input=data, capture_output=True, text=True)
+        if proc.returncode != 0:
+            print(f"    ❌ Error importing {table}: {proc.stderr.strip()}")
+        else:
+            print(f"    ✅ {table}: {len(rows)} rows")
 
 
 def main():
@@ -172,28 +218,27 @@ def main():
         print("   Make sure data/csv/ exists with exported CSV files.")
         sys.exit(1)
 
-    # Check if docker is running
-    check = subprocess.run(
-        "docker exec auction_postgres pg_isready -U auction_user -d auction_bot",
-        shell=True, capture_output=True, text=True
-    )
-    if check.returncode != 0:
-        print("❌ PostgreSQL container is not running!")
-        print("   Start it with: docker compose up -d postgres")
+    # Check if PostgreSQL is reachable
+    rc, out, err = run_psql("SELECT 1")
+    if rc != 0:
+        print("❌ PostgreSQL is not reachable!")
+        if IS_DOCKER:
+            print("   Make sure postgres service is running.")
+        else:
+            print("   Start it with: docker compose up -d postgres")
         sys.exit(1)
 
     print("✅ PostgreSQL is running\n")
 
     # Reset sequences first (so IDs work correctly)
     print("🔄 Resetting sequences...")
-    for table, _, columns in TABLES:
-        csv_file = CSV_DIR / TABLES[TABLES.index((table, _, columns))][1]
+    for table, filename, columns in TABLES:
+        csv_file = CSV_DIR / filename
         rows = load_csv(csv_file)
-        if rows and "id" in columns:
-            subprocess.run(
-                f"docker exec auction_postgres psql -U auction_user -d auction_db -c "
-                f"\"SELECT setval('{table}_id_seq', COALESCE((SELECT MAX(id) FROM {table}), 1))\"",
-                shell=True, capture_output=True, text=True
+        if rows and "id" in (columns or []):
+            run_psql(
+                f"SELECT setval('{table}_id_seq', "
+                f"COALESCE((SELECT MAX(id) FROM {table}), 1))"
             )
     print()
 
@@ -210,7 +255,7 @@ def main():
             # Use all columns from CSV header
             columns = list(rows[0].keys())
 
-        import_with_psql(rows, table, columns)
+        import_with_copy(rows, table, columns)
         total_rows += len(rows)
 
     print()

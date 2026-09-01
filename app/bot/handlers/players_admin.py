@@ -16,7 +16,7 @@ from app.database.session import AsyncSessionLocal
 from app.database.models.auction import AuctionResult
 from app.database.models.team import Team
 from app.database.models.player import Player
-from app.repositories.team_repository import get_team_by_owner, get_teams_by_tournament, get_team_by_short_code
+from app.repositories.team_repository import get_team_by_owner, get_team_by_owner_or_coowner, get_teams_by_tournament, get_team_by_short_code
 from app.services.tournament_service import TournamentService
 from app.utils.enums import AuctionResultStatus
 
@@ -624,7 +624,7 @@ async def trade_player_start(message: Message, state: FSMContext) -> None:
         if not tournament:
             await message.answer("No tournament is configured for this group.")
             return
-        team = await get_team_by_owner(session, tournament.id, message.from_user.id)
+        team = await get_team_by_owner_or_coowner(session, tournament.id, message.from_user.id)
         if not team:
             await message.answer("You are not registered as a team owner.")
             return

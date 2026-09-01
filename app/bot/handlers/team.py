@@ -21,6 +21,7 @@ from app.bot.states.team_states import (
 )
 
 from app.repositories.team_repository import (
+    get_team_by_owner_or_coowner,
     get_teams_by_tournament,
 )
 from app.repositories.tournament_repository import (
@@ -649,14 +650,9 @@ async def team_logo_start(
             )
             return
 
-        result = await session.execute(
-            select(Team).where(
-                Team.tournament_id == tournament.id,
-                Team.owner_telegram_id == message.from_user.id,
-            )
+        team = await get_team_by_owner_or_coowner(
+            session, tournament.id, message.from_user.id,
         )
-
-        team = result.scalar_one_or_none()
 
     if team is None:
         await message.answer(
@@ -723,8 +719,9 @@ async def team_logo_photo(
             return
 
         # Security check — make sure this user
-        # still owns the team.
-        if team.owner_telegram_id != message.from_user.id:
+        # is still owner or co-owner of the team.
+        if (team.owner_telegram_id != message.from_user.id
+                and team.co_owner_telegram_id != message.from_user.id):
             await state.clear()
             await message.answer(
                 "❌ You are not the owner of this team."

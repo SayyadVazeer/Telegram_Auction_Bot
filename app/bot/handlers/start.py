@@ -20,7 +20,7 @@ from app.bot.keyboards.team import team_list_keyboard
 from app.database.models.auction import AuctionResult, AuctionRun
 from app.database.models.player import Player
 from app.database.session import AsyncSessionLocal
-from app.repositories.team_repository import get_team_by_owner, get_teams_by_tournament
+from app.repositories.team_repository import get_team_by_owner, get_team_by_owner_or_coowner, get_teams_by_tournament
 from app.services.tournament_service import TournamentService
 from app.utils.enums import AuctionResultStatus
 
@@ -36,7 +36,7 @@ async def show_home(message: Message, user_id: int | None) -> None:
     if message.chat.type in {"group", "supergroup"} and user_id:
         async with AsyncSessionLocal() as session:
             tournament = await TournamentService(session).get_by_telegram_chat_id(message.chat.id)
-            is_owner = bool(tournament and await get_team_by_owner(session, tournament.id, user_id))
+            is_owner = bool(tournament and await get_team_by_owner_or_coowner(session, tournament.id, user_id))
     await message.answer(
         "🏏 Telegram Auction Bot\n\nChoose an option below.",
         reply_markup=home_keyboard(is_admin=is_admin(user_id), is_owner=is_owner),
@@ -315,7 +315,7 @@ async def _show_my_team(message: Message) -> None:
         return
     async with AsyncSessionLocal() as session:
         tournament = await TournamentService(session).get_by_telegram_chat_id(message.chat.id)
-        team = await get_team_by_owner(session, tournament.id, message.from_user.id) if tournament else None
+        team = await get_team_by_owner_or_coowner(session, tournament.id, message.from_user.id) if tournament else None
     if not team:
         await message.answer("❌ You do not own a team.")
         return
@@ -372,7 +372,7 @@ async def _show_purse(message: Message) -> None:
         return
     async with AsyncSessionLocal() as session:
         tournament = await TournamentService(session).get_by_telegram_chat_id(message.chat.id)
-        team = await get_team_by_owner(session, tournament.id, message.from_user.id) if tournament else None
+        team = await get_team_by_owner_or_coowner(session, tournament.id, message.from_user.id) if tournament else None
     if not team:
         await message.answer("❌ You do not own a team.")
         return

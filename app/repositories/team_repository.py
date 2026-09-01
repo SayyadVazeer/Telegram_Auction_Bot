@@ -88,6 +88,22 @@ async def get_team_by_owner(
     return result.scalar_one_or_none()
 
 
+async def get_team_by_owner_or_coowner(
+    session: AsyncSession,
+    tournament_id: int,
+    telegram_id: int,
+) -> Team | None:
+    """Find a team where the user is either the owner or co-owner."""
+    result = await session.execute(
+        select(Team).where(
+            Team.tournament_id == tournament_id,
+            (Team.owner_telegram_id == telegram_id)
+            | (Team.co_owner_telegram_id == telegram_id),
+        )
+    )
+    return result.scalar_one_or_none()
+
+
 async def assign_team_owner(
     session: AsyncSession,
     team: Team,

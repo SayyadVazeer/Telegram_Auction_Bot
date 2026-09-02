@@ -22,6 +22,9 @@ class ActiveAuctionState:
     # Auction category (pending, unsold, not_participated)
     category: str = "pending"
 
+    # Forum topic thread ID (None if not a forum group)
+    thread_id: int | None = None
+
     # State flags
     paused: bool = False
     stopped: bool = False
@@ -46,11 +49,13 @@ class AuctionRuntime:
         auction_run_id: int,
         chat_id: int,
         bid_timer_seconds: int,
+        thread_id: int | None = None,
     ) -> ActiveAuctionState:
         state = ActiveAuctionState(
             auction_run_id=auction_run_id,
             chat_id=chat_id,
             bid_timer_seconds=bid_timer_seconds,
+            thread_id=thread_id,
         )
 
         active_auctions[auction_run_id] = state

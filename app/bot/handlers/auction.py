@@ -85,6 +85,11 @@ async def _save_media_to_db(key: str, file_id: str, unique_id: str | None, local
 # Inter-player delay
 INTER_PLAYER_DELAY = 12  # seconds between players
 
+
+def _thread_kw(thread_id: int | None) -> dict:
+    """Return kwargs dict with message_thread_id only when set."""
+    return {"message_thread_id": thread_id} if thread_id else {}
+
 # ── helpers ────────────────────────────────────────────────────────
 
 async def _tournament_for_chat(chat_id: int):
@@ -152,7 +157,7 @@ def _live_text(player, team, bid_cr, bid_timer, bidder_username=None):
     return "\n".join(lines)
 
 
-async def _send_media(bot, chat_id: int, media_key: str, fallback_path: str, caption: str = "", parse_mode: str = None):
+async def _send_media(bot, chat_id: int, media_key: str, fallback_path: str, caption: str = "", parse_mode: str = None, thread_id: int | None = None):
     """Send media using file_id first, falling back to local file.
     
     media_key: 'bid1', 'bid2', 'bid3', 'once', 'twice', 'sold', 'unsold'
@@ -168,17 +173,18 @@ async def _send_media(bot, chat_id: int, media_key: str, fallback_path: str, cap
     
     # Try file_id first
     file_id = _media_file_ids.get(media_key)
+    _tkw = _thread_kw(thread_id)
     if file_id:
         try:
             if media_key in ('once', 'twice'):
                 # These are JPEG - send as photo
-                await bot.send_photo(chat_id, file_id, caption=caption, parse_mode=parse_mode)
+                await bot.send_photo(chat_id, file_id, caption=caption, parse_mode=parse_mode, **_tkw)
             else:
                 # Try animation first (GIF), fall back to video (MP4)
                 try:
-                    await bot.send_animation(chat_id, file_id, caption=caption, parse_mode=parse_mode)
+                    await bot.send_animation(chat_id, file_id, caption=caption, parse_mode=parse_mode, **_tkw)
                 except Exception:
-                    await bot.send_video(chat_id, file_id, caption=caption, parse_mode=parse_mode)
+                    await bot.send_video(chat_id, file_id, caption=caption, parse_mode=parse_mode, **_tkw)
             return
         except Exception:
             pass  # File ID may have expired, fall through to local file
@@ -194,21 +200,21 @@ async def _send_media(bot, chat_id: int, media_key: str, fallback_path: str, cap
             is_mp4 = b'ftyp' in header
 
             if is_jpeg:
-                await bot.send_photo(chat_id, FSInputFile(fallback_path), caption=caption, parse_mode=parse_mode)
+                await bot.send_photo(chat_id, FSInputFile(fallback_path), caption=caption, parse_mode=parse_mode, **_tkw)
             elif is_gif:
-                await bot.send_animation(chat_id, FSInputFile(fallback_path), caption=caption, parse_mode=parse_mode)
+                await bot.send_animation(chat_id, FSInputFile(fallback_path), caption=caption, parse_mode=parse_mode, **_tkw)
             elif is_mp4:
-                await bot.send_video(chat_id, FSInputFile(fallback_path), caption=caption, parse_mode=parse_mode)
+                await bot.send_video(chat_id, FSInputFile(fallback_path), caption=caption, parse_mode=parse_mode, **_tkw)
             else:
                 # Unknown format - try animation
-                await bot.send_animation(chat_id, FSInputFile(fallback_path), caption=caption, parse_mode=parse_mode)
+                await bot.send_animation(chat_id, FSInputFile(fallback_path), caption=caption, parse_mode=parse_mode, **_tkw)
             return
         except Exception:
             pass
 
     # Last resort - just send caption as text
     if caption:
-        await bot.send_message(chat_id, caption, parse_mode=parse_mode)
+        await bot.send_message(chat_id, caption, parse_mode=parse_mode, **_tkw)
 
 
 async def _send_active_player(bot, chat_id: int, auction_run_id: int) -> None:
@@ -232,12 +238,14 @@ async def _send_active_player(bot, chat_id: int, auction_run_id: int) -> None:
             await session.commit()
             AuctionRuntime.remove(auction_run_id)
             emoji = "🏁"
+            _tkw = _thread_kw(state.thread_id if state else None)
             await bot.send_message(
                 chat_id,
                 f"{emoji} Auction Complete\n\n"
                 f"Set {run.set_number} has ended.\n"
                 f"No eligible players remain.\n\n"
                 f"Use /status to view summary.",
+                **_tkw,
             )
             return
         await service.activate_player(player_row)
@@ -257,19 +265,27 @@ async def _send_active_player(bot, chat_id: int, auction_run_id: int) -> None:
         is_admin=True,
     )
 
-    # Send with player photo using file_id first
+    # Send with player photo: try file_id, then local file, then text-only
+    _tkw = _thread_kw(state.thread_id)
+    sent = None
+
+    # 1) Try telegram file_id
     if player.telegram_file_id:
         try:
-            sent = await bot.send_photo(chat_id, player.telegram_file_id, caption=text, reply_markup=markup)
+            sent = await bot.send_photo(chat_id, player.telegram_file_id, caption=text, reply_markup=markup, **_tkw)
         except Exception:
-            sent = await bot.send_message(chat_id, text, reply_markup=markup)
-    elif player.telegram_photo_path and os.path.exists(player.telegram_photo_path):
+            pass
+
+    # 2) Fallback to local file
+    if sent is None and player.telegram_photo_path and os.path.exists(player.telegram_photo_path):
         try:
-            sent = await bot.send_photo(chat_id, FSInputFile(player.telegram_photo_path), caption=text, reply_markup=markup)
+            sent = await bot.send_photo(chat_id, FSInputFile(player.telegram_photo_path), caption=text, reply_markup=markup, **_tkw)
         except Exception:
-            sent = await bot.send_message(chat_id, text, reply_markup=markup)
-    else:
-        sent = await bot.send_message(chat_id, text, reply_markup=markup)
+            pass
+
+    # 3) Last resort: text only
+    if sent is None:
+        sent = await bot.send_message(chat_id, text, reply_markup=markup, **_tkw)
 
     state.live_message_id = sent.message_id
     state.on_timer_expired = lambda: _on_timer_expired(bot, chat_id, auction_run_id)
@@ -359,6 +375,7 @@ async def _finalize_player(bot, chat_id: int, auction_run_id: int) -> None:
             await session.commit()
 
         # Send sold/unsold card
+        _tkw = _thread_kw(state.thread_id)
         if row.current_team_id is not None:
             card = await render_sold_card(
                 bot, player, team, Decimal(str(row.current_bid_cr)),
@@ -368,6 +385,7 @@ async def _finalize_player(bot, chat_id: int, auction_run_id: int) -> None:
                 chat_id,
                 BufferedInputFile(card, filename="sold.png"),
                 caption=result_text,
+                **_tkw,
             )
         else:
             card = await render_unsold_card(bot, player)
@@ -375,6 +393,7 @@ async def _finalize_player(bot, chat_id: int, auction_run_id: int) -> None:
                 chat_id,
                 BufferedInputFile(card, filename="unsold.png"),
                 caption=result_text,
+                **_tkw,
             )
 
         state.current_auction_player_id = None
@@ -441,7 +460,8 @@ async def _on_sold_warning(bot, chat_id: int, auction_run_id: int) -> None:
         
         await _send_media(
             bot, chat_id, "once", os.path.join("data", "once.jpg"),
-            caption=f"🔴 GOING ONCE -- Place your bid now!{bid_text}"
+            caption=f"🔴 GOING ONCE -- Place your bid now!{bid_text}",
+            thread_id=state.thread_id,
         )
         await asyncio.sleep(5)
 
@@ -459,7 +479,8 @@ async def _on_sold_warning(bot, chat_id: int, auction_run_id: int) -> None:
         
         await _send_media(
             bot, chat_id, "twice", os.path.join("data", "twice.jpg"),
-            caption=f"🟡 GOING TWICE -- Last chance!{bid_text2}"
+            caption=f"🟡 GOING TWICE -- Last chance!{bid_text2}",
+            thread_id=state.thread_id,
         )
         await asyncio.sleep(5)
 
@@ -468,7 +489,8 @@ async def _on_sold_warning(bot, chat_id: int, auction_run_id: int) -> None:
             return
         await _send_media(
             bot, chat_id, "sold", os.path.join("data", "sold.gif"),
-            caption="✅ SOLD!"
+            caption="✅ SOLD!",
+            thread_id=state.thread_id,
         )
 
         await _finalize_player(bot, chat_id, auction_run_id)
@@ -507,7 +529,8 @@ async def _on_unsold_warning(bot, chat_id: int, auction_run_id: int) -> None:
         )
         await _send_media(
             bot, chat_id, "unsold", os.path.join("data", "unsold.gif"),
-            caption=unsold_text
+            caption=unsold_text,
+            thread_id=state.thread_id,
         )
 
         # Wait 15 seconds for any final bids
@@ -698,6 +721,7 @@ async def auction_custom_timer(message: Message, state: FSMContext) -> None:
 
 async def _start_auction_with_params(callback, state, set_number, category, bid_timer):
     chat_id = callback.message.chat.id
+    thread_id = getattr(callback.message, 'message_thread_id', None)
     data = await state.get_data()
     min_increment = data.get("min_increment", 0.25)
     max_increment = data.get("max_increment", 0)
@@ -722,7 +746,7 @@ async def _start_auction_with_params(callback, state, set_number, category, bid_
         await session.commit()
 
     await state.clear()
-    rt = AuctionRuntime.create(run.id, chat_id, bid_timer)
+    rt = AuctionRuntime.create(run.id, chat_id, bid_timer, thread_id=thread_id)
     rt.category = category
 
     max_text = f" | Max increment: {max_increment:.2f} Cr" if max_increment > 0 else " | No max limit"
@@ -739,6 +763,7 @@ async def _start_auction_with_params(callback, state, set_number, category, bid_
 
 async def _start_auction_with_params_msg(message, state, set_number, category, bid_timer):
     chat_id = message.chat.id
+    thread_id = getattr(message, 'message_thread_id', None)
     data = await state.get_data()
     min_increment = data.get("min_increment", 0.25)
     max_increment = data.get("max_increment", 0)
@@ -763,7 +788,7 @@ async def _start_auction_with_params_msg(message, state, set_number, category, b
         await session.commit()
 
     await state.clear()
-    rt = AuctionRuntime.create(run.id, chat_id, bid_timer)
+    rt = AuctionRuntime.create(run.id, chat_id, bid_timer, thread_id=thread_id)
     rt.category = category
 
     max_text = f"Max: {max_increment:.2f} Cr" if max_increment > 0 else "No max limit"
@@ -1181,10 +1206,24 @@ async def auction_increment_bid(callback: CallbackQuery) -> None:
         bid_counter = getattr(auction_increment_bid, '_counter', 0) + 1
         auction_increment_bid._counter = bid_counter
         bid_num = (bid_counter % 4) + 1
+        # Get thread_id from the runtime to send to correct topic
+        bid_thread_id = None
+        try:
+            async with AsyncSessionLocal() as _sess:
+                _trn = await TournamentService(_sess).get_by_telegram_chat_id(callback.message.chat.id)
+                if _trn:
+                    _run = await AuctionService(_sess).get_running_auction(_trn.id)
+                    if _run:
+                        _rt = AuctionRuntime.get(_run.id)
+                        if _rt:
+                            bid_thread_id = _rt.thread_id
+        except Exception:
+            pass
         await _send_media(
             callback.message.bot, callback.message.chat.id,
             f"bid{bid_num}", os.path.join("data", f"bid{bid_num}.gif"),
-            caption=bid_msg
+            caption=bid_msg,
+            thread_id=bid_thread_id,
         )
 
 

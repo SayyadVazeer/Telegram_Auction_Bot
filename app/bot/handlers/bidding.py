@@ -247,8 +247,10 @@ async def place_bid_command(message: Message) -> None:
         
         # Use file_id from auction module
         from app.bot.handlers.auction import _send_media
+        bid_thread_id = runtime.thread_id if runtime else None
         await _send_media(
             message.bot, message.chat.id,
             f"bid{bid_num}", os.path.join("data", f"bid{bid_num}.gif"),
-            caption=bid_msg
+            caption=bid_msg,
+            thread_id=bid_thread_id,
         )

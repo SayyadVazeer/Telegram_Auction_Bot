@@ -363,7 +363,7 @@ class AuctionService:
 
         if bid_cr < base_price:
             raise BidValidationError(
-                f"Bid must be at least ₹{base_price:.2f} Cr."
+                f"Bid must be at least Rs.{base_price:.2f} Cr."
             )
 
         current_bid = (
@@ -377,7 +377,7 @@ class AuctionService:
         if bid_cr < minimum_allowed:
             raise BidValidationError(
                 f"Minimum valid bid is "
-                f"₹{minimum_allowed:.2f} Cr."
+                f"Rs.{minimum_allowed:.2f} Cr."
             )
 
         # Check maximum bid increment if set
@@ -387,8 +387,8 @@ class AuctionService:
             if jump > maximum_increment_cr:
                 raise BidValidationError(
                     f"Maximum bid increment is "
-                    f"₹{maximum_increment_cr:.2f} Cr. "
-                    f"Your jump of ₹{jump:.2f} Cr exceeds it."
+                    f"Rs.{maximum_increment_cr:.2f} Cr. "
+                    f"Your jump of Rs.{jump:.2f} Cr exceeds it."
                 )
 
     async def place_bid(
@@ -546,6 +546,8 @@ class AuctionService:
         total_spent, player_count = result.one()
 
         total_spent = Decimal(str(total_spent or 0))
+        # Include cash settled through player trades
+        total_spent += Decimal(str(team.purse_adjustment_cr or 0))
         player_count = int(player_count or 0)
 
         if player_count >= tournament.max_players_per_team:
@@ -559,7 +561,7 @@ class AuctionService:
         if bid_cr > remaining_purse:
             raise BidValidationError(
                 f"Your team has only "
-                f"₹{remaining_purse:.2f} Cr remaining."
+                f"Rs.{remaining_purse:.2f} Cr remaining."
             )
 
         if player.is_overseas:

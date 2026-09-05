@@ -22,7 +22,7 @@ def format_live_auction(
             str(auction_player.current_bid_cr)
         )
 
-        current_bid_text = f"₹{current_bid:.2f} Cr"
+        current_bid_text = f"Rs.{current_bid:.2f} Cr"
 
         if team is not None:
             team_text = team.name
@@ -38,7 +38,7 @@ def format_live_auction(
     return (
         "🔴 LIVE AUCTION\n\n"
         f"🙎{player.name}\n"
-        f"💸Base Price: ₹{base_price:.2f} Cr\n\n"
+        f"💸Base Price: Rs.{base_price:.2f} Cr\n\n"
         f"💲Current Bid: {current_bid_text}\n"
         f"🫂Team: {team_text}\n"
         f"🤴Owner: {owner_text}"

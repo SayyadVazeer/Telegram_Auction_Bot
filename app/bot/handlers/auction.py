@@ -83,7 +83,7 @@ async def _save_media_to_db(key: str, file_id: str, unique_id: str | None, local
         _media_file_ids[key] = file_id
 
 # Inter-player delay
-INTER_PLAYER_DELAY = 12  # seconds between players
+INTER_PLAYER_DELAY = 17  # seconds between players
 
 
 def _thread_kw(thread_id: int | None) -> dict:
@@ -338,7 +338,8 @@ async def _finalize_player(bot, chat_id: int, auction_run_id: int) -> None:
                         )
                     )
                     total_spent = Decimal(str(tsr.scalar() or 0))
-                    total_spent += Decimal(str(row.current_bid_cr))
+                    # Include cash settled through player trades
+                    total_spent += Decimal(str(team.purse_adjustment_cr or 0))
                     remaining_purse = f"Rs.{tournament.purse_cr - total_spent:.2f} Cr"
                     pr = await session.execute(
                         select(sa_func.count(AuctionResult.id))
@@ -349,7 +350,7 @@ async def _finalize_player(bot, chat_id: int, auction_run_id: int) -> None:
                         )
                     )
                     team_count = int(pr.scalar() or 0)
-                    remaining_players = f"{tournament.max_players_per_team - team_count}/{tournament.max_players_per_team}"
+                    remaining_players = f"{team_count}/{tournament.max_players_per_team}"
                     ovr = await session.execute(
                         select(sa_func.count(AuctionResult.id))
                         .join(Player, Player.id == AuctionResult.player_id)
@@ -361,7 +362,7 @@ async def _finalize_player(bot, chat_id: int, auction_run_id: int) -> None:
                         )
                     )
                     overseas_count = int(ovr.scalar() or 0)
-                    remaining_overseas = f"{tournament.max_overseas_players - overseas_count}/{tournament.max_overseas_players}"
+                    remaining_overseas = f"{overseas_count}/{tournament.max_overseas_players}"
                 owner_display = f"@{team.owner_username}" if team.owner_username else "Owner"
                 result_text = (
                     f"✅ SOLD — {player.name}\n"
@@ -374,6 +375,19 @@ async def _finalize_player(bot, chat_id: int, auction_run_id: int) -> None:
                 )
             await session.commit()
 
+            # Determine if more players remain in this run (same eligibility
+            # logic as get_next_player; side-effect free)
+            has_more = False
+            try:
+                run_obj = row.auction_run
+                if run_obj:
+                    nxt = await service.get_next_player(
+                        run_obj, category=state.category
+                    )
+                    has_more = nxt is not None
+            except Exception:
+                has_more = False
+
         # Send sold/unsold card
         _tkw = _thread_kw(state.thread_id)
         if row.current_team_id is not None:
@@ -381,7 +395,7 @@ async def _finalize_player(bot, chat_id: int, auction_run_id: int) -> None:
                 bot, player, team, Decimal(str(row.current_bid_cr)),
                 owner_username=team.owner_username,
             )
-            await bot.send_photo(
+            sent_card = await bot.send_photo(
                 chat_id,
                 BufferedInputFile(card, filename="sold.png"),
                 caption=result_text,
@@ -389,34 +403,27 @@ async def _finalize_player(bot, chat_id: int, auction_run_id: int) -> None:
             )
         else:
             card = await render_unsold_card(bot, player)
-            await bot.send_photo(
+            sent_card = await bot.send_photo(
                 chat_id,
                 BufferedInputFile(card, filename="unsold.png"),
                 caption=result_text,
                 **_tkw,
             )
 
-        state.current_auction_player_id = None
-        state.last_call_task = None
-
-        # Check if there are remaining pending players (quick query, no side effects)
-        has_more = False
+        # Pin the last sold/unsold card to the topic (best-effort)
         try:
-            async with AsyncSessionLocal() as check_sess:
-                pending_count = await check_sess.scalar(
-                    select(func.count(AuctionPlayer.id)).where(
-                        AuctionPlayer.auction_run_id == auction_run_id,
-                        AuctionPlayer.status == AuctionPlayerStatus.PENDING.value,
-                    )
-                )
-                has_more = (pending_count or 0) > 0
+            await bot.pin_chat_message(
+                chat_id, sent_card.message_id, disable_notification=True,
+            )
         except Exception:
             pass
 
+        state.current_auction_player_id = None
+        state.last_call_task = None
+
         if has_more:
-            # Wait 15 seconds between players (with /next_player skip support)
+            # Wait 20 seconds between players (with /next_player skip support)
             state.waiting_for_next = True
-            state.skip_next = False
             skip_event = asyncio.Event()
             state._skip_event = skip_event
             try:
@@ -438,7 +445,7 @@ async def _finalize_player(bot, chat_id: int, auction_run_id: int) -> None:
 
 
 async def _on_sold_warning(bot, chat_id: int, auction_run_id: int) -> None:
-    """15-second warning for player WITH bids: GOING ONCE at 10s, GOING TWICE at 5s, SOLD at 0s."""
+    """Countdown warning for player WITH bids: ONCE -> 5s -> TWICE -> 5s -> SOLD -> 1s -> card."""
     state = AuctionRuntime.get(auction_run_id)
     if state is None or state.current_auction_player_id is None:
         return
@@ -450,8 +457,13 @@ async def _on_sold_warning(bot, chat_id: int, auction_run_id: int) -> None:
         if AuctionRuntime.get(auction_run_id) is not state or state.stopped:
             return
         bid_text = ""
+        player_info = ""
         async with AsyncSessionLocal() as sess:
             ap = await sess.get(AuctionPlayer, state.current_auction_player_id)
+            if ap:
+                ply = await sess.get(Player, ap.player_id)
+                if ply:
+                    player_info = f"\n\n🏏 {ply.name}\nRole: {ply.role}"
             if ap and ap.current_team_id and ap.current_bid_cr:
                 tm = await sess.get(Team, ap.current_team_id)
                 if tm:
@@ -460,7 +472,7 @@ async def _on_sold_warning(bot, chat_id: int, auction_run_id: int) -> None:
         
         await _send_media(
             bot, chat_id, "once", os.path.join("data", "once.jpg"),
-            caption=f"🔴 GOING ONCE -- Place your bid now!{bid_text}",
+            caption=f"🔴 GOING ONCE -- Place your bid now!{player_info}{bid_text}",
             thread_id=state.thread_id,
         )
         await asyncio.sleep(5)
@@ -479,12 +491,12 @@ async def _on_sold_warning(bot, chat_id: int, auction_run_id: int) -> None:
         
         await _send_media(
             bot, chat_id, "twice", os.path.join("data", "twice.jpg"),
-            caption=f"🟡 GOING TWICE -- Last chance!{bid_text2}",
+            caption=f"🟡 GOING TWICE -- Last chance!{player_info}{bid_text2}",
             thread_id=state.thread_id,
         )
         await asyncio.sleep(5)
 
-        # 0 seconds - SOLD gif + finalize together
+        # 1 second left - SOLD message
         if AuctionRuntime.get(auction_run_id) is not state or state.stopped:
             return
         await _send_media(
@@ -492,7 +504,9 @@ async def _on_sold_warning(bot, chat_id: int, auction_run_id: int) -> None:
             caption="✅ SOLD!",
             thread_id=state.thread_id,
         )
+        await asyncio.sleep(1)
 
+        # 0 seconds - show the sold card
         await _finalize_player(bot, chat_id, auction_run_id)
 
     except asyncio.CancelledError:
@@ -533,22 +547,14 @@ async def _on_unsold_warning(bot, chat_id: int, auction_run_id: int) -> None:
             thread_id=state.thread_id,
         )
 
-        # Wait 15 seconds for any final bids
+        # Wait 15 seconds for any final bids — then show the unsold card
         await asyncio.sleep(15)
 
-        # Check if someone bid during the 15s unsold timer
+        # Check if someone bid during the unsold warning
         if AuctionRuntime.get(auction_run_id) is not state or state.stopped:
             return
 
-        # Check if any bids came in during the 15s
-        async with AsyncSessionLocal() as sess2:
-            ap2 = await sess2.get(AuctionPlayer, state.current_auction_player_id)
-            if ap2 and ap2.current_team_id is not None:
-                # Someone bid during unsold timer - run sold warning instead
-                await _on_sold_warning(bot, chat_id, auction_run_id)
-                return
-
-        # Still no bids - finalize as unsold
+        # Still no bids — finalize as unsold
         await _finalize_player(bot, chat_id, auction_run_id)
 
     except asyncio.CancelledError:
@@ -887,36 +893,45 @@ async def _control(message: Message, action: str) -> str:
                 if state:
                     state.paused = False
                     state.stopped = False
-                    await AuctionRuntime.restart_timer(state)
+                    if state.current_auction_player_id is None:
+                        # Resumed during the inter-player delay (or after a
+                        # stale timer) — no active player, so show the next
+                        # player right away
+                        await _send_active_player(message.bot, state.chat_id, run.id)
+                    else:
+                        await AuctionRuntime.restart_timer(state)
                 text = "Auction resumed."
 
             elif action == "stop":
-                # Stop even with active player - mark as not participated
-                if state and state.current_auction_player_id:
-                    # Cancel any running timers
+                # Stop even with active player - mark all ACTIVE players for
+                # this run as not participated (works even if the in-memory
+                # runtime state was lost, e.g. after a bot restart)
+                if state:
                     AuctionRuntime.cancel_timer(state)
                     AuctionRuntime.cancel_last_call(state)
-                    
-                    # Mark the active player as unsold (not participated)
-                    async with AsyncSessionLocal() as sess2:
-                        ap_result = await sess2.execute(
+                async with AsyncSessionLocal() as sess2:
+                    actives = (
+                        await sess2.execute(
                             select(AuctionPlayer)
                             .options(selectinload(AuctionPlayer.auction_run))
-                            .where(AuctionPlayer.id == state.current_auction_player_id)
+                            .where(
+                                AuctionPlayer.auction_run_id == run.id,
+                                AuctionPlayer.status == AuctionPlayerStatus.ACTIVE.value,
+                            )
                         )
-                        ap = ap_result.scalar_one_or_none()
-                        if ap and ap.status == AuctionPlayerStatus.ACTIVE.value:
-                            service2 = AuctionService(sess2)
-                            await service2.complete_player_not_participated(ap)
-                            await sess2.commit()
-                    state.current_auction_player_id = None
-                
-                await service.stop_auction_run(run)
+                    ).scalars().all()
+                    service2 = AuctionService(sess2)
+                    for ap in actives:
+                        await service2.complete_player_not_participated(ap)
+                    if actives:
+                        await sess2.commit()
                 if state:
+                    state.current_auction_player_id = None
                     state.stopped = True
                     state.paused = False
                     AuctionRuntime.cancel_timer(state)
                     AuctionRuntime.cancel_last_call(state)
+                await service.stop_auction_run(run)
                 text = "Auction stopped."
 
             await session.commit()
@@ -945,7 +960,7 @@ async def stop_auction(message: Message) -> None:
 
 @router.message(Command("next_player"), AdminFilter())
 async def next_player_command(message: Message) -> None:
-    """Skip the 15-second inter-player delay and show next player immediately."""
+    """Skip the 20-second inter-player delay and show next player immediately."""
     if message.chat.type not in {"group", "supergroup"}:
         await message.answer("This command can only be used inside the tournament group.")
         return
@@ -993,13 +1008,19 @@ async def auction_status(message: Message) -> None:
     player_text = active.player.name if active and active.player else "None"
     bid_text = f"Rs.{active.current_bid_cr:.2f} Cr" if active and active.current_bid_cr else "No bids"
     status_str = "Paused" if runtime and runtime.paused else ("Stopped" if runtime and runtime.stopped else run.status)
+    if runtime and runtime.waiting_for_next:
+        timer_text = "waiting for next player"
+    elif runtime and runtime.timer_task and not runtime.paused:
+        timer_text = "running"
+    else:
+        timer_text = "paused"
     await message.answer(
         f"Auction status\n\n"
         f"Set: {run.set_number}\n"
         f"Status: {status_str}\n"
         f"Active player: {player_text}\n"
         f"Current bid: {bid_text}\n"
-        f"Timer: {'running' if runtime and runtime.timer_task and not runtime.paused else 'paused'}"
+        f"Timer: {timer_text}"
     )
 
 
@@ -1178,7 +1199,12 @@ async def _button_bid(message: Message, user_id: int, amount: Decimal | None, in
         await AuctionRuntime.restart_timer(runtime)
 
     owner_display = f"@{team.owner_username}" if team.owner_username else "Owner"
-    return f"🔨 {team.name} ({team.short_code}) \u2192 Rs.{bid:.2f} Cr\nOwner: {owner_display}\nPlayer: {player.name}"
+    return (
+        f"🔨 {team.name} ({team.short_code}) \u2192 Rs.{bid:.2f} Cr\n"
+        f"Owner: {owner_display}\n"
+        f"Player: {player.name}\n"
+        f"Role: {player.role}"
+    )
 
 
 @router.callback_query(F.data.startswith("auction:bid_increment:"))
@@ -1193,21 +1219,22 @@ async def auction_increment_bid(callback: CallbackQuery) -> None:
         await callback.answer(result, show_alert=True)
     else:
         await callback.answer()
-        owner_display = f"@{callback.from_user.username}" if callback.from_user.username else "Owner"
+        bidder_display = f"@{callback.from_user.username}" if callback.from_user.username else "Bidder"
         lines = result.split("\n")
         team_line = lines[0] if lines else result
+        player_line = lines[2] if len(lines) > 2 else ""
+        role_line = lines[3] if len(lines) > 3 else ""
         bid_msg = (
             f"🔨 BID\n\n"
             f"{team_line}\n"
-            f"🧑 Owner: {owner_display}\n\n"
+            f"{player_line}\n"
+            f"{role_line}\n"
+            f"🧑 Bid by: {bidder_display}\n\n"
             f"Do I hear anyone else?"
         )
-        # Rotate through bid1, bid2, bid3, bid4
-        bid_counter = getattr(auction_increment_bid, '_counter', 0) + 1
-        auction_increment_bid._counter = bid_counter
-        bid_num = (bid_counter % 4) + 1
-        # Get thread_id from the runtime to send to correct topic
+        # Get thread_id + per-auction bid rotation counter from the runtime
         bid_thread_id = None
+        bid_num = 1
         try:
             async with AsyncSessionLocal() as _sess:
                 _trn = await TournamentService(_sess).get_by_telegram_chat_id(callback.message.chat.id)
@@ -1217,6 +1244,8 @@ async def auction_increment_bid(callback: CallbackQuery) -> None:
                         _rt = AuctionRuntime.get(_run.id)
                         if _rt:
                             bid_thread_id = _rt.thread_id
+                            _rt.bid_counter += 1
+                            bid_num = (_rt.bid_counter % 4) + 1
         except Exception:
             pass
         await _send_media(
@@ -1245,4 +1274,42 @@ async def auction_custom_bid_amount(message: Message, state: FSMContext) -> None
         return
     result = await _button_bid(message, message.from_user.id, amount)
     await state.clear()
-    await message.answer(result)
+    error_keywords = ["❌", "⚠", "not running", "paused", "stopped", "no active", "not registered", "already", "insufficient"]
+    if any(kw in result.lower() for kw in error_keywords):
+        await message.answer(result)
+        return
+    bidder_display = f"@{message.from_user.username}" if message.from_user.username else "Bidder"
+    lines = result.split("\n")
+    team_line = lines[0] if lines else result
+    player_line = lines[2] if len(lines) > 2 else ""
+    role_line = lines[3] if len(lines) > 3 else ""
+    bid_msg = (
+        f"🔨 BID\n\n"
+        f"{team_line}\n"
+        f"{player_line}\n"
+        f"{role_line}\n"
+        f"🧑 Bid by: {bidder_display}\n\n"
+        f"Do I hear anyone else?"
+    )
+    # Per-auction bid rotation counter + thread_id
+    bid_thread_id = None
+    bid_num = 1
+    try:
+        async with AsyncSessionLocal() as _sess:
+            _trn = await TournamentService(_sess).get_by_telegram_chat_id(message.chat.id)
+            if _trn:
+                _run = await AuctionService(_sess).get_running_auction(_trn.id)
+                if _run:
+                    _rt = AuctionRuntime.get(_run.id)
+                    if _rt:
+                        bid_thread_id = _rt.thread_id
+                        _rt.bid_counter += 1
+                        bid_num = (_rt.bid_counter % 4) + 1
+    except Exception:
+        pass
+    await _send_media(
+        message.bot, message.chat.id,
+        f"bid{bid_num}", os.path.join("data", f"bid{bid_num}.gif"),
+        caption=bid_msg,
+        thread_id=bid_thread_id,
+    )

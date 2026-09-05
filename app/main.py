@@ -124,6 +124,20 @@ async def _ensure_coowner_columns():
     except Exception as e:
         logging.warning("Could not update co_owner columns: %s", e)
 
+async def _ensure_purse_adjustment_column():
+    """Add purse_adjustment_cr column to teams table."""
+    from sqlalchemy import text
+    try:
+        async with AsyncSessionLocal() as session:
+            await session.execute(text(
+                "ALTER TABLE teams ADD COLUMN IF NOT EXISTS purse_adjustment_cr NUMERIC(12,2) NOT NULL DEFAULT 0"
+            ))
+            await session.commit()
+        logging.info("Ensured purse_adjustment_cr column in teams table")
+    except Exception as e:
+        logging.warning("Could not update purse_adjustment column: %s", e)
+
+
 async def _ensure_media_files_table():
     """Create media_files table if it doesn't exist, add missing columns."""
     from sqlalchemy import text
@@ -356,6 +370,7 @@ async def main():
     await _fix_photo_paths()
     await _fix_auction_results_nullable()
     await _ensure_coowner_columns()
+    await _ensure_purse_adjustment_column()
     await _ensure_media_files_table()
     await _ensure_match_tables()
     await _ensure_player_stats_table()

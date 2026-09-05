@@ -9,13 +9,15 @@ def test_home_keyboard_contains_expected_public_actions() -> None:
     assert {"home:players", "home:teams", "home:tournament", "home:help"} <= callbacks
 
 
-def test_auction_keyboard_uses_configured_increment() -> None:
-    callbacks = {button.callback_data for row in auction_keyboard(Decimal("0.25")).inline_keyboard for button in row}
-    assert "auction:bid_increment:0.25" in callbacks
-    assert "auction:bid_increment:0.50" in callbacks
+def test_auction_keyboard_admin_controls() -> None:
+    callbacks = {button.callback_data for row in auction_keyboard(Decimal("0.25"), is_admin=True).inline_keyboard for button in row}
+    assert "auction:pause" in callbacks
+    assert "auction:stop" in callbacks
+    # Only admin controls — no bid buttons
+    assert not any(cb.startswith("auction:bid_increment") for cb in callbacks)
 
 
 def test_alphabet_keyboard_has_all_letters() -> None:
     callbacks = {button.callback_data for row in alphabet_keyboard().inline_keyboard for button in row}
-    assert "players:letter:A" in callbacks
-    assert "players:letter:Z" in callbacks
+    assert "players:letter:all:A" in callbacks
+    assert "players:letter:all:Z" in callbacks

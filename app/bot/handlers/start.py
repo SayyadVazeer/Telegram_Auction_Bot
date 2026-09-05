@@ -335,6 +335,8 @@ async def _show_my_team(message: Message) -> None:
             ).all()
         )
     spent = sum((Decimal(str(r.final_bid_cr)) for r, _ in results), Decimal("0"))
+    # Include cash settled through player trades
+    spent += Decimal(str(team.purse_adjustment_cr or 0))
     overseas = sum(1 for _, p in results if p.is_overseas)
     roster = (
         "\n".join(
@@ -343,9 +345,13 @@ async def _show_my_team(message: Message) -> None:
         )
         or "No players purchased yet."
     )
+    owner_display = (
+        f"@{team.owner_username}" if team.owner_username
+        else (str(team.owner_telegram_id) if team.owner_telegram_id else "None")
+    )
     text = (
         f"🏏 {team.name} ({team.short_code})\n"
-        f"👤 Owner: @{team.owner_username}\n\n"
+        f"👤 Owner: {owner_display}\n\n"
     )
     if team.co_owner_username:
         text += f"👤 Co-owner: @{team.co_owner_username}\n\n"
@@ -385,6 +391,8 @@ async def _show_purse(message: Message) -> None:
             )
         )
         spent = Decimal(str(spent_result.scalar() or 0))
+        # Include cash settled through player trades
+        spent += Decimal(str(team.purse_adjustment_cr or 0))
         # Count players and overseas
         player_count = await session.scalar(
             select(func.count()).select_from(AuctionResult).where(
@@ -1155,7 +1163,7 @@ async def send_help(message: Message, user: User) -> None:
     guide += "  /pause_auction - Pause running auction\n"
     guide += "  /resume_auction - Resume paused auction\n"
     guide += "  /stop_auction - Stop running auction\n"
-    guide += "  /next_player - Skip 15s delay\n"
+    guide += "  /next_player - Skip 20s delay\n"
     guide += "  /status - Auction status\n"
     guide += "  /manual_sell - Manually sell player\n"
     guide += "  /manual_unsell - Remove player from team\n"
@@ -1236,7 +1244,7 @@ async def help_all_command(message: Message) -> None:
     g.append("  /pause_auction - Pause running auction")
     g.append("  /resume_auction - Resume paused auction")
     g.append("  /stop_auction - Stop running auction")
-    g.append("  /next_player - Skip 15s inter-player delay")
+    g.append("  /next_player - Skip 20s inter-player delay")
     g.append("  /status - View auction status")
     g.append("")
     g.append("Team Management")

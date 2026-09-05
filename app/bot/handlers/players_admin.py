@@ -253,6 +253,7 @@ async def manual_sell_team(message: Message, state: FSMContext) -> None:
             )
         )
         total_spent = Decimal(str(total_spent_result.scalar() or 0))
+        total_spent += Decimal(str(team.purse_adjustment_cr or 0))
         remaining = tournament.purse_cr - total_spent
 
     data = await state.get_data()
@@ -472,6 +473,7 @@ async def manual_unsell_team(message: Message, state: FSMContext) -> None:
             )
         )
         total_spent = Decimal(str(total_spent_result.scalar() or 0))
+        total_spent += Decimal(str(team.purse_adjustment_cr or 0))
         remaining = tournament.purse_cr - total_spent
 
     await state.update_data(
@@ -790,6 +792,7 @@ async def trade_from_owner_confirm_callback(callback: CallbackQuery, state: FSMC
     _trade_counter += 1
     trade_data = data.copy()
     trade_data["chat_id"] = callback.message.chat.id
+    trade_data["thread_id"] = getattr(callback.message, "message_thread_id", None)
     trade_data["trade_id"] = _trade_counter
     _store_pending_trade(to_owner_id, trade_data)
 
@@ -818,6 +821,33 @@ async def trade_from_owner_confirm_callback(callback: CallbackQuery, state: FSMC
     await state.clear()
 
 
+async def _send_admin_approval(send_fn, trade_data: dict) -> None:
+    """Post the accepted trade as a message requiring admin approval."""
+    from app.bot.keyboards.home import trade_admin_keyboard
+
+    from_price = Decimal(str(trade_data.get('from_player_bid', 0)))
+    to_price = Decimal(str(trade_data.get('to_player_bid', 0)))
+    diff = float(from_price - to_price)
+    if diff > 0:
+        purse_text = f"\n\nPurse: {trade_data['to_team_name']} pays Rs.{diff:.2f} Cr to {trade_data['from_team_name']}"
+    elif diff < 0:
+        purse_text = f"\n\nPurse: {trade_data['from_team_name']} pays Rs.{abs(diff):.2f} Cr to {trade_data['to_team_name']}"
+    else:
+        purse_text = "\n\nPurse: Equal value - no change"
+
+    await send_fn(
+        f"⏰ Trade Pending Admin Approval\n\n"
+        f"{trade_data['from_team_name']} ({trade_data['from_team_code']}) sends:\n"
+        f"  {trade_data['from_player_name']} (Rs.{from_price:.2f} Cr)\n\n"
+        f"{trade_data['to_team_name']} ({trade_data['to_team_code']}) sends:\n"
+        f"  {trade_data['to_player_name']} (Rs.{to_price:.2f} Cr)"
+        f"{purse_text}\n\n"
+        f"Accepted by: @{trade_data.get('accepted_by_username', 'N/A')}\n\n"
+        "Admin: Approve or reject this trade:",
+        reply_markup=trade_admin_keyboard(),
+    )
+
+
 @router.callback_query(F.data == "trade:accept")
 async def trade_accept_button(callback: CallbackQuery, state: FSMContext) -> None:
     if callback.from_user is None:
@@ -843,29 +873,7 @@ async def trade_accept_button(callback: CallbackQuery, state: FSMContext) -> Non
     except Exception:
         pass
 
-    # Send to admin for approval
-    from_price = Decimal(str(data.get('from_player_bid', 0)))
-    to_price = Decimal(str(data.get('to_player_bid', 0)))
-    diff = float(from_price - to_price)
-    if diff > 0:
-        purse_text = f"\n\nPurse: {data['to_team_name']} pays Rs.{diff:.2f} Cr to {data['from_team_name']}"
-    elif diff < 0:
-        purse_text = f"\n\nPurse: {data['from_team_name']} pays Rs.{abs(diff):.2f} Cr to {data['to_team_name']}"
-    else:
-        purse_text = "\n\nPurse: Equal value - no change"
-
-    from app.bot.keyboards.home import trade_admin_keyboard
-    await callback.message.answer(
-        f"⏰ Trade Pending Admin Approval\n\n"
-        f"{data['from_team_name']} ({data['from_team_code']}) sends:\n"
-        f"  {data['from_player_name']} (Rs.{from_price:.2f} Cr)\n\n"
-        f"{data['to_team_name']} ({data['to_team_code']}) sends:\n"
-        f"  {data['to_player_name']} (Rs.{to_price:.2f} Cr)"
-        f"{purse_text}\n\n"
-        f"Accepted by: @{data.get('accepted_by_username', 'N/A')}\n\n"
-        "Admin: Approve or reject this trade:",
-        reply_markup=trade_admin_keyboard(),
-    )
+    await _send_admin_approval(callback.message.answer, trade_data)
 
 
 @router.callback_query(F.data == "trade:reject")
@@ -887,6 +895,16 @@ async def trade_reject_button(callback: CallbackQuery, state: FSMContext) -> Non
     await callback.message.answer(
         f"❌ Trade rejected by {data.get('to_team_name', 'team')} owner."
     )
+    # Notify the initiating owner via DM
+    from_owner_id = data.get("from_owner_id")
+    if from_owner_id:
+        try:
+            await callback.message.bot.send_message(
+                from_owner_id,
+                "❌ Your trade proposal was rejected.",
+            )
+        except Exception:
+            pass
 
 
 
@@ -1016,6 +1034,16 @@ async def _execute_trade(context, data: dict) -> None:
                 )
                 return
 
+        # Apply real purse settlement for the value difference
+        if diff > 0:
+            # to_team pays Rs.diff to from_team
+            to_team.purse_adjustment_cr = Decimal(str(to_team.purse_adjustment_cr or 0)) + Decimal(str(diff))
+            from_team.purse_adjustment_cr = Decimal(str(from_team.purse_adjustment_cr or 0)) - Decimal(str(diff))
+        elif diff < 0:
+            # from_team pays Rs.abs(diff) to to_team
+            from_team.purse_adjustment_cr = Decimal(str(from_team.purse_adjustment_cr or 0)) + Decimal(str(abs(diff)))
+            to_team.purse_adjustment_cr = Decimal(str(to_team.purse_adjustment_cr or 0)) - Decimal(str(abs(diff)))
+
         from_result.winning_team_id = to_team.id
         to_result.winning_team_id = from_team.id
         await session.commit()
@@ -1044,6 +1072,11 @@ async def _execute_trade(context, data: dict) -> None:
     # Show updated team rosters in the group
     try:
         async with AsyncSessionLocal() as session:
+            thread_kw = (
+                {"message_thread_id": data.get("thread_id")}
+                if data.get("thread_id")
+                else {}
+            )
             for tid in [(from_team.id, from_team.name), (to_team.id, to_team.name)]:
                 tm = await session.get(Team, tid[0])
                 if not tm:
@@ -1059,18 +1092,24 @@ async def _execute_trade(context, data: dict) -> None:
                 )
                 roster = list(results_q.all())
                 spent = sum(Decimal(str(r.final_bid_cr)) for r, _ in roster)
+                spent += Decimal(str(tm.purse_adjustment_cr or 0))
                 overseas = sum(1 for _, p in roster if p.is_overseas)
                 players_text = "\n".join(
                     f"• {p.name} {'✈️' if p.is_overseas else ''} -- Rs.{r.final_bid_cr:.2f} Cr"
                     for r, p in roster
                 ) or "No players"
+                owner_display = (
+                    f"@{tm.owner_username}" if tm.owner_username
+                    else (str(tm.owner_telegram_id) if tm.owner_telegram_id else "N/A")
+                )
                 await bot.send_message(
                     chat_id,
                     f"📋 {tm.name} ({tm.short_code})\n"
-                    f"Owner: @{tm.owner_username or 'N/A'}\n"
+                    f"Owner: {owner_display}\n"
                     f"Purse: Rs.{Decimal(str(tournament.purse_cr)) - spent:.2f} Cr remaining\n"
                     f"Players: {len(roster)}/{tournament.max_players_per_team} | Overseas: {overseas}/{tournament.max_overseas_players}\n\n"
-                    f"Roster:\n{players_text}"
+                    f"Roster:\n{players_text}",
+                    **thread_kw,
                 )
     except Exception:
         pass
@@ -1092,7 +1131,11 @@ async def _execute_trade(context, data: dict) -> None:
 
 @router.message(Command("accept_trade"))
 async def accept_trade(message: Message, state: FSMContext) -> None:
-    """Accept a pending trade via /accept_trade command (fallback)."""
+    """Accept a pending trade via /accept_trade command.
+
+    Same flow as the accept button: routes to admin for approval instead of
+    executing immediately, so both paths enforce the same authorization.
+    """
     if message.from_user is None:
         return
     data = _get_pending_trade(message.from_user.id)
@@ -1102,7 +1145,14 @@ async def accept_trade(message: Message, state: FSMContext) -> None:
     if message.from_user.id != data.get("to_owner_id"):
         await message.answer("Only the receiving team owner can accept this trade.")
         return
-    await _execute_trade(message, data)
+
+    trade_data = data.copy()
+    trade_data["accepted_by"] = message.from_user.id
+    trade_data["accepted_by_username"] = message.from_user.username or ""
+    _store_pending_trade("admin_pending", trade_data)
+
+    await message.answer("✅ Trade accepted! Sending to admin for approval...")
+    await _send_admin_approval(message.answer, trade_data)
 
 
 
@@ -1169,6 +1219,9 @@ async def delete_team_confirm(message: Message, state: FSMContext) -> None:
         await message.answer("Deletion cancelled.")
         return
     data = await state.get_data()
+    deleted_owner_id = None
+    deleted_coowner_id = None
+    deleted_code = data["delete_team_code"]
     async with AsyncSessionLocal() as session:
         tournament = await TournamentService(session).get_by_telegram_chat_id(message.chat.id)
         # Remove all auction results for this team
@@ -1180,8 +1233,16 @@ async def delete_team_confirm(message: Message, state: FSMContext) -> None:
         # Delete the team
         team = await session.get(Team, data["delete_team_id"])
         if team:
+            deleted_owner_id = team.owner_telegram_id
+            deleted_coowner_id = team.co_owner_telegram_id
             await session.delete(team)
         await session.commit()
+    # Clear group tags for the deleted team's owner and co-owner (best-effort)
+    from app.services.group_tags import clear_group_tag, co_owner_title, owner_title
+    if deleted_owner_id:
+        await clear_group_tag(message.bot, message.chat.id, deleted_owner_id, owner_title(deleted_code))
+    if deleted_coowner_id:
+        await clear_group_tag(message.bot, message.chat.id, deleted_coowner_id, co_owner_title(deleted_code))
     await state.clear()
     await message.answer(f"✅ Deleted team {data['delete_team_name']} ({data['delete_team_code']}).")
 
@@ -1233,11 +1294,20 @@ async def remove_owner_confirm(message: Message, state: FSMContext) -> None:
             await message.answer("Team not found.")
             await state.clear()
             return
+        removed_owner_id = team.owner_telegram_id
+        removed_coowner_id = team.co_owner_telegram_id
+        team_code = team.short_code
         team.owner_telegram_id = None
         team.owner_username = None
         team.co_owner_telegram_id = None
         team.co_owner_username = None
         await session.commit()
+    # Clear group tags for the removed owner and co-owner (best-effort)
+    from app.services.group_tags import clear_group_tag, co_owner_title, owner_title
+    if removed_owner_id:
+        await clear_group_tag(message.bot, message.chat.id, removed_owner_id, owner_title(team_code))
+    if removed_coowner_id:
+        await clear_group_tag(message.bot, message.chat.id, removed_coowner_id, co_owner_title(team_code))
     await state.clear()
     await message.answer(
         f"✅ Owner removed from {team.name} ({team.short_code}).\n\n"
@@ -1538,6 +1608,12 @@ async def add_coowner_confirm(message: Message, state: FSMContext) -> None:
         team.co_owner_telegram_id = data["coowner_user_id"]
         team.co_owner_username = data.get("coowner_username", None)
         await session.commit()
+    # Tag the new co-owner in the group (best-effort)
+    from app.services.group_tags import co_owner_title, set_group_tag
+    await set_group_tag(
+        message.bot, message.chat.id, data["coowner_user_id"],
+        co_owner_title(data["coowner_team_code"]),
+    )
     await state.clear()
     username_display = f"@{data.get('coowner_username', '')}" if data.get('coowner_username') else str(data['coowner_user_id'])
     await message.answer(
@@ -1586,17 +1662,23 @@ async def remove_coowner(message: Message, state: FSMContext) -> None:
             return
 
         coowner_name = f"@{team.co_owner_username}" if team.co_owner_username else "the co-owner"
+        removed_coowner_id = team.co_owner_telegram_id
+        removed_code = team.short_code
         team_db = await session.get(Team, team.id)
         team_db.co_owner_telegram_id = None
         team_db.co_owner_username = None
         await session.commit()
+
+    # Clear the co-owner group tag (best-effort)
+    from app.services.group_tags import clear_group_tag, co_owner_title
+    await clear_group_tag(message.bot, message.chat.id, removed_coowner_id, co_owner_title(removed_code))
 
     await message.answer(f"✅ Removed co-owner ({coowner_name}) from {team.name} ({team.short_code}).")
 
 
 
 async def _get_team_spent(session, tournament_id: int, team_id: int) -> Decimal:
-    """Get total amount spent by a team."""
+    """Get total amount spent by a team (incl. trade purse adjustments)."""
     from sqlalchemy import func
     result = await session.execute(
         select(func.coalesce(func.sum(AuctionResult.final_bid_cr), 0))
@@ -1606,7 +1688,9 @@ async def _get_team_spent(session, tournament_id: int, team_id: int) -> Decimal:
             AuctionResult.result_status == AuctionResultStatus.SOLD.value,
         )
     )
-    return Decimal(str(result.scalar() or 0))
+    team = await session.get(Team, team_id)
+    adj = Decimal(str(team.purse_adjustment_cr or 0)) if team else Decimal("0")
+    return Decimal(str(result.scalar() or 0)) + adj
 
 
 
@@ -1748,51 +1832,6 @@ async def image_change_generator(message: Message) -> None:
         "Supported keys: bid1, bid2, bid3, once, twice, sold, unsold\n\n"
         "Or use /upload_gif <key> to upload a file by replying to it."
     )
-
-
-@router.message(Command("upload_gif"), AdminFilter())
-async def upload_gif_start(message: Message) -> None:
-    """Upload a single GIF by replying to it with the key name."""
-    if message.reply_to_message and (message.reply_to_message.animation or message.reply_to_message.photo):
-        # Direct upload via reply
-        parts = (message.text or "").split(maxsplit=1)
-        if len(parts) < 2:
-            await message.answer("Usage: /upload_gif <key>\nExample: /upload_gif bid1\n(Reply to a GIF or photo)")
-            return
-        
-        key = parts[1].strip().lower()
-        if key not in GIF_FILE_KEYS:
-            await message.answer(f"Invalid key: {key}\nValid keys: {', '.join(GIF_FILE_KEYS.keys())}")
-            return
-        
-        target = message.reply_to_message
-        if target.animation:
-            file_id = target.animation.file_id
-            unique_id = target.animation.file_unique_id
-        elif target.photo:
-            file_id = target.photo[-1].file_id
-            unique_id = target.photo[-1].file_unique_id
-        else:
-            await message.answer("Reply to a GIF or photo.")
-            return
-        
-        # Save to database
-        from app.bot.handlers.auction import _save_media_to_db
-        media_type = "photo" if key in ("once", "twice") else "animation"
-        local_path = GIF_FILE_KEYS.get(key)
-        await _save_media_to_db(key, file_id, unique_id, local_path, media_type)
-        print(f"Saved {key}: file_id={file_id[:30]}...")
-        await message.answer(
-            f"✅ Saved {key}\n\n"
-            f"File ID: {file_id}\n"
-            f"Unique ID: {unique_id}\n"
-            f"Local path: {local_path}"
-        )
-    else:
-        await message.answer(
-            "Reply to a GIF or photo with /upload_gif <key>\n"
-            f"Valid keys: {', '.join(GIF_FILE_KEYS.keys())}"
-        )
 
 
 @router.message(Command("save_all_media"), AdminFilter())

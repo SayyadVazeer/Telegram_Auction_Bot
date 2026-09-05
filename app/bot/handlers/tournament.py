@@ -82,7 +82,7 @@ async def show_confirmation(message: Message, state: FSMContext) -> None:
     text = (
         "🏆 Tournament Preview\n\n"
         f"Name: {data['name']}\n\n"
-        f"💰 Team purse: ₹{data['purse_cr']:.2f} Cr\n"
+        f"💰 Team purse: Rs.{data['purse_cr']:.2f} Cr\n"
         f"🌍 Max overseas: {data['max_overseas_players']}\n"
         f"👥 Max players/team: {data['max_players_per_team']}\n\n"
         "📈 Bid increments are set per auction session.\n\n"
@@ -97,7 +97,7 @@ async def show_confirmation(message: Message, state: FSMContext) -> None:
     )
 
 
-@router.message(Command("create_tournament"))
+@router.message(Command("create_tournament"), AdminFilter())
 async def create_tournament_start(
     message: Message,
     state: FSMContext,
@@ -353,7 +353,7 @@ async def tournament_create_confirmed(
     await callback.message.edit_text(
         "✅ Tournament created successfully!\n\n"
         f"🏆 {tournament.name}\n\n"
-        f"💰 Team purse: ₹{tournament.purse_cr:.2f} Cr\n"
+        f"💰 Team purse: Rs.{tournament.purse_cr:.2f} Cr\n"
         f"🌍 Max overseas: "
         f"{tournament.max_overseas_players}\n"
         f"👥 Max players/team: "
@@ -464,15 +464,5 @@ async def edit_tournament_max_players(
     )
 
     await callback.answer()
-
-    await state.update_data(editing=True)
-
-    await state.set_state(
-        TournamentCreationStates.waiting_for_min_bid_increment
-    )
-
-    await callback.message.answer(
-        "✏️ Enter the new minimum bid increment in Crores:"
-    )
 
     await callback.answer()

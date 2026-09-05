@@ -101,7 +101,9 @@ async def get_team_by_owner_or_coowner(
             | (Team.co_owner_telegram_id == telegram_id),
         )
     )
-    return result.scalar_one_or_none()
+    # Use .first() (not scalar_one_or_none) so a user accidentally
+    # linked as co-owner of two teams cannot crash handlers.
+    return result.scalars().first()
 
 
 async def assign_team_owner(

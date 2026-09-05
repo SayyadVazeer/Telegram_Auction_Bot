@@ -169,6 +169,7 @@ async def place_bid_command(message: Message) -> None:
             )
         )
         spent = Decimal(str(spent_result.scalar() or 0))
+        spent += Decimal(str(team.purse_adjustment_cr or 0))
         remaining = Decimal(str(tournament.purse_cr)) - spent
         if bid_cr > remaining:
             await message.answer(f"❌ Insufficient purse! {team.name} has Rs.{remaining:.2f} Cr remaining, bid is Rs.{bid_cr:.2f} Cr.")
@@ -236,14 +237,18 @@ async def place_bid_command(message: Message) -> None:
         bid_msg = (
             f"🔨 BID\n\n"
             f"💰 Current Highest Bid: Rs.{bid_cr:.2f} Cr\n"
+            f"🏏 Player: {auction_player.player.name}\n"
+            f"🎯 Role: {auction_player.player.role}\n"
             f"🏏 Team Name: {team.name} ({team.short_code})\n"
-            f"🧑 Team Owner: {owner_username}\n\n"
+            f"🧑 Bid by: {owner_username}\n\n"
             "Do I hear anyone else?"
         )
-        # Rotate through bid1, bid2, bid3
-        bid_counter = getattr(place_bid_command, "_counter", 0) + 1
-        place_bid_command._counter = bid_counter
-        bid_num = (bid_counter % 4) + 1
+        # Rotate through bid1, bid2, bid3 (per-auction counter)
+        if runtime:
+            runtime.bid_counter += 1
+            bid_num = (runtime.bid_counter % 4) + 1
+        else:
+            bid_num = 1
         
         # Use file_id from auction module
         from app.bot.handlers.auction import _send_media

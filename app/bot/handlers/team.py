@@ -6,6 +6,8 @@ from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.types import CallbackQuery, Message
 
+from app.bot.filters.admin import AdminFilter
+
 from sqlalchemy import select
 
 
@@ -78,7 +80,7 @@ async def show_team_confirmation(
     )
 
 
-@router.message(Command("add_team"))
+@router.message(Command("add_team"), AdminFilter())
 async def add_team_start(
     message: Message,
     state: FSMContext,
@@ -459,14 +461,16 @@ async def view_team(
 
 
     spent = sum((Decimal(str(result.final_bid_cr)) for result, _ in results), Decimal("0"))
+    # Include cash settled through player trades
+    spent += Decimal(str(team.purse_adjustment_cr or 0))
     overseas = sum(1 for _, player in results if player.is_overseas)
     roster = "\n".join(
-        f"• {player.name} {'✈️' if player.is_overseas else ''} — ₹{result.final_bid_cr:.2f} Cr"
+        f"• {player.name} {'✈️' if player.is_overseas else ''} — Rs.{result.final_bid_cr:.2f} Cr"
         for result, player in results
     ) or "No players purchased yet."
     if tournament:
         text += (
-            f"💰 Remaining purse: ₹{Decimal(str(tournament.purse_cr)) - spent:.2f} Cr\n"
+            f"💰 Remaining purse: Rs.{Decimal(str(tournament.purse_cr)) - spent:.2f} Cr\n"
             f"👥 Players: {len(results)}/{tournament.max_players_per_team}\n"
             f"✈️ Overseas: {overseas}/{tournament.max_overseas_players}\n\n"
         )
@@ -486,7 +490,7 @@ async def view_team(
     await callback.answer()
 
 
-@router.message(Command("assign_owner"))
+@router.message(Command("assign_owner"), AdminFilter())
 async def assign_owner(
     message: Message,
 ) -> None:
@@ -611,6 +615,12 @@ async def assign_owner(
         )
 
         await session.commit()
+
+    # Tag the new owner with the team code in the group (best-effort)
+    from app.services.group_tags import owner_title, set_group_tag
+    await set_group_tag(
+        message.bot, message.chat.id, owner_user.id, owner_title(team.short_code),
+    )
 
     owner_display = (
         f"@{username}"

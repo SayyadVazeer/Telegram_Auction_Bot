@@ -1,10 +1,12 @@
 from datetime import datetime
+from decimal import Decimal
 
 from sqlalchemy import (
     BigInteger,
     DateTime,
     ForeignKey,
     Integer,
+    Numeric,
     String,
     UniqueConstraint,
     func,
@@ -80,6 +82,16 @@ class Team(Base):
     co_owner_username: Mapped[str | None] = mapped_column(
         String(100),
         nullable=True,
+    )
+
+    # Purse settled through player trades. Positive = team paid extra cash
+    # out to another team; negative = team received cash. Effective spend is
+    # sum(player bids) + purse_adjustment_cr.
+    purse_adjustment_cr: Mapped[Decimal] = mapped_column(
+        Numeric(12, 2),
+        nullable=False,
+        default=Decimal("0"),
+        server_default="0",
     )
 
     created_at: Mapped[datetime] = mapped_column(
